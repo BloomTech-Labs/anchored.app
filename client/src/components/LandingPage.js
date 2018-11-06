@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
   return (
     <div>
       <div>
-        <a href="#">Sign Up</a>
-        <a href="#">Sign In</a>
+        <Link to="/register">Sign Up</Link>
+        <Link to="/login">Sign In</Link>
       </div>
       <button>Buy Now</button>
     </div>
