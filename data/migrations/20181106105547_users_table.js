@@ -22,6 +22,12 @@ exports.up = function(knex, Promise) {
     tbl
       .integer('credits')
       .unsigned()
+      .notNullable()
+      .defaultTo(3);
+
+    tbl
+      .boolean('subscription')
+      .defaultTo(false)
       .notNullable();
 
     tbl.timestamp('created_at').defaultTo(knex.fn.now());
