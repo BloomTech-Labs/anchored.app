@@ -16,5 +16,8 @@ export default (state = initialState, action) => {
 
     case SET_PASSWORD:
       return { ...state, password: action.payload };
+
+    default:
+      return state;
   }
 };
