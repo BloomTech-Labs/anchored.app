@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-redux": "^5.1.0",
@@ -11,13 +10,11 @@
     "react-scripts": "2.1.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0"
-=======
     "auth0-lock": "^11.11.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-scripts": "2.1.1",
     "styled-components": "^4.0.3"
->>>>>>> randyc-register
   },
   "scripts": {
     "start": "react-scripts start",
