@@ -1,6 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const applyGlobalMiddleware = require('../config/applyGlobalMiddleware.js');
 const usersRoutes = require('./users/usersRoutes.js');
+
+const authRoutes = require('./auth/authRoutes');
 const docsRoutes = require('./documents/documentsRoutes.js');
 
 // server
@@ -16,5 +19,6 @@ server.get('/', (req, res) => {
 
 server.use('/users', usersRoutes);
 server.use('/documents', docsRoutes);
+server.use('/auth', authRoutes);
 
 module.exports = server;
