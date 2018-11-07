@@ -1,16 +1,18 @@
 const express = require('express');
 
+const moment = require('moment');
 const passport = require('passport');
 const docusign = require('docusign-esign');
+
 const router = express.Router();
 
 passport.use(
   new docusign.OAuthClient(
     {
       sandbox: true,
-      clientID: '401e8466-e1f2-4615-b11b-21e95f46fa15',
-      clientSecret: 'secret',
-      callbackURL: 'http://localhost:9000' + '/auth/callback',
+      clientID: process.env.CLIENT_ID,
+      clientSecret: process.env.CLIENT_SECRET,
+      callbackURL: 'http://localhost:3333' + '/auth/callback',
       state: true,
     },
     (accessToken, refreshToken, params, user, done) => {
@@ -23,54 +25,39 @@ passport.use(
   )
 );
 
-function dsLoginCB1(req, res, next) {
-  passport.authenticate('docusign', { failureRedirect: '/auth' })(
-    req,
-    res,
-    next
-  );
-}
-function dsLoginCB2(req, res, next) {
-  // console.log(
-  //   `Received access_token: ${req.user.accessToken.substring(0, 15)}...`
-  // );
-  // console.log(
-  //   `Expires at ${req.user.expires.format('dddd, MMMM Do YYYY, h:mm:ss a')}`
-  // );
-  // if (req.session.eg) {
-  //   res.redirect('/auth/go');
-  // } else {
-  //   res.redirect('/');
-  // }
-}
-
-function goPageController(req, res, next) {
-  // getting the API client ready
-  apiClient = new docusign.ApiClient();
-  apiClient.addDefaultHeader('Authorization', 'Bearer ' + req.user.accessToken);
-  getDefaultAccountInfo(req.user.accounts);
-  apiClient.setBasePath(baseUri);
-  docusign.Configuration.default.setDefaultApiClient(apiClient);
-  eg = req.session.eg;
-  req.session.eg = false;
-}
-
-function dsPingController(req, res) {
-  console.log('\nDocuSign PING received.');
-  res.send();
-}
-
 passport.serializeUser((user, done) => done(null, user));
 passport.deserializeUser((obj, done) => done(null, obj));
 
-router.get('/', (req, res, next) => {
-  passport.authenticate('docusign')(req, res, next);
-});
+function checkToken(req, res, next) {
+  if (req.query.eg) {
+    req.session.eg = req.query.eg;
+  }
 
-router.get('/go', goPageController);
+  let tokenBufferMin = 30;
+  let now = moment();
 
-router.get('/dsping', dsPingController);
+  if (
+    tokenBufferMin &&
+    req.user &&
+    req.user.accessToken &&
+    now.add(tokenBufferMin, 'm').isBefore(req.user.expires)
+  ) {
+    next();
+  } else {
+    res.redirect('/auth');
+  }
+}
 
-router.get('/callback', [dsLoginCB1, dsLoginCB2]);
+router.get('/', passport.authenticate('docusign'));
+
+router.get(
+  '/callback',
+  passport.authenticate('docusign', {
+    successRedirect: 'http://localhost:3000',
+    failureRedirect: '/auth',
+  })
+);
+
+router.use(checkToken);
 
 module.exports = router;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Auth from './Auth/Auth';
+import DocusignLogin from './Auth/Docusign/DocusignLogin';
 
 const LandingPage = () => {
   return (
@@ -8,7 +8,7 @@ const LandingPage = () => {
       <div>
         <Link to="/register">Sign Up</Link>
         <Link to="/login">Sign In</Link>
-        <Auth />
+        <DocusignLogin />
       </div>
       <button>Buy Now</button>
     </div>

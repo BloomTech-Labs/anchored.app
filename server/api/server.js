@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const applyGlobalMiddleware = require('../config/applyGlobalMiddleware.js');
 const usersRoutes = require('./users/usersRoutes.js');
