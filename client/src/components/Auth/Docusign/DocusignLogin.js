@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Docusign extends React.Component {
+class DocusignLogin extends React.Component {
   render() {
     return (
       <div>
@@ -10,4 +10,4 @@ class Docusign extends React.Component {
   }
 }
 
-export default Docusign;
+export default DocusignLogin;
