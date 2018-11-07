@@ -4,11 +4,8 @@ const users = require('./usersModel.js');
 
 const router = express.Router();
 
+// route is /users
 router.get('/', (req, res) => {
-  res.status(200).json({ SUCCESS: `Sanity check` });
-});
-
-router.get('/users', (req, res) => {
   users
     .find()
     .then(users => {
@@ -19,7 +16,7 @@ router.get('/users', (req, res) => {
     });
 });
 
-router.get('/users/:email', (req, res) => {
+router.get('/:email', (req, res) => {
   const { email } = req.params;
   users
     .findByEmail(email)
@@ -37,7 +34,7 @@ router.get('/users/:email', (req, res) => {
     });
 });
 
-router.get('/users/id/:id', (req, res) => {
+router.get('/id/:id', (req, res) => {
   const { id } = req.params;
   users
     .findByUserId(id)
@@ -57,7 +54,7 @@ router.get('/users/id/:id', (req, res) => {
 
 // TODO: Add POST endpoint, need to think about Auth0 user creation first.
 
-router.put('/users/:id', (req, res) => {
+router.put('/:id', (req, res) => {
   const { id } = req.params;
   const user = req.body;
 
@@ -77,7 +74,7 @@ router.put('/users/:id', (req, res) => {
     });
 });
 
-router.delete('/users/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   const { id } = req.params;
 
   users
