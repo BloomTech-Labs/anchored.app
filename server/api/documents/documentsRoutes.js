@@ -22,7 +22,7 @@ router.get('/:userId', (req, res) => {
   docs
     .findAllByUser(userId)
     .then(docs => {
-      if (docs) {
+      if (docs.length > 0) {
         res.status(200).json(docs);
       } else {
         res.status(404).json({
@@ -57,6 +57,22 @@ router.post('/', (req, res) => {
 
   docs
     .addDoc(document)
+    .then(ids => {
+      // TODO: GET user_id from logged in user token
+      // use user_id and ids[0] to call addUserToDoc here
+      res.status(201).json(ids[0]);
+    })
+    .catch(err => {
+      res.status(500).json({ ErrorMessage: err.message });
+    });
+});
+
+router.post('/add/:document_id/:user_id', (req, res) => {
+  const { document_id, user_id } = req.params;
+  const userDoc = { document_id, user_id };
+
+  docs
+    .addUserToDoc(userDoc)
     .then(ids => {
       res.status(201).json(ids[0]);
     })
