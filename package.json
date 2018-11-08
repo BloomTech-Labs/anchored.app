@@ -1,0 +1,19 @@
+{
+  "name": "chainpointdocusign",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lambda-School-Labs/ChainPointDocusign.git"
+  },
+  "engines": {
+    "node": "8.12.0"
+  },
+  "dependencies": {
+    "concurrently": "^3.6.1"
+  },
+  "scripts": {
+    "start": "concurrently \"cd client && PORT=3000 npm start\" \"cd server && PORT=9000 npm start\""
+  }
+}
