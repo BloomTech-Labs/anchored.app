@@ -24,8 +24,8 @@ module.exports = {
     },
   },
   production: {
-    client: 'pg', // npm add pg
-    connection: dbConnection, // could be an object or a string
+    client: 'pg',
+    connection: dbConnection,
     pool: {
       min: 2,
       max: 10,
