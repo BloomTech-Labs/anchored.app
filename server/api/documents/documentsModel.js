@@ -6,8 +6,10 @@ function find() {
 
 function findAllByUser(user_id) {
   return db('documents')
-    .join('users_documents')
-    .where({ user_id });
+    .join('users_documents', 'users_documents.document_id', '=', 'documents.id')
+    .join('users', 'users.id', '=', 'users_documents.user_id')
+    .select('documents.id', 'documents.proof', 'documents.created_at')
+    .where('user_id', user_id);
 }
 
 function findById(id) {
