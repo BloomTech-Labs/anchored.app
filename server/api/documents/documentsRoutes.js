@@ -22,7 +22,7 @@ router.get('/:userId', (req, res) => {
   docs
     .findAllByUser(userId)
     .then(docs => {
-      if (docs) {
+      if (docs.length > 0) {
         res.status(200).json(docs);
       } else {
         res.status(404).json({
