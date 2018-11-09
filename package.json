@@ -14,6 +14,6 @@
     "concurrently": "^3.6.1"
   },
   "scripts": {
-    "start": "concurrently \"cd client && PORT=3000 npm start\" \"cd server && PORT=9000 npm start\""
+    "start": "concurrently \"cd client && PORT=3000 npm start\" \"cd server && PORT=9000 npm run-script devserver\""
   }
 }

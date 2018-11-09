@@ -6,8 +6,11 @@ function find() {
 
 function findAllByUser(user_id) {
   return db('documents')
-    .join('users_documents')
-    .where({ user_id });
+    .distinct()
+    .join('users_documents', 'users_documents.document_id', '=', 'documents.id')
+    .join('users', 'users.id', '=', 'users_documents.user_id')
+    .select('documents.id', 'documents.proof', 'documents.created_at')
+    .where('user_id', user_id);
 }
 
 function findById(id) {
@@ -20,6 +23,12 @@ function addDoc(doc) {
   return db('documents')
     .insert(doc)
     .into('documents');
+}
+
+function addUserToDoc(userDoc) {
+  return db('users_documents')
+    .insert(userDoc)
+    .into('users_documents');
 }
 
 function updateDoc(id, changes) {
@@ -39,6 +48,7 @@ module.exports = {
   findAllByUser,
   findById,
   addDoc,
+  addUserToDoc,
   updateDoc,
   removeDoc,
 };

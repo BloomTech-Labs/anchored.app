@@ -19,6 +19,10 @@ exports.up = function(knex, Promise) {
 
     tbl.string('phone_number', 128).unique();
 
+    tbl.string('documents', 1024);
+
+    tbl.string('expires', 100).defaultTo(0);
+
     tbl
       .integer('credits')
       .unsigned()
