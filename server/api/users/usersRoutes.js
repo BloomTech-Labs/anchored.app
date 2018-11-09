@@ -1,6 +1,7 @@
 const express = require('express');
 
 const users = require('./usersModel.js');
+const { userPostCheck } = require('./usersMiddleware');
 
 const router = express.Router();
 
@@ -53,6 +54,16 @@ router.get('/id/:id', (req, res) => {
 });
 
 // TODO: Add POST endpoint, need to think about Auth0 user creation first.
+router.post('/', userPostCheck, (req, res, next) => {
+  users
+    .addUser(req.user)
+    .then(ids => {
+      res.status(201).json(ids[0]);
+    })
+    .catch(err => {
+      res.status(500).json({ ErrorMessage: err.message });
+    });
+});
 
 router.put('/:id', (req, res) => {
   const { id } = req.params;

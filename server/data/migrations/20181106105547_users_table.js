@@ -17,6 +17,11 @@ exports.up = function(knex, Promise) {
       .notNullable()
       .unique();
 
+    tbl
+      .string('user_id')
+      .notNullable()
+      .unique();
+
     tbl.string('phone_number', 128).unique();
 
     tbl.string('documents', 1024);
