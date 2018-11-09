@@ -1,8 +1,30 @@
 const express = require('express');
 
 const docs = require('./documentsModel.js');
+const users = require('../users/usersModel');
+
+const docusign = require('docusign-esign');
+const moment = require('moment');
 
 const router = express.Router();
+
+function checkExpiration(req, res, next) {
+  users
+    .findByEmail('iamcooled@gmail.com')
+    .then(user => {
+      let currentTime = new Date().getTime();
+      if (currentTime > JSON.parse(user.expires)) {
+        user.expires = JSON.stringify(new Date().getTime() + 1000);
+        req.user = user;
+        next();
+      } else {
+        return res.status(400).json({ error: '15 minutes not up' });
+      }
+    })
+    .catch(err => {
+      res.status(500).json({ ErrorMessage: err.message });
+    });
+}
 
 // route is /documents
 router.get('/', (req, res) => {
@@ -14,6 +36,62 @@ router.get('/', (req, res) => {
     .catch(err => {
       res.status(500).json({ ErrorMessage: err.message });
     });
+});
+
+// temp test route
+router.get('/all', checkExpiration, (req, res, next) => {
+  let user = req.session.passport.user;
+  apiClient = new docusign.ApiClient();
+  apiClient.addDefaultHeader('Authorization', 'Bearer ' + user.accessToken);
+  apiClient.setBasePath('https://demo.docusign.net/restapi');
+  docusign.Configuration.default.setDefaultApiClient(apiClient);
+
+  let envelopesApi = new docusign.EnvelopesApi();
+
+  let options = {
+    fromDate: moment()
+      .subtract(30, 'days')
+      .format(),
+  };
+
+  let account_id = user.accounts[0].account_id;
+  envelopesApi.listStatusChanges(account_id, options, (error, envelopes) => {
+    if (error) return;
+    // loop through envelopes to get documents
+    envelopes.envelopes.forEach(envelope => {
+      // get list of documents
+      envelopesApi.listDocuments(
+        account_id,
+        envelope.envelopeId,
+        null,
+        (error, docsList) => {
+          if (error) return;
+          // loop through documents to get page image
+          docsList.envelopeDocuments.forEach(doc => {
+            let documentId = doc.documentId;
+            // get document page image
+            envelopesApi.getDocumentPageImage(
+              account_id,
+              envelope.envelopeId,
+              documentId,
+              '1',
+              null,
+              (error, data) => {
+                if (error) return;
+                if (data) {
+                  document = {
+                    proof: envelope.envelopeId + documentId,
+                    image: data,
+                  };
+                  docs.addDoc(document).catch(err => console.log(err));
+                }
+              }
+            );
+          });
+        }
+      );
+    });
+  });
 });
 
 router.get('/:userId', (req, res) => {
