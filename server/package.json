@@ -23,6 +23,8 @@
     "nodemon": "^1.18.6"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
     "cors": "^2.8.5",
     "docusign-esign": "^4.1.0",
     "dotenv": "^6.1.0",
@@ -32,6 +34,8 @@
     "knex": "^0.15.2",
     "moment": "^2.22.2",
     "passport": "^0.4.0",
+    "passport-auth0": "^0.5.2",
+    "passport-docusign": "^1.0.0",
     "pg": "^7.6.0",
     "session": "^0.1.0",
     "sqlite3": "^4.0.3",

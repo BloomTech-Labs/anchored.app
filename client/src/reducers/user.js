@@ -1,11 +1,11 @@
 import {
-  RETRIEVING_DOCUMENTS,
-  RETRIEVED_DOCUMENTS,
+  RETRIEVING_USER_INFO,
+  RETRIEVED_USER_INFO,
   ERROR,
-} from '../actions/documents';
+} from '../actions/user';
 
 const initialState = {
-  documents: null,
+  user: null,
   retrieving: false,
   retrieved: false,
   error: null,
@@ -13,15 +13,15 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case RETRIEVING_DOCUMENTS:
+    case RETRIEVING_USER_INFO:
       return { ...state, retrieving: true, retrieved: false };
 
-    case RETRIEVED_DOCUMENTS:
+    case RETRIEVED_USER_INFO:
       return {
         ...state,
         retrieved: true,
         retrieving: false,
-        documents: action.payload,
+        user: action.payload.user,
       };
 
     case ERROR:
