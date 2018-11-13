@@ -1,57 +1,17 @@
-// SAVE THIS CODE IN CASE IT'S NEEDED LATER FOR AUTH0
+import { Auth0Lock } from 'auth0-lock';
 
-// import auth0 from 'auth0-js';
+export default class Auth0 {
+  lock = new Auth0Lock(
+    '8OdWGN0vnxzYC0ZViS0B4plXc4MrO5j3',
+    'chainpointdocusign.auth0.com',
+    { auth: { redirectUrl: 'http://localhost:3333/auth/auth0/callback' } }
+  );
 
-// export default class Auth0 {
-//   auth0 = new auth0.WebAuth({
-//     domain: process.env.REACT_APP_DOMAIN_URL,
-//     clientID: process.env.REACT_APP_CLIENT_ID,
-//     redirectUri: 'http://localhost:3000/',
-//     responseType: 'token id_token',
-//     scope: 'openid',
-//   });
+  login = () => {
+    this.lock.show({ initialScreen: 'login' });
+  };
 
-//   login = () => {
-//     this.auth0.authorize();
-//   };
-
-//   handleAuthentication = () => {
-//     this.auth0.parseHash((err, authResult) => {
-//       if (authResult && authResult.accessToken && authResult.idToken) {
-//         this.setSession(authResult);
-//         history.replace('/home');
-//       } else if (err) {
-//         history.replace('/home');
-//         console.log(err);
-//       }
-//     });
-//   };
-
-//   setSession = authResult => {
-//     // Set the time that the Access Token will expire at
-//     let expiresAt = JSON.stringify(
-//       authResult.expiresIn * 1000 + new Date().getTime()
-//     );
-//     localStorage.setItem('access_token', authResult.accessToken);
-//     localStorage.setItem('id_token', authResult.idToken);
-//     localStorage.setItem('expires_at', expiresAt);
-//     // navigate to the home route
-//     history.replace('/home');
-//   };
-
-//   logout = () => {
-//     // Clear Access Token and ID Token from local storage
-//     localStorage.removeItem('access_token');
-//     localStorage.removeItem('id_token');
-//     localStorage.removeItem('expires_at');
-//     // navigate to the home route
-//     history.replace('/home');
-//   };
-
-//   isAuthenticated = () => {
-//     // Check whether the current time is past the
-//     // Access Token's expiry time
-//     let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-//     return new Date().getTime() < expiresAt;
-//   };
-// }
+  signUp = () => {
+    this.lock.show({ initialScreen: 'signUp' });
+  };
+}

@@ -5,25 +5,31 @@ const users = require('../users/usersModel');
 
 const docusign = require('docusign-esign');
 const moment = require('moment');
+const { promisify } = require('util');
+
+const { ensureAuthenticated } = require('../auth/docusign/dsMiddleware');
 
 const router = express.Router();
 
+router.use(ensureAuthenticated);
+
 function checkExpiration(req, res, next) {
-  users
-    .findByEmail('iamcooled@gmail.com')
-    .then(user => {
-      let currentTime = new Date().getTime();
-      if (currentTime > JSON.parse(user.expires)) {
-        user.expires = JSON.stringify(new Date().getTime() + 1000);
-        req.user = user;
-        next();
-      } else {
-        return res.status(400).json({ error: '15 minutes not up' });
-      }
-    })
-    .catch(err => {
-      res.status(500).json({ ErrorMessage: err.message });
-    });
+  let current_time = new Date().getTime();
+
+  if (current_time > Number(req.user.document_expiration)) {
+    req.user = new Date().getTime() + 15 * 60 * 1000;
+    req.session.save();
+    users.updateUser(req.user.id, req.user).catch(err => console.log(err));
+    return next();
+  }
+
+  return res.status(400).json({ error: '15 minutes not up' });
+}
+
+function checkToken(req, res, next) {
+  if (!req.user.access_token)
+    return res.status(401).json({ message: 'You need to be logged in!' });
+  next();
 }
 
 // route is /documents
@@ -39,59 +45,36 @@ router.get('/', (req, res) => {
 });
 
 // temp test route
-router.get('/all', checkExpiration, (req, res, next) => {
-  let user = req.session.passport.user;
-  apiClient = new docusign.ApiClient();
-  apiClient.addDefaultHeader('Authorization', 'Bearer ' + user.accessToken);
-  apiClient.setBasePath('https://demo.docusign.net/restapi');
+router.get('/all', checkToken, checkExpiration, async (req, res, next) => {
+  console.log(req.user);
+  const user = req.user;
+
+  let apiClient = new docusign.ApiClient();
+  apiClient.addDefaultHeader('Authorization', 'Bearer ' + user.access_token);
+  apiClient.setBasePath(`${user.base_uri}/restapi`);
   docusign.Configuration.default.setDefaultApiClient(apiClient);
 
   let envelopesApi = new docusign.EnvelopesApi();
-
   let options = {
     fromDate: moment()
       .subtract(30, 'days')
       .format(),
   };
 
-  let account_id = user.accounts[0].account_id;
-  envelopesApi.listStatusChanges(account_id, options, (error, envelopes) => {
-    if (error) return;
-    // loop through envelopes to get documents
-    envelopes.envelopes.forEach(envelope => {
-      // get list of documents
-      envelopesApi.listDocuments(
-        account_id,
-        envelope.envelopeId,
-        null,
-        (error, docsList) => {
-          if (error) return;
-          // loop through documents to get page image
-          docsList.envelopeDocuments.forEach(doc => {
-            let documentId = doc.documentId;
-            // get document page image
-            envelopesApi.getDocumentPageImage(
-              account_id,
-              envelope.envelopeId,
-              documentId,
-              '1',
-              null,
-              (error, data) => {
-                if (error) return;
-                if (data) {
-                  document = {
-                    proof: envelope.envelopeId + documentId,
-                    image: data,
-                  };
-                  docs.addDoc(document).catch(err => console.log(err));
-                }
-              }
-            );
-          });
-        }
-      );
+  let account_id = user.account_id;
+  let envelopesP = promisify(envelopesApi.listStatusChanges).bind(envelopesApi);
+
+  try {
+    let env_results = await envelopesP(account_id, options);
+    let promises = env_results.envelopes.map(envelope => {
+      let envelope_id = envelope.envelopeId;
+      let documentsP = promisify(envelopesApi.listDocuments).bind(envelopesApi);
+      return documentsP(account_id, envelope_id, null);
     });
-  });
+    return Promise.all(promises).then(results => res.status(200).json(results));
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 router.get('/:userId', (req, res) => {

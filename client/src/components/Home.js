@@ -1,16 +1,49 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import DocusignLogin from './Auth/Docusign/DocusignLogin';
+import { connect } from 'react-redux';
+import { getDocuments } from '../actions/documents';
 
-const Home = () => {
-  return (
-    <div>
+class Home extends React.Component {
+  componentDidMount() {
+    this.props.getDocuments();
+  }
+
+  render() {
+    let documents;
+    if (this.props.fetching) {
+      documents = <div>Loading</div>;
+    } else if (this.props.documents) {
+      documents = (
+        <div>
+          {this.props.documents.map(envelope =>
+            envelope.envelopeDocuments.map(document => {
+              return <p key={document.documentId}>{document.name}</p>;
+            })
+          )}
+        </div>
+      );
+    } else {
+      documents = <DocusignLogin />;
+    }
+
+    return (
       <div>
-        <DocusignLogin />
+        <p>Welcome, {this.props.user}</p>
+        {documents}
+        <button>Buy Now</button>
       </div>
-      <button>Buy Now</button>
-    </div>
-  );
+    );
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    documents: state.documents.documents,
+    fetching: state.documents.retrieving,
+  };
 };
 
-export default Home;
+export default connect(
+  mapStateToProps,
+  { getDocuments }
+)(Home);
