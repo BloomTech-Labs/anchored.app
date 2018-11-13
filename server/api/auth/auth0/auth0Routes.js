@@ -22,7 +22,12 @@ passport.use(
       user.refreshToken = refreshToken;
       user.expiresIn = params.expires_in;
       user.expires = moment().add(user.expiresIn, 's');
-      let profile = await userPostCheck(user._json);
+      let profile;
+      try {
+        profile = await userPostCheck(user._json);
+      } catch (err) {
+        console.log(err);
+      }
       return done(null, profile);
     }
   )
