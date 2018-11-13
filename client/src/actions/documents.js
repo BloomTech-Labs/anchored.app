@@ -6,7 +6,9 @@ export const RETRIEVED_DOCUMENTS = 'RETRIEVED_DOCUMENTS';
 export const ERROR = 'ERROR';
 
 export const getDocuments = () => {
-  const promise = axios.get('http://localhost:3333/documents/all');
+  const promise = axios.get(
+    process.env.REACT_APP_DOCUMENTS || 'http://localhost:9000/documents/all'
+  );
   return dispatch => {
     dispatch({ type: RETRIEVING_DOCUMENTS });
     promise

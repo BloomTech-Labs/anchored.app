@@ -13,7 +13,9 @@ passport.use(
       domain: process.env.AUTH0_DOMAIN,
       clientID: process.env.AUTH0_CLIENT_ID,
       clientSecret: process.env.AUTH0_CLIENT_SECRET,
-      callbackURL: process.env.AUTH0_CALLBACK_URL,
+      callbackURL:
+        process.env.AUTH0_CALLBACK_URL ||
+        'http://localhost:9000/auth/auth0/callback',
     },
     async (accessToken, refreshToken, params, user, done) => {
       user.accessToken = accessToken;
@@ -32,8 +34,10 @@ passport.deserializeUser((user, done) => done(null, user));
 router.get(
   '/callback',
   passport.authenticate('auth0', {
-    successRedirect: 'http://localhost:3000',
-    failureRedirect: 'http://localhost:3000',
+    successRedirect: process.env.AUTH0_REDIRECT_URL || 'http://localhost:3000',
+    // TODO: Create a failed to load page for failureRedirect
+    // and create associated route
+    failureRedirect: process.env.AUTH0_REDIRECT_URL || 'http://localhost:3000',
   })
 );
 
