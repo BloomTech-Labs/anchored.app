@@ -2,8 +2,8 @@ import { Auth0Lock } from 'auth0-lock';
 
 export default class Auth0 {
   lock = new Auth0Lock(
-    '8OdWGN0vnxzYC0ZViS0B4plXc4MrO5j3',
-    'chainpointdocusign.auth0.com',
+    process.env.REACT_APP_CLIENT_ID,
+    process.env.REACT_APP_DOMAIN_URL,
     { auth: { redirectUrl: 'http://localhost:3333/auth/auth0/callback' } }
   );
 

@@ -17,12 +17,11 @@ function checkExpiration(req, res, next) {
   let current_time = new Date().getTime();
 
   if (current_time > Number(req.user.document_expiration)) {
-    req.user = new Date().getTime() + 15 * 60 * 1000;
+    req.user.document_expiration = new Date().getTime() + 15 * 60 * 1000;
     req.session.save();
     users.updateUser(req.user.id, req.user).catch(err => console.log(err));
     return next();
   }
-
   return res.status(400).json({ error: '15 minutes not up' });
 }
 
