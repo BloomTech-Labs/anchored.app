@@ -32,8 +32,10 @@ passport.deserializeUser((user, done) => done(null, user));
 router.get(
   '/callback',
   passport.authenticate('auth0', {
-    successRedirect: 'http://localhost:3000',
-    failureRedirect: 'http://localhost:3000',
+    successRedirect: process.env.AUTH0_REDIRECT_URL || 'http://localhost:3000',
+    // TODO: Create a failed to load page for failureRedirect
+    // and create associated route
+    failureRedirect: process.env.AUTH0_REDIRECT_URL || 'http://localhost:3000',
   })
 );
 
