@@ -2,6 +2,7 @@ import React from 'react';
 import DocusignLogin from './Auth/Docusign/DocusignLogin';
 import { connect } from 'react-redux';
 import { getDocuments } from '../actions/documents';
+import Nav from './Nav/Nav.js';
 
 class Home extends React.Component {
   componentDidMount() {
@@ -27,7 +28,8 @@ class Home extends React.Component {
     }
 
     return (
-      <div>
+      <div className="App">
+        <Nav />
         <p>Welcome, {this.props.user}</p>
         {documents}
         <button>Buy Now</button>
