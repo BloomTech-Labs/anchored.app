@@ -40,7 +40,7 @@ function checkToken(req, res, next) {
   let expiration = JSON.parse(req.user.token_expiration);
   let now = moment();
 
-  if (req.user.access_token && now.add(100000, 'm').isBefore(expiration)) {
+  if (req.user.access_token && now.add(30, 'm').isBefore(expiration)) {
     return next();
   } else if (!req.user.access_token || !req.user.refresh_token) {
     return res.status(401).json({ message: 'You need to be logged in!' });
