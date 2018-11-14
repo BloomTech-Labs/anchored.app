@@ -26,7 +26,7 @@ router.get('/', (req, res) => {
 });
 
 // temp test route
-router.get('/all', checkToken, async (req, res, next) => {
+router.get('/all', checkToken, checkExpiration, async (req, res, next) => {
   const user = req.user;
 
   let apiClient = new docusign.ApiClient();

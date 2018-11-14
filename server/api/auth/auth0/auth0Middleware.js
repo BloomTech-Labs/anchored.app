@@ -1,4 +1,5 @@
 const users = require('../../users/usersModel');
+const moment = require('moment');
 
 async function userPostCheck(user) {
   const { given_name, family_name, nickname, email, sub } = user;

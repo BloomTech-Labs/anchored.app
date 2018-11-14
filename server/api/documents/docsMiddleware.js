@@ -26,10 +26,8 @@ function handleExpiration(req) {
 }
 
 function checkExpiration(req, res, next) {
-  let current_time = new Date().getTime();
-
-  if (current_time > Number(req.user.document_expiration)) {
-    req.user.document_expiration = new Date().getTime() + 15 * 60 * 1000;
+  if (moment().isAfter(JSON.parse(req.user.document_expiration))) {
+    req.user.document_expiration = JSON.stringify(moment().add(15, 'm'));
     req.session.save();
     users.updateUser(req.user.id, req.user).catch(err => console.log(err));
     return next();
@@ -46,7 +44,7 @@ function checkToken(req, res, next) {
   } else if (!req.user.access_token || !req.user.refresh_token) {
     return res.status(401).json({ message: 'You need to be logged in!' });
   } else {
-    handleExpiration(req);
+    return handleExpiration(req);
   }
 }
 
