@@ -3,6 +3,7 @@ import DocusignLogin from './Auth/Docusign/DocusignLogin';
 import { connect } from 'react-redux';
 import { getDocuments } from '../actions/documents';
 import Nav from './Nav/Nav.js';
+import Checkout from './Stripe/Checkout.js';
 
 class Home extends React.Component {
   componentDidMount() {
@@ -32,7 +33,11 @@ class Home extends React.Component {
         <Nav />
         <p>Welcome, {this.props.user}</p>
         {documents}
-        <button>Buy Now</button>
+        <Checkout
+          name={'Chainpoint-DocuSign'}
+          description={'Purchase Credit'}
+          amount={10}
+        />
       </div>
     );
   }
