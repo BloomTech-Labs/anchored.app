@@ -1,4 +1,5 @@
 const users = require('../../users/usersModel');
+const moment = require('moment');
 
 async function userPostCheck(user) {
   const { given_name, family_name, nickname, email, sub } = user;
@@ -18,6 +19,7 @@ async function userPostCheck(user) {
   new_user = {
     id,
     document_expiration: 0,
+    token_expiration: 0,
     first_name: given_name,
     last_name: family_name,
     username: nickname,

@@ -27,7 +27,7 @@ exports.up = function(knex, Promise) {
 
     tbl.string('refresh_token', 1024);
 
-    tbl.string('token_expiration', 128);
+    tbl.string('token_expiration', 128).defaultTo(0);
 
     tbl.string('base_uri', 128);
 
