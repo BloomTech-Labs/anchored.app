@@ -7,10 +7,13 @@ const session = require('express-session');
 module.exports = server => {
   server.use(
     express.json(),
-    cors(),
+    cors({
+      origin: process.env.ORIGIN || 'http://localhost:3000',
+      credentials: true,
+    }),
     helmet(),
     session({
-      secret: process.env.CLIENT_SECRET,
+      secret: process.env.DOCUSIGN_CLIENT_SECRET,
       saveUninitialized: true,
       resave: true,
     }),

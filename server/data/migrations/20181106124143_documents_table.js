@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
 
     tbl.string('proof', 1024).unique();
 
-    tbl.blob('image', 100000);
+    // tbl.blob('image', 100000);
 
     tbl.timestamp('created_at').defaultTo(knex.fn.now());
   });

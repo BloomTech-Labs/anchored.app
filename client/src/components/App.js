@@ -1,61 +1,51 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route } from 'react-router-dom';
 import Home from './Home';
-import { Auth0Lock } from 'auth0-lock';
-import auth0 from 'auth0-js';
+import Auth0 from './Auth/Auth0/Auth0';
+import axios from 'axios';
+import { connect } from 'react-redux';
+import { getUserInfo } from '../actions/user';
 
-// Initializing our Auth0Lock
-const lock = new Auth0Lock(
-  process.env.REACT_APP_CLIENT_ID,
-  process.env.REACT_APP_DOMAIN_URL
-);
+axios.defaults.withCredentials = true;
 
-const webAuth = new auth0.WebAuth({
-  domain: process.env.REACT_APP_DOMAIN_URL,
-  clientID: process.env.REACT_APP_CLIENT_ID,
-  redirectUri: 'http://localhost:3000',
-});
-
-webAuth.parseHash((err, authResult) => {
-  if (authResult) {
-    // Save the tokens from the authResult in local storage or a cookie
-    console.log('AUTH RESULT: ', authResult);
-    let expiresAt = JSON.stringify(
-      authResult.expiresIn * 1000 + new Date().getTime()
-    );
-    localStorage.setItem('access_token', authResult.accessToken);
-    localStorage.setItem('expires_at', expiresAt);
-  } else if (err) {
-    // Handle errors
-    console.log(err);
-  }
-});
+const auth = new Auth0();
 
 class App extends Component {
-  isAuthenticated() {
-    // Check whether the current time is past the
-    // Access Token's expiry time
-    let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-    return new Date().getTime() < expiresAt;
+  componentDidMount() {
+    this.props.getUserInfo();
   }
 
   render() {
-    if (this.isAuthenticated()) {
-      return (
-        <div className="App">
-          <Route exact path="/" component={Home} />
-        </div>
-      );
-    } else {
+    if (this.props.fetching) {
+      return <div className="App">Loading...</div>;
+    }
+
+    if (this.props.user) {
       return (
         <div>
-          <h2>Welcome to Chainpoint-DocuSign</h2>
-          <button onClick={() => lock.show()}>Log in</button>
+          <Home user={this.props.user} />
         </div>
       );
     }
+
+    return (
+      <div className="App">
+        <h2>Welcome to Chainpoint-DocuSign</h2>
+        <button onClick={auth.login}>Sign In</button>
+        <button onClick={auth.signUp}>Sign Up</button>
+      </div>
+    );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    user: state.user.user,
+    fetching: state.user.retrieving,
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { getUserInfo }
+)(App);
