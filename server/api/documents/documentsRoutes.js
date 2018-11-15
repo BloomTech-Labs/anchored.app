@@ -2,12 +2,17 @@ const express = require('express');
 
 const docs = require('./documentsModel.js');
 
-const moment = require('moment');
 const docusign = require('docusign-esign');
-const { promisify } = require('util');
 
 const { ensureAuthenticated } = require('../auth/docusign/dsMiddleware');
-const { checkToken, checkExpiration } = require('./docsMiddleware');
+const {
+  checkToken,
+  checkExpiration,
+  getEnvelopes,
+  getDocuments,
+  getImages,
+  postDocToDB,
+} = require('./docsMiddleware');
 
 const router = express.Router();
 
@@ -25,33 +30,23 @@ router.get('/', (req, res) => {
     });
 });
 
-// temp test route
 router.get('/all', checkToken, checkExpiration, async (req, res, next) => {
   const user = req.user;
 
+  // Sets up headers / users base_uri for the api to use
   let apiClient = new docusign.ApiClient();
   apiClient.addDefaultHeader('Authorization', 'Bearer ' + user.access_token);
   apiClient.setBasePath(`${user.base_uri}/restapi`);
   docusign.Configuration.default.setDefaultApiClient(apiClient);
 
   let envelopesApi = new docusign.EnvelopesApi();
-  let options = {
-    fromDate: moment()
-      .subtract(30, 'days')
-      .format(),
-  };
-
   let account_id = user.account_id;
-  let envelopesP = promisify(envelopesApi.listStatusChanges).bind(envelopesApi);
 
   try {
-    let env_results = await envelopesP(account_id, options);
-    let promises = env_results.envelopes.map(envelope => {
-      let envelope_id = envelope.envelopeId;
-      let documentsP = promisify(envelopesApi.listDocuments).bind(envelopesApi);
-      return documentsP(account_id, envelope_id, null);
-    });
-    return Promise.all(promises).then(results => res.status(200).json(results));
+    let envelopes = await getEnvelopes(envelopesApi, account_id);
+    let documents = await getDocuments(envelopesApi, account_id, envelopes);
+    let images = await getImages(envelopesApi, account_id, documents);
+    await postDocToDB(req, res, images);
   } catch (err) {
     console.log(err);
   }
