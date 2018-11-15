@@ -1,5 +1,5 @@
 const express = require('express');
-const stripe = require('../stripe/constants/stripe.js');
+const stripe = require('./constants/stripe.js');
 
 const router = express.Router();
 
