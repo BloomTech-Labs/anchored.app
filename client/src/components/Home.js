@@ -1,5 +1,6 @@
 import React from 'react';
 import DocusignLogin from './Auth/Docusign/DocusignLogin';
+import DocusignUnlink from './Auth/Docusign/DocusignUnlink';
 import { connect } from 'react-redux';
 import { getDocuments } from '../actions/documents';
 
@@ -31,6 +32,7 @@ class Home extends React.Component {
         <p>Welcome, {this.props.user}</p>
         {documents}
         <button>Buy Now</button>
+        <DocusignUnlink />
       </div>
     );
   }

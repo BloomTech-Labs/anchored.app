@@ -12,6 +12,11 @@ const server = express();
 // middleware
 applyGlobalMiddleware(server);
 
+server.use((req, res, next) => {
+  console.log('WORKS');
+  console.log(req.session);
+  next();
+});
 // routes
 server.get('/', (req, res) => {
   res.status(200).json({ SUCCESS: `Sanity check` });
