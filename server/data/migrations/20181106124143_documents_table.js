@@ -9,7 +9,7 @@ exports.up = function(knex, Promise) {
 
     tbl.string('envelope_id');
 
-    tbl.blob('image');
+    tbl.binary('image');
 
     tbl.timestamp('created_at').defaultTo(knex.fn.now());
   });
