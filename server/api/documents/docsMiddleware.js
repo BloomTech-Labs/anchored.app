@@ -67,8 +67,8 @@ async function getImages(envelopesApi, account_id, documents) {
       if (!document_id || document_id === 'certificate') break;
 
       let image = await imagesP(account_id, envelope_id, document_id, '1', {
-        maxWidth: '150',
-        maxHeight: '150',
+        maxWidth: '200',
+        maxHeight: '300',
       });
 
       if (image) {
