@@ -34,7 +34,11 @@ class Home extends React.Component {
         <Nav />
         <p>Welcome, {this.props.user}</p>
         {documents}
-        <button>Buy Now</button>
+        <Checkout
+          name={'Chainpoint-DocuSign'}
+          description={'Purchase Credit'}
+          amount={10}
+        />
         <DocusignUnlink />
       </div>
     );
