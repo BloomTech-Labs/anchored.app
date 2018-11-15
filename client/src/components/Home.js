@@ -1,8 +1,10 @@
 import React from 'react';
 import DocusignLogin from './Auth/Docusign/DocusignLogin';
+import DocusignUnlink from './Auth/Docusign/DocusignUnlink';
 import { connect } from 'react-redux';
 import { getDocuments } from '../actions/documents';
 import Nav from './Nav/Nav.js';
+import Checkout from './Stripe/Checkout.js';
 
 class Home extends React.Component {
   componentDidMount() {
@@ -34,6 +36,7 @@ class Home extends React.Component {
         <p>Welcome, {this.props.user}</p>
         {documents}
         <button>Buy Now</button>
+        <DocusignUnlink />
       </div>
     );
   }

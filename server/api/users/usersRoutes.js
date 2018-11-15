@@ -10,6 +10,7 @@ router.use(ensureAuthenticated);
 
 // route is /users
 router.get('/', (req, res) => {
+  console.log(req.users, 'HEHEHEH0');
   users
     .find()
     .then(users => {

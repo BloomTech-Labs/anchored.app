@@ -5,7 +5,7 @@ class Nav extends Component {
   handleLogout = () => {
     axios
       .get(
-        process.env_REACT_APP_LOGOUT_URL ||
+        process.env.REACT_APP_LOGOUT_URL ||
           'http://localhost:9000/auth/auth0/logout'
       )
       .then(() => {
