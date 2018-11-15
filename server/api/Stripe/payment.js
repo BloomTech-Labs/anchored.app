@@ -2,7 +2,6 @@ const express = require('express');
 const stripe = require('../stripe/constants/stripe.js');
 
 const router = express.Router();
-const test = 'test';
 
 const postStripeCharge = res => (stripeErr, stripeRes) => {
   if (stripeErr) {
