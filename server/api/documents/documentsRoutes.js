@@ -11,7 +11,7 @@ const { checkToken, checkExpiration } = require('./docsMiddleware');
 
 const router = express.Router();
 
-router.use(ensureAuthenticated);
+// router.use(ensureAuthenticated);
 
 // route is /documents
 router.get('/', (req, res) => {

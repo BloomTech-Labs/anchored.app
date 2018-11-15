@@ -5,6 +5,7 @@ const applyGlobalMiddleware = require('../config/applyGlobalMiddleware.js');
 const usersRoutes = require('./users/usersRoutes.js');
 const docsRoutes = require('./documents/documentsRoutes.js');
 const authRoutes = require('./auth/auth');
+const chainpointRoutes = require('./chainpoint/chainpointRoutes.js')
 
 // server
 const server = express();
@@ -20,5 +21,6 @@ server.get('/', (req, res) => {
 server.use('/users', usersRoutes);
 server.use('/documents', docsRoutes);
 server.use('/auth', authRoutes);
+server.use('/chainpoint', chainpointRoutes)
 
 module.exports = server;

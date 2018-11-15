@@ -1,4 +1,5 @@
 import React from 'react';
+
 import DocusignLogin from './Auth/Docusign/DocusignLogin';
 import { connect } from 'react-redux';
 import { getDocuments } from '../actions/documents';
@@ -13,6 +14,7 @@ class Home extends React.Component {
     if (this.props.fetching) {
       documents = <div>Loading</div>;
     } else if (this.props.documents) {
+      console.log(this.props.documents);
       documents = (
         <div>
           {this.props.documents.map(envelope =>
