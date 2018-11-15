@@ -6,7 +6,7 @@ const cors = require('cors');
 const usersRoutes = require('./users/usersRoutes.js');
 const docsRoutes = require('./documents/documentsRoutes.js');
 const authRoutes = require('./auth/auth.js');
-const paymentRoutes = require('./stripe/payment.js');
+const paymentRoutes = require('./payments/payment.js');
 
 const corsOptions = process.env.STRIPE_FRONTEND_URL || 'http://localhost:3000';
 
