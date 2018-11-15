@@ -71,7 +71,7 @@ function clear(req, res, next) {
 }
 
 router.get('/logout', clear, (req, res) => {
-  res.redirect('http://localhost:9000');
+  res.redirect(process.env.ORIGIN || 'http://localhost:3000');
 });
 
 module.exports = router;
