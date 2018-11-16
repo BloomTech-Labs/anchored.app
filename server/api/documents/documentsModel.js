@@ -29,7 +29,9 @@ function findById(id) {
 function addDoc(doc) {
   return db('documents')
     .insert(doc)
-    .into('documents');
+    .returning('id')
+    .into('documents')
+    .then(ids => ({ id: ids[0] }));
 }
 
 function addUserToDoc(userDoc) {

@@ -93,7 +93,7 @@ function postDocToDB(req, res, images) {
           docs
             .addDoc(images[j])
             .then(ids => {
-              let user_doc = { user_id: req.user.id, document_id: ids[0] };
+              let user_doc = { user_id: req.user.id, document_id: ids.id };
               docs.addUserToDoc(user_doc).catch(err => console.log(err));
             })
             .catch(err => console.log(err));
