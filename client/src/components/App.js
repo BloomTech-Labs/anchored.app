@@ -6,6 +6,8 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { getUserInfo } from '../actions/user';
 
+import TopNavBar from './Nav/NavBar.js';
+
 axios.defaults.withCredentials = true;
 
 const auth = new Auth0();
@@ -30,6 +32,7 @@ class App extends Component {
 
     return (
       <div className="App">
+        <TopNavBar />
         <h2>Welcome to Chainpoint-DocuSign</h2>
         <button onClick={auth.login}>Sign In</button>
         <button onClick={auth.signUp}>Sign Up</button>
