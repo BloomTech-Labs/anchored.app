@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { getUserInfo } from '../actions/user';
 
 import TopNavBar from './Nav/NavBar.js';
+import CTA from './CTA/CTA.js';
 
 axios.defaults.withCredentials = true;
 
@@ -33,6 +34,7 @@ class App extends Component {
     return (
       <div className="App">
         <TopNavBar />
+        <CTA />
       </div>
     );
   }
