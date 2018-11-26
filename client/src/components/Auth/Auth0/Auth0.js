@@ -5,7 +5,12 @@ const options = {
   theme: {
     logo: logo,
     primaryColor: '#303A58',
+    foregroundColor: '#303A58',
   },
+  languageDictionary: {
+    title: 'Log In',
+  },
+  socialButtonStyle: 'small',
 };
 
 export default class Auth0 {
