@@ -31,10 +31,7 @@ server.get('/', (req, res) => {
 server.use('/users', usersRoutes);
 server.use('/documents', docsRoutes);
 server.use('/auth', authRoutes);
-<<<<<<< HEAD
 server.use('/chainpoint', chainpointRoutes)
-=======
 server.use('/payment', paymentRoutes);
->>>>>>> 251fadf817ef3219918c8b834939cfdc7fc48297
 
 module.exports = server;
