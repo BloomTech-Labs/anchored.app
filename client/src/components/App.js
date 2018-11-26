@@ -17,7 +17,7 @@ class App extends Component {
 
   render() {
     if (this.props.fetching) {
-      return <div>Loading...</div>;
+      return <div className="App">Loading...</div>;
     }
 
     if (this.props.user) {
@@ -29,7 +29,7 @@ class App extends Component {
     }
 
     return (
-      <div>
+      <div className="App">
         <h2>Welcome to Chainpoint-DocuSign</h2>
         <button onClick={auth.login}>Sign In</button>
         <button onClick={auth.signUp}>Sign Up</button>
