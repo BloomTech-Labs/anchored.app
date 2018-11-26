@@ -33,9 +33,6 @@ class App extends Component {
     return (
       <div className="App">
         <TopNavBar />
-        <h2>Welcome to Chainpoint-DocuSign</h2>
-        <button onClick={auth.login}>Sign In</button>
-        <button onClick={auth.signUp}>Sign Up</button>
       </div>
     );
   }
