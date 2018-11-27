@@ -120,6 +120,7 @@ async function postDocToDB(req, res, envelopes) {
         let ids = await docs.addDoc(envelopes[i]);
 
         envelopes[i].id = ids.id;
+        envlopes[i].verified = 0;
         documents.push(envelopes[i]);
 
         let user_doc = { user_id: req.user.id, document_id: ids.id };
@@ -128,6 +129,7 @@ async function postDocToDB(req, res, envelopes) {
         // Update doc if found
         await docs.updateDoc(documents[index].id, envelopes[i]);
         envelopes[i].id = documents[index].id;
+        envelopes[i].verified = documents[index].verified;
         documents[index] = envelopes[i];
       }
     }

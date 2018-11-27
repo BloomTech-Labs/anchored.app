@@ -6,7 +6,7 @@ import Documents from './Documents/Documents';
 class Home extends React.Component {
   render() {
     return (
-      <div className="App">
+      <div className='App'>
         <Nav />
         <p>Welcome, {this.props.user}</p>
         <Documents />

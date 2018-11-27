@@ -11,6 +11,8 @@ exports.up = function(knex, Promise) {
 
     tbl.string('envelope_id');
 
+    tbl.bool('verified').defaultTo(false);
+
     tbl.timestamp('created_at').defaultTo(knex.fn.now());
   });
 };

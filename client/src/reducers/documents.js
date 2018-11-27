@@ -41,8 +41,10 @@ export default (state = initialState, action) => {
     case ERROR:
       return {
         ...state,
-        retrieving: false,
-        retrieved: false,
+        retrievingDoc: false,
+        retrievedDoc: false,
+        retrievingProof: false,
+        retrievedProof: false,
         error: action.payload,
       };
 
