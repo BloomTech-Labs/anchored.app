@@ -16,7 +16,7 @@ function findAllByUser(user_id) {
       'documents.document_id',
       'documents.envelope_id',
       'documents.status',
-      'documents.created_at',
+      'documents.created_at'
     )
     .where('user_id', user_id);
 }
