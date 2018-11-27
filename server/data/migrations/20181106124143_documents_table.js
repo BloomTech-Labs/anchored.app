@@ -5,8 +5,6 @@ exports.up = function(knex, Promise) {
 
     tbl.string('proof', 1024).unique();
 
-    tbl.string('status');
-
     tbl.string('document_id');
 
     tbl.string('envelope_id');
