@@ -1,6 +1,6 @@
 const express = require('express');
 const stripe = require('./constants/stripe.js');
-
+const users = require('../users/usersModel');
 const router = express.Router();
 
 const postStripeCharge = res => (stripeErr, stripeRes) => {
@@ -11,14 +11,10 @@ const postStripeCharge = res => (stripeErr, stripeRes) => {
   }
 };
 
-router.get('/', (req, res) => {
-  res.send({
-    message: 'Hello Stripe checkout server!',
-    timestamp: new Date().toISOString(),
-  });
-});
+router.get('/', (req, res) => {});
 
 router.post('/', (req, res) => {
+  console.log('Info given', res);
   stripe.charges.create(req.body, postStripeCharge(res));
 });
 
