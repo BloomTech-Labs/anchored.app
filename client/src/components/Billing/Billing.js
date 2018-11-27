@@ -8,7 +8,7 @@ import {
   ContentHeader,
   Invoice,
   ButtonWrapper,
-} from './BillingStyles';
+} from './style/BillingStyles';
 
 class Billing extends Component {
   componentDidMount() {
