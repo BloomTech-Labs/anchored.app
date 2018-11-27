@@ -5,6 +5,7 @@ const cors = require('cors');
 
 const usersRoutes = require('./users/usersRoutes.js');
 const docsRoutes = require('./documents/documentsRoutes.js');
+const chainpointRoutes = require('./chainpoint/chainpointRoutes.js');
 const authRoutes = require('./auth/auth.js');
 const paymentRoutes = require('./payments/payment.js');
 
@@ -26,6 +27,7 @@ server.get('/', (req, res) => {
 server.use('/users', usersRoutes);
 server.use('/documents', docsRoutes);
 server.use('/auth', authRoutes);
+server.use('/chainpoint', chainpointRoutes);
 server.use('/payment', paymentRoutes);
 
 module.exports = server;
