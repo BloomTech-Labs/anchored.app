@@ -7,11 +7,9 @@ exports.up = function(knex, Promise) {
 
     tbl.string('status');
 
-    tbl.string('document_id');
+    tbl.string('subject');
 
     tbl.string('envelope_id');
-
-    tbl.binary('image');
 
     tbl.timestamp('created_at').defaultTo(knex.fn.now());
   });

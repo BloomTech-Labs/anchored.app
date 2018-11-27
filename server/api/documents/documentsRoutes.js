@@ -9,10 +9,13 @@ const {
   checkToken,
   checkExpiration,
   getEnvelopes,
+  getEnvelopesList,
   getDocuments,
-  getImages,
+  getDocumentsList,
+  // getImages,
   postDocToDB,
 } = require('./docsMiddleware');
+const { getDSApi } = require('../auth/docusign/dsMiddleware');
 
 const router = express.Router();
 
@@ -30,26 +33,45 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/all', checkToken, checkExpiration, async (req, res, next) => {
+router.get('/all', checkToken, async (req, res, next) => {
   const user = req.user;
-
-  // Sets up headers / users base_uri for the api to use
-  let apiClient = new docusign.ApiClient();
-  apiClient.addDefaultHeader('Authorization', 'Bearer ' + user.access_token);
-  apiClient.setBasePath(`${user.base_uri}/restapi`);
-  docusign.Configuration.default.setDefaultApiClient(apiClient);
-
-  let envelopesApi = new docusign.EnvelopesApi();
-  let account_id = user.account_id;
+  const apiClient = getDSApi(user);
+  const envelopesApi = new docusign.EnvelopesApi(apiClient);
+  const account_id = user.account_id;
 
   try {
-    let envelopes = await getEnvelopes(envelopesApi, account_id);
-    let documents = await getDocuments(envelopesApi, account_id, envelopes);
-    let images = await getImages(envelopesApi, account_id, documents);
-    await postDocToDB(req, res, images);
+    let envelopesList = await getEnvelopesList(envelopesApi, account_id);
+    let envelopes = await getEnvelopes(envelopesApi, account_id, envelopesList);
+    await postDocToDB(req, res, envelopes);
   } catch (err) {
     console.log(err);
   }
+});
+
+router.get('/:id/proof', (req, res) => {
+  const { id } = req.params;
+
+  const user = req.user;
+  const apiClient = getDSApi(user);
+  const envelopesApi = new docusign.EnvelopesApi(apiClient);
+  const account_id = user.account_id;
+
+  docs
+    .findById(id)
+    .then(async doc => {
+      let documentsList = await getDocumentsList(
+        envelopesApi,
+        account_id,
+        doc.envelope_id
+      );
+      let documents = await getDocuments(
+        envelopesApi,
+        account_id,
+        documentsList
+      );
+      res.status(200).json(documents);
+    })
+    .catch(err => res.status(500).json({ ErrorMessage: err.message }));
 });
 
 router.get('/:userId', (req, res) => {
