@@ -11,6 +11,8 @@ exports.up = function(knex, Promise) {
 
     tbl.binary('image');
 
+    tbl.string('status');
+
     tbl.timestamp('created_at').defaultTo(knex.fn.now());
   });
 };

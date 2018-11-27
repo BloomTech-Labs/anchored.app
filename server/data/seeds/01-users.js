@@ -13,6 +13,7 @@ exports.seed = function(knex, Promise) {
           phone_number: '415-123-1234',
           credits: 3,
           subscription: false,
+          id: '1'
         },
         {
           first_name: 'Leslie',
@@ -22,6 +23,7 @@ exports.seed = function(knex, Promise) {
           phone_number: '415-123-5678',
           credits: 3,
           subscription: false,
+          id: '2'
         },
         {
           first_name: 'April',
@@ -31,6 +33,7 @@ exports.seed = function(knex, Promise) {
           phone_number: '415-123-9011',
           credits: 3,
           subscription: false,
+          id: '3'
         },
         {
           first_name: 'Andy',
@@ -40,6 +43,7 @@ exports.seed = function(knex, Promise) {
           phone_number: '415-123-1213',
           credits: 3,
           subscription: false,
+          id: '4'
         },
         {
           first_name: 'Ben',
@@ -49,6 +53,7 @@ exports.seed = function(knex, Promise) {
           phone_number: '415-123-1415',
           credits: 3,
           subscription: false,
+          id: '5'
         },
       ]);
     });
