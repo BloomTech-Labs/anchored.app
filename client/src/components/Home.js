@@ -4,7 +4,6 @@ import DocusignUnlink from './Auth/Docusign/DocusignUnlink';
 import { connect } from 'react-redux';
 import { getDocuments } from '../actions/documents';
 import Nav from './Nav/Nav.js';
-import Checkout from './Stripe/Checkout.js';
 
 class Home extends React.Component {
   componentDidMount() {
@@ -34,11 +33,6 @@ class Home extends React.Component {
         <Nav />
         <p>Welcome, {this.props.user}</p>
         {documents}
-        <Checkout
-          name={'Chainpoint-DocuSign'}
-          description={'Purchase Credit'}
-          amount={10}
-        />
         <DocusignUnlink />
       </div>
     );

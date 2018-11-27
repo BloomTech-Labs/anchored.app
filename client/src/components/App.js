@@ -3,8 +3,11 @@ import './App.css';
 import Home from './Home';
 import Auth0 from './Auth/Auth0/Auth0';
 import axios from 'axios';
+import { Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getUserInfo } from '../actions/user';
+
+import Billing from '../components/Views/Billing';
 
 axios.defaults.withCredentials = true;
 
@@ -23,7 +26,8 @@ class App extends Component {
     if (this.props.user) {
       return (
         <div>
-          <Home user={this.props.user} />
+          <Route exact path="/" user={this.props.user} component={Home} />
+          <Route path="/billing" component={Billing} />
         </div>
       );
     }
@@ -39,6 +43,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     user: state.user.user,
     fetching: state.user.retrieving,
