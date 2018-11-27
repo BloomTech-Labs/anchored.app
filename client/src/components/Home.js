@@ -4,7 +4,7 @@ import DocusignLogin from './Auth/Docusign/DocusignLogin';
 import DocusignUnlink from './Auth/Docusign/DocusignUnlink';
 import { connect } from 'react-redux';
 import { getDocuments } from '../actions/documents';
-import Nav from './Nav/Nav.js';
+import DashboardNav from './Nav/DashboardNav.js';
 import Checkout from './Stripe/Checkout.js';
 
 class Home extends React.Component {
@@ -23,7 +23,7 @@ class Home extends React.Component {
           <img
             key={data.envelope_id + data.document_id}
             src={`data:image/png;base64,${image}`}
-            alt=''
+            alt=""
           />
         );
       });
@@ -32,8 +32,8 @@ class Home extends React.Component {
     }
 
     return (
-      <div className='App'>
-        <Nav />
+      <div className="App">
+        <DashboardNav />
         <p>Welcome, {this.props.user}</p>
         {documents}
         <Checkout
@@ -56,5 +56,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getDocuments },
+  { getDocuments }
 )(Home);
