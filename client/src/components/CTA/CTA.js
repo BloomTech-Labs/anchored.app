@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import './CTA.css';
 import playImg from '../../assets/play-circle.svg';
 
-const Container = styled.div`
+const CtaContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,10 +31,34 @@ const Demo = styled.div`
   align-items: center;
 `;
 
+const OurPatrons = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 1026px;
+  max-width: 100%;
+  margin: 40px;
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+`;
+
+const Logos = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 1026px;
+  max-width: 100%;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  margin-top: 10px;
+  padding: 10px;
+`;
+
 class CTA extends Component {
   render() {
     return (
-      <Container>
+      <CtaContainer>
         <h2>Get proof, not just trust</h2>
         <p>Blockchain enabled verification platform</p>
         <CtaButton>CHECK OUR PRICES</CtaButton>
@@ -42,7 +66,17 @@ class CTA extends Component {
           <img src={playImg} alt="play icon" width="20%" />
           <p>Watch the Demo</p>
         </Demo>
-      </Container>
+        <OurPatrons>
+          <h3>Used By Our Friends At:</h3>
+          <Logos>
+            <div className="friends" />
+            <div className="friends" />
+            <div className="friends" />
+            <div className="friends" />
+            <div className="friends" />
+          </Logos>
+        </OurPatrons>
+      </CtaContainer>
     );
   }
 }

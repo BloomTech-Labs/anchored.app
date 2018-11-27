@@ -10,3 +10,11 @@ p {
 img {
   margin-right: 5px;
 }
+
+.friends {
+  border: 1px solid black;
+  background-color: lightgray;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
