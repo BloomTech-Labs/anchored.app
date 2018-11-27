@@ -1,4 +1,5 @@
 import React from 'react';
+
 import DocusignLogin from './Auth/Docusign/DocusignLogin';
 import DocusignUnlink from './Auth/Docusign/DocusignUnlink';
 import { connect } from 'react-redux';
@@ -15,21 +16,22 @@ class Home extends React.Component {
     if (this.props.fetching) {
       documents = <div>Loading</div>;
     } else if (this.props.documents) {
-      documents = (
-        <div>
-          {this.props.documents.map(envelope =>
-            envelope.envelopeDocuments.map(document => {
-              return <p key={document.documentId}>{document.name}</p>;
-            })
-          )}
-        </div>
-      );
+      documents = this.props.documents.map(data => {
+        let image = Buffer.from(data.image.data).toString('base64');
+        return (
+          <img
+            key={data.envelope_id + data.document_id}
+            src={`data:image/png;base64,${image}`}
+            alt=''
+          />
+        );
+      });
     } else {
       documents = <DocusignLogin />;
     }
 
     return (
-      <div className="App">
+      <div className='App'>
         <Nav />
         <p>Welcome, {this.props.user}</p>
         {documents}
@@ -48,5 +50,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getDocuments }
+  { getDocuments },
 )(Home);

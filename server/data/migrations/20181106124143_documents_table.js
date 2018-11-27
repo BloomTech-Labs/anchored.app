@@ -5,7 +5,13 @@ exports.up = function(knex, Promise) {
 
     tbl.string('proof', 1024).unique();
 
-    // tbl.blob('image', 100000);
+    tbl.string('document_id');
+
+    tbl.string('envelope_id');
+
+    tbl.binary('image');
+
+    tbl.string('status');
 
     tbl.timestamp('created_at').defaultTo(knex.fn.now());
   });

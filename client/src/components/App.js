@@ -6,6 +6,11 @@ import axios from 'axios';
 import { Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getUserInfo } from '../actions/user';
+import { BeatLoader } from 'react-spinners';
+import styled from 'styled-components';
+
+import TopNavBar from './Nav/NavBar.js';
+import CTA from './CTA/CTA.js';
 
 import Billing from '../components/Views/Billing';
 
@@ -13,14 +18,30 @@ axios.defaults.withCredentials = true;
 
 const auth = new Auth0();
 
+const LoadingContainer = styled.div`
+  display: flex;
+  height: 50vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 class App extends Component {
+  state = {
+    loading: true,
+  };
+
   componentDidMount() {
     this.props.getUserInfo();
   }
 
   render() {
     if (this.props.fetching) {
-      return <div className="App">Loading...</div>;
+      return (
+        <LoadingContainer>
+          <BeatLoader color={'black'} loading={this.state.loading} />
+        </LoadingContainer>
+      );
     }
 
     if (this.props.user) {
@@ -34,9 +55,8 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h2>Welcome to Chainpoint-DocuSign</h2>
-        <button onClick={auth.login}>Sign In</button>
-        <button onClick={auth.signUp}>Sign Up</button>
+        <TopNavBar />
+        <CTA />
       </div>
     );
   }
