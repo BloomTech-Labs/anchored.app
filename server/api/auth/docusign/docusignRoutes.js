@@ -43,10 +43,6 @@ router.get(
   passport.authorize('docusign', {
     failureRedirect: '/auth/docusign',
   }),
-<<<<<<< HEAD
-  //(req, res) => res.redirect('https://chainpoint-docusign.netlify.com/')
-=======
->>>>>>> 251fadf817ef3219918c8b834939cfdc7fc48297
   (req, res) => res.redirect(process.env.ORIGIN || 'http://localhost:3000')
 );
 
