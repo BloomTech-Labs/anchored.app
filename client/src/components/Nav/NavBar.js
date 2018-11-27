@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import Auth0 from '../Auth/Auth0/Auth0.js';
 import NavButton from './NavButton.js';
-
+import logo from '../../images/proofd-logo.png';
 const auth = new Auth0();
 
 const NavGod = styled.div`
