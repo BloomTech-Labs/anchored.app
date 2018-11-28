@@ -14,8 +14,6 @@ import Footer from './Footer/Footer.js';
 
 axios.defaults.withCredentials = true;
 
-const auth = new Auth0();
-
 const LoadingContainer = styled.div`
   display: flex;
   height: 50vh;
