@@ -12,6 +12,7 @@ import {
   PlayImg,
 } from './styles/LPcontentStyles.js';
 
+import ContentBox from '../ContentBox/ContentBox.js';
 import playImg from '../../assets/play-circle.svg';
 
 const LPcontent = () => {
@@ -62,6 +63,15 @@ const LPcontent = () => {
         <TagLine>The science behind our work</TagLine>
       </ContentSet>
       <H1>Killer Prices, Subscribe and Save</H1>
+      <ContentSet>
+        <ContentBox title="Free Trial" copyOne="3 Free Credits" copyTwo="Purchase Additional Credits" copyThree="" />
+        <ContentBox
+          title="Premium Subscription"
+          copyOne=""
+          copyTwo=""
+          copyThree=""
+        />
+      </ContentSet>
     </ContentMain>
   );
 };
