@@ -56,22 +56,18 @@ function clear(req, res, next) {
       access_token: null,
       refresh_token: null,
     })
-    .then(user => {
-      req.logOut();
-      req.session.destroy(function(err) {
-        if (!err) {
-          res
-            .status(200)
-            .clearCookie('connect.sid', { path: '/' })
-            .json({ status: 'Success' });
-        } else {
-        }
-      });
+    .then(() => {
+      req.user.account_id = null;
+      req.user.token_expiration = null;
+      req.user.document_expiration = null;
+      req.user.base_uri = null;
+      req.user.access_token = null;
+      req.user.refresh_token = null;
+      req.session.save();
+      res.redirect(process.env.ORIGIN || 'http://localhost:3000');
     });
 }
 
-router.get('/logout', clear, (req, res) => {
-  res.redirect(process.env.ORIGIN || 'http://localhost:3000');
-});
+router.get('/logout', clear, (req, res) => {});
 
 module.exports = router;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import './App.css';
 import Home from './Home';
 import axios from 'axios';
@@ -13,8 +14,6 @@ import LPcontent from './LPcontent/LPcontent.js';
 import Footer from './Footer/Footer.js';
 
 axios.defaults.withCredentials = true;
-
-const auth = new Auth0();
 
 const LoadingContainer = styled.div`
   display: flex;
@@ -43,11 +42,7 @@ class App extends Component {
     }
 
     if (this.props.user) {
-      return (
-        <div>
-          <Home user={this.props.user} />
-        </div>
-      );
+      return <Home user={this.props.user} />;
     }
 
     return (
@@ -68,7 +63,9 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  { getUserInfo }
-)(App);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { getUserInfo }
+  )(App)
+);

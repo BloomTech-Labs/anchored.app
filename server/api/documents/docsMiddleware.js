@@ -120,7 +120,7 @@ async function postDocToDB(req, res, envelopes) {
         let ids = await docs.addDoc(envelopes[i]);
 
         envelopes[i].id = ids.id;
-        envlopes[i].verified = 0;
+        envelopes[i].verified = 0;
         documents.push(envelopes[i]);
 
         let user_doc = { user_id: req.user.id, document_id: ids.id };
