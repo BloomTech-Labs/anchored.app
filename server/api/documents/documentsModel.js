@@ -13,11 +13,13 @@ function findAllByUser(user_id) {
       'documents.id',
       'documents.proof_handle',
       'documents.verified_proof',
-      'documents.image',
       'documents.document_id',
+      'documents.proof',
       'documents.envelope_id',
+      'documents.subject',
       'documents.status',
-      'documents.created_at',
+      'documents.verified',
+      'documents.created_at'
     )
     .where('user_id', user_id);
 }

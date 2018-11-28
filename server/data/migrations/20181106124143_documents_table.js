@@ -9,11 +9,13 @@ exports.up = function(knex, Promise) {
 
     tbl.json('verified_proof').unique();
 
-    tbl.string('document_id');
+    tbl.string('status');
+
+    tbl.string('subject');
 
     tbl.string('envelope_id');
 
-    tbl.binary('image');
+    tbl.bool('verified').defaultTo(false);
 
     tbl.timestamp('created_at').defaultTo(knex.fn.now());
   });
