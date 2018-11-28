@@ -1,4 +1,5 @@
 import React from 'react';
+import Auth0 from '../Auth/Auth0/Auth0.js';
 
 import {
   BoxContainer,
@@ -7,6 +8,8 @@ import {
   Copy,
 } from './styles/ContentBoxStyles.js';
 
+const auth = new Auth0();
+
 const ContentBox = props => {
   return (
     <BoxContainer>
@@ -14,7 +17,7 @@ const ContentBox = props => {
       <Copy>{props.copyOne}</Copy>
       <Copy>{props.copyTwo}</Copy>
       <Copy>{props.copyThree}</Copy>
-      <BoxButton>Start Now</BoxButton>
+      <BoxButton onClick={auth.signUp}>Start Now</BoxButton>
     </BoxContainer>
   );
 };
