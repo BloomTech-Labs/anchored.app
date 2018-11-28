@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getDocuments, getProof } from '../../actions/documents';
 import DocusignLogin from '../Auth/Docusign/DocusignLogin';
-import DocusignUnlink from '../Auth/Docusign/DocusignUnlink';
 import Document from './Document';
 
 import {
   DocumentOptionsContainer,
   DocumentsOptions,
   DocumentsContainer,
+  AddDocument,
 } from './styles/DocumentsStyles';
 
 class Documents extends React.Component {
@@ -34,7 +34,7 @@ class Documents extends React.Component {
       return this.props.documents.filter(doc => doc.status !== 'completed');
     } else {
       return this.props.documents.filter(doc => {
-        return doc.verified == this.state.selected;
+        return doc.verified === this.state.selected;
       });
     }
   };
@@ -81,6 +81,12 @@ class Documents extends React.Component {
             />
           );
         })}
+
+        <AddDocument
+          target="_blank"
+          href="https://appdemo.docusign.com/home"
+          className="fas fa-plus-circle"
+        />
       </DocumentsContainer>
     );
   }

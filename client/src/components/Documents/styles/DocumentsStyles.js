@@ -26,3 +26,11 @@ export const DocumentsOptions = styled.div`
   background: ${props => (props.selected ? 'black' : 'white')};
   color: ${props => (props.selected ? 'white' : 'black')};
 `;
+
+export const AddDocument = styled.a`
+  margin: 20px;
+  font-size: 50px;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+`;

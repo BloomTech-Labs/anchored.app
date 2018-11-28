@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Home from './Home';
-import Auth0 from './Auth/Auth0/Auth0';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { getUserInfo } from '../actions/user';
@@ -10,8 +9,6 @@ import TopNavBar from './Nav/NavBar.js';
 import CTA from './CTA/CTA.js';
 
 axios.defaults.withCredentials = true;
-
-const auth = new Auth0();
 
 class App extends Component {
   componentDidMount() {

@@ -32,7 +32,7 @@ function handleExpiration(req, res, next) {
 async function getEnvelopesList(envelopesApi, account_id) {
   let options = {
     fromDate: moment()
-      .subtract(30, 'days')
+      .subtract(6, 'months')
       .format(),
   };
   let envelopesP = promisify(envelopesApi.listStatusChanges).bind(envelopesApi);
