@@ -1,13 +1,14 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import DocusignUnlink from '../Auth/Docusign/DocusignUnlink.js';
 import PasswordReset from './PasswordReset.js';
+import { ButtonContainer } from './styles/SettingsStyles.js';
 
 const Settings = () => {
   return (
-    <Fragment>
+    <ButtonContainer>
       <PasswordReset />
       <DocusignUnlink />
-    </Fragment>
+    </ButtonContainer>
   );
 };
 
