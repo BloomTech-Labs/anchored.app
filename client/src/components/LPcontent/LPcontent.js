@@ -64,12 +64,17 @@ const LPcontent = () => {
       </ContentSet>
       <H1>Killer Prices, Subscribe and Save</H1>
       <ContentSet>
-        <ContentBox title="Free Trial" copyOne="3 Free Credits" copyTwo="Purchase Additional Credits" copyThree="Upgrade Anytime" />
+        <ContentBox
+          title="Free Trial"
+          copyOne="3 Free Credits"
+          copyTwo="Purchase Additional Credits"
+          copyThree="Upgrade Anytime"
+        />
         <ContentBox
           title="Premium Subscription"
-          copyOne=""
-          copyTwo=""
-          copyThree=""
+          copyOne="20 Credits for:"
+          copyTwo="$15 charged per month or"
+          copyThree="$150 charged per year"
         />
       </ContentSet>
     </ContentMain>
