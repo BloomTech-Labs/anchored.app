@@ -9,8 +9,6 @@ exports.up = function(knex, Promise) {
 
     tbl.json('verified_proof').unique();
 
-    tbl.string('status');
-
     tbl.string('document_id');
 
     tbl.string('envelope_id');
