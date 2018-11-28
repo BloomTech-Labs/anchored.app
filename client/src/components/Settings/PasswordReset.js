@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from 'react';
+import { getUserInfo } from '../../actions/user.js';
+import { connect } from 'react-redux';
 import request from 'request';
 
 class PasswordReset extends Component {
@@ -13,7 +15,7 @@ class PasswordReset extends Component {
       headers: { 'content-type': 'application/json' },
       body: {
         client_id: process.env.REACT_APP_CLIENT_ID,
-        email: '',
+        email: this.props.user.email,
         connection: 'Username-Password-Authentication',
       },
       json: true,
@@ -34,4 +36,14 @@ class PasswordReset extends Component {
   }
 }
 
-export default PasswordReset;
+const mapStateToProps = state => {
+  return {
+    user: state.user.user,
+    fetching: state.user.retrieving,
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { getUserInfo }
+)(PasswordReset);
