@@ -66,11 +66,8 @@ class PasswordReset extends Component {
             We've just sent you an email to reset your password.
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.toggleOne}>
-              Do Something
-            </Button>{' '}
             <Button color="secondary" onClick={this.toggleOne}>
-              Cancel
+              Close
             </Button>
           </ModalFooter>
         </Modal>
@@ -84,11 +81,8 @@ class PasswordReset extends Component {
             reset your password with the appropriate system.
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.toggleTwo}>
-              Do Something
-            </Button>{' '}
             <Button color="secondary" onClick={this.toggleTwo}>
-              Cancel
+              Close
             </Button>
           </ModalFooter>
         </Modal>
