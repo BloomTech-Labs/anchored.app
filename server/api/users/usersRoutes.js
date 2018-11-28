@@ -10,7 +10,6 @@ router.use(ensureAuthenticated);
 
 // route is /users
 router.get('/', (req, res) => {
-  console.log(req.users, 'HEHEHEH0');
   users
     .find()
     .then(users => {
@@ -22,7 +21,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/profile', (req, res) => {
-  res.status(200).json({ user: req.user.username });
+  res.status(200).json({ user: req.user });
 });
 
 // router.get('/:email', (req, res) => {

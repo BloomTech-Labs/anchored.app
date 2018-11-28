@@ -1,60 +1,36 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 
-import DocusignLogin from './Auth/Docusign/DocusignLogin';
+import DashboardNav from './Nav/DashboardNav.js';
+import Documents from './Documents/Documents.js';
+
 import DocusignUnlink from './Auth/Docusign/DocusignUnlink';
-import { connect } from 'react-redux';
-import { getDocuments } from '../actions/documents';
-import Nav from './Nav/Nav.js';
-import Checkout from './Stripe/Checkout.js';
+// import Checkout from './Stripe/Checkout.js';
 
 class Home extends React.Component {
-  componentDidMount() {
-    this.props.getDocuments();
-  }
-
   render() {
-    let documents;
-    if (this.props.fetching) {
-      documents = <div>Loading</div>;
-    } else if (this.props.documents) {
-      documents = this.props.documents.map(data => {
-        let image = Buffer.from(data.image.data).toString('base64');
-        return (
-          <img
-            key={data.envelope_id + data.document_id}
-            src={`data:image/png;base64,${image}`}
-            alt=''
-          />
-        );
-      });
-    } else {
-      documents = <DocusignLogin />;
-    }
-
     return (
-      <div className='App'>
-        <Nav />
-        <p>Welcome, {this.props.user}</p>
-        {documents}
-        <Checkout
+      <div className="App">
+        <DashboardNav />
+        <p>
+          Welcome{' '}
+          {this.props.user.first_name
+            ? this.props.user.first_name
+            : this.props.user.username}
+        </p>
+        <Route exact path="/" component={Documents} />
+        {/* <Route path="/billing" component={Billing} /> */}
+        {/* <Route exact path="/settings" component={Settings} /> */}
+
+        {/* <Checkout
           name={'Chainpoint-DocuSign'}
           description={'Purchase Credit'}
           amount={10}
-        />
+        /> */}
         <DocusignUnlink />
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    documents: state.documents.documents,
-    fetching: state.documents.retrieving,
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  { getDocuments },
-)(Home);
+export default Home;
