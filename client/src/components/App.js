@@ -10,6 +10,8 @@ import styled from 'styled-components';
 
 import TopNavBar from './Nav/NavBar.js';
 import CTA from './CTA/CTA.js';
+import LPcontent from './LPcontent/LPcontent.js';
+import Footer from './Footer/Footer.js';
 
 axios.defaults.withCredentials = true;
 
@@ -53,6 +55,8 @@ class App extends Component {
       <div className="App">
         <TopNavBar />
         <CTA />
+        <LPcontent />
+        <Footer />
       </div>
     );
   }
