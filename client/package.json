@@ -17,6 +17,7 @@
     "react-stripe-checkout": "^2.6.3",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
+    "request": "^2.88.0",
     "styled-components": "^4.0.3"
   },
   "scripts": {

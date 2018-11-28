@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-
 import DashboardNav from './Nav/DashboardNav.js';
 import Documents from './Documents/Documents.js';
 import Settings from './Settings/Settings.js';
