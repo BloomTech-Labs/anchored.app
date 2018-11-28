@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { getDocuments, getProof } from '../../actions/documents';
 import DocusignLogin from '../Auth/Docusign/DocusignLogin';
 import Document from './Document';
+import { FadeLoader } from 'react-spinners';
+import { LoadingContainer } from './styles/DocumentsStyles.js';
 
 import {
   DocumentOptionsContainer,
@@ -17,6 +19,7 @@ class Documents extends React.Component {
 
     this.state = {
       selected: 'all',
+      loading: true,
     };
   }
   componentDidMount() {
@@ -41,7 +44,11 @@ class Documents extends React.Component {
 
   render() {
     if (this.props.fetching) {
-      return <div>Loading</div>;
+      return (
+        <LoadingContainer>
+          <FadeLoader color={'black'} loading={this.state.loading} />
+        </LoadingContainer>
+      );
     }
 
     if (!this.props.documents) {

@@ -34,3 +34,11 @@ export const AddDocument = styled.a`
   text-decoration: none;
   color: black;
 `;
+
+export const LoadingContainer = styled.div`
+  display: flex;
+  height: 30vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
