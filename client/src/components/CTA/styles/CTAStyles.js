@@ -18,6 +18,7 @@ export const CtaButton = styled.div`
   height: 65px;
   font-weight: bold;
   font-size: 1.3rem;
+  cursor: pointer;
 `;
 
 export const Demo = styled.div`
