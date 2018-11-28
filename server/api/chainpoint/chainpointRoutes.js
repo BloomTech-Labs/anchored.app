@@ -11,7 +11,7 @@ router.get('/:user_id', (req, res) => {
     .findAllByUser(user_id)
     .then(documents => {
       const unprovenDocuments = documents.filter(doc => {
-        return doc.proof === null;
+        return doc.proof_handle === null;
       });
       console.log('UnprovenDocs: ', unprovenDocuments);
       const hashes = unprovenDocuments.map(doc => {
@@ -32,7 +32,7 @@ router.get('/:user_id', (req, res) => {
               console.log('Correct ProofHandles: ', correctProofHandles);
               docs
                 .updateDoc(doc.document_id, {
-                  proof: JSON.stringify(correctProofHandles),
+                  proof_handle: JSON.stringify(correctProofHandles),
                 })
                 .catch(err => console.log(err));
             });
