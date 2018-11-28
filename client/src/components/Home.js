@@ -9,10 +9,6 @@ import DashboardNav from './Nav/DashboardNav.js';
 import Checkout from './Stripe/Checkout.js';
 
 class Home extends React.Component {
-  componentDidMount() {
-    this.props.getDocuments();
-  }
-
   render() {
     let documents;
     if (this.props.fetching) {

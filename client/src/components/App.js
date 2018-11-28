@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Home from './Home';
-import Auth0 from './Auth/Auth0/Auth0';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { getUserInfo } from '../actions/user';

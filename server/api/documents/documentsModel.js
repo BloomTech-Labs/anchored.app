@@ -12,10 +12,10 @@ function findAllByUser(user_id) {
     .select(
       'documents.id',
       'documents.proof',
-      'documents.image',
-      'documents.document_id',
       'documents.envelope_id',
+      'documents.subject',
       'documents.status',
+      'documents.verified',
       'documents.created_at'
     )
     .where('user_id', user_id);
