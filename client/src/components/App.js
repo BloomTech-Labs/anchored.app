@@ -12,7 +12,7 @@ import styled from 'styled-components';
 import TopNavBar from './Nav/NavBar.js';
 import CTA from './CTA/CTA.js';
 
-import Billing from '../components/Views/Billing';
+import Billing from './Billing/Billing';
 
 axios.defaults.withCredentials = true;
 

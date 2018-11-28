@@ -1,5 +1,4 @@
 import React from 'react';
-
 import DocusignLogin from './Auth/Docusign/DocusignLogin';
 import DocusignUnlink from './Auth/Docusign/DocusignUnlink';
 import { connect } from 'react-redux';
@@ -22,7 +21,7 @@ class Home extends React.Component {
           <img
             key={data.envelope_id + data.document_id}
             src={`data:image/png;base64,${image}`}
-            alt=''
+            alt=""
           />
         );
       });
@@ -31,7 +30,7 @@ class Home extends React.Component {
     }
 
     return (
-      <div className='App'>
+      <div className="App">
         <Nav />
         <p>Welcome, {this.props.user}</p>
         {documents}
@@ -50,5 +49,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getDocuments },
+  { getDocuments }
 )(Home);

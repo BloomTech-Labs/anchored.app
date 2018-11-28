@@ -41,6 +41,7 @@ class Billing extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     subscription: state.billing.subscription,
     credits: state.billing.credits,

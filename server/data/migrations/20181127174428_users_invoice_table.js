@@ -8,21 +8,16 @@ exports.up = function(knex, Promise) {
       .references('id')
       .inTable('users');
 
-    tbl.string('description', 128);
+    tbl.string('description');
 
-    tbl
-      .integer('amount')
-      .unsigned()
-      .notNullable();
+    tbl.integer('amount');
 
-    tbl.string('currency', 128);
+    tbl.string('currency');
 
     tbl.timestamp('created_at').defaultTo(knex.fn.now());
   });
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists('invoice');
+  return knex.schema.dropTableIfExists('users_invoice');
 };
-
-// currency and amount + timestamp
