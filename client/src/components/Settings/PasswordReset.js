@@ -2,8 +2,26 @@ import React, { Component, Fragment } from 'react';
 import { getUserInfo } from '../../actions/user.js';
 import { connect } from 'react-redux';
 import request from 'request';
+import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
 
 class PasswordReset extends Component {
+  state = {
+    modalOne: false,
+    modalTwo: false,
+  };
+
+  toggleOne = () => {
+    this.setState({
+      modalOne: !this.state.modalOne,
+    });
+  };
+
+  toggleTwo = () => {
+    this.setState({
+      modalTwo: !this.state.modalTwo,
+    });
+  };
+
   handleSubmit = e => {
     e.preventDefault();
 
@@ -21,16 +39,59 @@ class PasswordReset extends Component {
       json: true,
     };
 
-    request(options, function(error, response, body) {
-      if (error) throw new Error(error);
-      alert(body);
-    });
+    if (!this.props.user.first_name) {
+      console.log('test');
+      request(options, (error, response, body) => {
+        if (error) throw new Error(error);
+        this.toggleOne();
+      });
+    } else {
+      this.toggleTwo();
+    }
   };
 
   render() {
     return (
       <Fragment>
-        <button onClick={this.handleSubmit}>Change Password</button>
+        <Button color="danger" onClick={this.handleSubmit}>
+          Change Password
+        </Button>
+
+        <Modal
+          isOpen={this.state.modalOne}
+          toggle={this.toggleOne}
+          className={this.props.className}
+        >
+          <ModalBody>
+            We've just sent you an email to reset your password.
+          </ModalBody>
+          <ModalFooter>
+            <Button color="primary" onClick={this.toggleOne}>
+              Do Something
+            </Button>{' '}
+            <Button color="secondary" onClick={this.toggleOne}>
+              Cancel
+            </Button>
+          </ModalFooter>
+        </Modal>
+        <Modal
+          isOpen={this.state.modalTwo}
+          toggle={this.toggleTwo}
+          className={this.props.className}
+        >
+          <ModalBody>
+            You've logged in using a social or enterprise connection. Please
+            reset your password with the appropriate system.
+          </ModalBody>
+          <ModalFooter>
+            <Button color="primary" onClick={this.toggleTwo}>
+              Do Something
+            </Button>{' '}
+            <Button color="secondary" onClick={this.toggleTwo}>
+              Cancel
+            </Button>
+          </ModalFooter>
+        </Modal>
       </Fragment>
     );
   }
