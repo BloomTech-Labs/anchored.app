@@ -3,7 +3,7 @@ const stripe = require('./constants/stripe.js');
 const users = require('../users/usersModel');
 const payments = require('./paymentsModel');
 const router = express.Router();
-const { getMetaData } = require('./paymentsMiddleWare');
+const { ensureAuthenticated } = require('../auth/docusign/dsMiddleware');
 
 const postStripeCharge = res => (stripeErr, stripeRes) => {
   if (stripeErr) {
@@ -37,27 +37,39 @@ router.get('/:userId', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
-  stripe.charges
-    .create(req.body)
-    .then(invoice => {
-      payments
-        .addInvoice(invoice)
+router.post('/', ensureAuthenticated, (req, res) => {
+  users
+    .findByUserId(req.user.id)
+    .then(user => {
+      console.log(user);
+      stripe.charges
+        .create(req.body)
         .then(invoice => {
-          console.log(invoice);
-          postStripeCharge(
-            res.status(201).json({
-              description: invoice.description,
-              amount: invoice.amount,
-              currency: invoice.currency,
+          const { getUserId, description, amount, currency } = invoice;
+          payments
+            .addInvoice({ getUserId, description, amount, currency })
+            .then(invoice => {
+              console.log(invoice);
+
+              res.status(201).json({
+                user_id: user.id,
+                description: invoice.description,
+                amount: invoice.amount,
+                currency: invoice.currency,
+              });
             })
-          );
+            .catch(err => {
+              console.log('Error');
+              res.status(500).json({ ErrorMessage: err.message });
+            });
         })
         .catch(err => {
+          console.log('ERROR');
           res.status(500).json({ ErrorMessage: err.message });
         });
     })
     .catch(err => {
+      console.log('Error');
       res.status(500).json({ ErrorMessage: err.message });
     });
 });

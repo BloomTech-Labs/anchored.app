@@ -20,6 +20,7 @@ server.use(cors({ origin: corsOptions }));
 server.use(express.json());
 
 server.use((req, res, next) => {
+  console.log('Lo');
   next();
 });
 // routes
