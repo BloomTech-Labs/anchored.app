@@ -3,7 +3,11 @@ exports.up = function(knex, Promise) {
     // TODO: Create doc ids based on DocuSign
     tbl.increments();
 
-    tbl.string('proof', 1024).unique();
+    tbl.string('document');
+
+    tbl.json('proof_handle').unique();
+
+    tbl.json('verified_proof').unique();
 
     tbl.string('status');
 
@@ -12,8 +16,6 @@ exports.up = function(knex, Promise) {
     tbl.string('envelope_id');
 
     tbl.binary('image');
-
-    tbl.string('status');
 
     tbl.timestamp('created_at').defaultTo(knex.fn.now());
   });
