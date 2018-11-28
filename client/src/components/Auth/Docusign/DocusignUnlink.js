@@ -10,7 +10,7 @@ class DocusignUnlink extends React.Component {
           process.env.ORIGIN || 'http://localhost:9000/auth/docusign/logout'
         }
       >
-        Unlink Docusign
+        Unlink DocuSign
       </Button>
     );
   }
