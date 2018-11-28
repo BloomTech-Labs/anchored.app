@@ -48,7 +48,14 @@ class NavBar extends Component {
         <TopNavBar>
           <p>Proof'd Logo</p>
           <Links>
-            <NavLink exact to={`/`} style={{ textDecoration: 'none' }}>
+            <NavLink
+              exact
+              to={`/`}
+              style={{ textDecoration: 'none' }}
+              activeStyle={{
+                color: 'orange',
+              }}
+            >
               <NavButton name="Documents" />
             </NavLink>
             <NavLink
@@ -60,7 +67,13 @@ class NavBar extends Component {
             >
               <NavButton name="Billing" />
             </NavLink>
-            <NavLink to={`/settings`} style={{ textDecoration: 'none' }}>
+            <NavLink
+              to={`/settings`}
+              style={{ textDecoration: 'none' }}
+              activeStyle={{
+                color: 'orange',
+              }}
+            >
               <NavButton name="Settings" />
             </NavLink>
             <NavLink
