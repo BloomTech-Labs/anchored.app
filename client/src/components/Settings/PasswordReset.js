@@ -10,12 +10,14 @@ class PasswordReset extends Component {
     modalTwo: false,
   };
 
+  // For social or enterprise login
   toggleOne = () => {
     this.setState({
       modalOne: !this.state.modalOne,
     });
   };
 
+  // For email login
   toggleTwo = () => {
     this.setState({
       modalTwo: !this.state.modalTwo,
@@ -39,13 +41,18 @@ class PasswordReset extends Component {
       json: true,
     };
 
+    // If logged in via email
+    // TODO: May need to restructure db later
+    // and use something else on the user obj instead of `first_name`
     if (!this.props.user.first_name) {
       console.log('test');
       request(options, (error, response, body) => {
         if (error) throw new Error(error);
         this.toggleOne();
       });
-    } else {
+    }
+    // If logged in via social connection
+    else {
       this.toggleTwo();
     }
   };
