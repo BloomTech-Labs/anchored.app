@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import DocusignLogin from './Auth/Docusign/DocusignLogin';
 import DocusignUnlink from './Auth/Docusign/DocusignUnlink';
@@ -31,17 +32,22 @@ class Home extends React.Component {
       documents = <DocusignLogin />;
     }
 
+    console.log(this.props);
     return (
       <div className="App">
         <DashboardNav />
-        <p>Welcome, {this.props.user}</p>
-        {documents}
+
+        <p>Welcome {this.props.user}</p>
+        {/* <Route exact path="/" component={Documents} />
+        <Route exact path="/settings" component={Settings} />
+        <Route exact path="/billing" component={Billing} /> */}
+        {/* {documents}
         <Checkout
           name={'Chainpoint-DocuSign'}
           description={'Purchase Credit'}
           amount={10}
         />
-        <DocusignUnlink />
+        <DocusignUnlink /> */}
       </div>
     );
   }

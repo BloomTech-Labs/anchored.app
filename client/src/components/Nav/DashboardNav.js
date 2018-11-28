@@ -3,7 +3,7 @@ import { NavLink, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 
-import NavButton from './NavButton.js';
+import NavButton from './DashNavBtn.js';
 
 const NavGod = styled.div`
   display: flex;
@@ -48,10 +48,16 @@ class NavBar extends Component {
         <TopNavBar>
           <p>Proof'd Logo</p>
           <Links>
-            <NavLink to={`/`} style={{ textDecoration: 'none' }}>
+            <NavLink exact to={`/`} style={{ textDecoration: 'none' }}>
               <NavButton name="Documents" />
             </NavLink>
-            <NavLink to={`/billing`} style={{ textDecoration: 'none' }}>
+            <NavLink
+              to={`/billing`}
+              style={{ textDecoration: 'none' }}
+              activeStyle={{
+                color: 'orange',
+              }}
+            >
               <NavButton name="Billing" />
             </NavLink>
             <NavLink to={`/settings`} style={{ textDecoration: 'none' }}>
