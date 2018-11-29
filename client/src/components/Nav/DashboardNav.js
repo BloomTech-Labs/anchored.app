@@ -1,31 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
-import styled from 'styled-components';
 import axios from 'axios';
-
 import NavButton from './DashNavBtn.js';
-
-const NavGod = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const TopNavBar = styled.div`
-  max-width: 1026px;
-  width: 100%;
-  height: 80px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const Links = styled.div`
-  width: 400px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-`;
+import { NavGod, TopNavBar, Links } from './styles/NavStyles.js';
 
 class NavBar extends Component {
   handleLogout = () => {

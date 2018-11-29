@@ -1,10 +1,8 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-
 import DashboardNav from './Nav/DashboardNav.js';
 import Documents from './Documents/Documents.js';
-
-import DocusignUnlink from './Auth/Docusign/DocusignUnlink';
+import Settings from './Settings/Settings.js';
 // import Checkout from './Stripe/Checkout.js';
 
 class Home extends React.Component {
@@ -20,14 +18,13 @@ class Home extends React.Component {
         </p>
         <Route exact path="/" component={Documents} />
         {/* <Route path="/billing" component={Billing} /> */}
-        {/* <Route exact path="/settings" component={Settings} /> */}
+        <Route exact path="/settings" component={Settings} />
 
         {/* <Checkout
           name={'Chainpoint-DocuSign'}
           description={'Purchase Credit'}
           amount={10}
         /> */}
-        <DocusignUnlink />
       </div>
     );
   }

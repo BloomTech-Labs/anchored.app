@@ -1,13 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const Button = styled.div`
-  width: 80px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+import { Button } from './styles/NavStyles.js';
 
 const NavButton = props => {
   let btnName = props.name;
