@@ -12,8 +12,6 @@ import {
 
 class Billing extends Component {
   render() {
-    // console.log('USER INFO', this.props.getAllUserInfo());
-    // console.log('PROPS', this.props);
     return (
       <Wrapper>
         <MainHeader>Billing</MainHeader>
