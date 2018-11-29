@@ -26,7 +26,7 @@ class PasswordReset extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-
+    console.log(this.props);
     const options = {
       method: 'POST',
       url: `https://${
