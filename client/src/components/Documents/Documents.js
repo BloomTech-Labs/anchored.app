@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getDocuments, getProof } from '../../actions/documents';
+import { getEnvelopes, getProof } from '../../actions/envelopes';
 import DocusignLogin from '../Auth/Docusign/DocusignLogin';
 import Document from './Document';
 
@@ -20,7 +20,7 @@ class Documents extends React.Component {
     };
   }
   componentDidMount() {
-    this.props.getDocuments();
+    this.props.getEnvelopes();
   }
 
   changeSelected = tab => {
@@ -29,22 +29,22 @@ class Documents extends React.Component {
 
   filterCards = () => {
     if (this.state.selected === 'all') {
-      return this.props.documents;
+      return this.props.envelopes;
     } else if (this.state.selected === 'waiting') {
-      return this.props.documents.filter(doc => doc.status !== 'completed');
+      return this.props.envelopes.filter(env => env.status !== 'completed');
     } else {
-      return this.props.documents.filter(doc => {
-        return doc.verified === this.state.selected;
+      return this.props.envelopes.filter(env => {
+        return Boolean(env.verified) === this.state.selected;
       });
     }
   };
 
   render() {
-    if (this.props.fetching) {
+    if (this.props.fetchingEnv) {
       return <div>Loading</div>;
     }
 
-    if (!this.props.documents) {
+    if (!this.props.envelopes) {
       return <DocusignLogin />;
     }
 
@@ -52,8 +52,8 @@ class Documents extends React.Component {
       <DocumentsContainer>
         <DocumentOptionsContainer>
           <DocumentsOptions
-            selected={this.state.selected === 1}
-            onClick={() => this.changeSelected(1)}
+            selected={this.state.selected === true}
+            onClick={() => this.changeSelected(true)}
           >
             Verified Contracts
           </DocumentsOptions>
@@ -78,6 +78,7 @@ class Documents extends React.Component {
               key={doc.envelope_id}
               doc={doc}
               getProof={this.props.getProof}
+              fetchingProof={this.props.fetchingProof}
             />
           );
         })}
@@ -94,12 +95,13 @@ class Documents extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    documents: state.documents.documents,
-    fetching: state.documents.retrievingDoc,
+    envelopes: state.envelopes.envelopes,
+    fetchingEnv: state.envelopes.retrievingEnv,
+    fetchingProof: state.envelopes.retrievingProof,
   };
 };
 
 export default connect(
   mapStateToProps,
-  { getDocuments, getProof }
+  { getEnvelopes, getProof }
 )(Documents);

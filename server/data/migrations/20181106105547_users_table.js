@@ -11,11 +11,11 @@ exports.up = function(knex, Promise) {
 
     tbl.string('last_name', 128);
 
-    tbl.string('username', 128).unique();
+    tbl.string('username', 128);
 
-    tbl.string('email', 128).unique();
+    tbl.string('email', 128);
 
-    tbl.string('phone_number', 128).unique();
+    tbl.string('phone_number', 128);
 
     tbl.string('documents', 1024);
 

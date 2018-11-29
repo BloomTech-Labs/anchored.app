@@ -1,30 +1,27 @@
 import axios from 'axios';
 
-export const RETRIEVING_DOCUMENTS = 'RETRIEVING_DOCUMENTS';
-export const RETRIEVED_DOCUMENTS = 'RETRIEVED_DOCUMENTS';
+export const RETRIEVING_ENVELOPES = 'RETRIEVING_ENVELOPES';
+export const RETRIEVED_ENVELOPES = 'RETRIEVED_ENVELOPES';
 
 export const RETRIEVING_PROOF = 'RETRIEVING_PROOF';
 export const RETRIEVED_PROOF = 'RETRIEVED_PROOF';
 
 export const ERROR = 'ERROR';
 
-export const getDocuments = () => {
+export const getEnvelopes = () => {
   const promise = axios.get(
-    process.env.REACT_APP_DOCUMENTS || 'http://localhost:9000/documents/all'
+    process.env.REACT_APP_ENVELOPES || 'http://localhost:9000/envelopes/all'
   );
   return dispatch => {
-    dispatch({ type: RETRIEVING_DOCUMENTS });
+    dispatch({ type: RETRIEVING_ENVELOPES });
     promise
-      .then(res => dispatch({ type: RETRIEVED_DOCUMENTS, payload: res.data }))
+      .then(res => dispatch({ type: RETRIEVED_ENVELOPES, payload: res.data }))
       .catch(err => dispatch({ type: ERROR, payload: err }));
   };
 };
 
 export const getProof = id => {
-  const promise = axios.get(
-    process.env.REACT_APP_DOCUMENTS ||
-      `http://localhost:9000/documents/${id}/proof`
-  );
+  const promise = axios.get(`http://localhost:9000/chainpoint/${id}`);
   return dispatch => {
     dispatch({ type: RETRIEVING_PROOF });
     promise
