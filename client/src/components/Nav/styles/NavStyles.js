@@ -4,6 +4,9 @@ export const NavGod = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  top: 0.1px;
+  position: sticky;
+  background-color: white;
 `;
 
 export const TopNavBar = styled.div`
