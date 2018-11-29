@@ -24,17 +24,8 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/:userId', (req, res) => {
-  const { userId } = req.params;
-
-  payments
-    .find(userId)
-    .then(invoices => {
-      res.status(200).json(invoices);
-    })
-    .catch(err => {
-      res.status(500).json({ ErrorMessage: err.message });
-    });
+router.get('/:userId', ensureAuthenticated, (req, res) => {
+  console.log(req.user);
 });
 
 router.post('/', ensureAuthenticated, (req, res) => {
@@ -45,12 +36,10 @@ router.post('/', ensureAuthenticated, (req, res) => {
       stripe.charges
         .create(req.body)
         .then(invoice => {
-          console.log('First', user_id);
           const { description, amount, currency } = invoice;
           payments
             .addInvoice({ user_id, description, amount, currency })
             .then(invoice => {
-              console.log('Second', user_id);
               postStripeCharge(
                 res.status(201).json({
                   user_id,
@@ -61,17 +50,14 @@ router.post('/', ensureAuthenticated, (req, res) => {
               );
             })
             .catch(err => {
-              console.log('Error #3', err.message);
               res.status(500).json({ ErrorMessage: err.message });
             });
         })
         .catch(err => {
-          console.log('ERROR', err.message);
           res.status(500).json({ ErrorMessage: err.message });
         });
     })
     .catch(err => {
-      console.log('Error', err.message);
       res.status(500).json({ ErrorMessage: err.message });
     });
 });
