@@ -37,3 +37,7 @@ export const DashboardButton = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const Img = styled.img`
+  width: 10%;
+`;

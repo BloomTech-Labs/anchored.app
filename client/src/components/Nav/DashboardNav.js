@@ -3,7 +3,8 @@ import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import NavButton from './DashNavBtn.js';
-import { NavGod, TopNavBar, Links } from './styles/NavStyles.js';
+import { NavGod, TopNavBar, Links, Img } from './styles/NavStyles.js';
+import Logo from '../../assets/Proofd_3.png';
 
 // styles for profile image
 const ProfileImage = {
@@ -30,7 +31,7 @@ class NavBar extends Component {
     return (
       <NavGod>
         <TopNavBar>
-          <p>Proof'd Logo</p>
+          <Img src={Logo} alt="Proofd Logo" />
           <Links>
             <NavLink
               exact

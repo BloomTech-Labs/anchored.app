@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import Auth0 from '../Auth/Auth0/Auth0.js';
 import NavButton from './NavButton.js';
-import { NavGod, TopNavBar, Links } from './styles/NavStyles.js';
+import { NavGod, TopNavBar, Links, Img } from './styles/NavStyles.js';
+import Logo from '../../assets/Proofd_3.png';
 
 const auth = new Auth0();
 
@@ -11,7 +12,7 @@ class NavBar extends Component {
     return (
       <NavGod>
         <TopNavBar>
-          <p>Proof'd Logo</p>
+          <Img src={Logo} alt="Proofd Logo" />
           <Links>
             <NavLink to={`/`} style={{ textDecoration: 'none' }}>
               <NavButton name="Home" />
