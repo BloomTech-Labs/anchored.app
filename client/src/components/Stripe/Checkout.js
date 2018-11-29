@@ -39,7 +39,9 @@ const CheckoutCredit1 = ({ name, description, amount }) => (
     currency={CURRENCY}
     stripeKey={STRIPE_PUBLISHABLE}
   >
-    <Button color="info">1 Credit</Button>
+    <Button outline color="primary">
+      1 Credit
+    </Button>
   </StripeCheckout>
 );
 
@@ -53,7 +55,9 @@ const CheckoutCredit3 = ({ name, description, amount }) => (
     currency={CURRENCY}
     stripeKey={STRIPE_PUBLISHABLE}
   >
-    <Button color="info">3 Credits</Button>
+    <Button outline color="success">
+      3 Credits
+    </Button>
   </StripeCheckout>
 );
 
@@ -67,7 +71,9 @@ const CheckoutCredit5 = ({ name, description, amount }) => (
     currency={CURRENCY}
     stripeKey={STRIPE_PUBLISHABLE}
   >
-    <Button color="info">5 Credits</Button>
+    <Button outline color="danger">
+      5 Credits
+    </Button>
   </StripeCheckout>
 );
 
