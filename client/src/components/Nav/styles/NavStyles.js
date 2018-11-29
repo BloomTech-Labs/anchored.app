@@ -37,3 +37,7 @@ export const DashboardButton = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const BuyCreditsButton = styled.div`
+  padding: 0 20px;
+`;

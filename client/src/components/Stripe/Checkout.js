@@ -32,7 +32,7 @@ const onToken = (amount, description) => token =>
 const CheckoutCredit1 = ({ name, description, amount }) => (
   <StripeCheckout
     name={name}
-    image={logo}
+    // image={logo}
     description={description}
     amount={fromDollarToCent(amount)}
     token={onToken(amount, description)}
@@ -48,7 +48,7 @@ const CheckoutCredit1 = ({ name, description, amount }) => (
 const CheckoutCredit3 = ({ name, description, amount }) => (
   <StripeCheckout
     name={name}
-    image={logo}
+    // image={logo}
     description={description}
     amount={fromDollarToCent(amount)}
     token={onToken(amount, description)}
@@ -64,7 +64,7 @@ const CheckoutCredit3 = ({ name, description, amount }) => (
 const CheckoutCredit5 = ({ name, description, amount }) => (
   <StripeCheckout
     name={name}
-    image={logo}
+    // image={logo}
     description={description}
     amount={fromDollarToCent(amount)}
     token={onToken(amount, description)}
