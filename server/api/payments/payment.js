@@ -1,7 +1,9 @@
 const express = require('express');
 const stripe = require('./constants/stripe.js');
-
+const users = require('../users/usersModel');
+const payments = require('./paymentsModel');
 const router = express.Router();
+const { ensureAuthenticated } = require('../auth/docusign/dsMiddleware');
 
 const postStripeCharge = res => (stripeErr, stripeRes) => {
   if (stripeErr) {
@@ -12,14 +14,64 @@ const postStripeCharge = res => (stripeErr, stripeRes) => {
 };
 
 router.get('/', (req, res) => {
-  res.send({
-    message: 'Hello Stripe checkout server!',
-    timestamp: new Date().toISOString(),
-  });
+  payments
+    .find()
+    .then(invoices => {
+      res.status(200).json(invoices);
+    })
+    .catch(err => {
+      res.status(500).json({ ErrorMessage: err.message });
+    });
 });
 
-router.post('/', (req, res) => {
-  stripe.charges.create(req.body, postStripeCharge(res));
+router.get('/:userId', (req, res) => {
+  const { userId } = req.params;
+
+  payments
+    .find(userId)
+    .then(invoices => {
+      res.status(200).json(invoices);
+    })
+    .catch(err => {
+      res.status(500).json({ ErrorMessage: err.message });
+    });
+});
+
+router.post('/', ensureAuthenticated, (req, res) => {
+  users
+    .findByUserId(req.user.id)
+    .then(user => {
+      console.log(user);
+      stripe.charges
+        .create(req.body)
+        .then(invoice => {
+          const { getUserId, description, amount, currency } = invoice;
+          payments
+            .addInvoice({ getUserId, description, amount, currency })
+            .then(invoice => {
+              console.log(invoice);
+
+              res.status(201).json({
+                user_id: user.id,
+                description: invoice.description,
+                amount: invoice.amount,
+                currency: invoice.currency,
+              });
+            })
+            .catch(err => {
+              console.log('Error');
+              res.status(500).json({ ErrorMessage: err.message });
+            });
+        })
+        .catch(err => {
+          console.log('ERROR');
+          res.status(500).json({ ErrorMessage: err.message });
+        });
+    })
+    .catch(err => {
+      console.log('Error');
+      res.status(500).json({ ErrorMessage: err.message });
+    });
 });
 
 module.exports = router;

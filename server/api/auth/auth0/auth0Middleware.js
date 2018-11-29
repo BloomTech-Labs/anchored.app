@@ -1,4 +1,5 @@
 const users = require('../../users/usersModel');
+const payments = require('../../payments/paymentsModel');
 const moment = require('moment');
 
 async function userPostCheck(user) {
