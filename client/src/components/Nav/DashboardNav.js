@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import axios from 'axios';
 import NavButton from './DashNavBtn.js';
 import { NavGod, TopNavBar, Links } from './styles/NavStyles.js';
@@ -60,6 +61,11 @@ class NavBar extends Component {
             >
               <NavButton name="Log Out" />
             </NavLink>
+            <img
+              style={{ height: '50px' }}
+              src={this.props.user.picture}
+              alt=""
+            />
           </Links>
         </TopNavBar>
       </NavGod>
@@ -67,4 +73,11 @@ class NavBar extends Component {
   }
 }
 
-export default withRouter(NavBar);
+const mapStateToProps = state => {
+  return {
+    user: state.user.user,
+    fetching: state.user.retrieving,
+  };
+};
+
+export default withRouter(connect(mapStateToProps)(NavBar));
