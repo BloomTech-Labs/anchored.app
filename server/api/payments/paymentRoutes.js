@@ -21,11 +21,23 @@ router.get('/', (req, res) => {
     })
     .catch(err => {
       res.status(500).json({ ErrorMessage: err.message });
+    })
+    .catch(err => {
+      res.status(500).json({ ErrorMessage: err.message });
     });
 });
 
 router.get('/:userId', ensureAuthenticated, (req, res) => {
-  console.log(req.user);
+  users.findByUserId(req.user.id).then(user => {
+    payments
+      .findByUserId(user.id)
+      .then(invoice => {
+        res.status(200).json(invoice);
+      })
+      .catch(err => {
+        res.status();
+      });
+  });
 });
 
 router.post('/', ensureAuthenticated, (req, res) => {
