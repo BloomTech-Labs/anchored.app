@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import DashboardNav from './Nav/DashboardNav.js';
 import Documents from './Documents/Documents.js';
 import Settings from './Settings/Settings.js';
-// import Checkout from './Stripe/Checkout.js';
+import Billing from './Billing/Billing.js';
 
 class Home extends React.Component {
   render() {
@@ -17,7 +17,7 @@ class Home extends React.Component {
             : this.props.user.username}
         </p>
         <Route exact path="/" component={Documents} />
-        {/* <Route path="/billing" component={Billing} /> */}
+        <Route path="/billing" component={Billing} />
         <Route exact path="/settings" component={Settings} />
 
         {/* <Checkout

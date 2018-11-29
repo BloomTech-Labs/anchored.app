@@ -11,10 +11,6 @@ import {
 } from './style/BillingStyles';
 
 class Billing extends Component {
-  componentDidMount() {
-    this.props.getAllUserInfo();
-  }
-
   render() {
     return (
       <Wrapper>
@@ -24,7 +20,7 @@ class Billing extends Component {
           {this.props.subscription ? 'Premium Account' : 'Free Account'}
         </ContentHeader>
         <ContentHeader>
-          Current Avaiable Credits: {this.props.credits}
+          Current Available Credits: {this.props.credits}
         </ContentHeader>
         <ContentHeader> Invoice</ContentHeader>
         <Invoice />
