@@ -11,26 +11,24 @@ import {
 } from './style/BillingStyles';
 
 class Billing extends Component {
-  componentDidMount() {
-    this.props.getAllUserInfo();
-  }
-
   render() {
+    // console.log('USER INFO', this.props.getAllUserInfo());
+    // console.log('PROPS', this.props);
     return (
       <Wrapper>
         <MainHeader>Billing</MainHeader>
         <ContentHeader>
           Current Plan:
-          {this.props.subscription ? 'Premium Account' : 'Free Account'}
+          {this.props.subscription ? ' Premium Account' : ' Free Account'}
         </ContentHeader>
         <ContentHeader>
-          Current Avaiable Credits: {this.props.credits}
+          Current Available Credits: {this.props.credits}
         </ContentHeader>
-        <ContentHeader> Invoice</ContentHeader>
+        <ContentHeader>Invoice</ContentHeader>
         <Invoice />
         <ButtonWrapper>
           <Checkout
-            name={'Chainpoint-DocuSign'}
+            name={'PROOFD'}
             description={'Purchase Credit'}
             amount={10}
           />
@@ -41,7 +39,7 @@ class Billing extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
+  // console.log(state);
   return {
     subscription: state.billing.subscription,
     credits: state.billing.credits,

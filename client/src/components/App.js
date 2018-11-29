@@ -56,7 +56,6 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     user: state.user.user,
     fetching: state.user.retrieving,
