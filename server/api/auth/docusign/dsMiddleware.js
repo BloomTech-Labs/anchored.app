@@ -1,4 +1,5 @@
 const users = require('../../users/usersModel');
+const docusign = require('docusign-esign');
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) return next();
@@ -20,4 +21,13 @@ function updateUser(req, user_info) {
   users.updateUser(req.user.id, new_user).catch(err => console.log(err));
 }
 
-module.exports = { ensureAuthenticated, updateUser };
+function getDSApi(user) {
+  // Sets up headers / users base_uri for the api to use
+  const apiClient = new docusign.ApiClient();
+  apiClient.addDefaultHeader('Authorization', 'Bearer ' + user.access_token);
+  apiClient.setBasePath(`${user.base_uri}/restapi`);
+  docusign.Configuration.default.setDefaultApiClient(apiClient);
+  return apiClient;
+}
+
+module.exports = { ensureAuthenticated, updateUser, getDSApi };

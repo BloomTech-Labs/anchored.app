@@ -29,10 +29,10 @@ function handleExpiration(req, res, next) {
     .catch(err => res.status(401).json({ ErrorMessage: err.response.data }));
 }
 
-async function getEnvelopes(envelopesApi, account_id) {
+async function getEnvelopesList(envelopesApi, account_id) {
   let options = {
     fromDate: moment()
-      .subtract(30, 'days')
+      .subtract(6, 'months')
       .format(),
   };
   let envelopesP = promisify(envelopesApi.listStatusChanges).bind(envelopesApi);
@@ -45,74 +45,98 @@ async function getEnvelopes(envelopesApi, account_id) {
   return envelopes;
 }
 
-async function getDocuments(envelopesApi, account_id, envelopes) {
-  let documentsP = promisify(envelopesApi.listDocuments).bind(envelopesApi);
+async function getEnvelopes(envelopesApi, account_id, envelopes) {
+  let envelopesP = promisify(envelopesApi.getEnvelope).bind(envelopesApi);
   let results = [];
   for (let i = 0; i < envelopes.envelopes.length; i++) {
     let envelope_id = envelopes.envelopes[i].envelopeId;
-    let document = await documentsP(account_id, envelope_id, null);
-    let status = envelopes.envelopes[i].status;
-    if (document) {
-      results.push({ ...document, status });
+    let envelope = await envelopesP(account_id, envelope_id);
+    let status = envelope.status;
+    let subject = envelope.emailSubject;
+
+    if (envelope) {
+      results.push({ subject, status, envelope_id });
     }
   }
   return results;
 }
 
-async function getImages(envelopesApi, account_id, documents) {
-  let imagesP = promisify(envelopesApi.getDocumentPageImage).bind(envelopesApi);
+async function getDocuments(envelopesApi, account_id, documents) {
+  let documentsP = promisify(envelopesApi.getDocument).bind(envelopesApi);
   let results = [];
-  for (let i = 0; i < documents.length; i++) {
-    for (let j = 0; j < documents[i].envelopeDocuments.length; j++) {
-      let envelope_id = documents[i].envelopeId;
-      let document_id = documents[i].envelopeDocuments[j].documentId;
-      let status = documents[i].status;
-      if (!document_id || document_id === 'certificate') break;
+  for (let i = 0; i < documents.envelopeDocuments.length; i++) {
+    let envelope_id = documents.envelopeId;
+    let document_id = documents.envelopeDocuments[i].documentId;
 
-      let image = await imagesP(account_id, envelope_id, document_id, '1', {
-        maxWidth: '200',
-        maxHeight: '300',
-      });
+    if (!document_id || document_id === 'certificate') break;
 
-      if (image) {
-        results.push({ envelope_id, document_id, status, image });
-      }
+    let document = await documentsP(account_id, envelope_id, document_id);
+
+    if (document) {
+      results.push(document);
     }
   }
   return results;
 }
 
-function postDocToDB(req, res, images) {
-  docs
-    .findAllByUser(req.user.id)
-    .then(docus => {
-      for (let i = 0; i < images.length; i++) {
-        let index = docus.findIndex(
-          doc =>
-            doc.document_id == images[i].document_id &&
-            doc.envelope_id == images[i].envelope_id
-        );
-        if (index === -1) {
-          // Add a doc if not found
-          docs
-            .addDoc(images[i])
-            .then(ids => {
-              let user_doc = { user_id: req.user.id, document_id: ids.id };
-              docs.addUserToDoc(user_doc).catch(err => console.log(err));
-            })
-            .catch(err => console.log(err));
-          docus.push(images[i]);
-        } else {
-          // Update doc if found
-          docs
-            .updateDoc(docus[index].id, images[i])
-            .catch(err => console.log(err));
-          docus[index] = images[i];
-        }
+async function getDocumentsList(envelopesApi, account_id, envelope_id) {
+  let documentsP = promisify(envelopesApi.listDocuments).bind(envelopesApi);
+  let documents = await documentsP(account_id, envelope_id);
+  return documents;
+}
+
+// async function getImages(envelopesApi, account_id, documents) {
+//   let imagesP = promisify(envelopesApi.getDocumentPageImage).bind(envelopesApi);
+//   let results = [];
+//   for (let i = 0; i < documents.length; i++) {
+//     for (let j = 0; j < documents[i].envelopeDocuments.length; j++) {
+//       let envelope_id = documents[i].envelopeId;
+//       let document_id = documents[i].envelopeDocuments[j].documentId;
+//       let status = documents[i].status;
+//       if (!document_id || document_id === 'certificate') break;
+
+//       let image = await imagesP(account_id, envelope_id, document_id, '1', {
+//         maxWidth: '200',
+//         maxHeight: '300',
+//       });
+
+//       if (image) {
+//         results.push({ envelope_id, document_id, status, image });
+//       }
+//     }
+//   }
+//   return results;
+// }
+
+async function postDocToDB(req, res, envelopes) {
+  try {
+    let documents = await docs.findAllByUser(req.user.id);
+    for (let i = 0; i < envelopes.length; i++) {
+      let index = documents.findIndex(
+        doc => doc.envelope_id == envelopes[i].envelope_id
+      );
+      if (index === -1) {
+        // Add a doc if not found
+        let ids = await docs.addDoc(envelopes[i]);
+
+        envelopes[i].id = ids.id;
+        envelopes[i].verified = 0;
+        documents.push(envelopes[i]);
+
+        let user_doc = { user_id: req.user.id, document_id: ids.id };
+        await docs.addUserToDoc(user_doc);
+      } else {
+        // Update doc if found
+        await docs.updateDoc(documents[index].id, envelopes[i]);
+        envelopes[i].id = documents[index].id;
+        envelopes[i].verified = documents[index].verified;
+        documents[index] = envelopes[i];
       }
-      return res.status(200).json(docus);
-    })
-    .catch(err => res.status(500).json({ ErrorMessage: err.message }));
+    }
+    return res.status(200).json(documents);
+  } catch (err) {
+    res.status(500).json({ ErrorMessage: err.message });
+  }
 }
 
 function checkExpiration(req, res, next) {
@@ -145,7 +169,9 @@ module.exports = {
   checkExpiration,
   checkToken,
   getEnvelopes,
+  getEnvelopesList,
   getDocuments,
-  getImages,
+  getDocumentsList,
+  // getImages,
   postDocToDB,
 };

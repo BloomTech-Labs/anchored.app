@@ -1,79 +1,72 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
-import './CTA.css';
 import playImg from '../../assets/play-circle.svg';
 
-const CtaContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
+import {
+  CtaContainer,
+  CtaButton,
+  Demo,
+  OurPatrons,
+  Logos,
+  H2,
+  H3,
+  Copy,
+  Img,
+  Friends,
+} from './styles/CTAStyles.js';
 
-const CtaButton = styled.div`
-  border: 1px solid black;
-  border-radius: 5px;
-  margin: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 280px;
-  height: 65px;
-  font-weight: bold;
-  font-size: 1.3rem;
-`;
-
-const Demo = styled.div`
-  width: 200px;
-  height: 65px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const OurPatrons = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 1026px;
-  max-width: 100%;
-  margin: 40px;
-  padding: 10px;
-  font-size: 1rem;
-  font-weight: bold;
-`;
-
-const Logos = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 1026px;
-  max-width: 100%;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  margin-top: 10px;
-  padding: 10px;
-`;
+import {
+  Events,
+  animateScroll as scroll,
+  scrollSpy,
+  scroller,
+} from 'react-scroll';
 
 class CTA extends Component {
+  componentDidMount() {
+    Events.scrollEvent.register('begin', function(to, element) {
+      console.log('begin', arguments);
+    });
+
+    Events.scrollEvent.register('end', function(to, element) {
+      console.log('end', arguments);
+    });
+
+    scrollSpy.update();
+  }
+
+  // scrolls to <Element name="pricingSheets"> in LPContent.js
+  smoothScroll() {
+    scroller.scrollTo('pricingSheets', {
+      duration: 1500,
+      delay: 1,
+      smooth: true,
+      offset: -200,
+    });
+  }
+
+  componentWillUnmount() {
+    Events.scrollEvent.remove('begin');
+    Events.scrollEvent.remove('end');
+  }
+
   render() {
     return (
       <CtaContainer>
-        <h2>Get proof, not just trust</h2>
-        <p>Blockchain enabled verification platform</p>
-        <CtaButton>CHECK OUR PRICES</CtaButton>
+        <H2>Get proof, not just trust</H2>
+        <Copy>Blockchain enabled verification platform</Copy>
+        <CtaButton onClick={this.smoothScroll}>CHECK OUR PRICES</CtaButton>
         <Demo>
-          <img src={playImg} alt="play icon" width="20%" />
-          <p>Watch the Demo</p>
+          <Img src={playImg} alt="play icon" width="20%" />
+          <Copy>Watch the Demo</Copy>
         </Demo>
         <OurPatrons>
-          <h3>Used By Our Friends At:</h3>
+          <H3>Used By Our Friends At:</H3>
           <Logos>
-            <div className="friends" />
-            <div className="friends" />
-            <div className="friends" />
-            <div className="friends" />
-            <div className="friends" />
+            <Friends />
+            <Friends />
+            <Friends />
+            <Friends />
+            <Friends />
           </Logos>
         </OurPatrons>
       </CtaContainer>

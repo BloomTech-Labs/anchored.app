@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/profile', (req, res) => {
-  res.status(200).json({ user: req.user.username });
+  res.status(200).json({ user: req.user });
 });
 
 router.get('/subscription', (req, res) => {
