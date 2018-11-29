@@ -36,12 +36,12 @@ class Billing extends Component {
           />
           <CheckoutCredit3
             name={'PROOFD'}
-            description={'Purchase 3 Credit'}
+            description={'Purchase 3 Credits'}
             amount={10}
           />
           <CheckoutCredit5
             name={'PROOFD'}
-            description={'Purchase 3 Credit'}
+            description={'Purchase 5 Credits'}
             amount={15}
           />
         </ButtonWrapper>
