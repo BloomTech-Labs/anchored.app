@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getAllUserInfo } from '../../actions/billing';
-import Checkout from '../Stripe/Checkout';
+import {
+  CheckoutCredit1,
+  CheckoutCredit3,
+  CheckoutCredit5,
+} from '../Stripe/Checkout';
 import {
   Wrapper,
   MainHeader,
@@ -12,8 +16,6 @@ import {
 
 class Billing extends Component {
   render() {
-    // console.log('USER INFO', this.props.getAllUserInfo());
-    // console.log('PROPS', this.props);
     return (
       <Wrapper>
         <MainHeader>Billing</MainHeader>
@@ -27,10 +29,20 @@ class Billing extends Component {
         <ContentHeader>Invoice</ContentHeader>
         <Invoice />
         <ButtonWrapper>
-          <Checkout
+          <CheckoutCredit1
             name={'PROOFD'}
-            description={'Purchase Credit'}
+            description={'Purchase 1 Credit'}
+            amount={5}
+          />
+          <CheckoutCredit3
+            name={'PROOFD'}
+            description={'Purchase 3 Credit'}
             amount={10}
+          />
+          <CheckoutCredit5
+            name={'PROOFD'}
+            description={'Purchase 3 Credit'}
+            amount={15}
           />
         </ButtonWrapper>
       </Wrapper>
