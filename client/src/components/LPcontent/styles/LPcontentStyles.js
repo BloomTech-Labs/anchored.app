@@ -26,9 +26,9 @@ export const ContentSet = styled.div`
   justify-content: center;
   align-items: center;
 
-  &:last-child {
+  /* &:last-child {
     border-bottom: 1px solid black;
-  }
+  } */
 `;
 
 export const NumberedImage = styled.div`
