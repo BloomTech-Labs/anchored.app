@@ -6,7 +6,7 @@ import {
 
 const initialState = {
   subscription: null,
-  credits: null,
+  credits: 3,
   retrieving: false,
   retrieved: false,
   error: null,

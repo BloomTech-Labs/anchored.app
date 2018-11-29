@@ -7,7 +7,7 @@ const usersRoutes = require('./users/usersRoutes.js');
 const docsRoutes = require('./documents/documentsRoutes.js');
 const chainpointRoutes = require('./chainpoint/chainpointRoutes.js');
 const authRoutes = require('./auth/auth.js');
-const paymentRoutes = require('./payments/payment.js');
+const paymentRoutes = require('./payments/paymentRoutes.js');
 
 const corsOptions = process.env.STRIPE_FRONTEND_URL || 'http://localhost:3000';
 
@@ -20,7 +20,6 @@ server.use(cors({ origin: corsOptions }));
 server.use(express.json());
 
 server.use((req, res, next) => {
-  console.log('Lo');
   next();
 });
 // routes

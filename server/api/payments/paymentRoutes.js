@@ -41,25 +41,24 @@ router.post('/', ensureAuthenticated, (req, res) => {
   users
     .findByUserId(req.user.id)
     .then(user => {
-      console.log(user);
       stripe.charges
         .create(req.body)
         .then(invoice => {
-          const { getUserId, description, amount, currency } = invoice;
+          const { user_id, description, amount, currency } = invoice;
           payments
-            .addInvoice({ getUserId, description, amount, currency })
+            .addInvoice({ user_id, description, amount, currency })
             .then(invoice => {
-              console.log(invoice);
-
-              res.status(201).json({
-                user_id: user.id,
-                description: invoice.description,
-                amount: invoice.amount,
-                currency: invoice.currency,
-              });
+              postStripeCharge(
+                res.status(201).json({
+                  user_id: user.id,
+                  description: invoice.description,
+                  amount: invoice.amount,
+                  currency: invoice.currency,
+                })
+              );
             })
             .catch(err => {
-              console.log('Error');
+              console.log('Error #3', err.message);
               res.status(500).json({ ErrorMessage: err.message });
             });
         })

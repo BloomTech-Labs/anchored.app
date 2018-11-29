@@ -19,12 +19,6 @@ class Home extends React.Component {
         <Route exact path="/" component={Documents} />
         <Route path="/billing" component={Billing} />
         <Route exact path="/settings" component={Settings} />
-
-        {/* <Checkout
-          name={'Chainpoint-DocuSign'}
-          description={'Purchase Credit'}
-          amount={10}
-        /> */}
       </div>
     );
   }
