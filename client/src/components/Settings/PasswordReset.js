@@ -44,8 +44,7 @@ class PasswordReset extends Component {
     // If logged in via email
     // TODO: May need to restructure db later
     // and use something else on the user obj instead of `first_name`
-    if (!this.props.user.first_name) {
-      console.log('test');
+    if (this.props.user.first_name === undefined) {
       request(options, (error, response, body) => {
         if (error) throw new Error(error);
         this.toggleOne();
