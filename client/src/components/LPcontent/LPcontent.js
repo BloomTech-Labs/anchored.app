@@ -68,16 +68,16 @@ const LPcontent = () => {
       <Element name="pricingSheets">
         <ContentSet>
           <ContentBox
-            title="Free Trial"
+            title="Pay As You Go"
             copyOne="3 Free Credits"
-            copyTwo="Purchase Additional Credits"
+            copyTwo="Purchase Credits A La Carte"
             copyThree="Upgrade Anytime"
           />
           <ContentBox
             title="Premium Subscription"
-            copyOne="20 Credits for:"
-            copyTwo="$15 charged per month or"
-            copyThree="$150 charged per year"
+            copyOne="Unlimited Credits"
+            copyTwo="$25 billed monthly, or"
+            copyThree="$240 billed annually"
           />
         </ContentSet>
       </Element>

@@ -69,7 +69,8 @@ export const TagLine = styled.p`
   font-size: 1.1rem;
   max-width: 450px;
   text-align: left;
-  padding: 30px;
+  padding: 10px;
+  margin-bottom: 0px;
 `;
 
 export const PlayImg = styled.img`
