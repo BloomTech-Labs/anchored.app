@@ -2,7 +2,7 @@ const users = require('../../users/usersModel');
 const moment = require('moment');
 
 async function userPostCheck(user) {
-  const { given_name, family_name, nickname, email, sub } = user;
+  const { given_name, family_name, nickname, email, sub, picture } = user;
 
   if (!sub) {
     return;
@@ -24,6 +24,7 @@ async function userPostCheck(user) {
     last_name: family_name,
     username: nickname,
     email,
+    picture,
   };
 
   users.addUser(new_user).catch(err => console.log(err));
