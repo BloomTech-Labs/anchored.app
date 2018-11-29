@@ -41,12 +41,7 @@ class App extends Component {
     }
 
     if (this.props.user) {
-      return (
-        <div>
-          <Route exact path="/" user={this.props.user} component={Home} />
-          <Route path="/billing" component={Billing} />
-        </div>
-      );
+      return <Home user={this.props.user} />;
     }
 
     return (
