@@ -5,6 +5,12 @@ import axios from 'axios';
 import NavButton from './DashNavBtn.js';
 import { NavGod, TopNavBar, Links } from './styles/NavStyles.js';
 
+// styles for profile image
+const ProfileImage = {
+  height: '50px',
+  borderRadius: '25px',
+};
+
 class NavBar extends Component {
   handleLogout = () => {
     axios
@@ -62,9 +68,9 @@ class NavBar extends Component {
               <NavButton name="Log Out" />
             </NavLink>
             <img
-              style={{ height: '50px' }}
+              style={ProfileImage}
               src={this.props.user.picture}
-              alt=""
+              alt="user profile thumbnail"
             />
           </Links>
         </TopNavBar>
