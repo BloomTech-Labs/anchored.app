@@ -8,7 +8,8 @@ import {
 
 const DocumentModal = props => {
   const verified_proof = JSON.parse(props.doc.verified_proof);
-  const link = `https://live.blockcypher.com/btc/block/${props.link}`;
+  const block_height = verified_proof.anchorId;
+  const link = `https://live.blockcypher.com/btc/block/${block_height}`;
   return (
     <ModalWrapper style={props.modal ? { display: 'block' } : null}>
       <ModalContent>

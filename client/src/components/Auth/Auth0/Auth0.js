@@ -14,7 +14,7 @@ const options = {
   auth: {
     redirectUrl:
       process.env.REACT_APP_REDIRECT_URL ||
-      'https://cryptic-eyrie-27950.herokuapp.com/auth/auth0/callback',
+      'http://localhost:9000/auth/auth0/callback',
   },
 };
 

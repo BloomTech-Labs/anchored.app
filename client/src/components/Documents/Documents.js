@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
-import { getEnvelopes, getProof } from '../../actions/envelopes';
+import { getEnvelopes, getProof, updateLoading } from '../../actions/envelopes';
 import DocusignLogin from '../Auth/Docusign/DocusignLogin';
 import Document from './Document';
 
@@ -80,6 +80,7 @@ class Documents extends React.Component {
               key={doc.envelope_id}
               doc={doc}
               getProof={this.props.getProof}
+              updateLoading={this.props.updateLoading}
             />
           );
         })}
@@ -95,7 +96,6 @@ class Documents extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state.envelopes.envelopes);
   return {
     envelopes: state.envelopes.envelopes,
     fetchingEnv: state.envelopes.retrievingEnv,
@@ -105,6 +105,6 @@ const mapStateToProps = state => {
 export default withRouter(
   connect(
     mapStateToProps,
-    { getEnvelopes, getProof }
+    { getEnvelopes, getProof, updateLoading }
   )(Documents)
 );

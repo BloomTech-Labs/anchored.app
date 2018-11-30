@@ -1,6 +1,5 @@
 import React from 'react';
 import DocumentModal from './DocumentModal';
-import axios from 'axios';
 import {
   DocumentContainer,
   DocumentSubject,
@@ -8,38 +7,28 @@ import {
   LoadingContainer,
 } from './styles/DocumentStyles';
 import { BeatLoader } from 'react-spinners';
+import axios from 'axios';
 
 class Document extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      blockcypher_link: null,
-      selected: false,
       modal: false,
-      expired: false,
     };
   }
 
   componentDidMount() {
-    if (this.props.doc.verified) {
-      axios.defaults.withCredentials = false;
-      const block = JSON.parse(this.props.doc.verified_proof).anchorId;
-      axios
-        .get(`https://api.blockcypher.com/v1/btc/main/blocks/${block}`)
-        .then(res => {
-          axios.defaults.withCredentials = true;
-          this.setState({ blockcypher_link: res.data.hash });
-        })
-        .catch(() => (axios.defaults.withCredentials = true));
-    }
     if (this.props.doc.loading) {
-      this.setState({ selected: true });
+      this.checkLoading();
     }
   }
 
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
   getProof = () => {
-    this.setState({ selected: true, expired: false });
     this.props.getProof(this.props.doc.id);
   };
 
@@ -47,16 +36,37 @@ class Document extends React.Component {
     this.setState({ modal: !this.state.modal });
   };
 
+  checkLoading = () => {
+    let promise;
+    if (process.env.REACT_APP_CHAINPOINT) {
+      promise = axios.get(
+        `${process.env.REACT_APP_CHAINPOINT}/${this.props.doc.id}/loading`
+      );
+    } else {
+      promise = axios.get(
+        `http://localhost:9000/chainpoint/${this.props.doc.id}/loading`
+      );
+    }
+    this.interval = setInterval(() => {
+      promise
+        .then(res => {
+          if (!res.data.loading) {
+            this.props.updateLoading(this.props.doc.id, res.data);
+            this.clearInterval(this.interval);
+          }
+        })
+        .catch(() => clearInterval(this.interval));
+    }, 5000);
+  };
+
   render() {
-    const details = `https://appdemo.docusign.com/documents/details/${
-      this.props.doc.envelope_id
-    }`;
+    const envelope_id = this.props.doc.envelope_id;
+    const details = `https://appdemo.docusign.com/documents/details/${envelope_id}`;
     return (
       <DocumentContainer>
         {this.props.doc.verified ? (
           <DocumentModal
             modal={this.state.modal}
-            link={this.state.blockcypher_link}
             toggleModal={this.toggleModal}
             doc={this.props.doc}
           />
@@ -68,10 +78,12 @@ class Document extends React.Component {
         !this.props.doc.verified &&
         !this.props.doc.waiting ? (
           <DocumentProof onClick={this.getProof}>
-            {this.state.selected && !this.state.expired ? (
+            {this.props.doc.loading && !this.props.doc.error ? (
               <LoadingContainer>
                 <BeatLoader color={'black'} sizeUnit={'px'} size={10} />
               </LoadingContainer>
+            ) : this.props.doc.error ? (
+              'Error'
             ) : (
               'Click to Proof'
             )}

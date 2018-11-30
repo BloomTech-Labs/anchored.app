@@ -14,14 +14,10 @@ exports.up = function(knex, Promise) {
       .references('id')
       .inTable('documents');
 
-    tbl
-      .integer('envelope_id')
-      .unsigned()
-      .references('envelope_id')
-      .inTable('envelopes');
-
     tbl.timestamp('created_at').defaultTo(knex.fn.now());
   });
 };
 
-exports.down = function(knex, Promise) {};
+exports.down = function(knex, Promise) {
+  return knex.schema.dropTableIfExists('users_documents');
+};

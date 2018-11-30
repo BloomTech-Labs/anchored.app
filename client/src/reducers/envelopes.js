@@ -4,6 +4,7 @@ import {
   RETRIEVING_PROOF,
   RETRIEVED_PROOF,
   ERROR,
+  UPDATE_LOADING,
 } from '../actions/envelopes';
 
 const initialState = {
@@ -33,8 +34,14 @@ export default (state = initialState, action) => {
       const envelopes = state.envelopes.slice();
       const index = envelopes.findIndex(env => env.id === action.payload);
       envelopes[index].loading = true;
-      return { ...state, retrievingProof: true, retrievedProof: false };
+      return {
+        ...state,
+        retrievingProof: true,
+        retrievedProof: false,
+        envelopes,
+      };
     }
+
     case RETRIEVED_PROOF: {
       const envelopes = state.envelopes.slice();
       const index = envelopes.findIndex(env => env.id === action.payload.id);
@@ -48,13 +55,33 @@ export default (state = initialState, action) => {
       };
     }
 
+    case UPDATE_LOADING: {
+      const envelopes = state.envelopes.slice();
+      const index = envelopes.findIndex(env => env.id === action.payload.id);
+      envelopes[index].loading = action.payload.changes.loading;
+      envelopes[index].waiting = action.payload.changes.waiting;
+      return { ...state, envelopes };
+    }
+
     case ERROR: {
+      let envelopes = state.envelopes;
+      if (envelopes) {
+        envelopes = state.envelopes.slice();
+        if (action.payload.data && action.payload.data.id) {
+          const id = action.payload.data.id;
+          const index = envelopes.findIndex(env => env.id === Number(id));
+          envelopes[index].loading = false;
+          envelopes[index].error = true;
+        }
+      }
+
       return {
         ...state,
         retrievingEnv: false,
         retrievedEnv: false,
         retrievingProof: false,
         retrievedProof: false,
+        envelopes,
         error: action.payload,
       };
     }

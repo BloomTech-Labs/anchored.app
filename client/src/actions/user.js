@@ -7,8 +7,7 @@ export const ERROR = 'ERROR';
 
 export const getUserInfo = () => {
   const promise = axios.get(
-    process.env.REACT_APP_USERS_PROFILE ||
-      'https://cryptic-eyrie-27950.herokuapp.com/users/profile'
+    process.env.REACT_APP_USERS_PROFILE || 'http://localhost:9000/users/profile'
   );
   return dispatch => {
     dispatch({ type: RETRIEVING_USER_INFO });
