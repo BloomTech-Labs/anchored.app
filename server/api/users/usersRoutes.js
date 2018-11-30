@@ -28,20 +28,6 @@ router.get('/subscription', (req, res) => {
     .json({ subscription: req.user.subscription, credits: req.user.credits });
 });
 
-// Increment Credits
-router.get('/credits', (req, res) => {
-  console.log(req.user.username);
-
-  users
-    .incrementCredit()
-    .then(credits => {
-      res.status(201).json({ credits: req.user.credits });
-    })
-    .catch(err => {
-      res.status(500).json(err.message);
-    });
-});
-
 router.get('/id/:id', (req, res) => {
   const { id } = req.params;
   users

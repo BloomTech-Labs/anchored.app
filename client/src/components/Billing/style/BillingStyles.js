@@ -1,11 +1,23 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  max-width: 800px;
-  transform: translate(0px, 150px);
+  max-width: 1000px;
+  transform: translate(0px, 50px);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+`;
+
+const InfoWrapper = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`;
+
+const InfoWrapperTwo = styled.ul`
+  display: flex;
+  margin-top: 40px;
+  justify-content: space-evenly;
+  border: 1px solid black;
 `;
 
 const MainHeader = styled.h2`
@@ -28,4 +40,12 @@ const ButtonWrapper = styled.div`
   margin: 0 auto;
 `;
 
-export { Wrapper, MainHeader, ContentHeader, ButtonWrapper, Invoice };
+export {
+  Wrapper,
+  MainHeader,
+  InfoWrapper,
+  InfoWrapperTwo,
+  ContentHeader,
+  ButtonWrapper,
+  Invoice,
+};

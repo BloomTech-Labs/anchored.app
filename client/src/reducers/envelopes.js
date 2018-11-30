@@ -67,7 +67,7 @@ export default (state = initialState, action) => {
       let envelopes = state.envelopes;
       if (envelopes) {
         envelopes = state.envelopes.slice();
-        if (action.payload.data && action.payload.data.id) {
+        if (action.payload && action.payload.data && action.payload.data.id) {
           const id = action.payload.data.id;
           const index = envelopes.findIndex(env => env.id === Number(id));
           envelopes[index].loading = false;

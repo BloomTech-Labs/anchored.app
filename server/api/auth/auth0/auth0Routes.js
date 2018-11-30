@@ -48,6 +48,7 @@ router.get(
 // Perform session logout and redirect to homepage
 router.get('/logout', (req, res) => {
   req.session.destroy(function(err) {
+    req.logout();
     res.redirect('/');
   });
 });
