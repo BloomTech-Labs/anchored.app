@@ -1,7 +1,5 @@
 const express = require('express');
-
 const docs = require('./documentsModel.js');
-
 const docusign = require('docusign-esign');
 
 const { ensureAuthenticated } = require('../auth/docusign/dsMiddleware');
@@ -12,7 +10,6 @@ const {
   getEnvelopesList,
   getDocuments,
   getDocumentsList,
-  // getImages,
   postDocToDB,
 } = require('./docsMiddleware');
 const { getDSApi } = require('../auth/docusign/dsMiddleware');
@@ -116,8 +113,6 @@ router.post('/', (req, res) => {
   docs
     .addDoc(document)
     .then(ids => {
-      // TODO: GET user_id from logged in user token
-      // use user_id and ids[0] to call addUserToDoc here
       res.status(201).json(ids[0]);
     })
     .catch(err => {

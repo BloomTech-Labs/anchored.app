@@ -1,7 +1,5 @@
 const express = require('express');
-
 const users = require('./usersModel.js');
-
 const { ensureAuthenticated } = require('../auth/docusign/dsMiddleware');
 
 const router = express.Router();
@@ -29,24 +27,6 @@ router.get('/subscription', (req, res) => {
     .status(200)
     .json({ subscription: req.user.subscription, credits: req.user.credits });
 });
-
-// router.get('/:email', (req, res) => {
-//   const { email } = req.params;
-//   users
-//     .findByEmail(email)
-//     .then(user => {
-//       if (user) {
-//         res.status(200).json(user);
-//       } else {
-//         res
-//           .status(404)
-//           .json({ message: `No user found to get, by the supplied username.` });
-//       }
-//     })
-//     .catch(err => {
-//       res.status(500).json({ ErrorMessage: err.message });
-//     });
-// });
 
 router.get('/id/:id', (req, res) => {
   const { id } = req.params;
