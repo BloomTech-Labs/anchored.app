@@ -3,6 +3,7 @@ const docusign = require('docusign-esign');
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) return next();
+  console.log('User not logged in');
   return res.status(401).json({ message: 'You need to be logged in!' });
 }
 

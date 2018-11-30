@@ -1,5 +1,5 @@
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('users_documents', function(tbl) {
+  return knex.schema.createTable('users_envelopes', function(tbl) {
     tbl.increments();
 
     tbl
@@ -9,13 +9,15 @@ exports.up = function(knex, Promise) {
       .inTable('users');
 
     tbl
-      .integer('document_id')
+      .integer('envelope_id')
       .unsigned()
       .references('id')
-      .inTable('documents');
+      .inTable('envelopes');
 
     tbl.timestamp('created_at').defaultTo(knex.fn.now());
   });
 };
 
-exports.down = function(knex, Promise) {};
+exports.down = function(knex, Promise) {
+  return knex.schema.dropTableIfExists('users_envelopes');
+};

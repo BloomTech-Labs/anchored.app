@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const DocumentsContainer = styled.div`
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,4 +34,12 @@ export const AddDocument = styled.a`
   cursor: pointer;
   text-decoration: none;
   color: black;
+`;
+
+export const LoadingContainer = styled.div`
+  display: flex;
+  height: 30vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;

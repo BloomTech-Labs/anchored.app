@@ -4,7 +4,6 @@ const moment = require('moment');
 const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
 const { userPostCheck } = require('./auth0Middleware');
-
 const router = express.Router();
 
 passport.use(

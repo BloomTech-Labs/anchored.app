@@ -1,6 +1,9 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
-import { getDocuments, getProof } from '../../actions/documents';
+import { getEnvelopes, getProof, updateLoading } from '../../actions/envelopes';
+import { FadeLoader } from 'react-spinners';
+import { LoadingContainer } from './styles/DocumentsStyles.js';
 import DocusignLogin from '../Auth/Docusign/DocusignLogin';
 import Document from './Document';
 
@@ -17,10 +20,12 @@ class Documents extends React.Component {
 
     this.state = {
       selected: 'all',
+      loading: true,
     };
   }
+
   componentDidMount() {
-    this.props.getDocuments();
+    this.props.getEnvelopes();
   }
 
   changeSelected = tab => {
@@ -29,22 +34,26 @@ class Documents extends React.Component {
 
   filterCards = () => {
     if (this.state.selected === 'all') {
-      return this.props.documents;
+      return this.props.envelopes;
     } else if (this.state.selected === 'waiting') {
-      return this.props.documents.filter(doc => doc.status !== 'completed');
+      return this.props.envelopes.filter(env => env.status !== 'completed');
     } else {
-      return this.props.documents.filter(doc => {
-        return doc.verified === this.state.selected;
+      return this.props.envelopes.filter(env => {
+        return Boolean(env.verified) === this.state.selected;
       });
     }
   };
 
   render() {
-    if (this.props.fetching) {
-      return <div>Loading</div>;
+    if (this.props.fetchingEnv) {
+      return (
+        <LoadingContainer>
+          <FadeLoader color={'black'} loading={this.state.loading} />
+        </LoadingContainer>
+      );
     }
 
-    if (!this.props.documents) {
+    if (!this.props.envelopes) {
       return <DocusignLogin />;
     }
 
@@ -52,8 +61,8 @@ class Documents extends React.Component {
       <DocumentsContainer>
         <DocumentOptionsContainer>
           <DocumentsOptions
-            selected={this.state.selected === 1}
-            onClick={() => this.changeSelected(1)}
+            selected={this.state.selected === true}
+            onClick={() => this.changeSelected(true)}
           >
             Verified Contracts
           </DocumentsOptions>
@@ -78,6 +87,7 @@ class Documents extends React.Component {
               key={doc.envelope_id}
               doc={doc}
               getProof={this.props.getProof}
+              updateLoading={this.props.updateLoading}
             />
           );
         })}
@@ -94,12 +104,14 @@ class Documents extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    documents: state.documents.documents,
-    fetching: state.documents.retrievingDoc,
+    envelopes: state.envelopes.envelopes,
+    fetchingEnv: state.envelopes.retrievingEnv,
   };
 };
 
-export default connect(
-  mapStateToProps,
-  { getDocuments, getProof }
-)(Documents);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { getEnvelopes, getProof, updateLoading }
+  )(Documents)
+);

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { read } from 'fs';
 
 export const RETRIEVING_USER_INFO = 'RETRIEVING_USER_INFO';
 export const RETRIEVED_USER_INFO = 'RETRIEVED_USER_INFO';
@@ -13,6 +14,6 @@ export const getUserInfo = () => {
     dispatch({ type: RETRIEVING_USER_INFO });
     promise
       .then(res => dispatch({ type: RETRIEVED_USER_INFO, payload: res.data }))
-      .catch(err => dispatch({ type: ERROR, payload: err }));
+      .catch(err => dispatch({ type: ERROR, payload: err.message }));
   };
 };

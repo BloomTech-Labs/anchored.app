@@ -18,6 +18,7 @@ export const CtaButton = styled.div`
   height: 65px;
   font-weight: bold;
   font-size: 1.3rem;
+  cursor: pointer;
 `;
 
 export const Demo = styled.div`
@@ -64,6 +65,7 @@ export const H3 = styled.h3`
 
 export const Copy = styled.p`
   font-size: 1.2rem;
+  margin-bottom: 0px;
 `;
 
 export const Img = styled.img`
