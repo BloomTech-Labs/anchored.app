@@ -8,6 +8,12 @@ export const BoxContainer = styled.div`
   border: 1px solid black;
   margin: 30px;
   margin-bottom: 100px;
+
+  @media (max-width: 550px) {
+    &:first-child {
+      margin-bottom: 2px;
+    }
+  }
 `;
 
 export const BoxButton = styled(CtaButton)`

@@ -52,7 +52,7 @@ class CTA extends Component {
   render() {
     return (
       <CtaContainer>
-        <H2>Get proof, not just trust</H2>
+        <H2>Get proof, don't just trust</H2>
         <Copy>Blockchain enabled verification platform</Copy>
         <CtaButton onClick={this.smoothScroll}>CHECK OUR PRICES</CtaButton>
         <Demo>
