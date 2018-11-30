@@ -9,6 +9,7 @@ import {
   Links,
   BuyCreditsButton,
   Img,
+  Credits,
 } from './styles/NavStyles.js';
 import { Button } from 'reactstrap';
 import Logo from '../../assets/Proofd_3.png';
@@ -35,11 +36,13 @@ class NavBar extends Component {
   };
 
   render() {
+    console.log(this.props.user.credits);
     return (
       <NavGod>
         <TopNavBar>
           <Img src={Logo} alt="Proofd Logo" />
           <Links>
+            <Credits>Credits: {this.props.user.credits}</Credits>
             <NavLink
               exact
               to={`/buy`}

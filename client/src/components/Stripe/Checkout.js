@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Button } from 'reactstrap';
 import StripeCheckout from 'react-stripe-checkout';
-import logo from '../../images/proofdlogocheckout.png';
+// import logo from '../../images/proofdlogocheckout.png';
 import STRIPE_PUBLISHABLE from './constants/stripe';
 import PAYMENT_SERVER_URL from './constants/server';
 
