@@ -3,7 +3,14 @@ import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import NavButton from './DashNavBtn.js';
-import { NavGod, TopNavBar, Links, Img } from './styles/NavStyles.js';
+import {
+  NavGod,
+  TopNavBar,
+  Links,
+  BuyCreditsButton,
+  Img,
+} from './styles/NavStyles.js';
+import { Button } from 'reactstrap';
 import Logo from '../../assets/Proofd_3.png';
 
 // styles for profile image
@@ -33,6 +40,20 @@ class NavBar extends Component {
         <TopNavBar>
           <Img src={Logo} alt="Proofd Logo" />
           <Links>
+            <NavLink
+              exact
+              to={`/buy`}
+              style={{ textDecoration: 'none' }}
+              activeStyle={{
+                color: 'orange',
+              }}
+            >
+              <BuyCreditsButton>
+                <Button color="info" size="large">
+                  Buy Credits
+                </Button>
+              </BuyCreditsButton>
+            </NavLink>
             <NavLink
               exact
               to={`/`}

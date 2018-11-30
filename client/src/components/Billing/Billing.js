@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getAllUserInfo } from '../../actions/billing';
-import Checkout from '../Stripe/Checkout';
+
 import {
   Wrapper,
   MainHeader,
   ContentHeader,
   Invoice,
-  ButtonWrapper,
 } from './style/BillingStyles';
 
 class Billing extends Component {
   render() {
-    // console.log('USER INFO', this.props.getAllUserInfo());
-    // console.log('PROPS', this.props);
     return (
       <Wrapper>
         <MainHeader>Billing</MainHeader>
@@ -26,20 +23,12 @@ class Billing extends Component {
         </ContentHeader>
         <ContentHeader>Invoice</ContentHeader>
         <Invoice />
-        <ButtonWrapper>
-          <Checkout
-            name={'PROOFD'}
-            description={'Purchase Credit'}
-            amount={10}
-          />
-        </ButtonWrapper>
       </Wrapper>
     );
   }
 }
 
 const mapStateToProps = state => {
-  // console.log(state);
   return {
     subscription: state.billing.subscription,
     credits: state.billing.credits,

@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Button } from 'reactstrap';
 import StripeCheckout from 'react-stripe-checkout';
 import logo from '../../images/proofdlogocheckout.png';
 import STRIPE_PUBLISHABLE from './constants/stripe';
@@ -28,15 +29,52 @@ const onToken = (amount, description) => token =>
     .then(successPayment)
     .catch(errorPayment);
 
-const Checkout = ({ name, description, amount }) => (
+const CheckoutCredit1 = ({ name, description, amount }) => (
   <StripeCheckout
-    image={logo}
+    name={name}
+    // image={logo}
     description={description}
     amount={fromDollarToCent(amount)}
     token={onToken(amount, description)}
     currency={CURRENCY}
     stripeKey={STRIPE_PUBLISHABLE}
-  />
+  >
+    <Button outline color="primary">
+      1 Credit
+    </Button>
+  </StripeCheckout>
 );
 
-export default Checkout;
+const CheckoutCredit3 = ({ name, description, amount }) => (
+  <StripeCheckout
+    name={name}
+    // image={logo}
+    description={description}
+    amount={fromDollarToCent(amount)}
+    token={onToken(amount, description)}
+    currency={CURRENCY}
+    stripeKey={STRIPE_PUBLISHABLE}
+  >
+    <Button outline color="success">
+      3 Credits
+    </Button>
+  </StripeCheckout>
+);
+
+const CheckoutCredit5 = ({ name, description, amount }) => (
+  <StripeCheckout
+    name={name}
+    // image={logo}
+    description={description}
+    amount={fromDollarToCent(amount)}
+    token={onToken(amount, description)}
+    currency={CURRENCY}
+    stripeKey={STRIPE_PUBLISHABLE}
+  >
+    <Button outline color="danger">
+      5 Credits
+    </Button>
+  </StripeCheckout>
+);
+
+export { CheckoutCredit1, CheckoutCredit3, CheckoutCredit5 };

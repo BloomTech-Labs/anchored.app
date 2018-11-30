@@ -41,6 +41,10 @@ export const DashboardButton = styled.div`
   align-items: center;
 `;
 
+export const BuyCreditsButton = styled.div`
+  padding: 0 20px;
+`;
+
 export const Img = styled.img`
   width: 10%;
 `;
