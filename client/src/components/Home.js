@@ -11,12 +11,6 @@ class Home extends React.Component {
     return (
       <div className="App">
         <DashboardNav />
-        <p>
-          Welcome{' '}
-          {this.props.user.first_name
-            ? this.props.user.first_name
-            : this.props.user.username}
-        </p>
         <Route exact path="/" component={Documents} />
         <Route path="/billing" component={Billing} />
         <Route exact path="/settings" component={Settings} />
