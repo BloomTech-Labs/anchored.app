@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Button } from 'reactstrap';
 import StripeCheckout from 'react-stripe-checkout';
-import logo from '../../images/proofdlogocheckout.png';
+// import logo from '../../images/proofdlogocheckout.png';
 import STRIPE_PUBLISHABLE from './constants/stripe';
 import PAYMENT_SERVER_URL from './constants/server';
 
@@ -11,7 +11,14 @@ const CURRENCY = 'USD';
 const fromDollarToCent = amount => amount * 100;
 
 const successPayment = data => {
-  alert('Payment Successful');
+  axios
+    .get(`http://localhost:9000/users/credits`)
+    .then(res => {
+      alert('Payment Successful');
+    })
+    .catch(err => {
+      console.log(err.message);
+    });
 };
 
 const errorPayment = data => {

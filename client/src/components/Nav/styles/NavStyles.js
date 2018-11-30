@@ -48,3 +48,12 @@ export const BuyCreditsButton = styled.div`
 export const Img = styled.img`
   width: 10%;
 `;
+
+export const Credits = styled.div`
+  min-width: 80px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+`;

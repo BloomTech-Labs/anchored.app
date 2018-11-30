@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const DocumentsContainer = styled.div`
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
