@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/:userId', ensureAuthenticated, (req, res) => {
+router.get('/:id', ensureAuthenticated, (req, res) => {
   users.findByUserId(req.user.id).then(user => {
     payments
       .findByUserId(user.id)
