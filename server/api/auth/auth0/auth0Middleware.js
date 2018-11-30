@@ -26,6 +26,7 @@ async function userPostCheck(user) {
     username: nickname,
     email,
     picture,
+    credits: 3,
   };
 
   users.addUser(new_user).catch(err => console.log(err));

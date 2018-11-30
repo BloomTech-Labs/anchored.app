@@ -12,7 +12,10 @@ const fromDollarToCent = amount => amount * 100;
 
 const successPayment = data => {
   axios
-    .get(`http://localhost:9000/users/credits`)
+    .get(
+      process.env.REACT_APP_URL_ONE_CREDIT_INCREMENT ||
+        `http://localhost:9000/users/credits`
+    )
     .then(res => {
       alert('Payment Successful');
     })
