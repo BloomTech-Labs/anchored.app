@@ -11,7 +11,14 @@ const CURRENCY = 'USD';
 const fromDollarToCent = amount => amount * 100;
 
 const successPayment = data => {
-  alert('Payment Successful');
+  axios
+    .get(`http://localhost:9000/users/credits`)
+    .then(res => {
+      alert('Payment Successful');
+    })
+    .catch(err => {
+      console.log(err.message);
+    });
 };
 
 const errorPayment = data => {

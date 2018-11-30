@@ -18,7 +18,7 @@ class Billing extends Component {
           {this.props.subscription ? ' Premium Account' : ' Free Account'}
         </ContentHeader>
         <ContentHeader>
-          Current Available Credits: {this.props.credits}
+          Current Available Credits: {this.props.user.credits}
         </ContentHeader>
         <ContentHeader>Invoice</ContentHeader>
         <Invoice />
@@ -38,6 +38,7 @@ const mapStateToProps = state => {
     subscription: state.billing.subscription,
     credits: state.billing.credits,
     fetching: state.retrieving,
+    user: state.user.user,
   };
 };
 

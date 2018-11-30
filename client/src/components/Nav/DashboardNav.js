@@ -36,7 +36,6 @@ class NavBar extends Component {
   };
 
   render() {
-    console.log(this.props.user.credits);
     return (
       <NavGod>
         <TopNavBar>
