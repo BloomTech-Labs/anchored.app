@@ -1,39 +1,83 @@
 const express = require('express');
 
-const chp = require('chainpoint-client');
-const SHA256 = require('crypto-js/sha256');
-const docs = require('../documents/documentsModel.js');
+const envs = require('../envelopes/envelopesModel');
+const docusign = require('docusign-esign');
+const moment = require('moment');
+const { getDSApi } = require('../auth/docusign/dsMiddleware');
+const { getDocuments, postDoctoDB } = require('../documents/docsMiddleware');
+const { proofDocuments } = require('./chainpointMiddleware');
+const { ensureAuthenticated } = require('../auth/docusign/dsMiddleware');
 
 const router = express.Router();
 
-router.get('/:user_id', (req, res) => {
-  user_id = req.params.user_id;
-  docs
-    .findAllByUser(user_id)
-    .then(documents => {
-      console.log('Docs: ', documents);
-      const hashes = documents.map(doc => {
-        return SHA256(doc).toString();
-      });
-      console.log('Hashes: ', hashes);
-      chp.submitHashes(hashes).then(proofHandles => {
-        console.log(proofHandles);
-        console.log('Sleeping 15 seconds to wait for proofs to generate...');
-        new Promise(resolve => setTimeout(resolve, 15000)).then(() => {
-          chp.getProofs(proofHandles).then(proofs => {
-            console.log(proofs);
-            docs.updateDoc(1 , { proof: proofs[0].proof }).catch(err => console.log(err));
-            chp.verifyProofs(proofs).then(verifiedProofs => {
-              console.log(verifiedProofs);
-              res.status(200).json(verifiedProofs);
-            });
-          });
-        });
-      });
-    })
-    .catch(err => {
-      res.status(500).json({ ErrorMessage: err.message });
+router.use(ensureAuthenticated);
+
+router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+
+  const user = req.user;
+  const apiClient = getDSApi(user);
+  const envelopesApi = new docusign.EnvelopesApi(apiClient);
+  const account_id = user.account_id;
+
+  try {
+    const env = await envs.findById(id);
+    const loading_expiration = JSON.stringify(moment().add(60, 's'));
+    const expired = moment().isAfter(JSON.parse(env.loading_expiration));
+
+    if (env.loading && !expired) {
+      return res.status(400).json({ message: 'Loading!' });
+    } else if (env.loading && expired) {
+      await envs.updateEnv(id, { loading: false, loading_expiration: 0 });
+    }
+
+    if (env.status !== 'completed') {
+      return res.status(400).json({ message: 'Documents not signed!' });
+    }
+
+    if (env.verified) {
+      return res.status(400).json({ message: 'Document already verified!' });
+    }
+
+    if (env.waiting) {
+      return res.status(400).json({ message: 'Waiting for anchor!' });
+    }
+
+    await envs.updateEnv(id, { loading: true, loading_expiration });
+
+    const documents = await getDocuments(
+      envelopesApi,
+      account_id,
+      env.envelope_id
+    );
+
+    await postDoctoDB(req, res, documents);
+    await proofDocuments(req, res, documents, env.id);
+  } catch (err) {
+    await envs.updateEnv(id, {
+      verified_proof: null,
+      proof_handle: null,
+      loading: 0,
+      verified: 0,
+      waiting: 0,
+      waiting_expiration: 0,
+      loading_expiration: 0,
     });
+    return res.status(500).json({ ErrorMessage: err.message, id });
+  }
+});
+
+router.get('/:id/loading', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const envelope = await envs.findById(id);
+    return res
+      .status(200)
+      .json({ loading: envelope.loading, waiting: envelope.waiting });
+  } catch (err) {
+    return res.status(500).json({ ErrorMessage: err.message, id });
+  }
 });
 
 module.exports = router;

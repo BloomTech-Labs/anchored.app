@@ -4,6 +4,7 @@ const applyGlobalMiddleware = require('../config/applyGlobalMiddleware.js');
 const cors = require('cors');
 
 const usersRoutes = require('./users/usersRoutes.js');
+const envsRoutes = require('./envelopes/envelopesRoutes');
 const docsRoutes = require('./documents/documentsRoutes.js');
 const chainpointRoutes = require('./chainpoint/chainpointRoutes.js');
 const authRoutes = require('./auth/auth.js');
@@ -29,6 +30,7 @@ server.get('/', (req, res) => {
 
 server.use('/users', usersRoutes);
 server.use('/documents', docsRoutes);
+server.use('/envelopes', envsRoutes);
 server.use('/auth', authRoutes);
 server.use('/chainpoint', chainpointRoutes);
 server.use('/payment', paymentRoutes);

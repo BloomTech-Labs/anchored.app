@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getAllUserInfo } from '../../actions/billing';
-
+import { getAllUserInfo, getUserInvoice } from '../../actions/billing';
 import {
   Wrapper,
   MainHeader,
@@ -19,7 +18,7 @@ class Billing extends Component {
           {this.props.subscription ? ' Premium Account' : ' Free Account'}
         </ContentHeader>
         <ContentHeader>
-          Current Available Credits: {this.props.credits}
+          Current Available Credits: {this.props.user.credits}
         </ContentHeader>
         <ContentHeader>Invoice</ContentHeader>
         <Invoice />
@@ -30,13 +29,20 @@ class Billing extends Component {
 
 const mapStateToProps = state => {
   return {
+    // Invoice state
+    description: state.billing.description,
+    amount: state.billing.amount,
+    currency: state.billing.currency,
+    created_at: state.billing.created_at,
+    // User Account Info
     subscription: state.billing.subscription,
     credits: state.billing.credits,
     fetching: state.retrieving,
+    user: state.user.user,
   };
 };
 
 export default connect(
   mapStateToProps,
-  { getAllUserInfo }
+  { getAllUserInfo, getUserInvoice }
 )(Billing);

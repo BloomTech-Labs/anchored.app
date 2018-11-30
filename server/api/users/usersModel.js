@@ -34,6 +34,10 @@ function removeUser(id) {
     .del();
 }
 
+function incrementCredit() {
+  return db('users').increment('credits', 1);
+}
+
 module.exports = {
   find,
   findByUserId,
@@ -41,4 +45,5 @@ module.exports = {
   addUser,
   updateUser,
   removeUser,
+  incrementCredit,
 };
