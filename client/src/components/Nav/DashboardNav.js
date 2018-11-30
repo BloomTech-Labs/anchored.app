@@ -8,8 +8,10 @@ import {
   TopNavBar,
   Links,
   BuyCreditsButton,
+  Img,
 } from './styles/NavStyles.js';
 import { Button } from 'reactstrap';
+import Logo from '../../assets/Proofd_3.png';
 
 // styles for profile image
 const ProfileImage = {
@@ -36,7 +38,7 @@ class NavBar extends Component {
     return (
       <NavGod>
         <TopNavBar>
-          <p>Proof'd Logo</p>
+          <Img src={Logo} alt="Proofd Logo" />
           <Links>
             <NavLink
               exact
