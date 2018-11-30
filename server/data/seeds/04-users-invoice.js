@@ -9,7 +9,7 @@ exports.seed = function(knex, Promise) {
           id: 1,
           user_id: '1',
           description: 'Credit Purchase',
-          amount: '4',
+          amount: 4,
           currency: 'USD',
         },
       ]);
