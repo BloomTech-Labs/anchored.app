@@ -15,9 +15,13 @@ exports.up = function(knex, Promise) {
 
     tbl.string('waiting_expiration', 128).defaultTo(0);
 
+    tbl.string('loading_expiration', 128).defaultTo(0);
+
     tbl.bool('verified').defaultTo(false);
 
     tbl.bool('waiting').defaultTo(false);
+
+    tbl.bool('loading').defaultTo(false);
 
     tbl.timestamp('created_at').defaultTo(knex.fn.now());
   });

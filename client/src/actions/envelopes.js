@@ -10,7 +10,8 @@ export const ERROR = 'ERROR';
 
 export const getEnvelopes = () => {
   const promise = axios.get(
-    process.env.REACT_APP_ENVELOPES || 'http://localhost:9000/envelopes/all'
+    process.env.REACT_APP_ENVELOPES ||
+      'https://cryptic-eyrie-27950.herokuapp.com/envelopes/all'
   );
   return dispatch => {
     dispatch({ type: RETRIEVING_ENVELOPES });
@@ -21,9 +22,12 @@ export const getEnvelopes = () => {
 };
 
 export const getProof = id => {
-  const promise = axios.get(`http://localhost:9000/chainpoint/${id}`);
+  const promise = axios.get(
+    process.env.REACT_APP_PROOF ||
+      `https://cryptic-eyrie-27950.herokuapp.com/chainpoint/${id}`
+  );
   return dispatch => {
-    dispatch({ type: RETRIEVING_PROOF });
+    dispatch({ type: RETRIEVING_PROOF, payload: id });
     promise
       .then(res => dispatch({ type: RETRIEVED_PROOF, payload: res.data }))
       .catch(err => dispatch({ type: ERROR, payload: err }));

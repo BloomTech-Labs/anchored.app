@@ -20,33 +20,35 @@ export default (state = initialState, action) => {
     case RETRIEVING_ENVELOPES:
       return { ...state, retrievingEnv: true, retrievedEnv: false };
 
-    case RETRIEVED_ENVELOPES:
+    case RETRIEVED_ENVELOPES: {
       return {
         ...state,
         retrievedEnv: true,
         retrievingEnv: false,
         envelopes: action.payload,
       };
+    }
 
-    case RETRIEVING_PROOF:
+    case RETRIEVING_PROOF: {
+      const envelopes = state.envelopes.slice();
+      const index = envelopes.findIndex(env => env.id === action.payload);
+      envelopes[index].loading = true;
+      return { ...state, retrievingProof: true, retrievedProof: false };
+    }
+    case RETRIEVED_PROOF: {
+      const envelopes = state.envelopes.slice();
+      const index = envelopes.findIndex(env => env.id === action.payload.id);
+      envelopes[index].waiting = true;
+      envelopes[index].verified_proof = action.payload.verified_proof;
       return {
         ...state,
-        retrievingProof: true,
-        retrievedProof: false,
-      };
-
-    case RETRIEVED_PROOF:
-      const index = state.envelopes.findIndex(env => {
-        return env.id === action.payload.id;
-      });
-      state.envelopes[index].waiting = true;
-      return {
-        ...state,
-        retrievedProof: true,
         retrievingProof: false,
+        retrievedProof: true,
+        envelopes,
       };
+    }
 
-    case ERROR:
+    case ERROR: {
       return {
         ...state,
         retrievingEnv: false,
@@ -55,6 +57,7 @@ export default (state = initialState, action) => {
         retrievedProof: false,
         error: action.payload,
       };
+    }
 
     default:
       return state;

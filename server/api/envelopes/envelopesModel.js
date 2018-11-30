@@ -19,6 +19,8 @@ function findAllByUser(user_id) {
       'envelopes.verified',
       'envelopes.waiting',
       'envelopes.waiting_expiration',
+      'envelopes.loading',
+      'envelopes.loading_expiration',
       'envelopes.created_at'
     )
     .where('user_id', user_id);

@@ -15,7 +15,6 @@ async function proofDocuments(req, res, documents, id) {
 
     // Get proof(s) from hashes
     let proofs = await chp.getProofs(proofHandles);
-
     // Get a single proof that isn't null
     let index = proofs.findIndex(proof => proof.proof !== null);
     let proof = [proofs[index]];
@@ -30,15 +29,27 @@ async function proofDocuments(req, res, documents, id) {
     // Verify the proofs and update db with the result
     const verifiedProofs = await chp.verifyProofs(proof);
     const waiting_expiration = JSON.stringify(moment().add(2, 'hours'));
-
-    await envs.updateEnv(id, {
+    const changes = {
       verified_proof: JSON.stringify(verifiedProofs[0]),
       proof_handle: JSON.stringify(proofHandles[index]),
+      loading: 0,
       verified: 0,
       waiting: 1,
       waiting_expiration,
-    });
+    };
+
+    await envs.updateEnv(id, changes);
+    return res.status(200).json({ id, verified_proof: changes.verified_proof });
   } catch (err) {
+    // Reset env if a fail occurred
+    await envs.updateEnv(id, {
+      verified_proof: null,
+      proof_handle: null,
+      loading: 0,
+      verified: 0,
+      waiting: 0,
+      waiting_expiration: 0,
+    });
     return res.status(500).json({ ErrorMessage: err.message });
   }
 }
