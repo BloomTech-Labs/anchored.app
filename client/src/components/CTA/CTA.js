@@ -40,7 +40,7 @@ class CTA extends Component {
       duration: 1500,
       delay: 1,
       smooth: true,
-      offset: -200,
+      offset: -150,
     });
   }
 

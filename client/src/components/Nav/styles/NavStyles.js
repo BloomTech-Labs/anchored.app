@@ -16,6 +16,11 @@ export const TopNavBar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 550px) {
+    height: 140px;
+    flex-direction: column;
+  }
 `;
 
 export const Links = styled.div`
@@ -23,6 +28,10 @@ export const Links = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+
+  @media (max-width: 550px) {
+    justify-content: center;
+  }
 `;
 
 export const Button = styled.div`
@@ -47,6 +56,10 @@ export const BuyCreditsButton = styled.div`
 
 export const Img = styled.img`
   width: 10%;
+
+  @media (max-width: 550px) {
+    width: 30%;
+  }
 `;
 
 export const Credits = styled.div`
