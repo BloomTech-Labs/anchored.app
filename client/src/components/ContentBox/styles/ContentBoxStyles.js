@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { CtaButton } from '../../CTA/styles/CTAStyles.js';
 
 export const BoxContainer = styled.div`
-  height: 375px;
-  width: 256px;
+  min-height: 400px;
+  width: 265px;
   border: 1px solid black;
   margin: 30px;
   margin-bottom: 100px;
@@ -13,7 +13,8 @@ export const BoxContainer = styled.div`
 export const BoxButton = styled(CtaButton)`
   width: 185px;
   height: 52px;
-  margin-top: 60px;
+  margin: 0 auto;
+  margin-top: 30px;
 `;
 
 export const H3 = styled.h3`
