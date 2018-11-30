@@ -1,31 +1,23 @@
 import React, { Component } from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
-import styled from 'styled-components';
+import { connect } from 'react-redux';
 import axios from 'axios';
-
 import NavButton from './DashNavBtn.js';
+import {
+  NavGod,
+  TopNavBar,
+  Links,
+  BuyCreditsButton,
+  Img,
+} from './styles/NavStyles.js';
+import { Button } from 'reactstrap';
+import Logo from '../../assets/Proofd_3.png';
 
-const NavGod = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const TopNavBar = styled.div`
-  max-width: 1026px;
-  width: 100%;
-  height: 80px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const Links = styled.div`
-  width: 400px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-`;
+// styles for profile image
+const ProfileImage = {
+  height: '50px',
+  borderRadius: '25px',
+};
 
 class NavBar extends Component {
   handleLogout = () => {
@@ -46,8 +38,22 @@ class NavBar extends Component {
     return (
       <NavGod>
         <TopNavBar>
-          <p>Proof'd Logo</p>
+          <Img src={Logo} alt="Proofd Logo" />
           <Links>
+            <NavLink
+              exact
+              to={`/buy`}
+              style={{ textDecoration: 'none' }}
+              activeStyle={{
+                color: 'orange',
+              }}
+            >
+              <BuyCreditsButton>
+                <Button color="info" size="large">
+                  Buy Credits
+                </Button>
+              </BuyCreditsButton>
+            </NavLink>
             <NavLink
               exact
               to={`/`}
@@ -83,6 +89,11 @@ class NavBar extends Component {
             >
               <NavButton name="Log Out" />
             </NavLink>
+            <img
+              style={ProfileImage}
+              src={this.props.user.picture}
+              alt="user profile thumbnail"
+            />
           </Links>
         </TopNavBar>
       </NavGod>
@@ -90,4 +101,11 @@ class NavBar extends Component {
   }
 }
 
-export default withRouter(NavBar);
+const mapStateToProps = state => {
+  return {
+    user: state.user.user,
+    fetching: state.user.retrieving,
+  };
+};
+
+export default withRouter(connect(mapStateToProps)(NavBar));

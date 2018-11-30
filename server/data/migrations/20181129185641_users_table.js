@@ -15,7 +15,9 @@ exports.up = function(knex, Promise) {
 
     tbl.string('email', 128);
 
-    tbl.string('phone_number', 128);
+    tbl.string('picture', 256).unique();
+
+    tbl.string('phone_number', 128).unique();
 
     tbl.string('documents', 1024);
 

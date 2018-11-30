@@ -1,11 +1,10 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-
 import DashboardNav from './Nav/DashboardNav.js';
 import Documents from './Documents/Documents.js';
-
-import DocusignUnlink from './Auth/Docusign/DocusignUnlink';
-// import Checkout from './Stripe/Checkout.js';
+import Settings from './Settings/Settings.js';
+import Billing from './Billing/Billing.js';
+import Buy from './Stripe/Buy.js';
 
 class Home extends React.Component {
   render() {
@@ -19,15 +18,9 @@ class Home extends React.Component {
             : this.props.user.username}
         </p>
         <Route exact path="/" component={Documents} />
-        {/* <Route path="/billing" component={Billing} /> */}
-        {/* <Route exact path="/settings" component={Settings} /> */}
-
-        {/* <Checkout
-          name={'Chainpoint-DocuSign'}
-          description={'Purchase Credit'}
-          amount={10}
-        /> */}
-        <DocusignUnlink />
+        <Route path="/billing" component={Billing} />
+        <Route exact path="/settings" component={Settings} />
+        <Route exact path="/buy" component={Buy} />
       </div>
     );
   }

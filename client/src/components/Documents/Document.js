@@ -37,17 +37,17 @@ class Document extends React.Component {
   };
 
   checkLoading = () => {
-    let promise;
-    if (process.env.REACT_APP_CHAINPOINT) {
-      promise = axios.get(
-        `${process.env.REACT_APP_CHAINPOINT}/${this.props.doc.id}/loading`
-      );
-    } else {
-      promise = axios.get(
-        `http://localhost:9000/chainpoint/${this.props.doc.id}/loading`
-      );
-    }
     this.interval = setInterval(() => {
+      let promise;
+      if (process.env.REACT_APP_CHAINPOINT) {
+        promise = axios.get(
+          `${process.env.REACT_APP_CHAINPOINT}/${this.props.doc.id}/loading`
+        );
+      } else {
+        promise = axios.get(
+          `http://localhost:9000/chainpoint/${this.props.doc.id}/loading`
+        );
+      }
       promise
         .then(res => {
           if (!res.data.loading) {

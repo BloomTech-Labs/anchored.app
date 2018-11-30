@@ -9,4 +9,9 @@ export const FooterContainer = styled.div`
   width: 1026px;
   max-width: 100%;
   margin: 0 auto;
+
+  @media (max-width: 550px) {
+    font-size: 0.7rem;
+    flex-direction: column;
+  }
 `;
