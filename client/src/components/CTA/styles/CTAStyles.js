@@ -56,6 +56,10 @@ export const Logos = styled.div`
 export const H2 = styled.h2`
   padding: 30px;
   font-size: 2rem;
+
+  @media (max-width: 550px) {
+    font-size: 1.9rem;
+  }
 `;
 
 export const H3 = styled.h3`
