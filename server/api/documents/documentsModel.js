@@ -8,16 +8,14 @@ function findAllByUser(user_id) {
   return db('documents')
     .distinct()
     .join('users_documents', 'users_documents.document_id', '=', 'documents.id')
-    .join('users', 'users.id', '=', 'users_documents.user_id')
-    .select(
-      'documents.id',
-      'documents.proof',
-      'documents.envelope_id',
-      'documents.subject',
-      'documents.status',
-      'documents.verified',
-      'documents.created_at'
+    .join(
+      'envelopes',
+      'envelopes.envelope_id',
+      '=',
+      'users_documents.envelope_id'
     )
+    .join('users', 'users.id', '=', 'users_documents.user_id')
+    .select('documents.id', 'documents.document', 'documents.created_at')
     .where('user_id', user_id);
 }
 

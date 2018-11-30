@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 import user from './user';
-import documents from './documents';
+import envelopes from './envelopes';
 import billing from './billing';
 
 const rootReducer = combineReducers({
   user,
-  documents,
+  envelopes,
   billing,
 });
 
