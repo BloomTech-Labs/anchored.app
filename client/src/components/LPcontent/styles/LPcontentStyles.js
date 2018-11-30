@@ -35,7 +35,7 @@ export const ContentSet = styled.div`
     flex-direction: column;
 
     &:nth-child(3) {
-      border: 2px solid red;
+      flex-direction: column-reverse;
     }
   }
 `;
