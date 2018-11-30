@@ -19,13 +19,12 @@ export const ModalContent = styled.div`
   border: 1px solid #888;
   width: 532.83px;
   margin-top: 169px;
-  height: 180px;
+  // height: 180px;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: 1.6rem;
   padding-top: 44px;
-
   p {
     margin-top: 0;
   }
@@ -33,10 +32,12 @@ export const ModalContent = styled.div`
 
 export const ModalInfo = styled.p`
   font-size: 1rem;
+  word-wrap: break-word;
+  width: 400px;
 `;
 
 export const ModalLink = styled.a`
-  text-decoration: none;
-  color: black;
+  // text-decoration: none;
+  color: blue;
   font-size: 1.2rem;
 `;

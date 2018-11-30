@@ -40,7 +40,7 @@ class CTA extends Component {
       duration: 1500,
       delay: 1,
       smooth: true,
-      offset: -200,
+      offset: -150,
     });
   }
 
@@ -52,7 +52,7 @@ class CTA extends Component {
   render() {
     return (
       <CtaContainer>
-        <H2>Get proof, not just trust</H2>
+        <H2>Get proof, don't just trust</H2>
         <Copy>Blockchain enabled verification platform</Copy>
         <CtaButton onClick={this.smoothScroll}>CHECK OUR PRICES</CtaButton>
         <Demo>

@@ -48,6 +48,20 @@ router.post('/', ensureAuthenticated, (req, res) => {
       stripe.charges
         .create(req.body)
         .then(invoice => {
+          let credit_add = invoice.description;
+          let credit_split = credit_add.split('');
+          let filterCredits = credit_split.filter(numStr => {
+            return /^[1,3,5]/.test(numStr);
+          });
+          users
+            .incrementCredit(user.id, Number(filterCredits))
+            .then(() => {
+              req.user.credits += Number(filterCredits);
+              req.session.save();
+            })
+            .catch(err => {
+              res.status(500).json(err.message);
+            });
           const { description, amount, currency } = invoice;
           payments
             .addInvoice({ user_id, description, amount, currency })

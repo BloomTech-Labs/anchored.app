@@ -34,8 +34,10 @@ function removeUser(id) {
     .del();
 }
 
-function incrementCredit() {
-  return db('users').increment('credits', 1);
+function incrementCredit(id, amount) {
+  return db('users')
+    .where({ id })
+    .increment('credits', amount);
 }
 
 module.exports = {
