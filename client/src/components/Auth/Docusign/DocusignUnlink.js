@@ -7,7 +7,8 @@ class DocusignUnlink extends React.Component {
       <Button
         color="primary"
         href={
-          process.env.ORIGIN || 'http://localhost:9000/auth/docusign/logout'
+          process.env.REACT_APP_DOCUSIGN_LOGOUT ||
+          'http://localhost:9000/auth/docusign/logout'
         }
       >
         Unlink DocuSign
