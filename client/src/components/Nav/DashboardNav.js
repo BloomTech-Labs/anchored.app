@@ -87,33 +87,8 @@ class NavBar extends Component {
             >
               <NavButton name="Documents" />
             </NavLink>
-            <NavLink
-              to={`/billing`}
-              style={{ textDecoration: 'none' }}
-              activeStyle={{
-                color: 'orange',
-              }}
-            >
-              <NavButton name="Billing" />
-            </NavLink>
-            <NavLink
-              to={`/settings`}
-              style={{ textDecoration: 'none' }}
-              activeStyle={{
-                color: 'orange',
-              }}
-            >
-              <NavButton name="Settings" />
-            </NavLink>
-            <NavLink
-              to={`/`}
-              onClick={this.handleLogout}
-              style={{ textDecoration: 'none' }}
-            >
-              <NavButton name="Log Out" />
-            </NavLink>
             <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-              <DropdownToggle size="sm" caret color="white">
+              <DropdownToggle size="sm" caret color="none">
                 {' '}
                 <img
                   style={ProfileImage}
@@ -122,11 +97,28 @@ class NavBar extends Component {
                 />
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem header>Header</DropdownItem>
-                <DropdownItem disabled>Action</DropdownItem>
-                <DropdownItem>Another Action</DropdownItem>
+                <DropdownItem disabled>Logged in as</DropdownItem>
+                <DropdownItem disabled>{this.props.user.username}</DropdownItem>
                 <DropdownItem divider />
-                <DropdownItem>Another Action</DropdownItem>
+                <DropdownItem>
+                  <NavLink to={`/account`} style={{ textDecoration: 'none' }}>
+                    Account
+                  </NavLink>
+                </DropdownItem>
+                <DropdownItem>
+                  <NavLink to={`/settings`} style={{ textDecoration: 'none' }}>
+                    Settings
+                  </NavLink>
+                </DropdownItem>
+                <DropdownItem>
+                  <NavLink
+                    to={`/`}
+                    onClick={this.handleLogout}
+                    style={{ textDecoration: 'none' }}
+                  >
+                    Log out
+                  </NavLink>
+                </DropdownItem>
               </DropdownMenu>
             </Dropdown>
           </Links>
