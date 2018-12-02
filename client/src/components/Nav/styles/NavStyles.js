@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Dropdown } from 'reactstrap';
 
 export const NavGod = styled.div`
   display: flex;
@@ -8,6 +7,7 @@ export const NavGod = styled.div`
   top: 0.1px;
   position: sticky;
   background-color: white;
+  z-index: 1;
 `;
 
 export const TopNavBar = styled.div`
@@ -64,7 +64,7 @@ export const Img = styled.img`
 `;
 
 export const Credits = styled.div`
-  min-width: 80px;
+  min-width: 90px;
   height: 40px;
   display: flex;
   justify-content: center;

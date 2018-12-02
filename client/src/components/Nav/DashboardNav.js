@@ -98,7 +98,9 @@ class NavBar extends Component {
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem disabled>Logged in as</DropdownItem>
-                <DropdownItem disabled>{this.props.user.username}</DropdownItem>
+                <DropdownItem disabled>
+                  <b>{this.props.user.username}</b>
+                </DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem>
                   <NavLink to={`/account`} style={{ textDecoration: 'none' }}>

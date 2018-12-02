@@ -36,7 +36,7 @@ class Billing extends Component {
         <InfoWrapper>
           <ContentHeader>
             Current Plan:
-            {this.props.user.subscription ? ' Premium Plan' : ' Basic Plan'}
+            {this.props.user.subscription ? ' Premium' : ' Basic'}
           </ContentHeader>
           <ContentHeader>
             Current Available Credits: {this.props.user.credits}
