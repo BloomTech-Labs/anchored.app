@@ -11,7 +11,13 @@ import {
   Img,
   Credits,
 } from './styles/NavStyles.js';
-import { Button } from 'reactstrap';
+import {
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  Button,
+} from 'reactstrap';
 import Logo from '../../assets/Proofd_3.png';
 
 // styles for profile image
@@ -21,6 +27,21 @@ const ProfileImage = {
 };
 
 class NavBar extends Component {
+  constructor(props) {
+    super(props);
+
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      dropdownOpen: false,
+    };
+  }
+
+  toggle() {
+    this.setState(prevState => ({
+      dropdownOpen: !prevState.dropdownOpen,
+    }));
+  }
+
   handleLogout = () => {
     axios
       .get(
@@ -91,11 +112,23 @@ class NavBar extends Component {
             >
               <NavButton name="Log Out" />
             </NavLink>
-            <img
-              style={ProfileImage}
-              src={this.props.user.picture}
-              alt="user profile thumbnail"
-            />
+            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+              <DropdownToggle size="sm" caret color="white">
+                {' '}
+                <img
+                  style={ProfileImage}
+                  src={this.props.user.picture}
+                  alt="user profile thumbnail"
+                />
+              </DropdownToggle>
+              <DropdownMenu right>
+                <DropdownItem header>Header</DropdownItem>
+                <DropdownItem disabled>Action</DropdownItem>
+                <DropdownItem>Another Action</DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem>Another Action</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
           </Links>
         </TopNavBar>
       </NavGod>
