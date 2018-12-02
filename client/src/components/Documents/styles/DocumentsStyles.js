@@ -38,7 +38,7 @@ export const AddDocument = styled.a`
 
 export const LoadingContainer = styled.div`
   display: flex;
-  height: 30vh;
+  height: 40vh;
   flex-direction: column;
   align-items: center;
   justify-content: center;
