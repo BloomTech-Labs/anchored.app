@@ -35,7 +35,7 @@ const CheckoutCredit2 = ({ name, description, amount, color, onToken }) => (
     stripeKey={STRIPE_PUBLISHABLE}
   >
     <Button outline color={color}>
-      3 Credit
+      3 Credits
     </Button>
   </StripeCheckout>
 );
@@ -51,7 +51,7 @@ const CheckoutCredit3 = ({ name, description, amount, color, onToken }) => (
     stripeKey={STRIPE_PUBLISHABLE}
   >
     <Button outline color={color}>
-      5 Credit
+      5 Credits
     </Button>
   </StripeCheckout>
 );
