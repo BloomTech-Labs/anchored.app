@@ -9,7 +9,7 @@ import {
   InfoWrapperTwo,
   ContentHeader,
   Invoice,
-} from './style/BillingStyles';
+} from './styles/BillingStyles';
 class Billing extends Component {
   constructor() {
     super();
