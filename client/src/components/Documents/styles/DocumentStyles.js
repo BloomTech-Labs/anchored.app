@@ -2,10 +2,16 @@ import styled from 'styled-components';
 
 export const DocumentContainer = styled.div`
   margin: 15px;
-  width: 840px;
+  max-width: 840px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 550px) {
+    max-width: 500px;
+    width: 100%;
+  }
 `;
 
 export const DocumentSubject = styled.a`
@@ -15,6 +21,10 @@ export const DocumentSubject = styled.a`
   cursor: pointer;
   text-decoration: none;
   color: black;
+
+  @media (max-width: 550px) {
+    font-size: 1.1rem;
+  }
 `;
 
 export const DocumentProof = styled.div`

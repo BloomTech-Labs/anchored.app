@@ -81,6 +81,11 @@ class Documents extends React.Component {
               All documents
             </DocumentsOptions>
           </DocumentOptionsContainer>
+          <AddDocument
+            target="_blank"
+            href="https://appdemo.docusign.com/home"
+            className="fas fa-plus-circle"
+          />
 
           {this.filterCards().map(doc => {
             return (
@@ -92,12 +97,6 @@ class Documents extends React.Component {
               />
             );
           })}
-
-          <AddDocument
-            target="_blank"
-            href="https://appdemo.docusign.com/home"
-            className="fas fa-plus-circle"
-          />
         </DocumentsContainer>
       </Fragment>
     );
