@@ -14,7 +14,7 @@ function findAllByUser(user_id) {
       '=',
       'users_documents.envelope_id'
     )
-    .join('users', 'users.id', '=', 'users_documents.user_id')
+    .join('users', 'users.account_id', '=', 'users_documents.account_id')
     .select('documents.id', 'documents.document', 'documents.created_at')
     .where('user_id', user_id);
 }

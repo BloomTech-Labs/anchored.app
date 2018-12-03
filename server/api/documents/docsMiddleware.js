@@ -3,7 +3,7 @@ const { promisify } = require('util');
 
 async function postDoctoDB(req, res, documents) {
   let ids = await docs.addDoc({ document: documents.documents });
-  let user_doc = { user_id: req.user.id, document_id: ids.id };
+  let user_doc = { account_id: req.user.account_id, document_id: ids.id };
   await docs.addUserToDoc(user_doc);
 }
 

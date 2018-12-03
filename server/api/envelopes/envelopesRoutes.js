@@ -43,6 +43,7 @@ router.get('/all', checkToken, async (req, res, next) => {
     await postEnvToDB(req, res, envelopes);
   } catch (err) {
     console.log(err);
+    return res.status(500).json(err);
   }
 });
 
