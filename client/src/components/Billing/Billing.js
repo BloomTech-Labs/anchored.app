@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { getUserInfo } from '../../actions/user';
 import axios from 'axios';
 import {
-  Wrapper,
+  MainWrapper,
   MainHeader,
   InfoWrapper,
   InfoWrapperTwo,
@@ -31,33 +31,35 @@ class Billing extends Component {
 
   render() {
     return (
-      <Wrapper>
-        <MainHeader>Account Info</MainHeader>
-        <InfoWrapper>
+      <Fragment>
+        <MainWrapper>
+          <MainHeader>Account Info</MainHeader>
+          <InfoWrapper>
+            <ContentHeader>
+              Current Plan:
+              {this.props.user.subscription ? ' Premium' : ' Basic'}
+            </ContentHeader>
+            <ContentHeader>
+              Current Available Credits: {this.props.user.credits}
+            </ContentHeader>
+          </InfoWrapper>
           <ContentHeader>
-            Current Plan:
-            {this.props.user.subscription ? ' Premium' : ' Basic'}
+            Invoice
+            {this.state.invoice.map(invoice => {
+              return (
+                <InfoWrapperTwo key={invoice.id}>
+                  <li>{invoice.description}</li>
+                  <li>{`$${invoice.amount / 100}.00`}</li>
+                  <li>{invoice.currency.toUpperCase()}</li>
+                  <li>{invoice.created_at}</li>
+                  <li>{invoice.credits}</li>
+                </InfoWrapperTwo>
+              );
+            })}
           </ContentHeader>
-          <ContentHeader>
-            Current Available Credits: {this.props.user.credits}
-          </ContentHeader>
-        </InfoWrapper>
-        <ContentHeader>
-          Invoice
-          {this.state.invoice.map(invoice => {
-            return (
-              <InfoWrapperTwo key={invoice.id}>
-                <li>{invoice.description}</li>
-                <li>{`$${invoice.amount / 100}.00`}</li>
-                <li>{invoice.currency.toUpperCase()}</li>
-                <li>{invoice.created_at}</li>
-                <li>{invoice.credits}</li>
-              </InfoWrapperTwo>
-            );
-          })}
-        </ContentHeader>
-        <Invoice />
-      </Wrapper>
+          <Invoice />
+        </MainWrapper>
+      </Fragment>
     );
   }
 }

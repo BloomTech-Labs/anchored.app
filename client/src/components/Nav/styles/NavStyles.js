@@ -41,6 +41,11 @@ export const Button = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #7344c1;
+
+  &:hover {
+    font-size: 1.2rem;
+  }
 `;
 
 export const DashboardButton = styled.div`

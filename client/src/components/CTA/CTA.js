@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import playImg from '../../assets/play-circle.svg';
+import playImg from '../../assets/video_icon.png';
 
 import {
   CtaContainer,
