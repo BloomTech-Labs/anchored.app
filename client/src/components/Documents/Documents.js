@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { getEnvelopes, getProof, updateLoading } from '../../actions/envelopes';
-import { FadeLoader } from 'react-spinners';
+import { BeatLoader } from 'react-spinners';
 import { LoadingContainer } from './styles/DocumentsStyles.js';
 import DocusignLogin from '../Auth/Docusign/DocusignLogin';
 import Document from './Document';
@@ -48,7 +48,7 @@ class Documents extends React.Component {
     if (this.props.fetchingEnv) {
       return (
         <LoadingContainer>
-          <FadeLoader color={'black'} loading={this.state.loading} />
+          <BeatLoader color={'black'} loading={this.state.loading} />
         </LoadingContainer>
       );
     }

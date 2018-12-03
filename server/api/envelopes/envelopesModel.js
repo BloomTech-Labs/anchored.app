@@ -8,7 +8,7 @@ function findAllByUser(user_id) {
   return db('envelopes')
     .distinct()
     .join('users_envelopes', 'users_envelopes.envelope_id', '=', 'envelopes.id')
-    .join('users', 'users.id', '=', 'users_envelopes.user_id')
+    .join('users', 'users.account_id', '=', 'users_envelopes.account_id')
     .select(
       'envelopes.id',
       'envelopes.verified_proof',
@@ -23,7 +23,7 @@ function findAllByUser(user_id) {
       'envelopes.loading_expiration',
       'envelopes.created_at'
     )
-    .where('user_id', user_id);
+    .where('users.id', user_id);
 }
 
 function findById(id) {

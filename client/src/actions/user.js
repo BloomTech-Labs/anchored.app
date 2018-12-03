@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { read } from 'fs';
 
 export const RETRIEVING_USER_INFO = 'RETRIEVING_USER_INFO';
 export const RETRIEVED_USER_INFO = 'RETRIEVED_USER_INFO';

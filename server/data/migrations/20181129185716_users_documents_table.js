@@ -3,9 +3,9 @@ exports.up = function(knex, Promise) {
     tbl.increments();
 
     tbl
-      .string('user_id')
+      .string('account_id')
       .unsigned()
-      .references('id')
+      .references('account_id')
       .inTable('users');
 
     tbl
