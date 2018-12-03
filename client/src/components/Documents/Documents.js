@@ -6,7 +6,6 @@ import { BeatLoader } from 'react-spinners';
 import { LoadingContainer } from './styles/DocumentsStyles.js';
 import DocusignLogin from '../Auth/Docusign/DocusignLogin';
 import Document from './Document';
-import Footer from '../Footer/Footer.js';
 
 import {
   DocumentOptionsContainer,
@@ -100,7 +99,6 @@ class Documents extends React.Component {
             className="fas fa-plus-circle"
           />
         </DocumentsContainer>
-        <Footer />
       </Fragment>
     );
   }

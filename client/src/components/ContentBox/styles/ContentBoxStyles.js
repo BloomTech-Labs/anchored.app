@@ -8,6 +8,7 @@ export const BoxContainer = styled.div`
   border: 1px solid black;
   margin: 30px;
   margin-bottom: 100px;
+  background-color: #e6e8e6;
 
   @media (max-width: 550px) {
     &:first-child {
