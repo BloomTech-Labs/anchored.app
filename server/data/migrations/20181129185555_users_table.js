@@ -19,20 +19,6 @@ exports.up = function(knex, Promise) {
 
     tbl.string('phone_number', 128).unique();
 
-    tbl.string('documents', 1024);
-
-    tbl.string('document_expiration', 128).defaultTo(0);
-
-    tbl.string('account_id', 128);
-
-    tbl.string('access_token', 1024);
-
-    tbl.string('refresh_token', 1024);
-
-    tbl.string('token_expiration', 128).defaultTo(0);
-
-    tbl.string('base_uri', 128);
-
     tbl
       .integer('credits')
       .unsigned()
