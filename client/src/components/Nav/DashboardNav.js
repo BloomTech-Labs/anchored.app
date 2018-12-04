@@ -11,7 +11,13 @@ import {
   Img,
   Credits,
 } from './styles/NavStyles.js';
-import { Button } from 'reactstrap';
+import {
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  Button,
+} from 'reactstrap';
 import Logo from '../../assets/Proofd_3.png';
 
 // styles for profile image
@@ -21,6 +27,21 @@ const ProfileImage = {
 };
 
 class NavBar extends Component {
+  constructor(props) {
+    super(props);
+
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      dropdownOpen: false,
+    };
+  }
+
+  toggle() {
+    this.setState(prevState => ({
+      dropdownOpen: !prevState.dropdownOpen,
+    }));
+  }
+
   handleLogout = () => {
     axios
       .get(
@@ -66,36 +87,42 @@ class NavBar extends Component {
             >
               <NavButton name="Documents" />
             </NavLink>
-            <NavLink
-              to={`/billing`}
-              style={{ textDecoration: 'none' }}
-              activeStyle={{
-                color: 'orange',
-              }}
-            >
-              <NavButton name="Billing" />
-            </NavLink>
-            <NavLink
-              to={`/settings`}
-              style={{ textDecoration: 'none' }}
-              activeStyle={{
-                color: 'orange',
-              }}
-            >
-              <NavButton name="Settings" />
-            </NavLink>
-            <NavLink
-              to={`/`}
-              onClick={this.handleLogout}
-              style={{ textDecoration: 'none' }}
-            >
-              <NavButton name="Log Out" />
-            </NavLink>
-            <img
-              style={ProfileImage}
-              src={this.props.user.picture}
-              alt="user profile thumbnail"
-            />
+            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+              <DropdownToggle size="sm" caret color="none">
+                {' '}
+                <img
+                  style={ProfileImage}
+                  src={this.props.user.picture}
+                  alt="user profile thumbnail"
+                />
+              </DropdownToggle>
+              <DropdownMenu right>
+                <DropdownItem disabled>Logged in as</DropdownItem>
+                <DropdownItem disabled>
+                  <b>{this.props.user.username}</b>
+                </DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem>
+                  <NavLink to={`/account`} style={{ textDecoration: 'none' }}>
+                    Account
+                  </NavLink>
+                </DropdownItem>
+                <DropdownItem>
+                  <NavLink to={`/settings`} style={{ textDecoration: 'none' }}>
+                    Settings
+                  </NavLink>
+                </DropdownItem>
+                <DropdownItem>
+                  <NavLink
+                    to={`/`}
+                    onClick={this.handleLogout}
+                    style={{ textDecoration: 'none' }}
+                  >
+                    Log out
+                  </NavLink>
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
           </Links>
         </TopNavBar>
       </NavGod>

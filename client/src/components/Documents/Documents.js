@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { getEnvelopes, getProof, updateLoading } from '../../actions/envelopes';
-import { FadeLoader } from 'react-spinners';
+import { BeatLoader } from 'react-spinners';
 import { LoadingContainer } from './styles/DocumentsStyles.js';
 import DocusignLogin from '../Auth/Docusign/DocusignLogin';
 import Document from './Document';
@@ -48,7 +48,7 @@ class Documents extends React.Component {
     if (this.props.fetchingEnv) {
       return (
         <LoadingContainer>
-          <FadeLoader color={'black'} loading={this.state.loading} />
+          <BeatLoader color={'black'} loading={this.state.loading} />
         </LoadingContainer>
       );
     }
@@ -58,46 +58,47 @@ class Documents extends React.Component {
     }
 
     return (
-      <DocumentsContainer>
-        <DocumentOptionsContainer>
-          <DocumentsOptions
-            selected={this.state.selected === true}
-            onClick={() => this.changeSelected(true)}
-          >
-            Verified Contracts
-          </DocumentsOptions>
-          <DocumentsOptions
-            selected={this.state.selected === 'waiting'}
-            onClick={() => this.changeSelected('waiting')}
-          >
-            Contracts waiting signatures
-          </DocumentsOptions>
+      <Fragment>
+        <DocumentsContainer>
+          <DocumentOptionsContainer>
+            <DocumentsOptions
+              selected={this.state.selected === true}
+              onClick={() => this.changeSelected(true)}
+            >
+              Verified Contracts
+            </DocumentsOptions>
+            <DocumentsOptions
+              selected={this.state.selected === 'waiting'}
+              onClick={() => this.changeSelected('waiting')}
+            >
+              Contracts waiting signatures
+            </DocumentsOptions>
 
-          <DocumentsOptions
-            selected={this.state.selected === 'all'}
-            onClick={() => this.changeSelected('all')}
-          >
-            All documents
-          </DocumentsOptions>
-        </DocumentOptionsContainer>
+            <DocumentsOptions
+              selected={this.state.selected === 'all'}
+              onClick={() => this.changeSelected('all')}
+            >
+              All documents
+            </DocumentsOptions>
+          </DocumentOptionsContainer>
+          <AddDocument
+            target="_blank"
+            href="https://appdemo.docusign.com/home"
+            className="fas fa-plus-circle"
+          />
 
-        {this.filterCards().map(doc => {
-          return (
-            <Document
-              key={doc.envelope_id}
-              doc={doc}
-              getProof={this.props.getProof}
-              updateLoading={this.props.updateLoading}
-            />
-          );
-        })}
-
-        <AddDocument
-          target="_blank"
-          href="https://appdemo.docusign.com/home"
-          className="fas fa-plus-circle"
-        />
-      </DocumentsContainer>
+          {this.filterCards().map(doc => {
+            return (
+              <Document
+                key={doc.envelope_id}
+                doc={doc}
+                getProof={this.props.getProof}
+                updateLoading={this.props.updateLoading}
+              />
+            );
+          })}
+        </DocumentsContainer>
+      </Fragment>
     );
   }
 }

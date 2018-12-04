@@ -8,8 +8,9 @@ export const CtaContainer = styled.div`
 `;
 
 export const CtaButton = styled.div`
-  border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 7px;
+  background-color: #7344c1;
+  color: white;
   margin: 30px;
   display: flex;
   justify-content: center;

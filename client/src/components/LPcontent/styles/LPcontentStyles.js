@@ -58,12 +58,9 @@ export const Numbered = styled.div`
   margin-bottom: 10px;
 `;
 
-export const Image = styled.div`
-  border: 1px solid black;
-  border-radius: 50%;
+export const Image = styled.img`
   width: 100px;
   height: 100px;
-  background-color: lightgrey;
 `;
 
 export const Copy = styled.p`

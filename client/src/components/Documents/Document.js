@@ -1,15 +1,18 @@
-import React from 'react';
-import DocumentModal from './DocumentModal';
+import React, { Component, Fragment } from 'react';
+import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import {
   DocumentContainer,
   DocumentSubject,
   DocumentProof,
   LoadingContainer,
 } from './styles/DocumentStyles';
+
+import { ModalInfo } from './styles/DocumentModalStyles';
+
 import { BeatLoader } from 'react-spinners';
 import axios from 'axios';
 
-class Document extends React.Component {
+class Document extends Component {
   constructor(props) {
     super(props);
 
@@ -62,14 +65,43 @@ class Document extends React.Component {
   render() {
     const envelope_id = this.props.doc.envelope_id;
     const details = `https://appdemo.docusign.com/documents/details/${envelope_id}`;
+    let verified_proof;
+    let block_height;
+    let link;
+    if (this.props.doc.verified) {
+      verified_proof = JSON.parse(this.props.doc.verified_proof);
+      block_height = verified_proof.anchorId;
+      link = `https://live.blockcypher.com/btc/block/${block_height}`;
+    }
+
     return (
       <DocumentContainer>
         {this.props.doc.verified ? (
-          <DocumentModal
-            modal={this.state.modal}
-            toggleModal={this.toggleModal}
-            doc={this.props.doc}
-          />
+          <Fragment>
+            <Modal isOpen={this.state.modal} toggle={this.toggleModal}>
+              <ModalBody>
+                Your document has been proofed on Bitcoin block{' '}
+                <b>{verified_proof.anchorId}</b> within Merkle root:
+                <ModalInfo>
+                  <b>{verified_proof.expectedValue}</b>
+                </ModalInfo>
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  href={link}
+                  target="_blank"
+                  alt=""
+                  color="primary"
+                  onClick={this.toggleModal}
+                >
+                  Link to BTC block
+                </Button>
+                <Button color="secondary" onClick={this.toggleModal}>
+                  Close
+                </Button>
+              </ModalFooter>
+            </Modal>
+          </Fragment>
         ) : null}
         <DocumentSubject target="_blank" href={details}>
           {this.props.doc.subject}
@@ -93,7 +125,7 @@ class Document extends React.Component {
             onClick={this.props.doc.verified ? this.toggleModal : null}
           >
             {this.props.doc.verified
-              ? 'Link to Proof'
+              ? 'See Proof'
               : this.props.doc.waiting
               ? 'Waiting...'
               : 'Not signed'}

@@ -7,6 +7,7 @@ export const NavGod = styled.div`
   top: 0.1px;
   position: sticky;
   background-color: white;
+  z-index: 1;
 `;
 
 export const TopNavBar = styled.div`
@@ -40,6 +41,11 @@ export const Button = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #7344c1;
+
+  &:hover {
+    font-size: 1.2rem;
+  }
 `;
 
 export const DashboardButton = styled.div`
@@ -63,7 +69,7 @@ export const Img = styled.img`
 `;
 
 export const Credits = styled.div`
-  min-width: 80px;
+  min-width: 90px;
   height: 40px;
   display: flex;
   justify-content: center;
