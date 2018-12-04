@@ -111,9 +111,6 @@ class Document extends Component {
           </Fragment>
         ) : // ***************************
         null}
-        <DocumentSubject target="_blank" href={details}>
-          {this.props.doc.subject}
-        </DocumentSubject>
         {this.props.doc.status === 'completed' &&
         !this.props.doc.verified &&
         !this.props.doc.waiting ? (
@@ -145,6 +142,9 @@ class Document extends Component {
               : 'Not signed'}
           </DocumentProof>
         )}
+        <DocumentSubject target="_blank" href={details}>
+          {this.props.doc.subject}
+        </DocumentSubject>
         {/* { Verify Payment Modal} */}
         <Fragment>
           <Modal isOpen={this.state.modalVerify} toggle={this.toggleVerifyPay}>

@@ -5,7 +5,6 @@ export const DocumentContainer = styled.div`
   max-width: 840px;
   width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 
   @media (max-width: 550px) {
@@ -17,7 +16,7 @@ export const DocumentContainer = styled.div`
 export const DocumentSubject = styled.a`
   font-weight: bold;
   font-size: 1.2rem;
-  margin: 15px;
+  margin: 15px 15px 15px 40px;
   cursor: pointer;
   text-decoration: none;
   color: black;
