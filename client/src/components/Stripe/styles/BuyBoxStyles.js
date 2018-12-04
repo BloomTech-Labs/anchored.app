@@ -1,6 +1,4 @@
-// 256 x 375
 import styled from 'styled-components';
-import { CtaButton } from '../../CTA/styles/CTAStyles.js';
 
 export const BoxContainer = styled.div`
   min-height: 400px;
