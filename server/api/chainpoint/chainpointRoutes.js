@@ -72,7 +72,6 @@ router.get('/:id/loading', async (req, res) => {
 
   try {
     const envelope = await envs.findById(id);
-    const loading_expiration = JSON.stringify(moment().add(60, 's'));
     const expired = moment().isAfter(JSON.parse(envelope.loading_expiration));
 
     if (expired && envelope.loading) {
