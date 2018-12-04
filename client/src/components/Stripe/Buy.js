@@ -50,7 +50,6 @@ class Billing extends Component {
           title="Monthly Subscription"
           copyOne="BUY"
           copyTwo="BUY"
-          copyThree="BUY"
           name={'PROOFD'}
           description={'Purchase Monthly Subscription'}
           amount={30}
@@ -62,7 +61,6 @@ class Billing extends Component {
           title="Annual Subscription"
           copyOne="BUY"
           copyTwo="BUY"
-          copyThree="BUY"
           name={'PROOFD'}
           description={'Purchase Annual Subscription'}
           amount={300}
