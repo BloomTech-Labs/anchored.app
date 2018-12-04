@@ -18,6 +18,7 @@ class Document extends Component {
 
     this.state = {
       modal: false,
+      modalVerify: false,
     };
   }
 
@@ -33,10 +34,16 @@ class Document extends Component {
 
   getProof = () => {
     this.props.getProof(this.props.doc.id);
+    this.toggleVerifyPay();
   };
 
   toggleModal = () => {
     this.setState({ modal: !this.state.modal });
+  };
+
+  toggleVerifyPay = () => {
+    console.log('click');
+    this.setState({ modalVerify: !this.state.modalVerify });
   };
 
   checkLoading = () => {
@@ -77,10 +84,11 @@ class Document extends Component {
     return (
       <DocumentContainer>
         {this.props.doc.verified ? (
+          // ***** See Proof Modal *****
           <Fragment>
             <Modal isOpen={this.state.modal} toggle={this.toggleModal}>
               <ModalBody>
-                Your document has been proofed on Bitcoin block{' '}
+                Your document has been anchored to Bitcoin block{' '}
                 <b>{verified_proof.anchorId}</b> within Merkle root:
                 <ModalInfo>
                   <b>{verified_proof.expectedValue}</b>
@@ -102,7 +110,8 @@ class Document extends Component {
               </ModalFooter>
             </Modal>
           </Fragment>
-        ) : null}
+        ) : // ***************************
+        null}
         <DocumentSubject target="_blank" href={details}>
           {this.props.doc.subject}
         </DocumentSubject>
@@ -113,7 +122,7 @@ class Document extends Component {
             onClick={
               this.props.user.credits <= 0
                 ? () => this.props.history.push('/buy')
-                : this.getProof
+                : this.toggleVerifyPay
             }
           >
             {this.props.doc.loading && !this.props.doc.error ? (
@@ -137,6 +146,24 @@ class Document extends Component {
               : 'Not signed'}
           </DocumentProof>
         )}
+        {/* { Verify Payment Modal} */}
+        <Fragment>
+          <Modal isOpen={this.state.modalVerify} toggle={this.toggleVerifyPay}>
+            <ModalBody>
+              {' '}
+              Please verify that you would like to use one credit to proof your
+              document.
+            </ModalBody>
+            <ModalFooter>
+              <Button color="info" onClick={this.getProof}>
+                Proof
+              </Button>
+              <Button color="secondary" onClick={this.toggleVerifyPay}>
+                Cancel
+              </Button>
+            </ModalFooter>
+          </Modal>
+        </Fragment>
       </DocumentContainer>
     );
   }
