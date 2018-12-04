@@ -5,6 +5,7 @@ const chp = require('chainpoint-client');
 
 const users = require('../users/usersModel');
 const envs = require('./envelopesModel');
+const docusignModel = require('../auth/docusign/docusignModel');
 
 function handleExpiration(req, res, next) {
   let header = {
@@ -81,19 +82,20 @@ async function getEnvelopes(envelopesApi, account_id, envelopes) {
 // }
 
 async function postEnvToDB(req, res, new_envelopes) {
-  let user_envelopes = await envs.findAllByUser(req.user.id);
+  const account_id = req.user.account_id;
+  const user_envelopes = await envs.findAllByUser(account_id);
   for (let i = 0; i < new_envelopes.length; i++) {
-    let index = user_envelopes.findIndex(
+    const index = user_envelopes.findIndex(
       env => env.envelope_id == new_envelopes[i].envelope_id
     );
     if (index === -1) {
       // Add an envelope if not found
-      let ids = await envs.addEnv(new_envelopes[i]);
+      const ids = await envs.addEnv(new_envelopes[i]);
       new_envelopes[i].id = ids.id;
       new_envelopes[i].verified = 0;
       user_envelopes.push(new_envelopes[i]);
 
-      let user_env = { account_id: req.user.account_id, envelope_id: ids.id };
+      const user_env = { account_id, envelope_id: ids.id };
       await envs.addUserToEnv(user_env);
     } else {
       const expiration = JSON.parse(user_envelopes[i].waiting_expiration);
@@ -142,28 +144,34 @@ async function postEnvToDB(req, res, new_envelopes) {
 }
 
 function checkExpiration(req, res, next) {
-  if (moment().isAfter(JSON.parse(req.user.document_expiration))) {
-    req.user.document_expiration = JSON.stringify(moment().add(15, 'm'));
+  if (!req.user.document_expiration) {
+    return next();
+  } else if (moment().isAfter(JSON.parse(req.user.document_expiration))) {
+    const document_expiration = JSON.stringify(moment().add(15, 'm'));
+    req.user.document_expiration = document_expiration;
     req.session.save();
-    users.updateUser(req.user.id, req.user).catch(err => console.log(err));
+    docusignModel
+      .updateInfo(req.user.account_id, { document_expiration })
+      .catch(err => console.log(err));
     return next();
   }
   envs
-    .findAllByUser(req.user.id)
+    .findAllByUser(req.user.account_id)
     .then(envs => res.status(200).json(envs))
     .catch(err => res.status(500).json({ ErrorMessage: err.message }));
 }
 
 function checkToken(req, res, next) {
-  let expiration = JSON.parse(req.user.token_expiration);
-  let now = moment();
-
-  if (req.user.access_token && now.add(30, 'm').isBefore(expiration)) {
-    return next();
-  } else if (!req.user.access_token || !req.user.refresh_token) {
-    return res.status(401).json({ message: 'You need to be logged in!' });
+  if (req.user.access_token && req.user.refresh_token) {
+    const expiration = JSON.parse(req.user.token_expiration);
+    const now = moment();
+    if (now.add(30, 'm').isBefore(expiration)) {
+      return next();
+    } else {
+      return handleExpiration(req, res, next);
+    }
   } else {
-    return handleExpiration(req, res, next);
+    return res.status(401).json({ message: 'You need to be logged in!' });
   }
 }
 

@@ -4,11 +4,11 @@ function find() {
   return db('envelopes');
 }
 
-function findAllByUser(user_id) {
+function findAllByUser(account_id) {
   return db('envelopes')
     .distinct()
     .join('users_envelopes', 'users_envelopes.envelope_id', '=', 'envelopes.id')
-    .join('users', 'users.account_id', '=', 'users_envelopes.account_id')
+    .join('docusign', 'docusign.id', '=', 'users_envelopes.account_id')
     .select(
       'envelopes.id',
       'envelopes.verified_proof',
@@ -23,7 +23,7 @@ function findAllByUser(user_id) {
       'envelopes.loading_expiration',
       'envelopes.created_at'
     )
-    .where('users.id', user_id);
+    .where('account_id', account_id);
 }
 
 function findById(id) {

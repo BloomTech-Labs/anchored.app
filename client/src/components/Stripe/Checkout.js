@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button } from 'reactstrap';
 import StripeCheckout from 'react-stripe-checkout';
-// import logo from '../../images/proofdlogocheckout.png';
 import STRIPE_PUBLISHABLE from './constants/stripe';
 
 const CURRENCY = 'USD';
@@ -11,7 +10,6 @@ const fromDollarToCent = amount => amount * 100;
 const CheckoutCredit1 = ({ name, description, amount, color, onToken }) => (
   <StripeCheckout
     name={name}
-    // image={logo}
     description={description}
     amount={fromDollarToCent(amount)}
     token={onToken(amount, description)}
@@ -27,7 +25,6 @@ const CheckoutCredit1 = ({ name, description, amount, color, onToken }) => (
 const CheckoutCredit2 = ({ name, description, amount, color, onToken }) => (
   <StripeCheckout
     name={name}
-    // image={logo}
     description={description}
     amount={fromDollarToCent(amount)}
     token={onToken(amount, description)}
@@ -43,7 +40,6 @@ const CheckoutCredit2 = ({ name, description, amount, color, onToken }) => (
 const CheckoutCredit3 = ({ name, description, amount, color, onToken }) => (
   <StripeCheckout
     name={name}
-    // image={logo}
     description={description}
     amount={fromDollarToCent(amount)}
     token={onToken(amount, description)}

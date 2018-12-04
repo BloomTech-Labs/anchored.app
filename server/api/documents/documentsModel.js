@@ -4,7 +4,7 @@ function find() {
   return db('documents');
 }
 
-function findAllByUser(user_id) {
+function findAllByUser(account_id) {
   return db('documents')
     .distinct()
     .join('users_documents', 'users_documents.document_id', '=', 'documents.id')
@@ -14,9 +14,9 @@ function findAllByUser(user_id) {
       '=',
       'users_documents.envelope_id'
     )
-    .join('users', 'users.account_id', '=', 'users_documents.account_id')
+    .join('docusign', 'docusign.id', '=', 'users_documents.account_id')
     .select('documents.id', 'documents.document', 'documents.created_at')
-    .where('user_id', user_id);
+    .where('account_id', account_id);
 }
 
 function findById(id) {

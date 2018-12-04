@@ -1,16 +1,22 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
+const MainWrapper = styled.div`
   max-width: 1000px;
   transform: translate(0px, 50px);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  min-height: 85vh;
+  height: 100%;
 `;
 
 const InfoWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
+
+  @media (max-width: 550px) {
+    flex-direction: column;
+  }
 `;
 
 const InfoWrapperTwo = styled.ul`
@@ -41,7 +47,7 @@ const ButtonWrapper = styled.div`
 `;
 
 export {
-  Wrapper,
+  MainWrapper,
   MainHeader,
   InfoWrapper,
   InfoWrapperTwo,

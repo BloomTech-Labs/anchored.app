@@ -14,12 +14,6 @@ class NavBar extends Component {
         <TopNavBar>
           <Img src={Logo} alt="Proofd Logo" />
           <Links>
-            <NavLink to={`/`} style={{ textDecoration: 'none' }}>
-              <NavButton name="Home" />
-            </NavLink>
-            <NavLink to={`/faq`} style={{ textDecoration: 'none' }}>
-              <NavButton name="FAQ" />
-            </NavLink>
             <NavLink
               to={`/`}
               onClick={auth.signUp}
