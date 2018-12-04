@@ -1,4 +1,3 @@
-const users = require('../../users/usersModel');
 const docusignModel = require('./docusignModel');
 const docusign = require('docusign-esign');
 
@@ -17,7 +16,7 @@ async function updateUser(req, user_info) {
     if (user_accounts.length > 0) {
       for (let i = 0; i < user_accounts.length; i++) {
         const id = user_accounts[i].id;
-        docusignModel.updateUser(id, { user_id: null });
+        docusignModel.updateInfo(id, { user_id: null });
       }
     }
 
@@ -41,9 +40,12 @@ async function updateUser(req, user_info) {
       refresh_token: info.refresh_token,
       token_expiration: info.token_expiration,
       base_uri: info.base_uri,
-      document_expiration: account[0].document_expiration,
       account_id,
     };
+
+    if (account.length > 0) {
+      session_info.document_expiration = account[0].document_expiration;
+    }
 
     req.session.passport.user = { ...req.user, ...session_info };
     req.session.save();
