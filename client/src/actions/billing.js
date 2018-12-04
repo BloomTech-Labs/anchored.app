@@ -50,7 +50,9 @@ export const getUserInvoice = () => {
 };
 
 const errorPayment = () => {
-  alert('Payment Error');
+  alert(
+    'There was an error processing your payment. Please contact customer support.'
+  );
 };
 
 export const onToken = (amount, description) => dispatch => token => {
@@ -66,7 +68,6 @@ export const onToken = (amount, description) => dispatch => token => {
   dispatch({ type: RETRIEVING_CREDIT });
   promise
     .then(() => {
-      alert('Payment Successful');
       let credit_add = description;
       let credit_split = credit_add.split('');
       let filterCredits = credit_split.filter(numStr => {
