@@ -144,9 +144,8 @@ async function postEnvToDB(req, res, new_envelopes) {
 }
 
 function checkExpiration(req, res, next) {
-  if (!req.user.document_expiration) {
-    return next();
-  } else if (moment().isAfter(JSON.parse(req.user.document_expiration))) {
+  const expiration = req.user.document_expiration;
+  if (!expiration || moment().isAfter(JSON.parse(expiration))) {
     const document_expiration = JSON.stringify(moment().add(15, 'm'));
     req.user.document_expiration = document_expiration;
     req.session.save();
