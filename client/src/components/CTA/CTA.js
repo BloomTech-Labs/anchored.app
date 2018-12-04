@@ -14,12 +14,7 @@ import {
   Friends,
 } from './styles/CTAStyles.js';
 
-import {
-  Events,
-  animateScroll as scroll,
-  scrollSpy,
-  scroller,
-} from 'react-scroll';
+import { Events, scrollSpy, scroller } from 'react-scroll';
 
 class CTA extends Component {
   componentDidMount() {
