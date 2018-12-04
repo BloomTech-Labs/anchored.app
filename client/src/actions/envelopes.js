@@ -8,6 +8,9 @@ export const RETRIEVED_PROOF = 'RETRIEVED_PROOF';
 
 export const UPDATE_LOADING = 'UPDATE_LOADING';
 
+export const DECREMENT_CREDIT = 'DECREMENT_CREDIT';
+export const INCREMENT_CREDIT = 'INCREMENT_CREDIT';
+
 export const ERROR = 'ERROR';
 
 export const getEnvelopes = () => {
@@ -31,14 +34,21 @@ export const getProof = id => {
   }
   return dispatch => {
     dispatch({ type: RETRIEVING_PROOF, payload: id });
+    dispatch({ type: DECREMENT_CREDIT });
     promise
-      .then(res => dispatch({ type: RETRIEVED_PROOF, payload: res.data }))
-      .catch(err => dispatch({ type: ERROR, payload: err.response }));
+      .then(res => {
+        dispatch({ type: RETRIEVED_PROOF, payload: res.data });
+      })
+      .catch(err => {
+        dispatch({ type: ERROR, payload: err.response });
+        dispatch({ type: INCREMENT_CREDIT });
+      });
   };
 };
 
 export const updateLoading = (id, changes) => {
   return dispatch => {
-    return dispatch({ type: UPDATE_LOADING, payload: { id, changes } });
+    dispatch({ type: UPDATE_LOADING, payload: { id, changes } });
+    dispatch({ type: INCREMENT_CREDIT });
   };
 };
