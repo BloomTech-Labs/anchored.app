@@ -31,7 +31,6 @@ export default (state = initialState, action) => {
       return { ...state, retrievingCred: true, retrievedCred: false };
 
     case RETRIEVED_CREDIT:
-      console.log(action.payload);
       const user = {
         ...state.user,
         credits: (state.user.credits += action.payload),
