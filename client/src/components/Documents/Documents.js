@@ -92,6 +92,8 @@ class Documents extends React.Component {
               <Document
                 key={doc.envelope_id}
                 doc={doc}
+                user={this.props.user}
+                history={this.props.history}
                 getProof={this.props.getProof}
                 updateLoading={this.props.updateLoading}
               />
@@ -107,6 +109,7 @@ const mapStateToProps = state => {
   return {
     envelopes: state.envelopes.envelopes,
     fetchingEnv: state.envelopes.retrievingEnv,
+    user: state.user.user,
   };
 };
 

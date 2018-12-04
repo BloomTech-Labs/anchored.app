@@ -53,7 +53,6 @@ class Document extends Component {
       }
       promise
         .then(res => {
-          console.log(res)
           if (!res.data.loading) {
             this.props.updateLoading(this.props.doc.id, res.data);
             this.clearInterval(this.interval);
@@ -110,7 +109,13 @@ class Document extends Component {
         {this.props.doc.status === 'completed' &&
         !this.props.doc.verified &&
         !this.props.doc.waiting ? (
-          <DocumentProof onClick={this.getProof}>
+          <DocumentProof
+            onClick={
+              this.props.user.credits <= 0
+                ? () => this.props.history.push('/buy')
+                : this.getProof
+            }
+          >
             {this.props.doc.loading && !this.props.doc.error ? (
               <LoadingContainer>
                 <BeatLoader color={'black'} sizeUnit={'px'} size={10} />

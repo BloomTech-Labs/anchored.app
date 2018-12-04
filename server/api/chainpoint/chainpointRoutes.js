@@ -1,5 +1,6 @@
 const express = require('express');
 
+const users = require('../users/usersModel');
 const envs = require('../envelopes/envelopesModel');
 const docusign = require('docusign-esign');
 const moment = require('moment');
@@ -19,6 +20,12 @@ router.get('/:id', async (req, res) => {
   const apiClient = getDSApi(user);
   const envelopesApi = new docusign.EnvelopesApi(apiClient);
   const account_id = user.account_id;
+
+  const current_user = await users.findByUserId(req.user.id);
+
+  if (current_user.credits <= 0) {
+    return res.status(400).json({ message: 'No credits available' });
+  }
 
   try {
     const env = await envs.findById(id);
