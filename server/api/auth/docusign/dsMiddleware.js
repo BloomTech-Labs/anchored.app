@@ -1,4 +1,3 @@
-const users = require('../../users/usersModel');
 const docusignModel = require('./docusignModel');
 const docusign = require('docusign-esign');
 

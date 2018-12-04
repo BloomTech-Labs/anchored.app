@@ -5,6 +5,7 @@ const chp = require('chainpoint-client');
 
 const users = require('../users/usersModel');
 const envs = require('./envelopesModel');
+const docusignModel = require('../auth/docusign/docusignModel');
 
 function handleExpiration(req, res, next) {
   let header = {
@@ -144,13 +145,16 @@ async function postEnvToDB(req, res, new_envelopes) {
 
 function checkExpiration(req, res, next) {
   if (moment().isAfter(JSON.parse(req.user.document_expiration))) {
-    req.user.document_expiration = JSON.stringify(moment().add(15, 'm'));
+    const document_expiration = JSON.stringify(moment().add(15, 'm'));
+    req.user.document_expiration = document_expiration;
     req.session.save();
-    users.updateUser(req.user.id, req.user).catch(err => console.log(err));
+    docusignModel
+      .updateInfo(req.user.account_id, { document_expiration })
+      .catch(err => console.log(err));
     return next();
   }
   envs
-    .findAllByUser(req.user.id)
+    .findAllByUser(req.user.account_id)
     .then(envs => res.status(200).json(envs))
     .catch(err => res.status(500).json({ ErrorMessage: err.message }));
 }

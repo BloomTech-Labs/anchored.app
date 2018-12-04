@@ -31,7 +31,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/all', checkToken, async (req, res, next) => {
+router.get('/all', checkToken, checkExpiration, async (req, res, next) => {
   const user = req.user;
   const apiClient = getDSApi(user);
   const envelopesApi = new docusign.EnvelopesApi(apiClient);
