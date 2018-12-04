@@ -8,11 +8,11 @@ const envs = require('./envelopesModel');
 const docusignModel = require('../auth/docusign/docusignModel');
 
 function handleExpiration(req, res, next) {
-  let header = {
+  const header = {
     headers: { Authorization: 'Basic ' + process.env.DOCUSIGN_BASE64 },
   };
 
-  let data = {
+  const data = {
     grant_type: 'refresh_token',
     refresh_token: req.user.refresh_token,
   };
@@ -20,12 +20,21 @@ function handleExpiration(req, res, next) {
   axios
     .post('https://account-d.docusign.com/oauth/token', data, header)
     .then(response => {
-      let expiration = moment().add(response.data.expires_in, 's');
-      req.user.access_token = response.data.access_token;
-      req.user.refresh_token = response.data.refresh_token;
-      req.user.token_expiration = JSON.stringify(expiration);
+      const expiration = moment().add(response.data.expires_in, 's');
+
+      const changes = {
+        access_token: response.data.access_token,
+        refresh_token: response.data.refresh_token,
+        token_expiration: JSON.stringify(expiration),
+      };
+
+      req.user = { ...req.user, ...changes };
       req.session.save();
-      users.updateUser(req.user.id, req.user).catch(err => console.log(err));
+
+      docusignModel
+        .updateInfo(req.user.account_id, changes)
+        .catch(err => console.log(err));
+
       next();
     })
     .catch(err => res.status(401).json({ ErrorMessage: err.response.data }));
