@@ -42,7 +42,6 @@ class Document extends Component {
   };
 
   toggleVerifyPay = () => {
-    console.log('click');
     this.setState({ modalVerify: !this.state.modalVerify });
   };
 

@@ -3,7 +3,6 @@ const axios = require('axios');
 const { promisify } = require('util');
 const chp = require('chainpoint-client');
 
-const users = require('../users/usersModel');
 const envs = require('./envelopesModel');
 const docusignModel = require('../auth/docusign/docusignModel');
 
