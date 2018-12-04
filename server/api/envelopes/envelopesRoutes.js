@@ -42,7 +42,6 @@ router.get('/all', checkToken, checkExpiration, async (req, res, next) => {
     let envelopes = await getEnvelopes(envelopesApi, account_id, envelopesList);
     await postEnvToDB(req, res, envelopes);
   } catch (err) {
-    console.log(err);
     return res.status(500).json(err);
   }
 });
