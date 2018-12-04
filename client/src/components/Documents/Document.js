@@ -18,6 +18,7 @@ class Document extends Component {
 
     this.state = {
       modal: false,
+      modalVerify: false,
     };
   }
 
@@ -33,11 +34,16 @@ class Document extends Component {
 
   getProof = () => {
     this.props.getProof(this.props.doc.id);
+    this.toggleVerifyPay();
   };
 
   toggleModal = () => {
-    console.log('click');
     this.setState({ modal: !this.state.modal });
+  };
+
+  toggleVerifyPay = () => {
+    console.log('click');
+    this.setState({ modalVerify: !this.state.modalVerify });
   };
 
   checkLoading = () => {
@@ -78,7 +84,7 @@ class Document extends Component {
     return (
       <DocumentContainer>
         {this.props.doc.verified ? (
-          // See Proof Modal
+          // ***** See Proof Modal *****
           <Fragment>
             <Modal isOpen={this.state.modal} toggle={this.toggleModal}>
               <ModalBody>
@@ -104,14 +110,15 @@ class Document extends Component {
               </ModalFooter>
             </Modal>
           </Fragment>
-        ) : null}
+        ) : // ***************************
+        null}
         <DocumentSubject target="_blank" href={details}>
           {this.props.doc.subject}
         </DocumentSubject>
         {this.props.doc.status === 'completed' &&
         !this.props.doc.verified &&
         !this.props.doc.waiting ? (
-          <DocumentProof onClick={this.toggleModal}>
+          <DocumentProof onClick={this.toggleVerifyPay}>
             {this.props.doc.loading && !this.props.doc.error ? (
               <LoadingContainer>
                 <BeatLoader color={'black'} sizeUnit={'px'} size={10} />
@@ -133,6 +140,24 @@ class Document extends Component {
               : 'Not signed'}
           </DocumentProof>
         )}
+        {/* { Verify Payment Modal} */}
+        <Fragment>
+          <Modal isOpen={this.state.modalVerify} toggle={this.toggleVerifyPay}>
+            <ModalBody>
+              {' '}
+              Please verify that you would like to use one credit to proof your
+              document.
+            </ModalBody>
+            <ModalFooter>
+              <Button color="info" onClick={this.getProof}>
+                Proof
+              </Button>
+              <Button color="secondary" onClick={this.toggleVerifyPay}>
+                Cancel
+              </Button>
+            </ModalFooter>
+          </Modal>
+        </Fragment>
       </DocumentContainer>
     );
   }
