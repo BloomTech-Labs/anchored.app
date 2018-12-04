@@ -53,6 +53,7 @@ class Document extends Component {
       }
       promise
         .then(res => {
+          console.log(res)
           if (!res.data.loading) {
             this.props.updateLoading(this.props.doc.id, res.data);
             this.clearInterval(this.interval);

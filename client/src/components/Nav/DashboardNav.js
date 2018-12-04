@@ -10,6 +10,8 @@ import {
   BuyCreditsButton,
   Img,
   Credits,
+  DropdownLink,
+  StyledDropdownItem,
 } from './styles/NavStyles.js';
 import {
   Dropdown,
@@ -89,7 +91,6 @@ class NavBar extends Component {
             </NavLink>
             <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
               <DropdownToggle size="sm" caret color="none">
-                {' '}
                 <img
                   style={ProfileImage}
                   src={this.props.user.picture}
@@ -102,25 +103,15 @@ class NavBar extends Component {
                   <b>{this.props.user.username}</b>
                 </DropdownItem>
                 <DropdownItem divider />
-                <DropdownItem>
-                  <NavLink to={`/account`} style={{ textDecoration: 'none' }}>
-                    Account
-                  </NavLink>
-                </DropdownItem>
-                <DropdownItem>
-                  <NavLink to={`/settings`} style={{ textDecoration: 'none' }}>
-                    Settings
-                  </NavLink>
-                </DropdownItem>
-                <DropdownItem>
-                  <NavLink
-                    to={`/`}
-                    onClick={this.handleLogout}
-                    style={{ textDecoration: 'none' }}
-                  >
-                    Log out
-                  </NavLink>
-                </DropdownItem>
+                <DropdownLink to={`/account`}>
+                  <StyledDropdownItem>Account</StyledDropdownItem>
+                </DropdownLink>
+                <DropdownLink to={`/settings`}>
+                  <StyledDropdownItem>Settings</StyledDropdownItem>
+                </DropdownLink>
+                <DropdownLink to={`/`} onClick={this.handleLogout}>
+                  <StyledDropdownItem>Log out</StyledDropdownItem>
+                </DropdownLink>
               </DropdownMenu>
             </Dropdown>
           </Links>
