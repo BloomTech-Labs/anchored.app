@@ -36,6 +36,7 @@ class Document extends Component {
   };
 
   toggleModal = () => {
+    console.log('click');
     this.setState({ modal: !this.state.modal });
   };
 
@@ -77,10 +78,11 @@ class Document extends Component {
     return (
       <DocumentContainer>
         {this.props.doc.verified ? (
+          // See Proof Modal
           <Fragment>
             <Modal isOpen={this.state.modal} toggle={this.toggleModal}>
               <ModalBody>
-                Your document has been proofed on Bitcoin block{' '}
+                Your document has been anchored to Bitcoin block{' '}
                 <b>{verified_proof.anchorId}</b> within Merkle root:
                 <ModalInfo>
                   <b>{verified_proof.expectedValue}</b>
@@ -109,7 +111,7 @@ class Document extends Component {
         {this.props.doc.status === 'completed' &&
         !this.props.doc.verified &&
         !this.props.doc.waiting ? (
-          <DocumentProof onClick={this.getProof}>
+          <DocumentProof onClick={this.toggleModal}>
             {this.props.doc.loading && !this.props.doc.error ? (
               <LoadingContainer>
                 <BeatLoader color={'black'} sizeUnit={'px'} size={10} />
