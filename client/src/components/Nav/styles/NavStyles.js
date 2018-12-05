@@ -70,6 +70,10 @@ export const Img = styled.img`
   }
 `;
 
+export const DropdownWrapper = styled.div`
+  height: 152px;
+`;
+
 export const Credits = styled.div`
   min-width: 90px;
   height: 40px;
@@ -94,8 +98,13 @@ export const UserHeader = styled.h5`
 
 export const StyledDropdownItem = styled(DropdownItem)`
   cursor: pointer;
+<<<<<<< HEAD
   margin-bottom: 7.5px;
   line-height: 18px;
+=======
+  margin-bottom: ${props => (props.primary ? '7.5px' : '0')};
+
+>>>>>>> Added wrapper to dropdown menu with height
   &:hover {
     color: white;
     background: #7344c1;
