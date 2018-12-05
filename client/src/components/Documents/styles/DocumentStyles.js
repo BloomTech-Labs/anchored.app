@@ -2,10 +2,10 @@ import styled from 'styled-components';
 
 export const DocumentContainer = styled.div`
   margin: 15px;
+  padding: 0 15px;
   max-width: 840px;
   width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 
   @media (max-width: 550px) {
@@ -17,7 +17,7 @@ export const DocumentContainer = styled.div`
 export const DocumentSubject = styled.a`
   font-weight: bold;
   font-size: 1.2rem;
-  margin: 15px;
+  margin: 15px 15px 15px 40px;
   cursor: pointer;
   text-decoration: none;
   color: black;
@@ -28,10 +28,17 @@ export const DocumentSubject = styled.a`
 `;
 
 export const DocumentProof = styled.div`
-  border: 1px solid black;
+  border: 1px solid #17a2b8;
+  color: #17a2b8
+  border-radius: 5px;
   min-width: 130px;
-  padding: 15px;
+  padding: 8px 15px;
   cursor: pointer;
+
+  &:hover {
+    background: #17a2b8;
+    color: #fff;
+  }
 `;
 
 export const LoadingContainer = styled.div`
