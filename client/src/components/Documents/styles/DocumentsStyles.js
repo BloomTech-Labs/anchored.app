@@ -64,27 +64,23 @@ export const TabHeader = styled.div`
 
 export const TabDescription = styled.h5`
   margin: 20px 0;
-
-  // @media (max-width: 800px) {
-  //   margin-right: 0;
-  // }
 `;
 
-export const AddDocumentContainer = styled.div`
+export const AddDocumentContainer = styled.a`
   display: flex;
   align-items: center;
+  text-decoration: none;
+  color: #17a2b8;
+
+  &:hover {
+    text-decoration: none;
+    color: #7344c1;
+  }
 `;
 
 export const AddDocument = styled.a`
   margin: 20px 10px;
   font-size: 30px;
-  cursor: pointer;
-  color: #17a2b8;
-
-  &:hover {
-    text-decoration: none;
-    color: none;
-  }
 `;
 
 export const LoadingContainer = styled.div`
