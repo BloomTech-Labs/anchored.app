@@ -8,6 +8,7 @@ export const FooterContainer = styled.div`
   width: 1026px;
   max-width: 100%;
   margin: 0 auto;
+  border-top: 1px solid lightgrey;
 
   @media (max-width: 550px) {
     font-size: 0.7rem;
@@ -16,7 +17,6 @@ export const FooterContainer = styled.div`
 `;
 
 export const LeftFoot = styled.div`
-  /* width: 30%; */
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -26,11 +26,9 @@ export const CenterFoot = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* width: 30%; */
 `;
 
 export const RightFoot = styled.div`
-  /* width: 30%; */
   display: flex;
   justify-content: space-around;
   align-items: center;

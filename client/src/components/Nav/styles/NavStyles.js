@@ -7,7 +7,7 @@ export const NavGod = styled.div`
   top: 0.1px;
   position: sticky;
   background-color: white;
-  z-index: 1;
+  z-index: 1000;
 `;
 
 export const TopNavBar = styled.div`
@@ -20,7 +20,7 @@ export const TopNavBar = styled.div`
   /* background-color: #e6e8e6; */
 
   @media (max-width: 550px) {
-    height: 140px;
+    height: 160px;
     flex-direction: column;
   }
 `;
@@ -33,6 +33,7 @@ export const Links = styled.div`
 
   @media (max-width: 550px) {
     justify-content: center;
+    margin-top: 10px;
   }
 `;
 
