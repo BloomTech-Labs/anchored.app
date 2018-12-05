@@ -53,4 +53,5 @@ export const Copy = styled.p`
 
 export const Img = styled.img`
   width: 30px;
+  margin-bottom: 20px;
 `;

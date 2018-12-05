@@ -19,7 +19,7 @@ export const TopNavBar = styled.div`
   align-items: center;
 
   @media (max-width: 550px) {
-    height: 180px;
+    height: 150px;
     flex-direction: column;
   }
 `;
@@ -48,7 +48,6 @@ export const Button = styled.div`
   margin: 10px;
 
   &:hover {
-    /* font-size: 1.2rem; */
     background-color: ${props => props.bgColor};
     color: ${props => props.hoverFontColor};
   }
@@ -67,11 +66,7 @@ export const BuyCreditsButton = styled.div`
 `;
 
 export const Img = styled.img`
-  width: 10%;
-
-  @media (max-width: 550px) {
-    width: 30%;
-  }
+  width: 80px;
 `;
 
 export const Credits = styled.div`
