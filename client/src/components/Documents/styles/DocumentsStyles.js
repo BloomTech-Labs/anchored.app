@@ -21,7 +21,7 @@ export const DocumentOptionsContainer = styled.div`
 
 export const DocumentsOptions = styled.div`
   // border-bottom: 1px solid #7344c1;
-  margin: 30px 30px 0 30px;
+  margin: 40px 30px 0 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,10 +42,13 @@ export const DocumentsOptions = styled.div`
   }
 `;
 
-// export const DocumentHeader = styled.h2`
-//   text-align: left;
-//   font-size
-// `;
+export const DocumentsHeader = styled.h4`
+  margin-right: 628px;
+
+  @media (max-width: 800px) {
+    margin-right: 0;
+  }
+`;
 
 export const AddDocument = styled.a`
   margin: 20px;

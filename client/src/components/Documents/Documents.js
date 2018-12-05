@@ -11,6 +11,7 @@ import {
   DocumentOptionsContainer,
   DocumentsOptions,
   DocumentsContainer,
+  DocumentsHeader,
   AddDocument,
 } from './styles/DocumentsStyles';
 
@@ -67,7 +68,7 @@ class Documents extends React.Component {
     return (
       <Fragment>
         <DocumentsContainer>
-          Your Documents
+          <DocumentsHeader>Your Documents</DocumentsHeader>
           <DocumentOptionsContainer>
             <DocumentsOptions
               selected={this.state.selected === 'all'}
