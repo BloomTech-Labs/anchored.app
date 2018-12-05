@@ -17,7 +17,7 @@ export const H1 = styled.h1`
 `;
 
 export const H2 = styled.h2`
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 `;
 
 export const ContentSet = styled.div`

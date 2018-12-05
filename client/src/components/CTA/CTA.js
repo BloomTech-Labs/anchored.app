@@ -54,16 +54,6 @@ class CTA extends Component {
           <Img src={playImg} alt="play icon" width="20%" />
           <Copy>Watch the Demo</Copy>
         </Demo>
-        <OurPatrons>
-          <H3>Used By Our Friends At:</H3>
-          <Logos>
-            <Friends />
-            <Friends />
-            <Friends />
-            <Friends />
-            <Friends />
-          </Logos>
-        </OurPatrons>
       </CtaContainer>
     );
   }
