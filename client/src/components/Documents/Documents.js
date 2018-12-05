@@ -106,6 +106,7 @@ class Documents extends React.Component {
           </DocumentOptionsContainer>
           <TabHeader>
             <TabDescription>
+              {/* ternary based on what documents tab is selected */}
               {this.state.selected === true
                 ? 'Proofed Documents'
                 : this.state.selected === 'waiting'

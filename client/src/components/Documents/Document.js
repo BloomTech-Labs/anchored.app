@@ -86,6 +86,8 @@ class Document extends Component {
       link = `https://live.blockcypher.com/btc/block/${block_height}`;
     }
 
+    console.log(timestamp);
+
     return (
       <DocumentContainer>
         {this.props.doc.verified ? (
@@ -152,12 +154,15 @@ class Document extends Component {
           <DocumentSubject target="_blank" href={details}>
             {this.props.doc.subject}
           </DocumentSubject>
-          <TimestampContainer>
-            Proofed on
-            <Timestamp>
-              {moment(timestamp).format('D MMM YYYY hh:mma')}
-            </Timestamp>
-          </TimestampContainer>
+          {/* Returns proofed timestamp if exists */}
+          {timestamp !== undefined ? (
+            <TimestampContainer>
+              Proofed
+              <Timestamp>
+                {moment(timestamp).format('D MMM YYYY hh:mma')}
+              </Timestamp>
+            </TimestampContainer>
+          ) : null}
         </ProofDocTextContainer>
         {/* { Verify Payment Modal} */}
         <Fragment>
