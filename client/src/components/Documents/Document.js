@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
 import {
   DocumentContainer,
   DocumentSubject,

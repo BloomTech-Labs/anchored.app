@@ -11,10 +11,6 @@ import {
   DocumentOptionsContainer,
   DocumentsOptions,
   DocumentsContainer,
-  DocumentsHeader,
-  AddDocumentContainer,
-  TabDescription,
-  TabHeader,
   AddDocument,
 } from './styles/DocumentsStyles';
 

@@ -33,7 +33,11 @@ export default (state = initialState, action) => {
       return { ...state, retrievingCred: true, retrievedCred: false };
     }
 
+<<<<<<< HEAD
     case RETRIEVED_CREDIT: {
+=======
+    case RETRIEVED_CREDIT:
+>>>>>>> 728c0f09ab98f27c0ba7ab6b3baa3222cc7914f1
       const user = {
         ...state.user,
         credits: (state.user.credits += action.payload),
