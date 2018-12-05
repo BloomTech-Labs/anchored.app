@@ -20,16 +20,18 @@ export default (state = initialState, action) => {
     case RETRIEVING_USER_INFO:
       return { ...state, retrieving: true, retrieved: false };
 
-    case RETRIEVED_USER_INFO:
+    case RETRIEVED_USER_INFO: {
       return {
         ...state,
         retrieved: true,
         retrieving: false,
         user: action.payload.user,
       };
+    }
 
-    case RETRIEVING_CREDIT:
+    case RETRIEVING_CREDIT: {
       return { ...state, retrievingCred: true, retrievedCred: false };
+    }
 
     case RETRIEVED_CREDIT: {
       const user = {
@@ -55,13 +57,14 @@ export default (state = initialState, action) => {
       return { ...state, user };
     }
 
-    case ERROR:
+    case ERROR: {
       return {
         ...state,
         retrieving: false,
         retrieved: false,
         error: action.payload,
       };
+    }
 
     default:
       return state;

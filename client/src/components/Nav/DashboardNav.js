@@ -12,6 +12,7 @@ import {
   Credits,
   DropdownLink,
   StyledDropdownItem,
+  UserHeader,
 } from './styles/NavStyles.js';
 import {
   Dropdown,
@@ -100,7 +101,7 @@ class NavBar extends Component {
               <DropdownMenu right>
                 <DropdownItem disabled>Logged in as</DropdownItem>
                 <DropdownItem disabled>
-                  <b>{this.props.user.username}</b>
+                  <UserHeader>{this.props.user.username}</UserHeader>
                 </DropdownItem>
                 <DropdownItem divider />
                 <DropdownLink to={`/account`}>

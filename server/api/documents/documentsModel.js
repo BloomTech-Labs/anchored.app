@@ -25,6 +25,12 @@ function findById(id) {
     .first();
 }
 
+function findbyEnvelopeId(envelope_id) {
+  return db('documents')
+    .where({ envelope_id })
+    .first();
+}
+
 function addDoc(doc) {
   return db('documents')
     .insert(doc)
@@ -55,6 +61,7 @@ module.exports = {
   find,
   findAllByUser,
   findById,
+  findbyEnvelopeId,
   addDoc,
   addUserToDoc,
   updateDoc,
