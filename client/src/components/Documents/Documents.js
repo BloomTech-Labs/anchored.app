@@ -71,59 +71,32 @@ class Documents extends React.Component {
     return (
       <Fragment>
         <DocumentsContainer>
-          <DocumentsHeader>Your Documents</DocumentsHeader>
           <DocumentOptionsContainer>
-            <DocumentsOptions
-              selected={this.state.selected === 'all'}
-              onClick={() => this.changeSelected('all')}
-            >
-              All
-            </DocumentsOptions>
             <DocumentsOptions
               selected={this.state.selected === true}
               onClick={() => this.changeSelected(true)}
             >
-              Proofed
+              Verified Contracts
             </DocumentsOptions>
             <DocumentsOptions
               selected={this.state.selected === 'waiting'}
               onClick={() => this.changeSelected('waiting')}
             >
-              Pending
+              Contracts waiting signatures
             </DocumentsOptions>
+
             <DocumentsOptions
-              selected={this.state.selected === 'signed'}
-              onClick={() => this.changeSelected('signed')}
+              selected={this.state.selected === 'all'}
+              onClick={() => this.changeSelected('all')}
             >
-              Signed
-            </DocumentsOptions>
-            <DocumentsOptions
-              selected={this.state.selected === 'unsigned'}
-              onClick={() => this.changeSelected('unsigned')}
-            >
-              Unsigned
+              All documents
             </DocumentsOptions>
           </DocumentOptionsContainer>
-          <TabHeader>
-            <TabDescription>
-              {this.state.selected === true
-                ? 'Proofed Documents'
-                : this.state.selected === 'waiting'
-                ? 'Documents Pending Proof'
-                : this.state.selected === 'signed'
-                ? 'Documents Awaiting Proof'
-                : this.state.selected === 'unsigned'
-                ? 'Documents Awaiting Signatures'
-                : 'All Documents'}
-            </TabDescription>
-            <AddDocumentContainer
-              target="_blank"
-              href="https://appdemo.docusign.com/home"
-            >
-              <AddDocument className="fas fa-plus-circle" />
-              Add Document
-            </AddDocumentContainer>
-          </TabHeader>
+          <AddDocument
+            target="_blank"
+            href="https://appdemo.docusign.com/home"
+            className="fas fa-plus-circle"
+          />
 
           {this.filterCards().map(doc => {
             return (

@@ -109,7 +109,7 @@ class Document extends Component {
               </ModalFooter>
             </Modal>
           </Fragment>
-        ) : // ***************************
+        ) :
         null}
         {this.props.doc.status === 'completed' &&
         !this.props.doc.verified &&
