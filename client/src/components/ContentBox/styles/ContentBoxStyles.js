@@ -5,10 +5,9 @@ import { CtaButton } from '../../CTA/styles/CTAStyles.js';
 export const BoxContainer = styled.div`
   min-height: 400px;
   width: 265px;
-  border: 1px solid black;
   margin: 30px;
   margin-bottom: 100px;
-  background-color: #e6e8e6;
+  background-color: white;
 
   @media (max-width: 550px) {
     &:first-child {

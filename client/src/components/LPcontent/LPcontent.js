@@ -5,7 +5,7 @@ import {
   H2,
   ContentSet,
   NumberedImage,
-  Numbered,
+  PricingSection,
   Image,
   Copy,
   TagLine,
@@ -58,23 +58,25 @@ const LPcontent = () => {
         <PlayImg src={playImg} alt="play icon" />
         <TagLine>The science behind our work</TagLine>
       </ContentSet>
-      <H1>Killer Prices, Subscribe and Save</H1>
-      <Element name="pricingSheets">
-        <ContentSet>
-          <ContentBox
-            title="Pay As You Go"
-            copyOne="3 Free Credits"
-            copyTwo="Purchase Credits A La Carte"
-            copyThree="Upgrade Anytime"
-          />
-          <ContentBox
-            title="Premium Subscription"
-            copyOne="Unlimited Credits"
-            copyTwo="$25 billed monthly, or"
-            copyThree="$240 billed annually"
-          />
-        </ContentSet>
-      </Element>
+      <PricingSection>
+        <H1>Killer Prices, Subscribe and Save</H1>
+        <Element name="pricingSheets">
+          <ContentSet>
+            <ContentBox
+              title="Pay As You Go"
+              copyOne="3 Free Credits"
+              copyTwo="Purchase Credits A La Carte"
+              copyThree="Upgrade Anytime"
+            />
+            <ContentBox
+              title="Premium Subscription"
+              copyOne="Unlimited Credits"
+              copyTwo="$25 billed monthly, or"
+              copyThree="$240 billed annually"
+            />
+          </ContentSet>
+        </Element>
+      </PricingSection>
     </ContentMain>
   );
 };

@@ -58,6 +58,12 @@ export const Numbered = styled.div`
   margin-bottom: 10px;
 `;
 
+export const PricingSection = styled.div`
+  width: 100vw;
+  margin-top: 80px;
+  background-color: #e6e8e6;
+`;
+
 export const Image = styled.img`
   width: 100px;
   height: 100px;

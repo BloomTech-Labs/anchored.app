@@ -17,11 +17,19 @@ const Footer = () => {
     <FooterContainer>
       <LeftFoot>
         <Copy>{'\u00A9'} 2018 Proofd </Copy>
-        <NavLink to={'/team'} style={{ textDecoration: 'none' }}>
+        <NavLink
+          to={'/team'}
+          style={{ textDecoration: 'none', color: '#7344c1' }}
+          activeStyle={{ color: '#20D1C8' }}
+        >
           <Copy>Our Team</Copy>
         </NavLink>
 
-        <NavLink to={'/privacy'} style={{ textDecoration: 'none' }}>
+        <NavLink
+          to={'/privacy'}
+          style={{ textDecoration: 'none', color: '#7344c1' }}
+          activeStyle={{ color: '#20D1C8' }}
+        >
           <Copy>Privacy Policy</Copy>
         </NavLink>
       </LeftFoot>
@@ -29,15 +37,27 @@ const Footer = () => {
         <Img src={Logo} alt="Proofd Logo" />
       </CenterFoot>
       <RightFoot>
-        <NavLink to={'/testimonials'} style={{ textDecoration: 'none' }}>
+        <NavLink
+          to={'/testimonials'}
+          style={{ textDecoration: 'none', color: '#7344c1' }}
+          activeStyle={{ color: '#20D1C8' }}
+        >
           <Copy>Testimonials</Copy>
         </NavLink>
 
-        <NavLink to={'/terms'} style={{ textDecoration: 'none' }}>
+        <NavLink
+          to={'/terms'}
+          style={{ textDecoration: 'none', color: '#7344c1' }}
+          activeStyle={{ color: '#20D1C8' }}
+        >
           <Copy>Terms & Conditions</Copy>
         </NavLink>
 
-        <NavLink to={'/careers'} style={{ textDecoration: 'none' }}>
+        <NavLink
+          to={'/careers'}
+          style={{ textDecoration: 'none', color: '#7344c1' }}
+          activeStyle={{ color: '#20D1C8' }}
+        >
           <Copy>Careers</Copy>
         </NavLink>
       </RightFoot>
