@@ -11,6 +11,10 @@ import {
   DocumentOptionsContainer,
   DocumentsOptions,
   DocumentsContainer,
+  DocumentsHeader,
+  AddDocumentContainer,
+  TabDescription,
+  TabHeader,
   AddDocument,
 } from './styles/DocumentsStyles';
 
@@ -67,25 +71,37 @@ class Documents extends React.Component {
     return (
       <Fragment>
         <DocumentsContainer>
+          <DocumentsHeader>Your Documents</DocumentsHeader>
           <DocumentOptionsContainer>
+            <DocumentsOptions
+              selected={this.state.selected === 'all'}
+              onClick={() => this.changeSelected('all')}
+            >
+              All
+            </DocumentsOptions>
             <DocumentsOptions
               selected={this.state.selected === true}
               onClick={() => this.changeSelected(true)}
             >
-              Verified Contracts
+              Proofed
             </DocumentsOptions>
             <DocumentsOptions
               selected={this.state.selected === 'waiting'}
               onClick={() => this.changeSelected('waiting')}
             >
-              Contracts waiting signatures
+              Pending
             </DocumentsOptions>
-
             <DocumentsOptions
-              selected={this.state.selected === 'all'}
-              onClick={() => this.changeSelected('all')}
+              selected={this.state.selected === 'signed'}
+              onClick={() => this.changeSelected('signed')}
             >
-              All documents
+              Signed
+            </DocumentsOptions>
+            <DocumentsOptions
+              selected={this.state.selected === 'unsigned'}
+              onClick={() => this.changeSelected('unsigned')}
+            >
+              Unsigned
             </DocumentsOptions>
           </DocumentOptionsContainer>
           <TabHeader>
