@@ -12,7 +12,7 @@ export const FooterContainer = styled.div`
 
   @media (max-width: 550px) {
     font-size: 0.7rem;
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 `;
 
@@ -20,18 +20,30 @@ export const LeftFoot = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+
+  @media (max-width: 550px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 export const CenterFoot = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 550px) {
+    display: none;
+  }
 `;
 
 export const RightFoot = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+
+  @media (max-width: 550px) {
+    flex-direction: column;
+  }
 `;
 
 export const Copy = styled.p`

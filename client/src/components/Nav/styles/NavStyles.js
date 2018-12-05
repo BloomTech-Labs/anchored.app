@@ -17,10 +17,9 @@ export const TopNavBar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* background-color: #e6e8e6; */
 
   @media (max-width: 550px) {
-    height: 160px;
+    height: 180px;
     flex-direction: column;
   }
 `;

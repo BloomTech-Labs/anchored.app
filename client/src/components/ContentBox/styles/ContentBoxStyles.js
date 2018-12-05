@@ -7,7 +7,7 @@ export const BoxContainer = styled.div`
   width: 265px;
   margin: 30px;
   margin-bottom: 100px;
-  background-color: #e6e8e6;
+  background-color: #f5f6f5;
   border: 1px solid black;
 
   @media (max-width: 550px) {
