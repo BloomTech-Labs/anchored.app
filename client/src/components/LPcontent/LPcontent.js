@@ -15,7 +15,10 @@ import {
 import { Element } from 'react-scroll';
 
 import ContentBox from '../ContentBox/ContentBox.js';
-import playImg from '../../assets/play-circle.svg';
+import playImg from '../../assets/video_icon.png';
+import docImg from '../../assets/Doc_icon.png';
+import blockImg from '../../assets/blockchain_icon.png';
+import fingerpringImg from '../../assets/proof_icon.png';
 
 const LPcontent = () => {
   return (
@@ -24,7 +27,7 @@ const LPcontent = () => {
       <ContentSet>
         <NumberedImage>
           <Numbered>1</Numbered>
-          <Image />
+          <Image src={docImg} alt="Image of a Document" />
         </NumberedImage>
         <Copy>
           Leverage agile frameworks to provide a robust synopsis for high level
@@ -44,13 +47,13 @@ const LPcontent = () => {
         </Copy>
         <NumberedImage>
           <Numbered>2</Numbered>
-          <Image />
+          <Image src={blockImg} alt="Blockchain image" />
         </NumberedImage>
       </ContentSet>
       <ContentSet>
         <NumberedImage>
           <Numbered>3</Numbered>
-          <Image />
+          <Image src={fingerpringImg} alt="Fingerprint image" />
         </NumberedImage>
         <Copy>
           Capitalize on low hanging fruit to identify a ballpark value added

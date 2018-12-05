@@ -11,10 +11,14 @@ export const DocumentsContainer = styled.div`
 export const DocumentOptionsContainer = styled.div`
   display: flex;
   justify-content: center;
+
+  @media (max-width: 550px) {
+    flex-direction: column;
+  }
 `;
 
 export const DocumentsOptions = styled.div`
-  border: 1px solid black;
+  border: 1px solid #7344c1;
   border-radius: 5px;
   margin: 30px;
   display: flex;
@@ -24,8 +28,12 @@ export const DocumentsOptions = styled.div`
   max-width: 300px;
   font-size: 1.1rem;
   cursor: pointer;
-  background: ${props => (props.selected ? 'black' : 'white')};
-  color: ${props => (props.selected ? 'white' : 'black')};
+  background: ${props => (props.selected ? '#7344c1' : 'white')};
+  color: ${props => (props.selected ? 'white' : '#7344c1')};
+
+  @media (max-width: 550px) {
+    margin: 10px;
+  }
 `;
 
 export const AddDocument = styled.a`
@@ -33,7 +41,7 @@ export const AddDocument = styled.a`
   font-size: 50px;
   cursor: pointer;
   text-decoration: none;
-  color: black;
+  color: #7344c1;
 `;
 
 export const LoadingContainer = styled.div`

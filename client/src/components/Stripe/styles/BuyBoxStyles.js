@@ -4,7 +4,7 @@ import { CtaButton } from '../../CTA/styles/CTAStyles.js';
 
 export const BoxContainer = styled.div`
   min-height: 400px;
-  width: 265px;
+  min-width: 200px;
   border: 1px solid black;
   margin: 30px;
   margin-bottom: 100px;
@@ -15,13 +15,6 @@ export const BoxContainer = styled.div`
       margin-bottom: 2px;
     }
   }
-`;
-
-export const BoxButton = styled(CtaButton)`
-  width: 185px;
-  height: 52px;
-  margin: 0 auto;
-  margin-top: 30px;
 `;
 
 export const H3 = styled.h3`

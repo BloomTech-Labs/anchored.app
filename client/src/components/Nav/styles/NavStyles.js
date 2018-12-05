@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
+import { DropdownItem } from 'reactstrap';
 
 export const NavGod = styled.div`
   display: flex;
@@ -41,6 +43,11 @@ export const Button = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #7344c1;
+
+  &:hover {
+    font-size: 1.2rem;
+  }
 `;
 
 export const DashboardButton = styled.div`
@@ -70,4 +77,26 @@ export const Credits = styled.div`
   justify-content: center;
   align-items: center;
   font-weight: bold;
+`;
+
+export const DropdownLink = styled(NavLink)`
+  text-decoration: none;
+  color: black;
+
+  &:hover {
+    text-decoration: none;
+  }
+`;
+
+export const StyledDropdownItem = styled(DropdownItem)`
+  cursor: pointer;
+
+  &:hover {
+    color: white;
+    background: #7344c1;
+
+    a {
+      color: white;
+    }
+  }
 `;

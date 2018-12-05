@@ -5,8 +5,8 @@ exports.up = function(knex, Promise) {
     tbl
       .string('account_id')
       .unsigned()
-      .references('account_id')
-      .inTable('users');
+      .references('id')
+      .inTable('docusign');
 
     tbl
       .integer('envelope_id')

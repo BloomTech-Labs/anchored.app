@@ -1,5 +1,5 @@
 const express = require('express');
-const users = require('../../users/usersModel.js');
+const docusignModel = require('./docusignModel');
 const moment = require('moment');
 const passport = require('passport');
 const docusign = require('docusign-esign');
@@ -48,27 +48,26 @@ router.get(
   (req, res) => res.redirect(process.env.ORIGIN || 'http://localhost:3000')
 );
 
-router.get('/logout', (req, res) => {
-  users
-    .updateUser(req.user.id, {
-      account_id: null,
+router.get('/logout', async (req, res) => {
+  try {
+    await docusignModel.updateInfo(req.user.account_id, {
+      user_id: null,
       token_expiration: null,
-      document_expiration: null,
       base_uri: null,
       access_token: null,
       refresh_token: null,
-    })
-    .then(() => {
-      req.user.account_id = null;
-      req.user.token_expiration = null;
-      req.user.document_expiration = null;
-      req.user.base_uri = null;
-      req.user.access_token = null;
-      req.user.refresh_token = null;
-      req.session.save();
-      res.redirect(process.env.ORIGIN || 'http://localhost:3000');
-    })
-    .catch(err => console.log(err));
+    });
+
+    req.user.account_id = null;
+    req.user.token_expiration = null;
+    req.user.base_uri = null;
+    req.user.access_token = null;
+    req.user.refresh_token = null;
+    req.session.save();
+    res.redirect(process.env.ORIGIN || 'http://localhost:3000');
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 module.exports = router;

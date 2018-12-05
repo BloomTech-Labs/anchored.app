@@ -8,9 +8,9 @@ exports.up = function(knex, Promise) {
       .references('id')
       .inTable('users');
 
-    tbl.string('description');
-
     tbl.integer('amount');
+
+    tbl.string('description');
 
     tbl.string('currency');
 
