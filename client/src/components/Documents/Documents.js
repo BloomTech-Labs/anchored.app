@@ -36,7 +36,14 @@ class Documents extends React.Component {
     if (this.state.selected === 'all') {
       return this.props.envelopes;
     } else if (this.state.selected === 'waiting') {
+      return this.props.envelopes.filter(env => env.waiting === 1);
+    } else if (this.state.selected === 'unsigned') {
       return this.props.envelopes.filter(env => env.status !== 'completed');
+    } else if (this.state.selected === 'signed') {
+      return this.props.envelopes.filter(
+        env =>
+          env.status === 'completed' && env.waiting === 0 && env.verified === 0
+      );
     } else {
       return this.props.envelopes.filter(env => {
         return Boolean(env.verified) === this.state.selected;
@@ -60,25 +67,38 @@ class Documents extends React.Component {
     return (
       <Fragment>
         <DocumentsContainer>
+          Your Documents
           <DocumentOptionsContainer>
+            <DocumentsOptions
+              selected={this.state.selected === 'all'}
+              onClick={() => this.changeSelected('all')}
+            >
+              All
+            </DocumentsOptions>
+
             <DocumentsOptions
               selected={this.state.selected === true}
               onClick={() => this.changeSelected(true)}
             >
-              Verified Contracts
+              Proofed
             </DocumentsOptions>
             <DocumentsOptions
               selected={this.state.selected === 'waiting'}
               onClick={() => this.changeSelected('waiting')}
             >
-              Contracts waiting signatures
+              Pending
             </DocumentsOptions>
-
             <DocumentsOptions
-              selected={this.state.selected === 'all'}
-              onClick={() => this.changeSelected('all')}
+              selected={this.state.selected === 'signed'}
+              onClick={() => this.changeSelected('signed')}
             >
-              All documents
+              Signed
+            </DocumentsOptions>
+            <DocumentsOptions
+              selected={this.state.selected === 'unsigned'}
+              onClick={() => this.changeSelected('unsigned')}
+            >
+              Unsigned
             </DocumentsOptions>
           </DocumentOptionsContainer>
           <AddDocument
@@ -86,7 +106,6 @@ class Documents extends React.Component {
             href="https://appdemo.docusign.com/home"
             className="fas fa-plus-circle"
           />
-
           {this.filterCards().map(doc => {
             return (
               <Document

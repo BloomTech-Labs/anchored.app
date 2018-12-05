@@ -24,7 +24,7 @@ export const DocumentsOptions = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 15px 50px;
+  padding: 3px 50px;
   max-width: 300px;
   font-size: 1.1rem;
   cursor: pointer;
