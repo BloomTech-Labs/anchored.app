@@ -90,20 +90,17 @@ export const DropdownLink = styled(NavLink)`
 
 export const StyledDropdownItem = styled(DropdownItem)`
   cursor: pointer;
-  margin-bottom: 7.5px;
-  line-height: 18px;
+
   &:hover {
     color: white;
     background: #7344c1;
+
     a {
       color: white;
     }
   }
 `;
-
-export const UserHeader = styled.h4`
-  font-size: 18px;
-  color: teal;
+export const UserHeader = styled.h3`
   font-weight: bold;
-  margin-bottom: 8px;
+  font-size: 1.1rem;
 `;

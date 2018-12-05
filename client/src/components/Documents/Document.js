@@ -115,10 +115,8 @@ class Document extends Component {
               </ModalFooter>
             </Modal>
           </Fragment>
-        ) : null}
-        <DocumentSubject target="_blank" href={details}>
-          {this.props.doc.subject}
-        </DocumentSubject>
+        ) : // ***************************
+        null}
         {this.props.doc.status === 'completed' &&
         !this.props.doc.verified &&
         !this.props.doc.waiting ? (
