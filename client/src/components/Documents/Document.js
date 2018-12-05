@@ -86,8 +86,6 @@ class Document extends Component {
       link = `https://live.blockcypher.com/btc/block/${block_height}`;
     }
 
-    console.log(timestamp);
-
     return (
       <DocumentContainer>
         {this.props.doc.verified ? (
