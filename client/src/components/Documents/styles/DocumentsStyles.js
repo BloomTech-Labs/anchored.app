@@ -75,7 +75,7 @@ export const AddDocument = styled.a`
   font-size: 30px;
   cursor: pointer;
   text-decoration: none;
-  color: #7344c1;
+  color: #17a2b8;
 `;
 
 export const LoadingContainer = styled.div`

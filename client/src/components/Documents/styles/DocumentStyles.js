@@ -29,9 +29,15 @@ export const DocumentSubject = styled.a`
 
 export const DocumentProof = styled.div`
   border: 1px solid black;
+  border-radius: 5px;
   min-width: 130px;
-  padding: 15px;
+  padding: 8px 15px;
   cursor: pointer;
+
+  &:hover {
+    background: #17a2b8;
+    color: #fff;
+  }
 `;
 
 export const LoadingContainer = styled.div`
