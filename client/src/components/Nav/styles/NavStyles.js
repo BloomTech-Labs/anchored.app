@@ -17,6 +17,7 @@ export const TopNavBar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* background-color: #e6e8e6; */
 
   @media (max-width: 550px) {
     height: 140px;
@@ -41,10 +42,14 @@ export const Button = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #7344c1;
+  color: ${props => props.color};
+  border: ${props => props.border};
+  border-radius: 7px;
 
   &:hover {
-    font-size: 1.2rem;
+    /* font-size: 1.2rem; */
+    background-color: ${props => props.bgColor};
+    color: ${props => props.hoverFontColor};
   }
 `;
 

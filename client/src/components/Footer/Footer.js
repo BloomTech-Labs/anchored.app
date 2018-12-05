@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink, withRouter } from 'react-router-dom';
 
 import {
   FooterContainer,
@@ -16,18 +17,31 @@ const Footer = () => {
     <FooterContainer>
       <LeftFoot>
         <Copy>{'\u00A9'} 2018 Proofd </Copy>
-        <Copy>About Us</Copy>
-        <Copy>Privacy Policy</Copy>
+        <NavLink to={'/team'} style={{ textDecoration: 'none' }}>
+          <Copy>Our Team</Copy>
+        </NavLink>
+
+        <NavLink to={'/privacy'} style={{ textDecoration: 'none' }}>
+          <Copy>Privacy Policy</Copy>
+        </NavLink>
       </LeftFoot>
       <CenterFoot>
         <Img src={Logo} alt="Proofd Logo" />
       </CenterFoot>
       <RightFoot>
-        <Copy>Testimonials</Copy>
-        <Copy>Terms & Conditions</Copy>
-        <Copy>Careers</Copy>
+        <NavLink to={'/testimonials'} style={{ textDecoration: 'none' }}>
+          <Copy>Testimonials</Copy>
+        </NavLink>
+
+        <NavLink to={'/terms'} style={{ textDecoration: 'none' }}>
+          <Copy>Terms & Conditions</Copy>
+        </NavLink>
+
+        <NavLink to={'/careers'} style={{ textDecoration: 'none' }}>
+          <Copy>Careers</Copy>
+        </NavLink>
       </RightFoot>
     </FooterContainer>
   );
 };
-export default Footer;
+export default withRouter(Footer);

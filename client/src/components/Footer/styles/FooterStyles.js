@@ -43,5 +43,5 @@ export const Copy = styled.p`
 `;
 
 export const Img = styled.img`
-  width: 30%;
+  width: 30px;
 `;
