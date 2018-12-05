@@ -89,6 +89,7 @@ export const DropdownLink = styled(NavLink)`
 `;
 
 export const UserHeader = styled.h4`
+  font-size: 18px;
   color: teal;
   font-weight: bold;
 `;
