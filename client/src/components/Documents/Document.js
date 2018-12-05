@@ -5,6 +5,9 @@ import {
   DocumentSubject,
   DocumentProof,
   LoadingContainer,
+  ProofDocTextContainer,
+  TimestampContainer,
+  Timestamp,
 } from './styles/DocumentStyles';
 
 import { ModalInfo } from './styles/DocumentModalStyles';
@@ -145,10 +148,17 @@ class Document extends Component {
               : 'Not signed'}
           </DocumentProof>
         )}
-        <DocumentSubject target="_blank" href={details}>
-          {this.props.doc.subject}
-        </DocumentSubject>
-        Proofed at: {moment(timestamp).format('D MMM YYYY hh:mma')}
+        <ProofDocTextContainer>
+          <DocumentSubject target="_blank" href={details}>
+            {this.props.doc.subject}
+          </DocumentSubject>
+          <TimestampContainer>
+            Proofed on
+            <Timestamp>
+              {moment(timestamp).format('D MMM YYYY hh:mma')}
+            </Timestamp>
+          </TimestampContainer>
+        </ProofDocTextContainer>
         {/* { Verify Payment Modal} */}
         <Fragment>
           <Modal isOpen={this.state.modalVerify} toggle={this.toggleVerifyPay}>
