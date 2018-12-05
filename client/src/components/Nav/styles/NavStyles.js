@@ -90,6 +90,8 @@ export const DropdownLink = styled(NavLink)`
 
 export const StyledDropdownItem = styled(DropdownItem)`
   cursor: pointer;
+  margin-bottom: 7.5px;
+  line-height: 18px;
 
   &:hover {
     color: white;
@@ -101,6 +103,8 @@ export const StyledDropdownItem = styled(DropdownItem)`
   }
 `;
 export const UserHeader = styled.h3`
+  font-size: 18px;
+  color: teal;
   font-weight: bold;
-  font-size: 1.1rem;
+  margin-bottom: 8px;
 `;
