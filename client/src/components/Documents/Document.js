@@ -42,7 +42,6 @@ class Document extends Component {
   };
 
   toggleVerifyPay = () => {
-    console.log('click');
     this.setState({ modalVerify: !this.state.modalVerify });
   };
 
@@ -110,8 +109,7 @@ class Document extends Component {
               </ModalFooter>
             </Modal>
           </Fragment>
-        ) : // ***************************
-        null}
+        ) : null}
         <DocumentSubject target="_blank" href={details}>
           {this.props.doc.subject}
         </DocumentSubject>
