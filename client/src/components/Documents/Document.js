@@ -72,13 +72,19 @@ class Document extends Component {
     const envelope_id = this.props.doc.envelope_id;
     const details = `https://appdemo.docusign.com/documents/details/${envelope_id}`;
     let verified_proof;
+    let timestamp;
     let block_height;
     let link;
     if (this.props.doc.verified) {
       verified_proof = JSON.parse(this.props.doc.verified_proof);
+      timestamp = verified_proof.verifiedAt;
       block_height = verified_proof.anchorId;
       link = `https://live.blockcypher.com/btc/block/${block_height}`;
     }
+
+    // setTimeout(5000, console.log(verified_proof.verifiedAt));
+    // console.log(this.props.doc.verified_proof);
+    console.log(timestamp);
 
     return (
       <DocumentContainer>
@@ -145,6 +151,8 @@ class Document extends Component {
         <DocumentSubject target="_blank" href={details}>
           {this.props.doc.subject}
         </DocumentSubject>
+        <p>{timestamp}</p>
+
         {/* { Verify Payment Modal} */}
         <Fragment>
           <Modal isOpen={this.state.modalVerify} toggle={this.toggleVerifyPay}>
