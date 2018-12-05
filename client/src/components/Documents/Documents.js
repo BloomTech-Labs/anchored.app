@@ -12,6 +12,7 @@ import {
   DocumentsOptions,
   DocumentsContainer,
   DocumentsHeader,
+  AddDocumentContainer,
   TabDescription,
   TabHeader,
   AddDocument,
@@ -115,11 +116,14 @@ class Documents extends React.Component {
                 ? 'Documents Awaiting Signatures'
                 : 'All Documents'}
             </TabDescription>
-            <AddDocument
-              target="_blank"
-              href="https://appdemo.docusign.com/home"
-              className="fas fa-plus-circle"
-            />
+            <AddDocumentContainer>
+              <AddDocument
+                target="_blank"
+                href="https://appdemo.docusign.com/home"
+                className="fas fa-plus-circle"
+              />
+              Add Document
+            </AddDocumentContainer>
           </TabHeader>
 
           {this.filterCards().map(doc => {

@@ -70,12 +70,21 @@ export const TabDescription = styled.h5`
   // }
 `;
 
+export const AddDocumentContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 export const AddDocument = styled.a`
-  margin: 20px;
+  margin: 20px 10px;
   font-size: 30px;
   cursor: pointer;
-  text-decoration: none;
   color: #17a2b8;
+
+  &:hover {
+    text-decoration: none;
+    color: none;
+  }
 `;
 
 export const LoadingContainer = styled.div`
