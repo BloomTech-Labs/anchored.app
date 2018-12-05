@@ -88,6 +88,10 @@ export const DropdownLink = styled(NavLink)`
   }
 `;
 
+export const UserHeader = styled.h5`
+  color: teal;
+`;
+
 export const StyledDropdownItem = styled(DropdownItem)`
   cursor: pointer;
 
