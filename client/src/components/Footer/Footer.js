@@ -1,17 +1,67 @@
 import React from 'react';
+import { NavLink, withRouter } from 'react-router-dom';
 
-import { FooterContainer } from './styles/FooterStyles.js';
+import {
+  FooterContainer,
+  LeftFoot,
+  CenterFoot,
+  RightFoot,
+  Copy,
+  Img,
+} from './styles/FooterStyles.js';
+
+import Logo from '../../assets/Proofd_3_logoOnly.png';
 
 const Footer = () => {
   return (
     <FooterContainer>
-      <p>About Us</p>
-      <p>Privacy Policy</p>
-      <p>Testimonials</p>
-      <p>Terms & Conditions</p>
-      <p>Careers</p>
+      <LeftFoot>
+        <Copy>{'\u00A9'} 2018 Proofd </Copy>
+        <NavLink
+          to={'/team'}
+          style={{ textDecoration: 'none', color: '#7344c1' }}
+          activeStyle={{ color: '#20D1C8' }}
+        >
+          <Copy>Our Team</Copy>
+        </NavLink>
+
+        <NavLink
+          to={'/privacy'}
+          style={{ textDecoration: 'none', color: '#7344c1' }}
+          activeStyle={{ color: '#20D1C8' }}
+        >
+          <Copy>Privacy Policy</Copy>
+        </NavLink>
+      </LeftFoot>
+      <CenterFoot>
+        <Img src={Logo} alt="Proofd Logo" />
+      </CenterFoot>
+      <RightFoot>
+        <NavLink
+          to={'/testimonials'}
+          style={{ textDecoration: 'none', color: '#7344c1' }}
+          activeStyle={{ color: '#20D1C8' }}
+        >
+          <Copy>Testimonials</Copy>
+        </NavLink>
+
+        <NavLink
+          to={'/terms'}
+          style={{ textDecoration: 'none', color: '#7344c1' }}
+          activeStyle={{ color: '#20D1C8' }}
+        >
+          <Copy>Terms & Conditions</Copy>
+        </NavLink>
+
+        <NavLink
+          to={'/careers'}
+          style={{ textDecoration: 'none', color: '#7344c1' }}
+          activeStyle={{ color: '#20D1C8' }}
+        >
+          <Copy>Careers</Copy>
+        </NavLink>
+      </RightFoot>
     </FooterContainer>
   );
 };
-
-export default Footer;
+export default withRouter(Footer);

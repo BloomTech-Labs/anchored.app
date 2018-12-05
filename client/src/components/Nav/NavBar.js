@@ -19,14 +19,25 @@ class NavBar extends Component {
               onClick={auth.signUp}
               style={{ textDecoration: 'none' }}
             >
-              <NavButton name="Sign Up" />
+              <NavButton
+                name="Sign Up"
+                color="#7344c1"
+                bgColor="#7344c1"
+                border="1px solid #7344c1"
+                hoverFontColor="white"
+              />
             </NavLink>
             <NavLink
               to={`/`}
               onClick={auth.login}
               style={{ textDecoration: 'none' }}
             >
-              <NavButton name="Log In" />
+              <NavButton
+                name="Log In"
+                color="black"
+                hoverFontColor="white"
+                bgColor="#7344c1"
+              />
             </NavLink>
           </Links>
         </TopNavBar>

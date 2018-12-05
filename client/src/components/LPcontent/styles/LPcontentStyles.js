@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ContentMain = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,13 +11,36 @@ export const ContentMain = styled.div`
   margin: 0 auto;
 `;
 
+export const BgContainer = styled.div`
+  width: 100vw;
+  background: rgba(230, 232, 230, 0.4);
+`;
+
+export const MiddleWorks = styled.div`
+  z-index: 1;
+  opacity: 1;
+`;
+
+export const ContentMain = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1026px;
+  width: 100%;
+  margin: 0 auto;
+  opacity: 1;
+`;
+
 export const H1 = styled.h1`
   font-size: 2rem;
   margin: 40px;
 `;
 
 export const H2 = styled.h2`
-  font-size: 1.4rem;
+  font-size: 1.6rem;
+  padding-top: 50px;
 `;
 
 export const ContentSet = styled.div`
@@ -25,10 +48,12 @@ export const ContentSet = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  opacity: 1;
 
   &:nth-child(5) {
-    border-bottom: 1px solid black;
+    max-width: 550px;
     padding-bottom: 30px;
+    margin: 0 auto;
   }
 
   @media (max-width: 550px) {
@@ -58,6 +83,11 @@ export const Numbered = styled.div`
   margin-bottom: 10px;
 `;
 
+export const PricingSection = styled.div`
+  width: 100vw;
+  background-color: white;
+`;
+
 export const Image = styled.img`
   width: 100px;
   height: 100px;
@@ -70,6 +100,8 @@ export const Copy = styled.p`
   text-align: left;
   padding: 30px;
   margin-top: 30px;
+  opacity: 1;
+  z-index: 100;
 `;
 
 export const TagLine = styled.p`
@@ -81,5 +113,5 @@ export const TagLine = styled.p`
 `;
 
 export const PlayImg = styled.img`
-  width: 10%;
+  max-width: 10%;
 `;
