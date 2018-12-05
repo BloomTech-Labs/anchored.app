@@ -100,3 +100,7 @@ export const StyledDropdownItem = styled(DropdownItem)`
     }
   }
 `;
+export const UserHeader = styled.h3`
+  font-weight: bold;
+  font-size: 1.1rem;
+`;

@@ -12,6 +12,7 @@ const options = {
   },
   socialButtonStyle: 'small',
   auth: {
+    sso: false,
     redirectUrl:
       process.env.REACT_APP_REDIRECT_URL ||
       'http://localhost:9000/auth/auth0/callback',
