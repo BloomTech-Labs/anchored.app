@@ -92,15 +92,20 @@ export const UserHeader = styled.h4`
   font-size: 18px;
   color: teal;
   font-weight: bold;
+  margin-bottom: 8px;
 `;
 
 export const StyledDropdownItem = styled(DropdownItem)`
   cursor: pointer;
 <<<<<<< HEAD
+<<<<<<< HEAD
   margin-bottom: 7.5px;
   line-height: 18px;
 =======
   margin-bottom: ${props => (props.primary ? '7.5px' : '0')};
+=======
+  margin-bottom: ${props => (props.primary ? '7.5px' : '0px')};
+>>>>>>> Revisions to primary and UserHeader
   line-height: 18px;
 
 >>>>>>> Added wrapper to dropdown menu with height
