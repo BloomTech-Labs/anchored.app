@@ -13,6 +13,7 @@ import {
   DropdownLink,
   StyledDropdownItem,
   UserHeader,
+  DropdownWrapper,
 } from './styles/NavStyles.js';
 import {
   Dropdown,
@@ -99,20 +100,22 @@ class NavBar extends Component {
                 />
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem disabled>Logged in as</DropdownItem>
-                <DropdownItem disabled>
-                  <UserHeader>{this.props.user.username}</UserHeader>
-                </DropdownItem>
-                <DropdownItem divider />
-                <DropdownLink to={`/account`}>
-                  <StyledDropdownItem>Account</StyledDropdownItem>
-                </DropdownLink>
-                <DropdownLink to={`/settings`}>
-                  <StyledDropdownItem>Settings</StyledDropdownItem>
-                </DropdownLink>
-                <DropdownLink to={`/`} onClick={this.handleLogout}>
-                  <StyledDropdownItem>Log out</StyledDropdownItem>
-                </DropdownLink>
+                <DropdownWrapper>
+                  <DropdownItem disabled>Logged in as</DropdownItem>
+                  <DropdownItem disabled>
+                    <UserHeader>{this.props.user.username}</UserHeader>
+                  </DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownLink to={`/account`}>
+                    <StyledDropdownItem primary>Account</StyledDropdownItem>
+                  </DropdownLink>
+                  <DropdownLink to={`/settings`}>
+                    <StyledDropdownItem primary>Settings</StyledDropdownItem>
+                  </DropdownLink>
+                  <DropdownLink to={`/`} onClick={this.handleLogout}>
+                    <StyledDropdownItem primary>Log out</StyledDropdownItem>
+                  </DropdownLink>
+                </DropdownWrapper>
               </DropdownMenu>
             </Dropdown>
           </Links>

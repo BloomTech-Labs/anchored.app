@@ -70,6 +70,10 @@ export const Img = styled.img`
   }
 `;
 
+export const DropdownWrapper = styled.div`
+  height: 152px;
+`;
+
 export const Credits = styled.div`
   min-width: 90px;
   height: 40px;
@@ -94,6 +98,7 @@ export const UserHeader = styled.h5`
 
 export const StyledDropdownItem = styled(DropdownItem)`
   cursor: pointer;
+  margin-bottom: ${props => (props.primary ? '7.5px' : '0')};
 
   &:hover {
     color: white;
