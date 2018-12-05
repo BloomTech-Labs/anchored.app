@@ -11,30 +11,41 @@ export const DocumentsContainer = styled.div`
 export const DocumentOptionsContainer = styled.div`
   display: flex;
   justify-content: center;
+  border-bottom: 1px solid #7344c1;
 
-  @media (max-width: 550px) {
+  @media (max-width: 800px) {
     flex-direction: column;
+    border-bottom: none;
   }
 `;
 
 export const DocumentsOptions = styled.div`
-  border: 1px solid #7344c1;
-  border-radius: 5px;
-  margin: 30px;
+  // border-bottom: 1px solid #7344c1;
+  margin: 30px 30px 0 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 3px 50px;
-  max-width: 300px;
-  font-size: 1.1rem;
+  width: 100px;
+  font-size: 1.15rem;
   cursor: pointer;
-  background: ${props => (props.selected ? '#7344c1' : 'white')};
-  color: ${props => (props.selected ? 'white' : '#7344c1')};
+  border-bottom: ${props => (props.selected ? '3px solid #7344c1' : 'none')};
+  color: ${props => (props.selected ? '#7344c1' : 'black')};
 
-  @media (max-width: 550px) {
+  @media (max-width: 800px) {
     margin: 10px;
+    width: 300px;
+    border: 1px solid #7344c1;
+    border-radius: 5px;
+    background: ${props => (props.selected ? '#7344c1' : 'white')};
+    color: ${props => (props.selected ? 'white' : '#7344c1')};
   }
 `;
+
+// export const DocumentHeader = styled.h2`
+//   text-align: left;
+//   font-size
+// `;
 
 export const AddDocument = styled.a`
   margin: 20px;
