@@ -99,6 +99,7 @@ export const StyledDropdownItem = styled(DropdownItem)`
   cursor: pointer;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   margin-bottom: 7.5px;
   line-height: 18px;
 =======
@@ -106,6 +107,9 @@ export const StyledDropdownItem = styled(DropdownItem)`
 =======
   margin-bottom: ${props => (props.primary ? '7.5px' : '0px')};
 >>>>>>> Revisions to primary and UserHeader
+=======
+  margin-bottom: 7.5px;
+>>>>>>> Changed to fix styled components bug
   line-height: 18px;
 
 >>>>>>> Added wrapper to dropdown menu with height
