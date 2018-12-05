@@ -78,7 +78,7 @@ export const AddDocumentContainer = styled.a`
   }
 `;
 
-export const AddDocument = styled.div`
+export const AddDocument = styled.a`
   margin: 20px 10px;
   font-size: 30px;
 `;

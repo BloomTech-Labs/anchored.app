@@ -27,6 +27,7 @@ import Logo from '../../assets/Proofd_3.png';
 const ProfileImage = {
   height: '50px',
   borderRadius: '25px',
+  verticalalign: 'middle',
 };
 
 class NavBar extends Component {
