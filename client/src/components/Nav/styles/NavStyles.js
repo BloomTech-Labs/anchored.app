@@ -70,10 +70,6 @@ export const Img = styled.img`
   }
 `;
 
-export const DropdownWrapper = styled.div`
-  height: 152px;
-`;
-
 export const Credits = styled.div`
   min-width: 90px;
   height: 40px;
@@ -92,13 +88,15 @@ export const DropdownLink = styled(NavLink)`
   }
 `;
 
-export const UserHeader = styled.h5`
+export const UserHeader = styled.h4`
   color: teal;
+  font-weight: bold;
 `;
 
 export const StyledDropdownItem = styled(DropdownItem)`
   cursor: pointer;
   margin-bottom: ${props => (props.primary ? '7.5px' : '0')};
+  line-height: 18px;
 
   &:hover {
     color: white;
