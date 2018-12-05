@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
 import {
   DocumentContainer,
   DocumentSubject,
@@ -11,6 +11,7 @@ import { ModalInfo } from './styles/DocumentModalStyles';
 
 import { BeatLoader } from 'react-spinners';
 import axios from 'axios';
+import moment from 'moment';
 
 class Document extends Component {
   constructor(props) {
@@ -82,10 +83,6 @@ class Document extends Component {
       link = `https://live.blockcypher.com/btc/block/${block_height}`;
     }
 
-    // setTimeout(5000, console.log(verified_proof.verifiedAt));
-    // console.log(this.props.doc.verified_proof);
-    console.log(timestamp);
-
     return (
       <DocumentContainer>
         {this.props.doc.verified ? (
@@ -151,8 +148,7 @@ class Document extends Component {
         <DocumentSubject target="_blank" href={details}>
           {this.props.doc.subject}
         </DocumentSubject>
-        <p>{timestamp}</p>
-
+        Proofed at: {moment(timestamp).format('D MMM YYYY hh:mma')}
         {/* { Verify Payment Modal} */}
         <Fragment>
           <Modal isOpen={this.state.modalVerify} toggle={this.toggleVerifyPay}>
