@@ -97,7 +97,7 @@ export const UserHeader = styled.h4`
 
 export const StyledDropdownItem = styled(DropdownItem)`
   cursor: pointer;
-  margin-bottom: ${props => (props.primary ? '7.5px' : '0px')};
+  margin-bottom: 7.5px;
   line-height: 18px;
 
   &:hover {

@@ -106,13 +106,13 @@ class NavBar extends Component {
                 </DropdownItem>
                 <DropdownItem divider />
                 <DropdownLink to={`/account`}>
-                  <StyledDropdownItem primary>Account</StyledDropdownItem>
+                  <StyledDropdownItem>Account</StyledDropdownItem>
                 </DropdownLink>
                 <DropdownLink to={`/settings`}>
-                  <StyledDropdownItem primary>Settings</StyledDropdownItem>
+                  <StyledDropdownItem>Settings</StyledDropdownItem>
                 </DropdownLink>
                 <DropdownLink to={`/`} onClick={this.handleLogout}>
-                  <StyledDropdownItem primary>Log out</StyledDropdownItem>
+                  <StyledDropdownItem>Log out</StyledDropdownItem>
                 </DropdownLink>
               </DropdownMenu>
             </Dropdown>
