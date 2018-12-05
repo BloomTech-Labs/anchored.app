@@ -42,17 +42,37 @@ export const DocumentsOptions = styled.div`
   }
 `;
 
-export const DocumentsHeader = styled.h4`
-  margin-right: 628px;
+export const DocumentsHeader = styled.div`
+  max-width: 840px;
+  width: 100%;
+  text-align: left;
+  font-size: 1.8rem;
+  padding: 0 15px;
 
   @media (max-width: 800px) {
-    margin-right: 0;
+    text-align: center;
   }
+`;
+export const TabHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 840px;
+  width: 100%;
+  padding: 0 15px;
+`;
+
+export const TabDescription = styled.h5`
+  margin: 20px 0;
+
+  // @media (max-width: 800px) {
+  //   margin-right: 0;
+  // }
 `;
 
 export const AddDocument = styled.a`
   margin: 20px;
-  font-size: 50px;
+  font-size: 30px;
   cursor: pointer;
   text-decoration: none;
   color: #7344c1;

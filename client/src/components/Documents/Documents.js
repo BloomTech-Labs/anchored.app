@@ -12,6 +12,8 @@ import {
   DocumentsOptions,
   DocumentsContainer,
   DocumentsHeader,
+  TabDescription,
+  TabHeader,
   AddDocument,
 } from './styles/DocumentsStyles';
 
@@ -76,7 +78,6 @@ class Documents extends React.Component {
             >
               All
             </DocumentsOptions>
-
             <DocumentsOptions
               selected={this.state.selected === true}
               onClick={() => this.changeSelected(true)}
@@ -102,11 +103,25 @@ class Documents extends React.Component {
               Unsigned
             </DocumentsOptions>
           </DocumentOptionsContainer>
-          <AddDocument
-            target="_blank"
-            href="https://appdemo.docusign.com/home"
-            className="fas fa-plus-circle"
-          />
+          <TabHeader>
+            <TabDescription>
+              {this.state.selected === true
+                ? 'Proofed Documents'
+                : this.state.selected === 'waiting'
+                ? 'Documents Pending Proof'
+                : this.state.selected === 'signed'
+                ? 'Documents Awaiting Proof'
+                : this.state.selected === 'unsigned'
+                ? 'Documents Awaiting Signatures'
+                : 'All Documents'}
+            </TabDescription>
+            <AddDocument
+              target="_blank"
+              href="https://appdemo.docusign.com/home"
+              className="fas fa-plus-circle"
+            />
+          </TabHeader>
+
           {this.filterCards().map(doc => {
             return (
               <Document
