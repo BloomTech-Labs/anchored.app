@@ -92,11 +92,12 @@ export const UserHeader = styled.h4`
   font-size: 18px;
   color: teal;
   font-weight: bold;
+  margin-bottom: 8px;
 `;
 
 export const StyledDropdownItem = styled(DropdownItem)`
   cursor: pointer;
-  margin-bottom: ${props => (props.primary ? '7.5px' : '0')};
+  margin-bottom: ${props => (props.primary ? '7.5px' : '0px')};
   line-height: 18px;
 
   &:hover {

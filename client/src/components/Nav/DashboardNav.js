@@ -100,10 +100,8 @@ class NavBar extends Component {
                 />
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem disabled primary>
-                  Logged in as
-                </DropdownItem>
-                <DropdownItem disabled primary>
+                <DropdownItem disabled>Logged in as</DropdownItem>
+                <DropdownItem disabled>
                   <UserHeader>{this.props.user.username}</UserHeader>
                 </DropdownItem>
                 <DropdownItem divider />
