@@ -2,10 +2,7 @@ import styled from 'styled-components';
 
 export const DocumentContainer = styled.div`
   margin: 15px;
-<<<<<<< HEAD
   padding: 0 15px;
-=======
->>>>>>> 728c0f09ab98f27c0ba7ab6b3baa3222cc7914f1
   max-width: 840px;
   width: 100%;
   display: flex;

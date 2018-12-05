@@ -5,12 +5,16 @@ import {
   DocumentSubject,
   DocumentProof,
   LoadingContainer,
+  ProofDocTextContainer,
+  TimestampContainer,
+  Timestamp,
 } from './styles/DocumentStyles';
 
 import { ModalInfo } from './styles/DocumentModalStyles';
 
 import { BeatLoader } from 'react-spinners';
 import axios from 'axios';
+import moment from 'moment';
 
 class Document extends Component {
   constructor(props) {
@@ -72,10 +76,12 @@ class Document extends Component {
     const envelope_id = this.props.doc.envelope_id;
     const details = `https://appdemo.docusign.com/documents/details/${envelope_id}`;
     let verified_proof;
+    let timestamp;
     let block_height;
     let link;
     if (this.props.doc.verified) {
       verified_proof = JSON.parse(this.props.doc.verified_proof);
+      timestamp = verified_proof.verifiedAt;
       block_height = verified_proof.anchorId;
       link = `https://live.blockcypher.com/btc/block/${block_height}`;
     }
@@ -144,9 +150,20 @@ class Document extends Component {
               : 'Not signed'}
           </DocumentProof>
         )}
-        <DocumentSubject target="_blank" href={details}>
-          {this.props.doc.subject}
-        </DocumentSubject>
+        <ProofDocTextContainer>
+          <DocumentSubject target="_blank" href={details}>
+            {this.props.doc.subject}
+          </DocumentSubject>
+          {/* Returns proofed timestamp if exists */}
+          {timestamp !== undefined ? (
+            <TimestampContainer>
+              Proofed
+              <Timestamp>
+                {moment(timestamp).format('D MMM YYYY hh:mma')}
+              </Timestamp>
+            </TimestampContainer>
+          ) : null}
+        </ProofDocTextContainer>
         {/* { Verify Payment Modal} */}
         <Fragment>
           <Modal isOpen={this.state.modalVerify} toggle={this.toggleVerifyPay}>

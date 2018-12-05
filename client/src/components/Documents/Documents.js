@@ -88,24 +88,42 @@ class Documents extends React.Component {
               All documents
             </DocumentsOptions>
           </DocumentOptionsContainer>
-          <AddDocument
-            target="_blank"
-            href="https://appdemo.docusign.com/home"
-            className="fas fa-plus-circle"
-          />
+          <TabHeader>
+            <TabDescription>
+              {/* ternary based on what documents tab is selected */}
+              {this.state.selected === true
+                ? 'Proofed Documents'
+                : this.state.selected === 'waiting'
+                ? 'Documents Pending Proof'
+                : this.state.selected === 'signed'
+                ? 'Documents Awaiting Proof'
+                : this.state.selected === 'unsigned'
+                ? 'Documents Awaiting Signatures'
+                : 'All Documents'}
+            </TabDescription>
+            <AddDocumentContainer
+              target="_blank"
+              href="https://appdemo.docusign.com/home"
+            >
+              <AddDocument className="fas fa-plus-circle" />
+              Add Document
+            </AddDocumentContainer>
+          </TabHeader>
 
-          {this.filterCards().map(doc => {
-            return (
-              <Document
-                key={doc.envelope_id}
-                doc={doc}
-                user={this.props.user}
-                history={this.props.history}
-                getProof={this.props.getProof}
-                updateLoading={this.props.updateLoading}
-              />
-            );
-          })}
+          {this.filterCards()
+            .map(doc => {
+              return (
+                <Document
+                  key={doc.envelope_id}
+                  doc={doc}
+                  user={this.props.user}
+                  history={this.props.history}
+                  getProof={this.props.getProof}
+                  updateLoading={this.props.updateLoading}
+                />
+              );
+            })
+            .reverse()}
         </DocumentsContainer>
       </Fragment>
     );
