@@ -16,9 +16,9 @@ import { Element } from 'react-scroll';
 
 import ContentBox from '../ContentBox/ContentBox.js';
 import playImg from '../../assets/video_icon.png';
-import docImg from '../../assets/Doc_icon.png';
-import blockImg from '../../assets/blockchain_icon.png';
-import fingerpringImg from '../../assets/proof_icon.png';
+import docImg from '../../assets/orange_icon_document_v1.png';
+import blockImg from '../../assets/orange_icon_blochain.png';
+import fingerpringImg from '../../assets/orange_icon_proof.png';
 
 const LPcontent = () => {
   return (
