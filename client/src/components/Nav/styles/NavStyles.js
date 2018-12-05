@@ -45,6 +45,7 @@ export const Button = styled.div`
   color: ${props => props.color};
   border: ${props => props.border};
   border-radius: 7px;
+  margin: 10px;
 
   &:hover {
     /* font-size: 1.2rem; */
