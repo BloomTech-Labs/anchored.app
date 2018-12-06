@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Copy } from '../../CTA/styles/CTAStyles.js';
 
 export const DocumentsContainer = styled.div`
   margin-top: 30px;
@@ -70,10 +71,21 @@ export const AppContainer = styled.div`
 `;
 
 export const AppDiv = styled.div`
+  border: 2px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   height: 180px;
   width: 230px;
   background-color: lightgrey;
   margin: 20px;
+`;
+
+export const AppCopy = styled(Copy)`
+  font-size: 1rem;
+  /* margin-top: 40px; */
+  border: 2px dashed green;
 `;
 
 export const TabHeader = styled.div`

@@ -19,6 +19,7 @@ import {
   DashContainer,
   AppDiv,
   AppContainer,
+  AppCopy,
 } from './styles/DocumentsStyles';
 
 class Documents extends React.Component {
@@ -73,9 +74,11 @@ class Documents extends React.Component {
           <DashContainer>
             <DocumentsHeader>Your Connected Apps</DocumentsHeader>
             <AppContainer>
-              <AppDiv />
-              <AppDiv />
-              <AppDiv />
+              <AppDiv>
+                <AppCopy>Connect Your DocuSign Account</AppCopy>
+                <DocusignLogin />
+              </AppDiv>
+              <AppDiv>+</AppDiv>
             </AppContainer>
           </DashContainer>
         </Fragment>
