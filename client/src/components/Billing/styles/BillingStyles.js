@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { CSVLink } from 'react-csv';
 
 export const MainWrapper = styled.div`
   display: flex;
@@ -7,6 +8,7 @@ export const MainWrapper = styled.div`
   margin: 0 auto;
   margin-top: 30px;
   max-width: 1010px;
+  height: 100%;
 `;
 
 export const InvoiceContainer = styled.div`
@@ -69,11 +71,17 @@ export const ContentHeader = styled.h3`
   margin-right: 10px;
 `;
 
-export const Invoice = styled.ul`
-  font-family: Helvetica;
-`;
-
 export const ButtonWrapper = styled.div`
   width: 400px;
   margin: 0 auto;
+`;
+
+export const ExportContainer = styled.div`
+  display: flex;
+  margin: 20px;
+  justify-content: flex-end;
+`;
+
+export const Export = styled(CSVLink)`
+  color: #117a8b;
 `;
