@@ -1,57 +1,79 @@
 import styled from 'styled-components';
 
-const MainWrapper = styled.div`
-  max-width: 1000px;
-  transform: translate(0px, 50px);
-  margin: 0 auto;
+export const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 85vh;
-  height: 100%;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 30px;
+  max-width: 1010px;
 `;
 
-const InfoWrapper = styled.div`
+export const InvoiceContainer = styled.div`
+  margin-top: 25px;
   display: flex;
-  justify-content: space-evenly;
-
-  @media (max-width: 550px) {
-    flex-direction: column;
-  }
+  justify-content: space-between;
 `;
 
-const InfoWrapperTwo = styled.ul`
+export const InvoiceInfo = styled.div`
+  border: 1px solid white;
+  padding: 10px;
+  font-size: 1.2rem;
+  width: 100%;
+  background: #7344c1;
+  color: white;
+`;
+
+export const InfoContainer = styled.div``;
+
+export const InfoWrapper = styled.div`
   display: flex;
-  margin-top: 40px;
-  justify-content: space-evenly;
-  border: 1px solid black;
+  align-items: flex-start;
+  flex-direction: column;
 `;
 
-const MainHeader = styled.h2`
-  font-family: Helvetica;
-  text-decoration: underline;
+export const InfoDate = styled.div`
+  width: 100%;
+`;
+
+export const InfoTransaction = styled.div`
+  width: 100%;
+`;
+
+export const InfoAmountBilled = styled.div`
+  width: 100%;
+`;
+
+export const InfoWrapperTwo = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #7344c1;
+  padding: 15px;
+`;
+
+export const MainHeader = styled.h3`
+  display: flex;
   margin-bottom: 30px;
 `;
 
-const ContentHeader = styled.h3`
-  font-family: Helvetica;
-  margin-bottom: 30px;
+export const ContentContainer = styled.div`
+  display: flex;
+  margin-bottom: 15px;
 `;
 
-const Invoice = styled.ul`
+export const ContentHeader = styled.h3`
+  color: rgb(108, 117, 125);
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-right: 10px;
+`;
+
+export const Invoice = styled.ul`
   font-family: Helvetica;
 `;
 
-const ButtonWrapper = styled.div`
+export const ButtonWrapper = styled.div`
   width: 400px;
   margin: 0 auto;
 `;
-
-export {
-  MainWrapper,
-  MainHeader,
-  InfoWrapper,
-  InfoWrapperTwo,
-  ContentHeader,
-  ButtonWrapper,
-  Invoice,
-};

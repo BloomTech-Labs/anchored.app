@@ -58,7 +58,6 @@ class Document extends React.Component {
       axios
         .get(`http://localhost:9000/documents/${envelope_id}`)
         .then(res => {
-          console.log(res);
           this.setState({ document: res.data.document }, () => {
             this.togglePdfModal();
           });
