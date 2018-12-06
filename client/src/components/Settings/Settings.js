@@ -5,9 +5,15 @@ import PasswordReset from './PasswordReset.js';
 import {
   ButtonContainer,
   SettingsWrapper,
+  SubSettingsWrapper,
   MainHeader,
   SubHeader,
+  InfoWrapper,
+  InfoTextTitle,
+  Button,
 } from './styles/SettingsStyles.js';
+
+import NavButton from '../Nav/NavButton.js';
 
 class Settings extends Component {
   render() {
@@ -20,7 +26,20 @@ class Settings extends Component {
       <SettingsWrapper>
         <MainHeader>Settings</MainHeader>
         <SubHeader>Email</SubHeader>
-        {this.props.user.email}
+        <SubSettingsWrapper>
+          <InfoWrapper>
+            <InfoTextTitle>Your Current Email</InfoTextTitle>
+            {this.props.user.email}
+          </InfoWrapper>
+          {/* <EditButton>Edit Email</EditButton> */}
+          <NavButton
+            name="Edit Email"
+            color="#7344c1"
+            bgColor="#7344c1"
+            border="1px solid #7344c1"
+            hoverFontColor="white"
+          />
+        </SubSettingsWrapper>
       </SettingsWrapper>
     );
   }

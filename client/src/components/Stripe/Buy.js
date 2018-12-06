@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getAllUserInfo, onToken } from '../../actions/billing';
 import BuyBox from './BuyBox.js';
 
-import { BoxContainer, BasicDiv, PremiumDiv } from './styles/BuyStyles.js';
+import { BoxContainer, BasicDiv } from './styles/BuyStyles.js';
 
 class Billing extends Component {
   render() {
@@ -48,6 +48,7 @@ class Billing extends Component {
             btnDescription="$15"
           />
         </BasicDiv>
+        {/* Uncomment below when ready to go live with premium */}
         {/* <PremiumDiv>
           <BuyBox
             title="Monthly Subscription"

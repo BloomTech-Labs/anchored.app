@@ -19,6 +19,15 @@ export const SettingsWrapper = styled.div`
   height: 100%;
 `;
 
+export const SubSettingsWrapper = styled.div`
+  display: flex;
+  // flex-direction: column;
+  align-items: flex-start;
+  margin: 0 auto;
+  margin-top: 30px;
+  max-width: 1010px;
+`;
+
 export const MainHeader = styled.h3`
   display: flex;
   margin-bottom: 50px;
@@ -27,5 +36,16 @@ export const MainHeader = styled.h3`
 export const SubHeader = styled.h4`
   display: flex;
   margin-bottom: 10px;
+  color: gray;
+`;
+
+export const InfoWrapper = styled.div`
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 1010px;
+`;
+
+export const InfoTextTitle = styled.h5`
   color: gray;
 `;
