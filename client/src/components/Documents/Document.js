@@ -168,7 +168,10 @@ class Document extends React.Component {
             <TimestampContainer>
               Proofed
               <Timestamp>
-                {moment(timestamp).format('D MMM YYYY hh:mma')}
+                {moment
+                  .utc(timestamp)
+                  .local()
+                  .format('D MMM YYYY hh:mma')}
               </Timestamp>
             </TimestampContainer>
           ) : null}
