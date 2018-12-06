@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import MediaQuery from 'react-responsive';
 
 import {
   NavGod,
@@ -69,13 +70,15 @@ class NavBar extends Component {
           </NavLink>
           <Links>
             <Credits>Credits: {this.props.user.credits}</Credits>
-            <NavLink exact to={`/buy`} style={{ textDecoration: 'none' }}>
-              <BuyCreditsButton>
-                <Button color="info" size="large">
-                  Buy Credits
-                </Button>
-              </BuyCreditsButton>
-            </NavLink>
+            <MediaQuery minWidth={550}>
+              <NavLink exact to={`/buy`} style={{ textDecoration: 'none' }}>
+                <BuyCreditsButton>
+                  <Button color="info" size="large">
+                    Buy Credits
+                  </Button>
+                </BuyCreditsButton>
+              </NavLink>
+            </MediaQuery>
             <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
               <DropdownToggle size="sm" caret color="none">
                 <img
@@ -90,7 +93,12 @@ class NavBar extends Component {
                   <UserHeader>{this.props.user.username}</UserHeader>
                 </DropdownItem>
                 <DropdownItem divider />
-                <DropdownLink to={`/`}>
+                <MediaQuery maxWidth={550}>
+                  <DropdownLink to={`/buy`}>
+                    <StyledDropdownItem>Buy Credits</StyledDropdownItem>
+                  </DropdownLink>
+                </MediaQuery>
+                <DropdownLink exact to={`/`}>
                   <StyledDropdownItem>Dashboard</StyledDropdownItem>
                 </DropdownLink>
                 <DropdownLink to={`/account`}>

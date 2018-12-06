@@ -34,7 +34,7 @@ export const Links = styled.div`
   padding: 0 20px;
 
   @media (max-width: 550px) {
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 10px;
   }
 `;
