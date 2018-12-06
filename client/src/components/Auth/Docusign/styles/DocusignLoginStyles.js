@@ -1,14 +1,22 @@
 import styled from 'styled-components';
-import { CtaButton } from '../../../CTA/styles/CTAStyles.js';
 
-export const AppBtn = styled(CtaButton)`
-  width: 160px;
+export const AppBtn = styled.a`
+  border-radius: 7px;
+  background-color: #7344c1;
+  color: white;
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 180px;
+  height: 45px;
   font-size: 1rem;
-  font-weight: normal;
-  height: 40px;
+  cursor: pointer;
 
   &:hover {
     cursor: pointer;
     background-color: #8e44c2;
+    text-decoration: none;
+    color: white;
   }
 `;
