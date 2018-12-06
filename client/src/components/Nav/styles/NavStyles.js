@@ -90,6 +90,10 @@ export const DropdownLink = styled(NavLink)`
   }
 `;
 
+export const Logout = styled.div`
+  color: black;
+`;
+
 export const StyledDropdownItem = styled(DropdownItem)`
   cursor: pointer;
   margin-bottom: 7.5px;

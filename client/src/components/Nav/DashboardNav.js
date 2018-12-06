@@ -14,6 +14,7 @@ import {
   DropdownLink,
   StyledDropdownItem,
   UserHeader,
+  Logout,
 } from './styles/NavStyles.js';
 import {
   Dropdown,
@@ -55,10 +56,9 @@ class NavBar extends Component {
       )
       .then(() => {
         window.location.reload();
+        window.location.replace('/');
       })
-      .catch(err => {
-        console.log(err);
-      });
+      .catch(err => console.log(err));
   };
 
   render() {
@@ -107,9 +107,9 @@ class NavBar extends Component {
                 <DropdownLink to={`/settings`}>
                   <StyledDropdownItem>Settings</StyledDropdownItem>
                 </DropdownLink>
-                <DropdownLink to={`/`} onClick={this.handleLogout}>
+                <Logout onClick={this.handleLogout}>
                   <StyledDropdownItem>Log out</StyledDropdownItem>
-                </DropdownLink>
+                </Logout>
               </DropdownMenu>
             </Dropdown>
           </Links>
