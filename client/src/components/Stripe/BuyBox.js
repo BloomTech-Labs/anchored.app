@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { BoxContainer, H3, Copy } from './styles/BuyBoxStyles.js';
-import { CheckoutCredit1 } from './Checkout.js';
+import { CheckoutCredit } from './Checkout.js';
 
 const BuyBox = props => {
   return (
@@ -10,7 +10,7 @@ const BuyBox = props => {
       <Copy>{props.copyOne}</Copy>
       <Copy>{props.copyTwo}</Copy>
       <Copy>{props.copyThree}</Copy>
-      <CheckoutCredit1
+      <CheckoutCredit
         name={props.name}
         description={props.description}
         amount={props.amount}

@@ -106,6 +106,7 @@ class Documents extends React.Component {
           </DocumentOptionsContainer>
           <TabHeader>
             <TabDescription>
+              {/* ternary based on what documents tab is selected */}
               {this.state.selected === true
                 ? 'Proofed Documents'
                 : this.state.selected === 'waiting'
@@ -125,18 +126,20 @@ class Documents extends React.Component {
             </AddDocumentContainer>
           </TabHeader>
 
-          {this.filterCards().map(doc => {
-            return (
-              <Document
-                key={doc.envelope_id}
-                doc={doc}
-                user={this.props.user}
-                history={this.props.history}
-                getProof={this.props.getProof}
-                updateLoading={this.props.updateLoading}
-              />
-            );
-          })}
+          {this.filterCards()
+            .map(doc => {
+              return (
+                <Document
+                  key={doc.envelope_id}
+                  doc={doc}
+                  user={this.props.user}
+                  history={this.props.history}
+                  getProof={this.props.getProof}
+                  updateLoading={this.props.updateLoading}
+                />
+              );
+            })
+            .reverse()}
         </DocumentsContainer>
       </Fragment>
     );

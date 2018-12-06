@@ -1,17 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   DocumentContainer,
   DocumentSubject,
   DocumentProof,
   LoadingContainer,
+  ProofDocTextContainer,
+  TimestampContainer,
+  Timestamp,
 } from './styles/DocumentStyles';
 import { BeatLoader } from 'react-spinners';
 import axios from 'axios';
 import LinkModal from './LinkModal';
 import PDFModal from './PDFModal';
 import VerifyModal from './VerifyModal';
+import moment from 'moment';
 
-class Document extends Component {
+class Document extends React.Component {
   constructor(props) {
     super(props);
 
@@ -84,6 +88,12 @@ class Document extends Component {
     const envelope_id = this.props.doc.envelope_id;
     const details = `https://appdemo.docusign.com/documents/details/${envelope_id}`;
 
+    let timestamp;
+    if (this.props.doc.verified) {
+      const verified_proof = JSON.parse(this.props.doc.verified_proof);
+      timestamp = verified_proof.verifiedAt;
+    }
+
     return (
       <DocumentContainer>
         <LinkModal
@@ -129,13 +139,20 @@ class Document extends Component {
               : 'Not signed'}
           </DocumentProof>
         )}
-        <DocumentSubject
-          href={details}
-          target="_blank"
-          id={`subject${this.props.doc.id}`}
-        >
-          {this.props.doc.subject}
-        </DocumentSubject>
+        <ProofDocTextContainer>
+          <DocumentSubject target="_blank" href={details}>
+            {this.props.doc.subject}
+          </DocumentSubject>
+          {/* Returns proofed timestamp if exists */}
+          {timestamp !== undefined ? (
+            <TimestampContainer>
+              Proofed
+              <Timestamp>
+                {moment(timestamp).format('D MMM YYYY hh:mma')}
+              </Timestamp>
+            </TimestampContainer>
+          ) : null}
+        </ProofDocTextContainer>
       </DocumentContainer>
     );
   }
