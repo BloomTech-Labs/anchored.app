@@ -31,14 +31,6 @@ class Document extends React.Component {
     if (this.props.doc.loading) {
       this.checkLoading();
     }
-
-    if (this.props.doc.verified) {
-      const envelope_id = this.props.doc.envelope_id;
-      axios
-        .get(`http://localhost:9000/documents/${envelope_id}`)
-        .then(res => this.setState({ document: res.data.document }))
-        .catch(err => console.log(err));
-    }
   }
 
   componentWillUnmount() {
@@ -48,6 +40,31 @@ class Document extends React.Component {
   getProof = () => {
     this.props.getProof(this.props.doc.id);
     this.toggleVerifyPay();
+  };
+
+  getDocuments = () => {
+    const envelope_id = this.props.doc.envelope_id;
+    if (process.env.REACT_APP_DOCUMENTS) {
+      axios
+        .get(`${process.env.REACT_APP_DOCUMENTS}/${envelope_id}`)
+        .then(res => {
+          const data = Buffer.from(res.data.document.data).toString();
+          this.setState({ document: data }, () => {
+            this.togglePdfModal();
+          });
+        })
+        .catch(err => console.log(err));
+    } else {
+      axios
+        .get(`http://localhost:9000/documents/${envelope_id}`)
+        .then(res => {
+          console.log(res);
+          this.setState({ document: res.data.document }, () => {
+            this.togglePdfModal();
+          });
+        })
+        .catch(err => console.log(err));
+    }
   };
 
   toggleLinkModal = () => {
@@ -85,9 +102,6 @@ class Document extends React.Component {
   };
 
   render() {
-    const envelope_id = this.props.doc.envelope_id;
-    const details = `https://appdemo.docusign.com/documents/details/${envelope_id}`;
-
     let timestamp;
     if (this.props.doc.verified) {
       const verified_proof = JSON.parse(this.props.doc.verified_proof);
@@ -106,6 +120,13 @@ class Document extends React.Component {
           toggle={this.toggleVerifyPay}
           isOpen={this.state.modalVerify}
           getProof={this.getProof}
+        />
+
+        <PDFModal
+          doc={this.props.doc}
+          toggle={this.togglePdfModal}
+          isOpen={this.state.modalPdf}
+          document={this.state.document}
         />
 
         {this.props.doc.status === 'completed' &&
@@ -140,7 +161,7 @@ class Document extends React.Component {
           </DocumentProof>
         )}
         <ProofDocTextContainer>
-          <DocumentSubject target="_blank" href={details}>
+          <DocumentSubject onClick={this.getDocuments}>
             {this.props.doc.subject}
           </DocumentSubject>
           {/* Returns proofed timestamp if exists */}

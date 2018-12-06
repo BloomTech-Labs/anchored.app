@@ -6,14 +6,14 @@ import { ModalPDF } from './styles/DocumentModalStyles';
 class PDFModal extends React.Component {
   componentDidUpdate(prevProps) {
     if (prevProps.isOpen !== this.props.isOpen && this.props.isOpen) {
-      const data = `data:application/pdf;base64,${this.props.pdfdocument}`;
+      const data = `data:application/pdf;base64,${this.props.document}`;
       PDFObject.embed(data, `#pdf_subject${this.props.doc.id}`);
     }
   }
 
   render() {
-    const { doc, toggle, isOpen, pdfdocument } = this.props;
-    if (!doc.verified || !pdfdocument || !isOpen) return null;
+    const { doc, toggle, isOpen, document } = this.props;
+    if (!document || !isOpen) return null;
 
     return (
       <Modal isOpen={isOpen} toggle={toggle} size="lg">
