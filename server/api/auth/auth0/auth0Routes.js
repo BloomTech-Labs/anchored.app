@@ -49,7 +49,7 @@ router.get(
 router.get('/logout', (req, res) => {
   req.session.destroy(function(err) {
     req.logout();
-    res.redirect('/');
+    res.sendStatus(200);
   });
 });
 

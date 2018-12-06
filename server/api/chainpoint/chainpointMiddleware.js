@@ -5,7 +5,7 @@ const moment = require('moment');
 
 async function proofDocuments(req, res, documents, id) {
   // Convert documents into SHA256 hash
-  const hash = [SHA256(documents.documents).toString()];
+  const hash = [SHA256(documents.document).toString()];
 
   // Submit hash to chainpoint to later retrieve proofs
   const proofHandles = await chp.submitHashes(hash);
