@@ -27,7 +27,7 @@ function findById(id) {
 
 function findbyEnvelopeId(envelope_id) {
   return db('documents')
-    .where({ envelope_id })
+    .where({ envelope_id: envelope_id })
     .first();
 }
 
