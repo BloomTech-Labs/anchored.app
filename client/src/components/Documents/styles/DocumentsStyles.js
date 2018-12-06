@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Copy } from '../../CTA/styles/CTAStyles.js';
-import { Img } from '../../Nav/styles/NavStyles.js';
 
 export const DocumentsContainer = styled.div`
   margin-top: 30px;

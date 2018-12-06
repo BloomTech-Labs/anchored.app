@@ -5,13 +5,9 @@ import {
   CtaContainer,
   CtaButton,
   Demo,
-  OurPatrons,
-  Logos,
   H2,
-  H3,
   Copy,
   Img,
-  Friends,
 } from './styles/CTAStyles.js';
 
 import { Events, scrollSpy, scroller } from 'react-scroll';
