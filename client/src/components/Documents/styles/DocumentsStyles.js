@@ -69,6 +69,10 @@ export const AppContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
   width: 840px;
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
 `;
 
 export const AppDiv = styled.div`
@@ -87,6 +91,29 @@ export const AppDiv = styled.div`
 export const AppCopy = styled(Copy)`
   font-size: 1.3rem;
   padding-top: 15px;
+`;
+
+export const Small = styled(Copy)`
+  font-size: 0.8rem;
+`;
+
+export const AddIcon = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  width: 70px;
+  height: 70px;
+  padding-bottom: 10px;
+  background-color: #7344c1;
+  border-radius: 50%;
+  color: white;
+
+  /* Uncomment when ready to go live with additional apps */
+  /* &:hover {
+    background-color: #8e44c2;
+    cursor: pointer;
+  } */
 `;
 
 export const TabHeader = styled.div`

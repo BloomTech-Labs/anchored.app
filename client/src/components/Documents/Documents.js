@@ -16,10 +16,11 @@ import {
   TabDescription,
   TabHeader,
   AddDocument,
-  DashContainer,
   AppDiv,
   AppContainer,
   AppCopy,
+  AddIcon,
+  Small,
 } from './styles/DocumentsStyles';
 
 class Documents extends React.Component {
@@ -78,7 +79,11 @@ class Documents extends React.Component {
                 <AppCopy>Connect To DocuSign</AppCopy>
                 <DocusignLogin />
               </AppDiv>
-              <AppDiv>+</AppDiv>
+              <AppDiv>
+                <AddIcon>+</AddIcon>
+                <AppCopy>Add New App</AppCopy>
+                <Small>(Coming Soon!)</Small>
+              </AppDiv>
             </AppContainer>
           </DocumentsContainer>
         </Fragment>
