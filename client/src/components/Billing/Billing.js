@@ -1,63 +1,98 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { getUserInfo } from '../../actions/user';
 import axios from 'axios';
 import {
   MainWrapper,
   MainHeader,
   InfoWrapper,
   InfoWrapperTwo,
+  InfoContainer,
+  InfoDate,
+  InfoTransaction,
+  InfoAmountBilled,
+  InvoiceContainer,
+  InvoiceInfo,
+  ContentContainer,
   ContentHeader,
-  Invoice,
+  Export,
+  ExportContainer,
 } from './styles/BillingStyles';
+import moment from 'moment';
+
 class Billing extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
     this.state = {
       invoice: [],
     };
   }
+
   componentDidMount() {
     axios
       .get('http://localhost:9000/payment/:id')
-      .then(res => {
-        let invoice = res.data;
-        this.setState({ invoice });
-      })
-      .catch(err => {
-        console.log('Error on billing', err.message);
-      });
+      .then(res => this.setState({ invoice: res.data }))
+      .catch(err => console.log('Error on billing', err.message));
   }
+
+  getData = () => {
+    const invoices = [];
+    for (let i = 0; i < this.state.invoice.length; i++) {
+      const invoice = this.state.invoice[i];
+      const invoice_info = {
+        date_billed: moment(invoice.created_at).format('D MMM YYYY hh:mma'),
+        transaction: invoice.description,
+        amount_billed: `$${invoice.amount /
+          100}.00 ${invoice.currency.toUpperCase()}`,
+      };
+      invoices.push(invoice_info);
+    }
+    return invoices;
+  };
 
   render() {
     return (
       <Fragment>
         <MainWrapper>
-          <MainHeader>Account Info</MainHeader>
+          <MainHeader>Account: {this.props.user.username}</MainHeader>
           <InfoWrapper>
-            <ContentHeader>
-              Current Plan:
+            <ContentContainer>
+              <ContentHeader>Available Credits</ContentHeader>
+              {this.props.user.credits}
+            </ContentContainer>
+            <ContentContainer>
+              <ContentHeader>Plan Type</ContentHeader>
               {this.props.user.subscription ? ' Premium' : ' Basic'}
-            </ContentHeader>
-            <ContentHeader>
-              Current Available Credits: {this.props.user.credits}
-            </ContentHeader>
+            </ContentContainer>
           </InfoWrapper>
-          <ContentHeader>
-            Invoice
-            {this.state.invoice.map(invoice => {
-              return (
-                <InfoWrapperTwo key={invoice.id}>
-                  <li>{invoice.description}</li>
-                  <li>{`$${invoice.amount / 100}.00`}</li>
-                  <li>{invoice.currency.toUpperCase()}</li>
-                  <li>{invoice.created_at}</li>
-                  <li>{invoice.credits}</li>
+          <InvoiceContainer>
+            <InvoiceInfo>Date billed</InvoiceInfo>
+            <InvoiceInfo>Transaction</InvoiceInfo>
+            <InvoiceInfo>Amount billed (USD)</InvoiceInfo>
+          </InvoiceContainer>
+          {this.state.invoice.map(invoice => {
+            return (
+              <InfoContainer key={invoice.id}>
+                <InfoWrapperTwo>
+                  <InfoDate>
+                    {moment(invoice.created_at).format('D MMM YYYY hh:mma')}
+                  </InfoDate>
+                  <InfoTransaction>{invoice.description}</InfoTransaction>
+                  <InfoAmountBilled>
+                    {`$${invoice.amount / 100}.00`}{' '}
+                    {invoice.currency.toUpperCase()}
+                  </InfoAmountBilled>
                 </InfoWrapperTwo>
-              );
-            })}
-          </ContentHeader>
-          <Invoice />
+              </InfoContainer>
+            );
+          })}
+          {this.state.invoice.length > 0 ? (
+            <ExportContainer>
+              <Export data={this.getData()} onClick={this.getData}>
+                Export
+              </Export>
+            </ExportContainer>
+          ) : null}
         </MainWrapper>
       </Fragment>
     );
@@ -68,11 +103,7 @@ const mapStateToProps = state => {
   return {
     // User Info Data
     user: state.user.user,
-    fetching: state.user.retrieving,
   };
 };
 
-export default connect(
-  mapStateToProps,
-  { getUserInfo }
-)(Billing);
+export default connect(mapStateToProps)(Billing);

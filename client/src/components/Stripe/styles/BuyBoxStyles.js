@@ -7,6 +7,8 @@ export const BoxContainer = styled.div`
   border: 1px solid black;
   margin: 30px;
   background-color: #e6e8e6;
+  border: 1px solid grey;
+  border-radius: 5px;
 
   @media (max-width: 550px) {
     margin-bottom: 2px;
