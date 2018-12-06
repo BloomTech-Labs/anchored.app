@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import NavButton from './DashNavBtn.js';
+
 import {
   NavGod,
   TopNavBar,
@@ -64,32 +64,17 @@ class NavBar extends Component {
     return (
       <NavGod>
         <TopNavBar>
-          <Img src={Logo} alt="Proofd Logo" />
+          <NavLink exact to={`/`}>
+            <Img src={Logo} alt="Proofd Logo" />
+          </NavLink>
           <Links>
             <Credits>Credits: {this.props.user.credits}</Credits>
-            <NavLink
-              exact
-              to={`/buy`}
-              style={{ textDecoration: 'none' }}
-              activeStyle={{
-                color: 'orange',
-              }}
-            >
+            <NavLink exact to={`/buy`} style={{ textDecoration: 'none' }}>
               <BuyCreditsButton>
                 <Button color="info" size="large">
                   Buy Credits
                 </Button>
               </BuyCreditsButton>
-            </NavLink>
-            <NavLink
-              exact
-              to={`/`}
-              style={{ textDecoration: 'none' }}
-              activeStyle={{
-                color: 'orange',
-              }}
-            >
-              <NavButton name="Documents" />
             </NavLink>
             <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
               <DropdownToggle size="sm" caret color="none">
@@ -105,6 +90,9 @@ class NavBar extends Component {
                   <UserHeader>{this.props.user.username}</UserHeader>
                 </DropdownItem>
                 <DropdownItem divider />
+                <DropdownLink to={`/`}>
+                  <StyledDropdownItem>Dashboard</StyledDropdownItem>
+                </DropdownLink>
                 <DropdownLink to={`/account`}>
                   <StyledDropdownItem>Account</StyledDropdownItem>
                 </DropdownLink>

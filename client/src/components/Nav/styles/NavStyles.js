@@ -31,6 +31,7 @@ export const Links = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  padding: 0 20px;
 
   @media (max-width: 550px) {
     justify-content: center;
@@ -72,7 +73,7 @@ export const Img = styled.img`
 `;
 
 export const Credits = styled.div`
-  min-width: 90px;
+  padding: 0 5px;
   height: 40px;
   display: flex;
   justify-content: center;
@@ -103,9 +104,7 @@ export const StyledDropdownItem = styled(DropdownItem)`
     }
   }
 `;
-export const UserHeader = styled.h3`
-  font-size: 18px;
-  color: teal;
+
+export const UserHeader = styled.div`
   font-weight: bold;
-  margin-bottom: 8px;
 `;
