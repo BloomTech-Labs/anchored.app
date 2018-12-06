@@ -115,6 +115,10 @@ export const AddIcon = styled.div`
   } */
 `;
 
+export const Img = styled.img`
+  width: 140px;
+`;
+
 export const TabHeader = styled.div`
   display: flex;
   justify-content: space-between;

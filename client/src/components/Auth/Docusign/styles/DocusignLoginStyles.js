@@ -5,6 +5,7 @@ export const AppBtn = styled.a`
   background-color: #7344c1;
   color: white;
   margin: 30px;
+  margin-bottom: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
