@@ -5,6 +5,8 @@ exports.up = function(knex, Promise) {
 
     tbl.binary('document');
 
+    tbl.string('envelope_id').unique();
+
     tbl.timestamp('created_at').defaultTo(knex.fn.now());
   });
 };

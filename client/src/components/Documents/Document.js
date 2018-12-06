@@ -1,5 +1,4 @@
-import React, { Component, Fragment } from 'react';
-import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
+import React from 'react';
 import {
   DocumentContainer,
   DocumentSubject,
@@ -9,20 +8,22 @@ import {
   TimestampContainer,
   Timestamp,
 } from './styles/DocumentStyles';
-
-import { ModalInfo } from './styles/DocumentModalStyles';
-
 import { BeatLoader } from 'react-spinners';
 import axios from 'axios';
+import LinkModal from './LinkModal';
+import PDFModal from './PDFModal';
+import VerifyModal from './VerifyModal';
 import moment from 'moment';
 
-class Document extends Component {
+class Document extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      modal: false,
+      modalLink: false,
       modalVerify: false,
+      modalPdf: false,
+      document: null,
     };
   }
 
@@ -41,26 +42,54 @@ class Document extends Component {
     this.toggleVerifyPay();
   };
 
-  toggleModal = () => {
-    this.setState({ modal: !this.state.modal });
+  getDocuments = () => {
+    const envelope_id = this.props.doc.envelope_id;
+    if (process.env.REACT_APP_DOCUMENTS) {
+      axios
+        .get(`${process.env.REACT_APP_DOCUMENTS}/${envelope_id}`)
+        .then(res => {
+          const data = Buffer.from(res.data.document.data).toString();
+          this.setState({ document: data }, () => {
+            this.togglePdfModal();
+          });
+        })
+        .catch(err => console.log(err));
+    } else {
+      axios
+        .get(`http://localhost:9000/documents/${envelope_id}`)
+        .then(res => {
+          console.log(res);
+          this.setState({ document: res.data.document }, () => {
+            this.togglePdfModal();
+          });
+        })
+        .catch(err => console.log(err));
+    }
+  };
+
+  toggleLinkModal = () => {
+    this.setState({ modalLink: !this.state.modalLink });
   };
 
   toggleVerifyPay = () => {
     this.setState({ modalVerify: !this.state.modalVerify });
   };
 
+  togglePdfModal = () => {
+    this.setState({ modalPdf: !this.state.modalPdf });
+  };
+
   checkLoading = () => {
     this.interval = setInterval(() => {
-      let promise;
+      let host;
       if (process.env.REACT_APP_CHAINPOINT) {
-        promise = axios.get(
-          `${process.env.REACT_APP_CHAINPOINT}/${this.props.doc.id}/loading`
-        );
+        host = process.env.REACT_APP_CHAINPOINT;
       } else {
-        promise = axios.get(
-          `http://localhost:9000/chainpoint/${this.props.doc.id}/loading`
-        );
+        host = 'http://localhost:9000/chainpoint';
       }
+
+      const promise = axios.get(`${host}/${this.props.doc.id}/loading`);
+
       promise
         .then(res => {
           if (!res.data.loading) {
@@ -73,50 +102,33 @@ class Document extends Component {
   };
 
   render() {
-    const envelope_id = this.props.doc.envelope_id;
-    const details = `https://appdemo.docusign.com/documents/details/${envelope_id}`;
-    let verified_proof;
     let timestamp;
-    let block_height;
-    let link;
     if (this.props.doc.verified) {
-      verified_proof = JSON.parse(this.props.doc.verified_proof);
+      const verified_proof = JSON.parse(this.props.doc.verified_proof);
       timestamp = verified_proof.verifiedAt;
-      block_height = verified_proof.anchorId;
-      link = `https://live.blockcypher.com/btc/block/${block_height}`;
     }
 
     return (
       <DocumentContainer>
-        {this.props.doc.verified ? (
-          // ***** See Proof Modal *****
-          <Fragment>
-            <Modal isOpen={this.state.modal} toggle={this.toggleModal}>
-              <ModalBody>
-                Your document has been anchored to Bitcoin block{' '}
-                <b>{verified_proof.anchorId}</b> within Merkle root:
-                <ModalInfo>
-                  <b>{verified_proof.expectedValue}</b>
-                </ModalInfo>
-              </ModalBody>
-              <ModalFooter>
-                <Button
-                  href={link}
-                  target="_blank"
-                  alt=""
-                  color="primary"
-                  onClick={this.toggleModal}
-                >
-                  Link to BTC block
-                </Button>
-                <Button color="secondary" onClick={this.toggleModal}>
-                  Close
-                </Button>
-              </ModalFooter>
-            </Modal>
-          </Fragment>
-        ) : // ***************************
-        null}
+        <LinkModal
+          doc={this.props.doc}
+          toggle={this.toggleLinkModal}
+          isOpen={this.state.modalLink}
+        />
+
+        <VerifyModal
+          toggle={this.toggleVerifyPay}
+          isOpen={this.state.modalVerify}
+          getProof={this.getProof}
+        />
+
+        <PDFModal
+          doc={this.props.doc}
+          toggle={this.togglePdfModal}
+          isOpen={this.state.modalPdf}
+          document={this.state.document}
+        />
+
         {this.props.doc.status === 'completed' &&
         !this.props.doc.verified &&
         !this.props.doc.waiting ? (
@@ -139,7 +151,7 @@ class Document extends Component {
           </DocumentProof>
         ) : (
           <DocumentProof
-            onClick={this.props.doc.verified ? this.toggleModal : null}
+            onClick={this.props.doc.verified ? this.toggleLinkModal : null}
           >
             {this.props.doc.verified
               ? 'See Proof'
@@ -149,7 +161,7 @@ class Document extends Component {
           </DocumentProof>
         )}
         <ProofDocTextContainer>
-          <DocumentSubject target="_blank" href={details}>
+          <DocumentSubject onClick={this.getDocuments}>
             {this.props.doc.subject}
           </DocumentSubject>
           {/* Returns proofed timestamp if exists */}
@@ -162,24 +174,6 @@ class Document extends Component {
             </TimestampContainer>
           ) : null}
         </ProofDocTextContainer>
-        {/* { Verify Payment Modal} */}
-        <Fragment>
-          <Modal isOpen={this.state.modalVerify} toggle={this.toggleVerifyPay}>
-            <ModalBody>
-              {' '}
-              Please verify that you would like to use one credit to proof your
-              document.
-            </ModalBody>
-            <ModalFooter>
-              <Button color="info" onClick={this.getProof}>
-                Proof
-              </Button>
-              <Button color="secondary" onClick={this.toggleVerifyPay}>
-                Cancel
-              </Button>
-            </ModalFooter>
-          </Modal>
-        </Fragment>
       </DocumentContainer>
     );
   }
