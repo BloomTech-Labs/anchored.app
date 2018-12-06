@@ -6,6 +6,7 @@ import { BeatLoader } from 'react-spinners';
 import { LoadingContainer } from './styles/DocumentsStyles.js';
 import DocusignLogin from '../Auth/Docusign/DocusignLogin';
 import Document from './Document';
+import DocusignLogo from '../../assets/docusign_logo_standard.png';
 
 import {
   DocumentOptionsContainer,
@@ -21,6 +22,7 @@ import {
   AppCopy,
   AddIcon,
   Small,
+  Img,
 } from './styles/DocumentsStyles';
 
 class Documents extends React.Component {
@@ -76,7 +78,7 @@ class Documents extends React.Component {
             <DocumentsHeader>Your Connected Apps</DocumentsHeader>
             <AppContainer>
               <AppDiv>
-                <AppCopy>Connect To DocuSign</AppCopy>
+                <Img src={DocusignLogo} alt="DocuSign Logo" />
                 <DocusignLogin />
               </AppDiv>
               <AppDiv>
