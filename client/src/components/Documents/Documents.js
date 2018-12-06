@@ -16,6 +16,11 @@ import {
   TabDescription,
   TabHeader,
   AddDocument,
+  AppDiv,
+  AppContainer,
+  AppCopy,
+  AddIcon,
+  Small,
 } from './styles/DocumentsStyles';
 
 class Documents extends React.Component {
@@ -65,7 +70,24 @@ class Documents extends React.Component {
     }
 
     if (!this.props.envelopes) {
-      return <DocusignLogin />;
+      return (
+        <Fragment>
+          <DocumentsContainer>
+            <DocumentsHeader>Your Connected Apps</DocumentsHeader>
+            <AppContainer>
+              <AppDiv>
+                <AppCopy>Connect To DocuSign</AppCopy>
+                <DocusignLogin />
+              </AppDiv>
+              <AppDiv>
+                <AddIcon>+</AddIcon>
+                <AppCopy>Add New App</AppCopy>
+                <Small>(Coming Soon!)</Small>
+              </AppDiv>
+            </AppContainer>
+          </DocumentsContainer>
+        </Fragment>
+      );
     }
 
     return (
