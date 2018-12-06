@@ -61,6 +61,7 @@ class Documents extends React.Component {
   };
 
   render() {
+    console.log(this.props.envelopes);
     if (this.props.fetchingEnv) {
       return (
         <LoadingContainer>
