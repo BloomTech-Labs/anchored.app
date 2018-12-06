@@ -3,7 +3,6 @@ const axios = require('axios');
 const { promisify } = require('util');
 const chp = require('chainpoint-client');
 
-const users = require('../users/usersModel');
 const envs = require('./envelopesModel');
 const docusignModel = require('../auth/docusign/docusignModel');
 
@@ -102,6 +101,7 @@ async function postEnvToDB(req, res, new_envelopes) {
       const ids = await envs.addEnv(new_envelopes[i]);
       new_envelopes[i].id = ids.id;
       new_envelopes[i].verified = 0;
+      new_envelopes[i].waiting = 0;
       user_envelopes.push(new_envelopes[i]);
 
       const user_env = { account_id, envelope_id: ids.id };
@@ -114,6 +114,7 @@ async function postEnvToDB(req, res, new_envelopes) {
         await envs.updateEnv(user_envelopes[index].id, new_envelopes[i]);
         new_envelopes[i].id = user_envelopes[index].id;
         new_envelopes[i].verified = user_envelopes[index].verified;
+        new_envelopes[i].waiting = user_envelopes[index].waiting;
         user_envelopes[index] = user_envelopes[i];
       } else if (user_envelopes[index].waiting && expired) {
         // Check if document / envelope has been anchored to bitcoin

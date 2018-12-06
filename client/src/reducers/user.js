@@ -4,6 +4,7 @@ import {
   ERROR,
 } from '../actions/user';
 import { RETRIEVING_CREDIT, RETRIEVED_CREDIT } from '../actions/billing';
+import { INCREMENT_CREDIT, DECREMENT_CREDIT } from '../actions/envelopes';
 
 const initialState = {
   user: null,
@@ -19,32 +20,51 @@ export default (state = initialState, action) => {
     case RETRIEVING_USER_INFO:
       return { ...state, retrieving: true, retrieved: false };
 
-    case RETRIEVED_USER_INFO:
+    case RETRIEVED_USER_INFO: {
       return {
         ...state,
         retrieved: true,
         retrieving: false,
         user: action.payload.user,
       };
+    }
 
-    case RETRIEVING_CREDIT:
+    case RETRIEVING_CREDIT: {
       return { ...state, retrievingCred: true, retrievedCred: false };
+    }
 
-    case RETRIEVED_CREDIT:
-      console.log(action.payload);
+    case RETRIEVED_CREDIT: {
       const user = {
         ...state.user,
         credits: (state.user.credits += action.payload),
       };
       return { ...state, retrievingCred: false, retrievedCred: true, user };
+    }
 
-    case ERROR:
+    case DECREMENT_CREDIT: {
+      const user = {
+        ...state.user,
+        credits: --state.user.credits,
+      };
+      return { ...state, user };
+    }
+
+    case INCREMENT_CREDIT: {
+      const user = {
+        ...state.user,
+        credits: ++state.user.credits,
+      };
+      return { ...state, user };
+    }
+
+    case ERROR: {
       return {
         ...state,
         retrieving: false,
         retrieved: false,
         error: action.payload,
       };
+    }
 
     default:
       return state;

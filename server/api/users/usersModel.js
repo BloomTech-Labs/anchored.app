@@ -40,6 +40,12 @@ function incrementCredit(id, amount) {
     .increment('credits', amount);
 }
 
+function decrementCredit(id) {
+  return db('users')
+    .where({ id })
+    .decrement('credits', 1);
+}
+
 module.exports = {
   find,
   findByUserId,
@@ -48,4 +54,5 @@ module.exports = {
   updateUser,
   removeUser,
   incrementCredit,
+  decrementCredit,
 };

@@ -1,5 +1,6 @@
 const express = require('express');
 
+const users = require('../users/usersModel');
 const envs = require('../envelopes/envelopesModel');
 const docusign = require('docusign-esign');
 const moment = require('moment');
@@ -20,6 +21,12 @@ router.get('/:id', async (req, res) => {
   const envelopesApi = new docusign.EnvelopesApi(apiClient);
   const account_id = user.account_id;
 
+  const current_user = await users.findByUserId(req.user.id);
+
+  if (current_user.credits <= 0) {
+    return res.status(400).json({ message: 'No credits available' });
+  }
+
   try {
     const env = await envs.findById(id);
     const loading_expiration = JSON.stringify(moment().add(60, 's'));
@@ -29,6 +36,9 @@ router.get('/:id', async (req, res) => {
       return res.status(400).json({ message: 'Loading!' });
     } else if (env.loading && expired) {
       await envs.updateEnv(id, { loading: false, loading_expiration: 0 });
+      await users.incrementCredit(req.user.id, 1);
+      ++req.user.credits;
+      req.session.save();
     }
 
     if (env.status !== 'completed') {
@@ -44,6 +54,10 @@ router.get('/:id', async (req, res) => {
     }
 
     await envs.updateEnv(id, { loading: true, loading_expiration });
+    await users.decrementCredit(req.user.id);
+
+    --req.user.credits;
+    req.session.save();
 
     const documents = await getDocuments(
       envelopesApi,
@@ -54,6 +68,7 @@ router.get('/:id', async (req, res) => {
     await postDoctoDB(req, res, documents);
     await proofDocuments(req, res, documents, env.id);
   } catch (err) {
+    await users.incrementCredit(req.user.id, 1);
     await envs.updateEnv(id, {
       verified_proof: null,
       proof_handle: null,
@@ -63,6 +78,7 @@ router.get('/:id', async (req, res) => {
       waiting_expiration: 0,
       loading_expiration: 0,
     });
+
     return res.status(500).json({ ErrorMessage: err.message, id });
   }
 });
@@ -76,6 +92,9 @@ router.get('/:id/loading', async (req, res) => {
 
     if (expired && envelope.loading) {
       await envs.updateEnv(id, { loading: false, loading_expiration: 0 });
+      await users.incrementCredit(req.user.id, 1);
+      ++req.user.credits;
+      req.session.save();
     }
 
     return res

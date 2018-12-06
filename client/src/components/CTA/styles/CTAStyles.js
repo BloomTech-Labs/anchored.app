@@ -5,6 +5,7 @@ export const CtaContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-bottom: 80px;
 `;
 
 export const CtaButton = styled.div`
@@ -12,6 +13,7 @@ export const CtaButton = styled.div`
   background-color: #7344c1;
   color: white;
   margin: 30px;
+  margin-top: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,7 +57,7 @@ export const Logos = styled.div`
 `;
 
 export const H2 = styled.h2`
-  padding: 30px;
+  padding: 10px;
   font-size: 2rem;
 
   @media (max-width: 550px) {

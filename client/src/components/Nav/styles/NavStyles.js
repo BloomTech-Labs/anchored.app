@@ -9,7 +9,7 @@ export const NavGod = styled.div`
   top: 0.1px;
   position: sticky;
   background-color: white;
-  z-index: 1;
+  z-index: 1000;
 `;
 
 export const TopNavBar = styled.div`
@@ -21,7 +21,7 @@ export const TopNavBar = styled.div`
   align-items: center;
 
   @media (max-width: 550px) {
-    height: 140px;
+    height: 150px;
     flex-direction: column;
   }
 `;
@@ -31,9 +31,11 @@ export const Links = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  padding: 0 20px;
 
   @media (max-width: 550px) {
-    justify-content: center;
+    justify-content: space-between;
+    margin-top: 10px;
   }
 `;
 
@@ -43,10 +45,14 @@ export const Button = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #7344c1;
+  color: ${props => props.color};
+  border: ${props => props.border};
+  border-radius: 7px;
+  margin: 10px;
 
   &:hover {
-    font-size: 1.2rem;
+    background-color: ${props => props.bgColor};
+    color: ${props => props.hoverFontColor};
   }
 `;
 
@@ -63,15 +69,11 @@ export const BuyCreditsButton = styled.div`
 `;
 
 export const Img = styled.img`
-  width: 10%;
-
-  @media (max-width: 550px) {
-    width: 30%;
-  }
+  width: 80px;
 `;
 
 export const Credits = styled.div`
-  min-width: 90px;
+  padding: 0 5px;
   height: 40px;
   display: flex;
   justify-content: center;
@@ -90,6 +92,8 @@ export const DropdownLink = styled(NavLink)`
 
 export const StyledDropdownItem = styled(DropdownItem)`
   cursor: pointer;
+  margin-bottom: 7.5px;
+  line-height: 18px;
 
   &:hover {
     color: white;
@@ -99,4 +103,8 @@ export const StyledDropdownItem = styled(DropdownItem)`
       color: white;
     }
   }
+`;
+
+export const UserHeader = styled.div`
+  font-weight: bold;
 `;

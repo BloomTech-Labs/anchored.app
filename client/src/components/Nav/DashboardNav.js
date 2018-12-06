@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import NavButton from './DashNavBtn.js';
+import MediaQuery from 'react-responsive';
+
 import {
   NavGod,
   TopNavBar,
@@ -12,6 +13,7 @@ import {
   Credits,
   DropdownLink,
   StyledDropdownItem,
+  UserHeader,
 } from './styles/NavStyles.js';
 import {
   Dropdown,
@@ -26,6 +28,7 @@ import Logo from '../../assets/Proofd_3.png';
 const ProfileImage = {
   height: '50px',
   borderRadius: '25px',
+  verticalalign: 'middle',
 };
 
 class NavBar extends Component {
@@ -62,33 +65,20 @@ class NavBar extends Component {
     return (
       <NavGod>
         <TopNavBar>
-          <Img src={Logo} alt="Proofd Logo" />
+          <NavLink exact to={`/`}>
+            <Img src={Logo} alt="Proofd Logo" />
+          </NavLink>
           <Links>
             <Credits>Credits: {this.props.user.credits}</Credits>
-            <NavLink
-              exact
-              to={`/buy`}
-              style={{ textDecoration: 'none' }}
-              activeStyle={{
-                color: 'orange',
-              }}
-            >
-              <BuyCreditsButton>
-                <Button color="info" size="large">
-                  Buy Credits
-                </Button>
-              </BuyCreditsButton>
-            </NavLink>
-            <NavLink
-              exact
-              to={`/`}
-              style={{ textDecoration: 'none' }}
-              activeStyle={{
-                color: 'orange',
-              }}
-            >
-              <NavButton name="Documents" />
-            </NavLink>
+            <MediaQuery minWidth={550}>
+              <NavLink exact to={`/buy`} style={{ textDecoration: 'none' }}>
+                <BuyCreditsButton>
+                  <Button color="info" size="large">
+                    Buy Credits
+                  </Button>
+                </BuyCreditsButton>
+              </NavLink>
+            </MediaQuery>
             <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
               <DropdownToggle size="sm" caret color="none">
                 <img
@@ -100,9 +90,17 @@ class NavBar extends Component {
               <DropdownMenu right>
                 <DropdownItem disabled>Logged in as</DropdownItem>
                 <DropdownItem disabled>
-                  <b>{this.props.user.username}</b>
+                  <UserHeader>{this.props.user.username}</UserHeader>
                 </DropdownItem>
                 <DropdownItem divider />
+                <MediaQuery maxWidth={550}>
+                  <DropdownLink to={`/buy`}>
+                    <StyledDropdownItem>Buy Credits</StyledDropdownItem>
+                  </DropdownLink>
+                </MediaQuery>
+                <DropdownLink exact to={`/`}>
+                  <StyledDropdownItem>Dashboard</StyledDropdownItem>
+                </DropdownLink>
                 <DropdownLink to={`/account`}>
                   <StyledDropdownItem>Account</StyledDropdownItem>
                 </DropdownLink>
