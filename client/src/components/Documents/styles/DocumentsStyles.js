@@ -53,6 +53,29 @@ export const DocumentsHeader = styled.div`
     text-align: center;
   }
 `;
+
+export const DashContainer = styled(DocumentsContainer)`
+  margin: 0 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1000px;
+  border: 1px solid red;
+`;
+
+export const AppContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const AppDiv = styled.div`
+  height: 180px;
+  width: 230px;
+  background-color: lightgrey;
+  margin: 20px;
+`;
+
 export const TabHeader = styled.div`
   display: flex;
   justify-content: space-between;

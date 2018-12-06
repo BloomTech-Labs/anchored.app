@@ -16,6 +16,9 @@ import {
   TabDescription,
   TabHeader,
   AddDocument,
+  DashContainer,
+  AppDiv,
+  AppContainer,
 } from './styles/DocumentsStyles';
 
 class Documents extends React.Component {
@@ -65,7 +68,18 @@ class Documents extends React.Component {
     }
 
     if (!this.props.envelopes) {
-      return <DocusignLogin />;
+      return (
+        <Fragment>
+          <DashContainer>
+            <DocumentsHeader>Your Connected Apps</DocumentsHeader>
+            <AppContainer>
+              <AppDiv />
+              <AppDiv />
+              <AppDiv />
+            </AppContainer>
+          </DashContainer>
+        </Fragment>
+      );
     }
 
     return (
