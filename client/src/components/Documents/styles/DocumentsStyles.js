@@ -21,7 +21,6 @@ export const DocumentOptionsContainer = styled.div`
 `;
 
 export const DocumentsOptions = styled.div`
-  // border-bottom: 1px solid #7344c1;
   margin: 40px 30px 0 30px;
   display: flex;
   justify-content: center;
@@ -61,31 +60,32 @@ export const DashContainer = styled(DocumentsContainer)`
   flex-wrap: wrap;
   width: 100%;
   max-width: 1000px;
-  border: 1px solid red;
 `;
 
 export const AppContainer = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
+  width: 840px;
 `;
 
 export const AppDiv = styled.div`
-  border: 2px solid red;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  align-content: space-evenly;
   height: 180px;
   width: 230px;
-  background-color: lightgrey;
+  background-color: #e6e8e6;
   margin: 20px;
+  border-radius: 5px;
 `;
 
 export const AppCopy = styled(Copy)`
-  font-size: 1rem;
-  /* margin-top: 40px; */
-  border: 2px dashed green;
+  font-size: 1.3rem;
+  padding-top: 15px;
 `;
 
 export const TabHeader = styled.div`

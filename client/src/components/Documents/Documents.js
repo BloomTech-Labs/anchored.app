@@ -71,16 +71,16 @@ class Documents extends React.Component {
     if (!this.props.envelopes) {
       return (
         <Fragment>
-          <DashContainer>
+          <DocumentsContainer>
             <DocumentsHeader>Your Connected Apps</DocumentsHeader>
             <AppContainer>
               <AppDiv>
-                <AppCopy>Connect Your DocuSign Account</AppCopy>
+                <AppCopy>Connect To DocuSign</AppCopy>
                 <DocusignLogin />
               </AppDiv>
               <AppDiv>+</AppDiv>
             </AppContainer>
-          </DashContainer>
+          </DocumentsContainer>
         </Fragment>
       );
     }
