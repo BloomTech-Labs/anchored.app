@@ -2,10 +2,9 @@ const express = require('express');
 
 const users = require('../users/usersModel');
 const envs = require('../envelopes/envelopesModel');
-const docusign = require('docusign-esign');
+const docs = require('../documents/documentsModel');
+
 const moment = require('moment');
-const { getDSApi } = require('../auth/docusign/dsMiddleware');
-const { getDocuments, postDoctoDB } = require('../documents/docsMiddleware');
 const { proofDocuments } = require('./chainpointMiddleware');
 const { ensureAuthenticated } = require('../auth/docusign/dsMiddleware');
 
@@ -16,14 +15,9 @@ router.use(ensureAuthenticated);
 router.get('/:id', async (req, res) => {
   const { id } = req.params;
 
-  const user = req.user;
-  const apiClient = getDSApi(user);
-  const envelopesApi = new docusign.EnvelopesApi(apiClient);
-  const account_id = user.account_id;
+  const user = await users.findByUserId(req.user.id);
 
-  const current_user = await users.findByUserId(req.user.id);
-
-  if (current_user.credits <= 0) {
+  if (user.credits <= 0) {
     return res.status(400).json({ message: 'No credits available' });
   }
 
@@ -59,13 +53,7 @@ router.get('/:id', async (req, res) => {
     --req.user.credits;
     req.session.save();
 
-    const documents = await getDocuments(
-      envelopesApi,
-      account_id,
-      env.envelope_id
-    );
-
-    await postDoctoDB(req, res, documents);
+    const documents = await docs.findbyEnvelopeId(env.envelope_id);
     await proofDocuments(req, res, documents, env.id);
   } catch (err) {
     await users.incrementCredit(req.user.id, 1);
@@ -78,7 +66,8 @@ router.get('/:id', async (req, res) => {
       waiting_expiration: 0,
       loading_expiration: 0,
     });
-
+    ++req.user.credits;
+    req.session.save();
     return res.status(500).json({ ErrorMessage: err.message, id });
   }
 });

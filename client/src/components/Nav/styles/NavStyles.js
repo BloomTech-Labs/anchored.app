@@ -31,9 +31,10 @@ export const Links = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  padding: 0 20px;
 
   @media (max-width: 550px) {
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 10px;
   }
 `;
@@ -72,7 +73,7 @@ export const Img = styled.img`
 `;
 
 export const Credits = styled.div`
-  min-width: 90px;
+  padding: 0 5px;
   height: 40px;
   display: flex;
   justify-content: center;
@@ -89,6 +90,10 @@ export const DropdownLink = styled(NavLink)`
   }
 `;
 
+export const Logout = styled.div`
+  color: black;
+`;
+
 export const StyledDropdownItem = styled(DropdownItem)`
   cursor: pointer;
   margin-bottom: 7.5px;
@@ -103,9 +108,7 @@ export const StyledDropdownItem = styled(DropdownItem)`
     }
   }
 `;
-export const UserHeader = styled.h3`
-  font-size: 18px;
-  color: teal;
+
+export const UserHeader = styled.div`
   font-weight: bold;
-  margin-bottom: 8px;
 `;

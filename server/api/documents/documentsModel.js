@@ -8,14 +8,13 @@ function findAllByUser(account_id) {
   return db('documents')
     .distinct()
     .join('users_documents', 'users_documents.document_id', '=', 'documents.id')
-    .join(
-      'envelopes',
-      'envelopes.envelope_id',
-      '=',
-      'users_documents.envelope_id'
-    )
     .join('docusign', 'docusign.id', '=', 'users_documents.account_id')
-    .select('documents.id', 'documents.document', 'documents.created_at')
+    .select(
+      'documents.id',
+      'documents.document',
+      'documents.envelope_id',
+      'documents.created_at'
+    )
     .where('account_id', account_id);
 }
 
