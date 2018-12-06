@@ -12,6 +12,7 @@ import TopNavBar from './Nav/NavBar.js';
 import CTA from './CTA/CTA.js';
 import LPcontent from './LPcontent/LPcontent.js';
 import Footer from './Footer/Footer.js';
+
 axios.defaults.withCredentials = true;
 
 const LoadingContainer = styled.div`

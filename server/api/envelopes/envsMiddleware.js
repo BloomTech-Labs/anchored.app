@@ -107,7 +107,7 @@ async function postEnvToDB(req, res, new_envelopes) {
       const user_env = { account_id, envelope_id: ids.id };
       await envs.addUserToEnv(user_env);
     } else {
-      const expiration = JSON.parse(user_envelopes[i].waiting_expiration);
+      const expiration = JSON.parse(user_envelopes[index].waiting_expiration);
       const expired = moment().isAfter(expiration);
       if (user_envelopes[index].status !== 'completed') {
         // Update envelope if found and not completed
@@ -115,7 +115,7 @@ async function postEnvToDB(req, res, new_envelopes) {
         new_envelopes[i].id = user_envelopes[index].id;
         new_envelopes[i].verified = user_envelopes[index].verified;
         new_envelopes[i].waiting = user_envelopes[index].waiting;
-        user_envelopes[index] = user_envelopes[i];
+        user_envelopes[index] = new_envelopes[i];
       } else if (user_envelopes[index].waiting && expired) {
         // Check if document / envelope has been anchored to bitcoin
         const proofHandle = [JSON.parse(user_envelopes[index].proof_handle)];

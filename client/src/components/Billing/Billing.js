@@ -75,7 +75,10 @@ class Billing extends Component {
               <InfoContainer key={invoice.id}>
                 <InfoWrapperTwo>
                   <InfoDate>
-                    {moment(invoice.created_at).format('D MMM YYYY hh:mma')}
+                    {moment
+                      .utc(invoice.created_at)
+                      .local()
+                      .format('D MMM YYYY hh:mma')}
                   </InfoDate>
                   <InfoTransaction>{invoice.description}</InfoTransaction>
                   <InfoAmountBilled>

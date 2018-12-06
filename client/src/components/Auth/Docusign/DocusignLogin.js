@@ -6,15 +6,13 @@ class DocusignLogin extends React.Component {
     if (process.env.REACT_APP_DOCUSIGN) {
       return (
         <div>
-          <AppBtn href={process.env.REACT_APP_DOCUSIGN}>DocuSign Login</AppBtn>
+          <AppBtn href={process.env.REACT_APP_DOCUSIGN}>Login</AppBtn>
         </div>
       );
     } else {
       return (
         <div>
-          <AppBtn href="http://localhost:9000/auth/docusign">
-            Docusign Login
-          </AppBtn>
+          <AppBtn href="http://localhost:9000/auth/docusign">Login</AppBtn>
         </div>
       );
     }
