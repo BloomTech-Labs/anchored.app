@@ -6,6 +6,23 @@ const router = express.Router();
 
 router.use(ensureAuthenticated);
 
+// Adds new user uploaded image
+router.put('/image', (req, res) => {
+  const uploaded_picture = req.body;
+
+  // console.log('PICTURE', picture);
+  console.log('ID', req.user.id);
+  console.log(uploaded_picture);
+  users
+    .updateUser(req.user.id, uploaded_picture)
+    .then(picture => {
+      res.status(201).json(picture);
+    })
+    .catch(err => {
+      res.status(500).json({ ErrorMessage: err.message });
+    });
+});
+
 // route is /users
 router.get('/', (req, res) => {
   users
@@ -60,20 +77,6 @@ router.put('/:id', (req, res) => {
           message: `No user found to update, by the supplied user ID; or user was not supplied.`,
         });
       }
-    })
-    .catch(err => {
-      res.status(500).json({ ErrorMessage: err.message });
-    });
-});
-
-// Adds new user uploaded image
-router.put('/image', (req, res) => {
-  const picture = req.body;
-
-  users
-    .updateUser(req.user.id, { uploaded_picture: picture })
-    .then(picture => {
-      res.status(201).json(picture);
     })
     .catch(err => {
       res.status(500).json({ ErrorMessage: err.message });
