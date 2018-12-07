@@ -55,11 +55,11 @@ export const DocumentsOptions = styled.div`
   }
 `;
 
-export const DocumentsHeader = styled.div`
+export const DocumentsHeader = styled.h3`
   max-width: 840px;
   width: 100%;
   text-align: left;
-  font-size: 1.8rem;
+  // font-size: 1.8rem;
   padding: 0 15px;
 
   @media (max-width: 800px) {
