@@ -9,6 +9,19 @@ export const DocumentsContainer = styled.div`
   align-items: center;
 `;
 
+export const Header = styled(DocumentsContainer)`
+  margin-top: 0;
+  flex-direction: row;
+  justify-content: flex-start;
+  max-width: 840px;
+  width: 100%;
+  padding: 0 15px;
+
+  @media (max-width: 550px) {
+    flex-direction: column;
+  }
+`;
+
 export const DocumentOptionsContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -126,6 +139,11 @@ export const TabHeader = styled.div`
   max-width: 840px;
   width: 100%;
   padding: 0 15px;
+
+  @media (max-width: 550px) {
+    flex-direction: column-reverse;
+    border-bottom: 1px solid lightgray;
+  }
 `;
 
 export const TabDescription = styled.h5`
@@ -137,6 +155,8 @@ export const AddDocumentContainer = styled.a`
   align-items: center;
   text-decoration: none;
   color: #17a2b8;
+  max-width: 210px;
+  width: 100%;
 
   &:hover {
     text-decoration: none;

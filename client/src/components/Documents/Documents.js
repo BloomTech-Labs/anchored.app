@@ -23,6 +23,7 @@ import {
   AddIcon,
   Small,
   Img,
+  Header,
 } from './styles/DocumentsStyles';
 
 class Documents extends React.Component {
@@ -94,7 +95,16 @@ class Documents extends React.Component {
 
     return (
       <DocumentsContainer>
-        <DocumentsHeader>Your Documents</DocumentsHeader>
+        <Header>
+          <DocumentsHeader>Your Documents</DocumentsHeader>
+          <AddDocumentContainer
+            target="_blank"
+            href="https://appdemo.docusign.com/home"
+          >
+            <AddDocument className="fas fa-plus-circle" />
+            Add Document
+          </AddDocumentContainer>
+        </Header>
         <DocumentOptionsContainer>
           <DocumentsOptions
             selected={this.state.selected === 'all'}
@@ -140,13 +150,13 @@ class Documents extends React.Component {
               ? 'Documents Awaiting Signatures'
               : 'All Documents'}
           </TabDescription>
-          <AddDocumentContainer
+          {/* <AddDocumentContainer
             target="_blank"
             href="https://appdemo.docusign.com/home"
           >
             <AddDocument className="fas fa-plus-circle" />
             Add Document
-          </AddDocumentContainer>
+          </AddDocumentContainer> */}
         </TabHeader>
 
         {this.filterCards()
