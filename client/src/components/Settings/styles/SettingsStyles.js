@@ -1,15 +1,6 @@
 import styled from 'styled-components';
 import { Button } from 'reactstrap';
 
-export const ButtonContainer = styled.div`
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  margin-top: 50px;
-  display: flex;
-  justify-content: space-evenly;
-`;
-
 export const SettingsWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -22,9 +13,7 @@ export const SettingsWrapper = styled.div`
 
 export const SubSettingsWrapper = styled.div`
   display: flex;
-  // flex-direction: column;
   align-items: flex-start;
-  margin: 0 auto;
   margin-top: 30px;
   max-width: 1010px;
 `;

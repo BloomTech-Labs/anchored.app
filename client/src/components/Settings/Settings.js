@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import DocusignUnlink from '../Auth/Docusign/DocusignUnlink.js';
 import PasswordReset from './PasswordReset.js';
 import {
-  ButtonContainer,
   SettingsWrapper,
   SubSettingsWrapper,
   MainHeader,
@@ -11,7 +10,6 @@ import {
   SubHeader,
   InfoWrapper,
   InfoTextTitle,
-  EditButton,
 } from './styles/SettingsStyles.js';
 
 class Settings extends Component {
