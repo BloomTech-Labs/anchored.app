@@ -31,13 +31,17 @@ export const SubSettingsWrapper = styled.div`
 
 export const MainHeader = styled.h3`
   display: flex;
-  margin-bottom: 50px;
+  margin-bottom: 70px;
+`;
+
+export const SubHeaderWrapper = styled.div`
+  display: flex;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #7344c1;
 `;
 
 export const SubHeader = styled.h4`
-  display: flex;
-  margin-bottom: 10px;
-  color: gray;
+  // color: gray;
 `;
 
 export const InfoWrapper = styled.div`

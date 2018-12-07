@@ -7,6 +7,7 @@ import {
   SettingsWrapper,
   SubSettingsWrapper,
   MainHeader,
+  SubHeaderWrapper,
   SubHeader,
   InfoWrapper,
   InfoTextTitle,
@@ -23,13 +24,15 @@ class Settings extends Component {
       // </ButtonContainer>
       <SettingsWrapper>
         <MainHeader>Settings</MainHeader>
-        <SubHeader>Email</SubHeader>
+        <SubHeaderWrapper>
+          <SubHeader>Email</SubHeader>
+        </SubHeaderWrapper>
         <SubSettingsWrapper>
           <InfoWrapper>
-            <InfoTextTitle>Your Current Email</InfoTextTitle>
+            <InfoTextTitle>Logged in as</InfoTextTitle>
             {this.props.user.email}
           </InfoWrapper>
-          <EditButton size="lg">Edit Password</EditButton>
+          <PasswordReset />
         </SubSettingsWrapper>
       </SettingsWrapper>
     );
