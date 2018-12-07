@@ -21,8 +21,8 @@ export const TopNavBar = styled.div`
   align-items: center;
 
   @media (max-width: 550px) {
-    height: 150px;
-    flex-direction: column;
+    height: 120px;
+    padding: 0 15px;
   }
 `;
 
@@ -34,8 +34,9 @@ export const Links = styled.div`
   padding: 0 20px;
 
   @media (max-width: 550px) {
-    justify-content: space-between;
+    padding: 0 15px;
     margin-top: 10px;
+    margin-right: -20px;
   }
 `;
 
@@ -79,6 +80,11 @@ export const Credits = styled.div`
   justify-content: center;
   align-items: center;
   font-weight: bold;
+
+  @media (max-width: 550px) {
+    padding: 0;
+    justify-content: flex-start;
+  }
 `;
 
 export const DropdownLink = styled(NavLink)`
