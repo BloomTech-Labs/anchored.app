@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import DocusignUnlink from '../Auth/Docusign/DocusignUnlink.js';
 import PasswordReset from './PasswordReset.js';
 import { newProfileImage } from '../../actions/user.js';
-import axios from 'axios';
 import {
   SettingsWrapper,
   SubSettingsWrapper,
@@ -39,7 +38,7 @@ class Settings extends Component {
 
   onCancel = () => {
     this.setState({
-      file: [],
+      file: null,
     });
   };
 
@@ -52,7 +51,6 @@ class Settings extends Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <SettingsWrapper>
         {/* // Settings Header */}

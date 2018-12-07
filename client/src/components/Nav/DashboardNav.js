@@ -62,7 +62,6 @@ class NavBar extends Component {
   };
 
   render() {
-    console.log(this.props.user.uploaded_picture);
     return (
       <NavGod>
         <TopNavBar>
