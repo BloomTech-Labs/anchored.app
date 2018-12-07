@@ -10,7 +10,10 @@ import {
   SubHeader,
   InfoWrapper,
   InfoTextTitle,
+  EditPicture,
 } from './styles/SettingsStyles.js';
+
+import PhotoIcon from '../../assets/edit-photo-icon.png';
 
 class Settings extends Component {
   render() {
@@ -49,6 +52,7 @@ class Settings extends Component {
           <InfoWrapper>
             <InfoTextTitle>Picture</InfoTextTitle>
           </InfoWrapper>
+          <EditPicture src={PhotoIcon} alt="Edit thumbnail" />
         </SubSettingsWrapper>
       </SettingsWrapper>
     );

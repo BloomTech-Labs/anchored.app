@@ -62,3 +62,12 @@ export const EditButton = styled(Button)`
       0 0 0 1.5px rgba(115, 68, 193, 0.5);
   }
 `;
+
+export const EditPicture = styled.img`
+  width: 60px;
+  margin-right: 80px;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
