@@ -1,57 +1,87 @@
 import styled from 'styled-components';
+import { CSVLink } from 'react-csv';
 
-const MainWrapper = styled.div`
-  max-width: 1000px;
-  transform: translate(0px, 50px);
-  margin: 0 auto;
+export const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 85vh;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 30px;
+  max-width: 1010px;
   height: 100%;
 `;
 
-const InfoWrapper = styled.div`
+export const InvoiceContainer = styled.div`
+  margin-top: 25px;
   display: flex;
-  justify-content: space-evenly;
-
-  @media (max-width: 550px) {
-    flex-direction: column;
-  }
+  justify-content: space-between;
 `;
 
-const InfoWrapperTwo = styled.ul`
-  display: flex;
-  margin-top: 40px;
-  justify-content: space-evenly;
-  border: 1px solid black;
+export const InvoiceInfo = styled.div`
+  border: 1px solid white;
+  padding: 10px;
+  font-size: 1.2rem;
+  width: 100%;
+  background: #7344c1;
+  color: white;
 `;
 
-const MainHeader = styled.h2`
-  font-family: Helvetica;
-  text-decoration: underline;
+export const InfoContainer = styled.div``;
+
+export const InfoWrapper = styled.div`
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+`;
+
+export const InfoDate = styled.div`
+  width: 100%;
+`;
+
+export const InfoTransaction = styled.div`
+  width: 100%;
+`;
+
+export const InfoAmountBilled = styled.div`
+  width: 100%;
+`;
+
+export const InfoWrapperTwo = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #7344c1;
+  padding: 15px;
+`;
+
+export const MainHeader = styled.h3`
+  display: flex;
   margin-bottom: 30px;
 `;
 
-const ContentHeader = styled.h3`
-  font-family: Helvetica;
-  margin-bottom: 30px;
+export const ContentContainer = styled.div`
+  display: flex;
+  margin-bottom: 15px;
 `;
 
-const Invoice = styled.ul`
-  font-family: Helvetica;
+export const ContentHeader = styled.h3`
+  color: rgb(108, 117, 125);
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-right: 10px;
 `;
 
-const ButtonWrapper = styled.div`
+export const ButtonWrapper = styled.div`
   width: 400px;
   margin: 0 auto;
 `;
 
-export {
-  MainWrapper,
-  MainHeader,
-  InfoWrapper,
-  InfoWrapperTwo,
-  ContentHeader,
-  ButtonWrapper,
-  Invoice,
-};
+export const ExportContainer = styled.div`
+  display: flex;
+  margin: 20px;
+  justify-content: flex-end;
+`;
+
+export const Export = styled(CSVLink)`
+  color: #117a8b;
+`;

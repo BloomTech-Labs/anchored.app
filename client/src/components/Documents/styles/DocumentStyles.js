@@ -11,6 +11,8 @@ export const DocumentContainer = styled.div`
   @media (max-width: 550px) {
     max-width: 500px;
     width: 100%;
+    flex-direction: column-reverse;
+    padding-bottom: 10px;
   }
 `;
 
@@ -28,7 +30,7 @@ export const DocumentSubject = styled.a`
 
 export const DocumentProof = styled.div`
   border: 1px solid #17a2b8;
-  color: #17a2b8
+  color: #17a2b8;
   border-radius: 5px;
   min-width: 130px;
   padding: 8px 15px;

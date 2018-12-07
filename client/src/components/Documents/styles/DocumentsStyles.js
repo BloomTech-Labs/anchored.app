@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Copy } from '../../CTA/styles/CTAStyles.js';
 
 export const DocumentsContainer = styled.div`
   margin-top: 30px;
@@ -6,6 +7,19 @@ export const DocumentsContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+
+export const Header = styled(DocumentsContainer)`
+  margin-top: 0;
+  flex-direction: row;
+  justify-content: flex-start;
+  max-width: 840px;
+  width: 100%;
+  padding: 0 15px;
+
+  @media (max-width: 550px) {
+    flex-direction: column;
+  }
 `;
 
 export const DocumentOptionsContainer = styled.div`
@@ -20,7 +34,6 @@ export const DocumentOptionsContainer = styled.div`
 `;
 
 export const DocumentsOptions = styled.div`
-  // border-bottom: 1px solid #7344c1;
   margin: 40px 30px 0 30px;
   display: flex;
   justify-content: center;
@@ -53,6 +66,72 @@ export const DocumentsHeader = styled.div`
     text-align: center;
   }
 `;
+
+export const DashContainer = styled(DocumentsContainer)`
+  margin: 0 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1000px;
+`;
+
+export const AppContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 840px;
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
+`;
+
+export const AppDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: space-evenly;
+  height: 180px;
+  width: 230px;
+  background-color: #e6e8e6;
+  margin: 20px;
+  border-radius: 5px;
+`;
+
+export const AppCopy = styled(Copy)`
+  font-size: 1.3rem;
+  padding-top: 15px;
+`;
+
+export const Small = styled(Copy)`
+  font-size: 0.8rem;
+`;
+
+export const AddIcon = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  width: 70px;
+  height: 70px;
+  padding-bottom: 10px;
+  background-color: #7344c1;
+  border-radius: 50%;
+  color: white;
+
+  /* Uncomment when ready to go live with additional apps */
+  /* &:hover {
+    background-color: #8e44c2;
+    cursor: pointer;
+  } */
+`;
+
+export const Img = styled.img`
+  width: 140px;
+`;
+
 export const TabHeader = styled.div`
   display: flex;
   justify-content: space-between;
@@ -60,6 +139,11 @@ export const TabHeader = styled.div`
   max-width: 840px;
   width: 100%;
   padding: 0 15px;
+
+  @media (max-width: 550px) {
+    flex-direction: column-reverse;
+    border-bottom: 1px solid lightgray;
+  }
 `;
 
 export const TabDescription = styled.h5`
@@ -71,6 +155,8 @@ export const AddDocumentContainer = styled.a`
   align-items: center;
   text-decoration: none;
   color: #17a2b8;
+  max-width: 210px;
+  width: 100%;
 
   &:hover {
     text-decoration: none;

@@ -3,6 +3,7 @@ import { getUserInfo } from '../../actions/user.js';
 import { connect } from 'react-redux';
 import request from 'request';
 import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
+import { EditButton } from './styles/SettingsStyles.js';
 
 class PasswordReset extends Component {
   state = {
@@ -59,9 +60,9 @@ class PasswordReset extends Component {
   render() {
     return (
       <Fragment>
-        <Button color="danger" onClick={this.handleSubmit}>
+        <EditButton size="lg" onClick={this.handleSubmit}>
           Change Password
-        </Button>
+        </EditButton>
 
         <Modal
           isOpen={this.state.modalOne}

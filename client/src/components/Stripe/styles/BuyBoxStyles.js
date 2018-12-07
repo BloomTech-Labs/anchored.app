@@ -4,9 +4,10 @@ export const BoxContainer = styled.div`
   min-height: 400px;
   min-width: 240px;
   max-width: 240px;
-  border: 1px solid black;
   margin: 30px;
-  background-color: #e6e8e6;
+  background-color: #f5f6f5;
+  border-radius: 5px;
+  box-shadow: 0 0 18px 0 rgba(0, 0, 0, 0.4);
 
   @media (max-width: 550px) {
     margin-bottom: 2px;
