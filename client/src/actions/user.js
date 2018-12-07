@@ -21,9 +21,12 @@ export const getUserInfo = () => {
 };
 
 export const newProfileImage = uploaded_picture => {
-  const promise = axios.put('http://localhost:9000/users/image', {
-    uploaded_picture,
-  });
+  const promise = axios.put(
+    process.env.REACT_APP_UPLOAD_IMAGE || 'http://localhost:9000/users/image',
+    {
+      uploaded_picture,
+    }
+  );
   return dispatch => {
     dispatch({ type: UPDATING_IMAGE });
     promise
