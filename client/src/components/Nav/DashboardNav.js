@@ -62,6 +62,16 @@ class NavBar extends Component {
   };
 
   render() {
+    const picture = this.props.user.uploaded_picture
+      ? this.props.user.uploaded_picture
+      : this.props.user.picture;
+
+    let src = picture;
+    if (picture.type) {
+      const data = Buffer.from(picture.data).toString();
+      src = data;
+    }
+
     return (
       <NavGod>
         <TopNavBar>
@@ -69,8 +79,8 @@ class NavBar extends Component {
             <Img src={Logo} alt="Proofd Logo" />
           </NavLink>
           <Links>
-            <Credits>Credits: {this.props.user.credits}</Credits>
             <MediaQuery minWidth={550}>
+              <Credits>Credits: {this.props.user.credits}</Credits>
               <NavLink exact to={`/buy`} style={{ textDecoration: 'none' }}>
                 <BuyCreditsButton>
                   <Button color="info" size="large">
@@ -83,11 +93,7 @@ class NavBar extends Component {
               <DropdownToggle size="sm" caret color="none">
                 <img
                   style={ProfileImage}
-                  src={
-                    this.props.user.uploaded_picture
-                      ? this.props.user.uploaded_picture
-                      : this.props.user.picture
-                  }
+                  src={src}
                   alt="user profile thumbnail"
                 />
               </DropdownToggle>
@@ -98,6 +104,9 @@ class NavBar extends Component {
                 </DropdownItem>
                 <DropdownItem divider />
                 <MediaQuery maxWidth={550}>
+                  <DropdownItem>
+                    <Credits>Credits: {this.props.user.credits}</Credits>
+                  </DropdownItem>
                   <DropdownLink to={`/buy`}>
                     <StyledDropdownItem>Buy Credits</StyledDropdownItem>
                   </DropdownLink>
