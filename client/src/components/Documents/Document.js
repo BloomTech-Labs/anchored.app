@@ -102,8 +102,11 @@ class Document extends React.Component {
   };
 
   render() {
+    // Removes "Please DocuSign: " from file title
     const docuSignSubject = this.props.doc.subject;
     const cutDocSignTitle = docuSignSubject.replace(/Please DocuSign: /, '');
+
+    // Timestamp of BTC proof
     let timestamp;
 
     if (this.props.doc.verified) {
