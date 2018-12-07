@@ -69,8 +69,8 @@ class NavBar extends Component {
             <Img src={Logo} alt="Proofd Logo" />
           </NavLink>
           <Links>
-            <Credits>Credits: {this.props.user.credits}</Credits>
             <MediaQuery minWidth={550}>
+              <Credits>Credits: {this.props.user.credits}</Credits>
               <NavLink exact to={`/buy`} style={{ textDecoration: 'none' }}>
                 <BuyCreditsButton>
                   <Button color="info" size="large">
@@ -98,6 +98,9 @@ class NavBar extends Component {
                 </DropdownItem>
                 <DropdownItem divider />
                 <MediaQuery maxWidth={550}>
+                  <DropdownItem>
+                    <Credits>Credits: {this.props.user.credits}</Credits>
+                  </DropdownItem>
                   <DropdownLink to={`/buy`}>
                     <StyledDropdownItem>Buy Credits</StyledDropdownItem>
                   </DropdownLink>
