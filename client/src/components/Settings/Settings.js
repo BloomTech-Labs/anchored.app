@@ -27,7 +27,6 @@ class Settings extends Component {
       reader.onload = () => {
         const fileAsBinaryString = reader.result;
         this.setState({ files: fileAsBinaryString });
-        // do whatever you want with the file content
       };
       reader.onabort = () => console.log('file reading was aborted');
       reader.onerror = () => console.log('file reading has failed');

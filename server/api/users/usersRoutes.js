@@ -66,6 +66,20 @@ router.put('/:id', (req, res) => {
     });
 });
 
+// Adds new user uploaded image
+router.put('/image', (req, res) => {
+  const picture = req.body;
+
+  users
+    .updateUser(req.user.id, { uploaded_picture: picture })
+    .then(picture => {
+      res.status(201).json(picture);
+    })
+    .catch(err => {
+      res.status(500).json({ ErrorMessage: err.message });
+    });
+});
+
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
 
