@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Button } from 'reactstrap';
 
 export const ButtonContainer = styled.div`
   width: 100%;
@@ -48,4 +49,21 @@ export const InfoWrapper = styled.div`
 
 export const InfoTextTitle = styled.h5`
   color: gray;
+`;
+
+export const EditButton = styled(Button)`
+  background: white;
+  border-color: #7344c1;
+  color: #7344c1;
+
+  &:hover {
+    background: #7344c1;
+    border-color: #7344c1;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(115, 68, 193, 0.5),
+      0 0 0 1.5px rgba(115, 68, 193, 0.5);
+  }
 `;

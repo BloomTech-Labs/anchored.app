@@ -10,10 +10,8 @@ import {
   SubHeader,
   InfoWrapper,
   InfoTextTitle,
-  Button,
+  EditButton,
 } from './styles/SettingsStyles.js';
-
-import NavButton from '../Nav/NavButton.js';
 
 class Settings extends Component {
   render() {
@@ -31,14 +29,7 @@ class Settings extends Component {
             <InfoTextTitle>Your Current Email</InfoTextTitle>
             {this.props.user.email}
           </InfoWrapper>
-          {/* <EditButton>Edit Email</EditButton> */}
-          <NavButton
-            name="Edit Email"
-            color="#7344c1"
-            bgColor="#7344c1"
-            border="1px solid #7344c1"
-            hoverFontColor="white"
-          />
+          <EditButton size="lg">Edit Password</EditButton>
         </SubSettingsWrapper>
       </SettingsWrapper>
     );
