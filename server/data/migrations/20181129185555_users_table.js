@@ -17,6 +17,8 @@ exports.up = function(knex, Promise) {
 
     tbl.string('picture', 256).unique();
 
+    tbl.binary('uploaded_picture');
+
     tbl.string('phone_number', 128).unique();
 
     tbl

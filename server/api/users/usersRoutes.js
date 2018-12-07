@@ -6,6 +6,21 @@ const router = express.Router();
 
 router.use(ensureAuthenticated);
 
+// Adds new user uploaded image
+router.put('/image', (req, res) => {
+  const uploaded_picture = req.body;
+  users
+    .updateUser(req.user.id, uploaded_picture)
+    .then(picture => {
+      req.user.uploaded_picture = uploaded_picture.uploaded_picture;
+      req.session.save();
+      res.status(201).json(picture);
+    })
+    .catch(err => {
+      res.status(500).json({ ErrorMessage: err.message });
+    });
+});
+
 // route is /users
 router.get('/', (req, res) => {
   users
