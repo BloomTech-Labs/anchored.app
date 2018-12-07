@@ -7,6 +7,7 @@ import {
   ProofDocTextContainer,
   TimestampContainer,
   Timestamp,
+  PreviewIcon,
 } from './styles/DocumentStyles';
 import { BeatLoader } from 'react-spinners';
 import axios from 'axios';
@@ -161,7 +162,7 @@ class Document extends React.Component {
         )}
         <ProofDocTextContainer>
           <DocumentSubject onClick={this.getDocuments}>
-            {this.props.doc.subject}
+            {this.props.doc.subject} <PreviewIcon className="fas fa-search" />
           </DocumentSubject>
           {/* Returns proofed timestamp if exists */}
           {timestamp !== undefined ? (
