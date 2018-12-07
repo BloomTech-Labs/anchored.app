@@ -11,10 +11,37 @@ import {
   InfoWrapper,
   InfoTextTitle,
   EditPicture,
+  DropZoneWrapper,
 } from './styles/SettingsStyles.js';
 import PhotoIcon from '../../assets/edit-photo-icon.png';
 
 class Settings extends Component {
+  constructor() {
+    super();
+    this.state = { files: null };
+  }
+
+  onDrop = acceptedFiles => {
+    acceptedFiles.forEach(file => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const fileAsBinaryString = reader.result;
+        this.setState({ files: fileAsBinaryString });
+        // do whatever you want with the file content
+      };
+      reader.onabort = () => console.log('file reading was aborted');
+      reader.onerror = () => console.log('file reading has failed');
+
+      console.log(reader.readAsBinaryString(file));
+    });
+  };
+
+  onCancel() {
+    this.setState({
+      files: [],
+    });
+  }
+
   render() {
     console.log(this.state);
     return (
@@ -52,6 +79,16 @@ class Settings extends Component {
           <InfoWrapper>
             <InfoTextTitle>Picture</InfoTextTitle>
           </InfoWrapper>
+
+          <DropZoneWrapper
+            accept="image/jpeg, image/png"
+            onDrop={this.onDrop.bind(this)}
+            onFileDialogCancel={this.onCancel.bind(this)}
+            multiple={false}
+            maxSize={500000}
+          >
+            <EditPicture src={PhotoIcon} />
+          </DropZoneWrapper>
         </SubSettingsWrapper>
       </SettingsWrapper>
     );

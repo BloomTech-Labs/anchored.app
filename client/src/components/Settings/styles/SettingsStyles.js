@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Button } from 'reactstrap';
+import DropZone from 'react-dropzone';
 
 export const SettingsWrapper = styled.div`
   display: flex;
@@ -71,3 +72,5 @@ export const EditPicture = styled.img`
     cursor: pointer;
   }
 `;
+
+export const DropZoneWrapper = styled(DropZone)``;
