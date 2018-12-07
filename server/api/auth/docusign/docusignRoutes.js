@@ -64,9 +64,9 @@ router.get('/logout', async (req, res) => {
     req.user.access_token = null;
     req.user.refresh_token = null;
     req.session.save();
-    res.redirect(process.env.ORIGIN || 'http://localhost:3000');
+    return res.sendStatus(200);
   } catch (err) {
-    console.log(err);
+    return es.status(500).json(err);
   }
 });
 

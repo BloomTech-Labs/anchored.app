@@ -4,7 +4,7 @@ import {
   ERROR,
 } from '../actions/user';
 import { RETRIEVING_CREDIT, RETRIEVED_CREDIT } from '../actions/billing';
-import { INCREMENT_CREDIT, DECREMENT_CREDIT } from '../actions/envelopes';
+import { INCREMENT_CREDIT, DECREMENT_CREDIT } from '../actions/user';
 
 const initialState = {
   user: null,

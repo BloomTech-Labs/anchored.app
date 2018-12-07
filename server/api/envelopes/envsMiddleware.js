@@ -154,6 +154,7 @@ async function postEnvToDB(req, res, new_envelopes) {
 }
 
 function checkExpiration(req, res, next) {
+  console.log('in check expiration');
   const expiration = req.user.document_expiration;
   if (!expiration || moment().isAfter(JSON.parse(expiration))) {
     const document_expiration = JSON.stringify(moment().add(15, 'm'));
@@ -171,6 +172,7 @@ function checkExpiration(req, res, next) {
 }
 
 function checkToken(req, res, next) {
+  console.log('in check token');
   if (req.user.access_token && req.user.refresh_token) {
     const expiration = JSON.parse(req.user.token_expiration);
     const now = moment();

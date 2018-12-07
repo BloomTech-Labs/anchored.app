@@ -7,7 +7,6 @@ import { LoadingContainer } from './styles/DocumentsStyles.js';
 import DocusignLogin from '../Auth/Docusign/DocusignLogin';
 import Document from './Document';
 import DocusignLogo from '../../assets/docusign_logo_standard.png';
-
 import {
   DocumentOptionsContainer,
   DocumentsOptions,

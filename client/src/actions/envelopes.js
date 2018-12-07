@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import { INCREMENT_CREDIT, DECREMENT_CREDIT } from './user';
+
 export const RETRIEVING_ENVELOPES = 'RETRIEVING_ENVELOPES';
 export const RETRIEVED_ENVELOPES = 'RETRIEVED_ENVELOPES';
 
@@ -7,9 +9,6 @@ export const RETRIEVING_PROOF = 'RETRIEVING_PROOF';
 export const RETRIEVED_PROOF = 'RETRIEVED_PROOF';
 
 export const UPDATE_LOADING = 'UPDATE_LOADING';
-
-export const DECREMENT_CREDIT = 'DECREMENT_CREDIT';
-export const INCREMENT_CREDIT = 'INCREMENT_CREDIT';
 
 export const ERROR = 'ERROR';
 
