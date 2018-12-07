@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import DocusignUnlink from '../Auth/Docusign/DocusignUnlink.js';
 import PasswordReset from './PasswordReset.js';
+import { newProfileImage } from '../../actions/user.js';
+import axios from 'axios';
 import {
   SettingsWrapper,
   SubSettingsWrapper,
@@ -11,6 +13,7 @@ import {
   InfoWrapper,
   InfoTextTitle,
   EditPicture,
+  EditButton,
   DropZoneWrapper,
 } from './styles/SettingsStyles.js';
 import PhotoIcon from '../../assets/edit-photo-icon.png';
@@ -18,28 +21,35 @@ import PhotoIcon from '../../assets/edit-photo-icon.png';
 class Settings extends Component {
   constructor() {
     super();
-    this.state = { files: null };
+    this.state = { file: null };
   }
 
-  onDrop = acceptedFiles => {
-    acceptedFiles.forEach(file => {
+  onDrop = acceptedfile => {
+    acceptedfile.forEach(photo => {
       const reader = new FileReader();
       reader.onload = () => {
         const fileAsBinaryString = reader.result;
-        this.setState({ files: fileAsBinaryString });
+        this.setState({ file: fileAsBinaryString });
       };
       reader.onabort = () => console.log('file reading was aborted');
       reader.onerror = () => console.log('file reading has failed');
-
-      console.log(reader.readAsBinaryString(file));
+      reader.readAsDataURL(photo);
     });
   };
 
-  onCancel() {
+  onCancel = () => {
     this.setState({
-      files: [],
+      file: [],
     });
-  }
+  };
+
+  onSubmit = () => {
+    const uploaded_picture = this.state.file;
+    this.props.newProfileImage(uploaded_picture);
+    this.setState({
+      file: null,
+    });
+  };
 
   render() {
     console.log(this.state);
@@ -85,8 +95,20 @@ class Settings extends Component {
             onFileDialogCancel={this.onCancel.bind(this)}
             multiple={false}
             maxSize={500000}
+            disableClick
+            onDropRejected={() => alert('Please upload .j or .png')}
           >
-            <EditPicture src={PhotoIcon} />
+            {({ open }) => (
+              <Fragment>
+                <EditPicture
+                  src={this.state.file ? this.state.file : PhotoIcon}
+                  onClick={() => open()}
+                />
+                {this.state.file !== null ? (
+                  <EditButton onClick={this.onSubmit}>Upload</EditButton>
+                ) : null}
+              </Fragment>
+            )}
           </DropZoneWrapper>
         </SubSettingsWrapper>
       </SettingsWrapper>
@@ -101,4 +123,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Settings);
+export default connect(
+  mapStateToProps,
+  { newProfileImage }
+)(Settings);

@@ -9,13 +9,11 @@ router.use(ensureAuthenticated);
 // Adds new user uploaded image
 router.put('/image', (req, res) => {
   const uploaded_picture = req.body;
-
-  // console.log('PICTURE', picture);
-  console.log('ID', req.user.id);
-  console.log(uploaded_picture);
   users
     .updateUser(req.user.id, uploaded_picture)
     .then(picture => {
+      req.user.uploaded_picture = uploaded_picture.uploaded_picture;
+      req.session.save();
       res.status(201).json(picture);
     })
     .catch(err => {
