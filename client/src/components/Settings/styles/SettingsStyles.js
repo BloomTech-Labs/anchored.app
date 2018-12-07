@@ -41,7 +41,7 @@ export const SubHeaderWrapper = styled.div`
 `;
 
 export const SubHeader = styled.h4`
-  // color: gray;
+  color: gray;
 `;
 
 export const InfoWrapper = styled.div`
