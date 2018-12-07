@@ -15,6 +15,7 @@ export const SubSettingsWrapper = styled.div`
   display: flex;
   align-items: flex-start;
   margin-top: 30px;
+  padding-bottom: 50px;
   max-width: 1010px;
 `;
 
@@ -48,6 +49,7 @@ export const EditButton = styled(Button)`
   background: white;
   border-color: #7344c1;
   color: #7344c1;
+  width: 280px;
 
   &:hover {
     background: #7344c1;

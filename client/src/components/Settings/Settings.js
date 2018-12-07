@@ -14,15 +14,12 @@ import {
 
 class Settings extends Component {
   render() {
-    console.log(this.props.user);
     return (
-      // <ButtonContainer>
-      //   <PasswordReset />
-      //   <DocusignUnlink />
-      // </ButtonContainer>
       <SettingsWrapper>
+        {/* // Settings Header */}
         <MainHeader>Settings</MainHeader>
         <SubHeaderWrapper>
+          {/* Email Settings */}
           <SubHeader>Email</SubHeader>
         </SubHeaderWrapper>
         <SubSettingsWrapper>
@@ -31,6 +28,27 @@ class Settings extends Component {
             {this.props.user.email}
           </InfoWrapper>
           <PasswordReset />
+        </SubSettingsWrapper>
+        <SubHeaderWrapper>
+          {/* App Settings */}
+          <SubHeader>Apps</SubHeader>
+        </SubHeaderWrapper>
+        <SubSettingsWrapper>
+          <InfoWrapper>
+            <InfoTextTitle>Connected</InfoTextTitle>
+            {/* TODO: Make this field dynamic when we add more apps */}
+            DocuSign
+          </InfoWrapper>
+          <DocusignUnlink />
+        </SubSettingsWrapper>
+        <SubHeaderWrapper>
+          {/* Profile Settings */}
+          <SubHeader>Profile</SubHeader>
+        </SubHeaderWrapper>
+        <SubSettingsWrapper>
+          <InfoWrapper>
+            <InfoTextTitle>Picture</InfoTextTitle>
+          </InfoWrapper>
         </SubSettingsWrapper>
       </SettingsWrapper>
     );
