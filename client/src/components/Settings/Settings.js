@@ -17,6 +17,8 @@ import {
   DropZoneWrapper,
   DocuSignImg,
   UploadWrapper,
+  ImgUploadBtn,
+  ImgUploadBtnWrapper,
 } from './styles/SettingsStyles.js';
 import PhotoIcon from '../../assets/edit-photo-icon.png';
 import DocuSignLogo from '../../assets/docusign_logo_standard.png';
@@ -98,7 +100,9 @@ class Settings extends Component {
             multiple={false}
             maxSize={500000}
             disableClick
-            onDropRejected={() => alert('Please upload .j or .png')}
+            onDropRejected={() =>
+              alert('Accepted file types are .jpg and .png at max size 500KB')
+            }
           >
             {({ open }) => (
               <UploadWrapper>
@@ -107,9 +111,22 @@ class Settings extends Component {
                   onClick={() => open()}
                 />
                 {this.state.file !== null ? (
-                  <EditButton size="lg" onClick={this.onSubmit}>
-                    Upload
-                  </EditButton>
+                  <ImgUploadBtnWrapper>
+                    <ImgUploadBtn
+                      size="sm"
+                      color="info"
+                      onClick={this.onSubmit}
+                    >
+                      Upload
+                    </ImgUploadBtn>
+                    <ImgUploadBtn
+                      size="sm"
+                      color="danger"
+                      onClick={this.onCancel}
+                    >
+                      Cancel
+                    </ImgUploadBtn>
+                  </ImgUploadBtnWrapper>
                 ) : null}
               </UploadWrapper>
             )}

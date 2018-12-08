@@ -65,6 +65,14 @@ export const EditButton = styled(Button)`
   }
 `;
 
+export const ImgUploadBtnWrapper = styled.div`
+  display: flex;
+`;
+
+export const ImgUploadBtn = styled(Button)`
+  margin: 0 10px;
+`;
+
 export const EditPicture = styled.img`
   width: 100px;
   // margin-right: 70px;
@@ -84,6 +92,5 @@ export const DropZoneWrapper = styled(DropZone)``;
 
 export const UploadWrapper = styled.div`
 display: flex:
-align-items: center;
 justify-content: center;
 `;
