@@ -15,22 +15,12 @@ import {
   StyledDropdownItem,
   UserHeader,
   Logout,
+  ImageCropper,
+  ProfilePic,
+  ProfilePicWrapper,
 } from './styles/NavStyles.js';
-import {
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  Button,
-} from 'reactstrap';
+import { Dropdown, DropdownMenu, DropdownItem, Button } from 'reactstrap';
 import Logo from '../../assets/Proofd_3.png';
-
-// styles for profile image
-const ProfileImage = {
-  height: '50px',
-  borderRadius: '25px',
-  verticalalign: 'middle',
-};
 
 class NavBar extends Component {
   constructor(props) {
@@ -90,13 +80,11 @@ class NavBar extends Component {
               </NavLink>
             </MediaQuery>
             <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-              <DropdownToggle size="sm" caret color="none">
-                <img
-                  style={ProfileImage}
-                  src={src}
-                  alt="user profile thumbnail"
-                />
-              </DropdownToggle>
+              <ProfilePicWrapper size="sm" caret color="none">
+                <ImageCropper>
+                  <ProfilePic src={src} />
+                </ImageCropper>
+              </ProfilePicWrapper>
               <DropdownMenu right>
                 <DropdownItem disabled>Logged in as</DropdownItem>
                 <DropdownItem disabled>
