@@ -6,7 +6,7 @@ import Settings from '../Settings/Settings.js';
 import Billing from '../Billing/Billing.js';
 import Buy from '../Stripe/Buy.js';
 import Footer from '../Footer/Footer.js';
-import { HomeContainer } from './Home/HomeStyles.js';
+import { HomeContainer } from './HomeStyles.js';
 
 class Home extends React.Component {
   render() {
