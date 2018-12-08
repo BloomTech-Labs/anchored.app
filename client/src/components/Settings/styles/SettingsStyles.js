@@ -75,9 +75,8 @@ export const ImgUploadBtn = styled(Button)`
 
 export const EditPicture = styled.img`
   width: 100px;
-  // margin-right: 70px;
-  opacity: 0.7;
-  padding-bottom: 20px;
+  border-radius: 50%;
+  margin-bottom: 20px;
 
   &:hover {
     cursor: pointer;
