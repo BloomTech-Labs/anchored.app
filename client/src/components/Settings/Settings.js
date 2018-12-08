@@ -15,8 +15,10 @@ import {
   EditPicture,
   EditButton,
   DropZoneWrapper,
+  DocuSignImg,
 } from './styles/SettingsStyles.js';
 import PhotoIcon from '../../assets/edit-photo-icon.png';
+import DocuSignLogo from '../../assets/docusign_logo_standard.png';
 
 class Settings extends Component {
   constructor() {
@@ -75,7 +77,7 @@ class Settings extends Component {
           <InfoWrapper>
             <InfoTextTitle>Connected</InfoTextTitle>
             {/* TODO: Make this field dynamic when we add more apps */}
-            DocuSign
+            <DocuSignImg src={DocuSignLogo} alt="DocuSign logo" />
           </InfoWrapper>
           <DocusignUnlink />
         </SubSettingsWrapper>

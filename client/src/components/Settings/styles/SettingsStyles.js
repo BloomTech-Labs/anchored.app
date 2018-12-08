@@ -65,12 +65,16 @@ export const EditButton = styled(Button)`
 `;
 
 export const EditPicture = styled.img`
-  width: 60px;
-  margin-right: 80px;
+  width: 100px;
+  margin-right: 70px;
 
   &:hover {
     cursor: pointer;
   }
+`;
+
+export const DocuSignImg = styled.img`
+  width: 125px;
 `;
 
 export const DropZoneWrapper = styled(DropZone)``;
