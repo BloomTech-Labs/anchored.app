@@ -135,7 +135,6 @@ export const ImageCropper = styled.div`
 export const ProfilePic = styled.img`
   display: inline;
   margin: 0 auto;
-  margin-left: -25%; //centers the image
   height: 100%;
   width: auto;
 `;
