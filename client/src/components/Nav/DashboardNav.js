@@ -13,13 +13,14 @@ import {
   Credits,
   DropdownLink,
   StyledDropdownItem,
+  DropdownMenuWrapper,
   UserHeader,
   Logout,
   ImageCropper,
   ProfilePic,
   ProfilePicWrapper,
 } from './styles/NavStyles.js';
-import { Dropdown, DropdownMenu, DropdownItem, Button } from 'reactstrap';
+import { Dropdown, DropdownItem, Button } from 'reactstrap';
 import Logo from '../../assets/Proofd_3.png';
 
 class NavBar extends Component {
@@ -85,7 +86,7 @@ class NavBar extends Component {
                   <ProfilePic src={src} />
                 </ImageCropper>
               </ProfilePicWrapper>
-              <DropdownMenu right>
+              <DropdownMenuWrapper right>
                 <DropdownItem disabled>Logged in as</DropdownItem>
                 <DropdownItem disabled>
                   <UserHeader>{this.props.user.username}</UserHeader>
@@ -95,23 +96,38 @@ class NavBar extends Component {
                   <DropdownItem>
                     <Credits>Credits: {this.props.user.credits}</Credits>
                   </DropdownItem>
+                  <MediaQuery maxWidth={550}>
+                    <DropdownItem divider />
+                  </MediaQuery>
                   <DropdownLink to={`/buy`}>
                     <StyledDropdownItem>Buy Credits</StyledDropdownItem>
                   </DropdownLink>
+                  <MediaQuery maxWidth={550}>
+                    <DropdownItem divider />
+                  </MediaQuery>
                 </MediaQuery>
                 <DropdownLink exact to={`/`}>
                   <StyledDropdownItem>Dashboard</StyledDropdownItem>
                 </DropdownLink>
+                <MediaQuery maxWidth={550}>
+                  <DropdownItem divider />
+                </MediaQuery>
                 <DropdownLink to={`/account`}>
                   <StyledDropdownItem>Account</StyledDropdownItem>
                 </DropdownLink>
+                <MediaQuery maxWidth={550}>
+                  <DropdownItem divider />
+                </MediaQuery>
                 <DropdownLink to={`/settings`}>
                   <StyledDropdownItem>Settings</StyledDropdownItem>
                 </DropdownLink>
+                <MediaQuery maxWidth={550}>
+                  <DropdownItem divider />
+                </MediaQuery>
                 <Logout onClick={this.handleLogout}>
                   <StyledDropdownItem>Log out</StyledDropdownItem>
                 </Logout>
-              </DropdownMenu>
+              </DropdownMenuWrapper>
             </Dropdown>
           </Links>
         </TopNavBar>

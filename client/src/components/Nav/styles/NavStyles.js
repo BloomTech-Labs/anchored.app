@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { DropdownItem, DropdownToggle } from 'reactstrap';
+import { DropdownItem, DropdownToggle, DropdownMenu } from 'reactstrap';
 
 export const NavGod = styled.div`
   display: flex;
@@ -112,6 +112,12 @@ export const StyledDropdownItem = styled(DropdownItem)`
     a {
       color: white;
     }
+  }
+`;
+
+export const DropdownMenuWrapper = styled(DropdownMenu)`
+  @media (max-width: 550px) {
+    width: 100vw;
   }
 `;
 
