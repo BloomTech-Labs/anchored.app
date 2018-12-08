@@ -99,10 +99,10 @@ class Settings extends Component {
             onDrop={this.onDrop.bind(this)}
             onFileDialogCancel={this.onCancel.bind(this)}
             multiple={false}
-            maxSize={500000}
+            maxSize={60000}
             disableClick
             onDropRejected={() =>
-              alert('Accepted file types are .jpg and .png at max size 500KB')
+              alert('Accepted file types are .jpg and .png at max size 60KB')
             }
           >
             {({ open }) => (
