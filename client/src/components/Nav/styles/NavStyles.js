@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { DropdownItem } from 'reactstrap';
+import { DropdownItem, DropdownToggle } from 'reactstrap';
 
 export const NavGod = styled.div`
   display: flex;
@@ -117,4 +117,24 @@ export const StyledDropdownItem = styled(DropdownItem)`
 
 export const UserHeader = styled.div`
   font-weight: bold;
+`;
+
+export const ProfilePicWrapper = styled(DropdownToggle)`
+  display: flex;
+  align-items: center;
+`;
+
+export const ImageCropper = styled.div`
+  width: 50px;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+`;
+
+export const ProfilePic = styled.img`
+  display: inline;
+  margin: 0 auto;
+  height: 100%;
+  width: auto;
 `;

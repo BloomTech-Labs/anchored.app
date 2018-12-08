@@ -10,6 +10,7 @@ export const SettingsWrapper = styled.div`
   margin-top: 30px;
   max-width: 1010px;
   height: 100%;
+  padding: 0 20px;
 `;
 
 export const SubSettingsWrapper = styled.div`
@@ -18,6 +19,10 @@ export const SubSettingsWrapper = styled.div`
   margin-top: 30px;
   padding-bottom: 50px;
   max-width: 1010px;
+
+  @media (max-width: 550px) {
+    flex-direction: column;
+  }
 `;
 
 export const MainHeader = styled.h3`
@@ -40,6 +45,10 @@ export const InfoWrapper = styled.div`
   align-items: flex-start;
   flex-direction: column;
   width: 1010px;
+
+  @media (max-width: 550px) {
+    padding: 20px;
+  }
 `;
 
 export const InfoTextTitle = styled.h5`
@@ -50,7 +59,8 @@ export const EditButton = styled(Button)`
   background: white;
   border-color: #7344c1;
   color: #7344c1;
-  width: 280px;
+  min-width: 240px;
+  max-width: 280px;
 
   &:hover {
     background: #7344c1;
@@ -64,13 +74,40 @@ export const EditButton = styled(Button)`
   }
 `;
 
+export const ImgUploadBtnWrapper = styled.div`
+  display: flex;
+`;
+
+export const ImgUploadBtn = styled(Button)`
+  margin: 0 10px;
+`;
+
+export const EditPictureWrapper = styled.div`
+  height: 120px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+`;
+
 export const EditPicture = styled.img`
-  width: 60px;
-  margin-right: 80px;
+  border-radius: 8%;
+  display: inline;
+  margin: 0 auto;
+  height: 100%;
+  width: auto;
 
   &:hover {
     cursor: pointer;
   }
 `;
 
+export const DocuSignImg = styled.img`
+  width: 125px;
+`;
+
 export const DropZoneWrapper = styled(DropZone)``;
+
+export const UploadWrapper = styled.div`
+display: flex:
+justify-content: center;
+`;
