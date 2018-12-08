@@ -10,6 +10,7 @@ export const SettingsWrapper = styled.div`
   margin-top: 30px;
   max-width: 1010px;
   height: 100%;
+  padding: 0 20px;
 `;
 
 export const SubSettingsWrapper = styled.div`
@@ -18,6 +19,10 @@ export const SubSettingsWrapper = styled.div`
   margin-top: 30px;
   padding-bottom: 50px;
   max-width: 1010px;
+
+  @media (max-width: 550px) {
+    flex-direction: column;
+  }
 `;
 
 export const MainHeader = styled.h3`
@@ -40,6 +45,10 @@ export const InfoWrapper = styled.div`
   align-items: flex-start;
   flex-direction: column;
   width: 1010px;
+
+  @media (max-width: 550px) {
+    padding: 20px;
+  }
 `;
 
 export const InfoTextTitle = styled.h5`
