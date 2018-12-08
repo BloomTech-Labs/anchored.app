@@ -21,7 +21,7 @@ export const TopNavBar = styled.div`
   align-items: center;
 
   @media (max-width: 550px) {
-    height: 120px;
+    height: 100px;
     padding: 0 15px;
   }
 `;
@@ -73,6 +73,12 @@ export const Img = styled.img`
   width: 80px;
 `;
 
+export const DropdownCreditsWrapper = styled(DropdownItem)`
+  &:hover {
+    background: none;
+  }
+`;
+
 export const Credits = styled.div`
   padding: 0 5px;
   height: 40px;
@@ -84,6 +90,11 @@ export const Credits = styled.div`
   @media (max-width: 550px) {
     padding: 0;
     justify-content: flex-start;
+    color: white;
+
+    &:hover {
+      background: none;
+    }
   }
 `;
 
@@ -113,21 +124,54 @@ export const StyledDropdownItem = styled(DropdownItem)`
       color: white;
     }
   }
+  @media (max-width: 550px) {
+    color: white;
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding: 5px 24px;
+
+    &:hover {
+      color: #bdbdbd;
+      background: none;
+
+  }
 `;
 
 export const DropdownMenuWrapper = styled(DropdownMenu)`
   @media (max-width: 550px) {
     width: 100vw;
+    background: #24292e;
   }
+`;
+
+export const DropdownDivider = styled(DropdownItem)`
+  @media (max-width: 550px) {
+    border-top: 1px solid #444d56;
+  }
+`;
+
+export const LoggedInHeader = styled.div`
+  color: white;
 `;
 
 export const UserHeader = styled.div`
   font-weight: bold;
+
+  @media (max-width: 550px) {
+    color: white;
 `;
 
 export const ProfilePicWrapper = styled(DropdownToggle)`
   display: flex;
   align-items: center;
+
+  @media (max-width: 550px) {
+    background: white;
+    border: none;
+
+    &:hover {
+      background: none;
+    }
 `;
 
 export const ImageCropper = styled.div`
@@ -143,4 +187,9 @@ export const ProfilePic = styled.img`
   margin: 0 auto;
   height: 100%;
   width: auto;
+`;
+
+export const Hamburger = styled.div`
+  font-size: 35px;
+  color: black;
 `;
