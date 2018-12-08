@@ -50,7 +50,8 @@ export const EditButton = styled(Button)`
   background: white;
   border-color: #7344c1;
   color: #7344c1;
-  width: 280px;
+  min-width: 240px;
+  max-width: 280px;
 
   &:hover {
     background: #7344c1;
@@ -66,7 +67,9 @@ export const EditButton = styled(Button)`
 
 export const EditPicture = styled.img`
   width: 100px;
-  margin-right: 70px;
+  // margin-right: 70px;
+  opacity: 0.7;
+  padding-bottom: 20px;
 
   &:hover {
     cursor: pointer;
@@ -78,3 +81,9 @@ export const DocuSignImg = styled.img`
 `;
 
 export const DropZoneWrapper = styled(DropZone)``;
+
+export const UploadWrapper = styled.div`
+display: flex:
+align-items: center;
+justify-content: center;
+`;

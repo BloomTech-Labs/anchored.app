@@ -16,6 +16,7 @@ import {
   EditButton,
   DropZoneWrapper,
   DocuSignImg,
+  UploadWrapper,
 } from './styles/SettingsStyles.js';
 import PhotoIcon from '../../assets/edit-photo-icon.png';
 import DocuSignLogo from '../../assets/docusign_logo_standard.png';
@@ -100,15 +101,17 @@ class Settings extends Component {
             onDropRejected={() => alert('Please upload .j or .png')}
           >
             {({ open }) => (
-              <Fragment>
+              <UploadWrapper>
                 <EditPicture
                   src={this.state.file ? this.state.file : PhotoIcon}
                   onClick={() => open()}
                 />
                 {this.state.file !== null ? (
-                  <EditButton onClick={this.onSubmit}>Upload</EditButton>
+                  <EditButton size="lg" onClick={this.onSubmit}>
+                    Upload
+                  </EditButton>
                 ) : null}
-              </Fragment>
+              </UploadWrapper>
             )}
           </DropZoneWrapper>
         </SubSettingsWrapper>
