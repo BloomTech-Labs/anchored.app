@@ -73,10 +73,19 @@ export const ImgUploadBtn = styled(Button)`
   margin: 0 10px;
 `;
 
-export const EditPicture = styled.img`
-  width: 100px;
-  border-radius: 50%;
+export const EditPictureWrapper = styled.div`
+  height: 120px;
+  position: relative;
+  overflow: hidden;
   margin-bottom: 20px;
+`;
+
+export const EditPicture = styled.img`
+  border-radius: 8%;
+  display: inline;
+  margin: 0 auto;
+  height: 100%;
+  width: auto;
 
   &:hover {
     cursor: pointer;

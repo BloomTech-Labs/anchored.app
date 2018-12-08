@@ -13,6 +13,7 @@ import {
   InfoWrapper,
   InfoTextTitle,
   EditPicture,
+  EditPictureWrapper,
   EditButton,
   DropZoneWrapper,
   DocuSignImg,
@@ -106,10 +107,12 @@ class Settings extends Component {
           >
             {({ open }) => (
               <UploadWrapper>
-                <EditPicture
-                  src={this.state.file ? this.state.file : PhotoIcon}
-                  onClick={() => open()}
-                />
+                <EditPictureWrapper>
+                  <EditPicture
+                    src={this.state.file ? this.state.file : PhotoIcon}
+                    onClick={() => open()}
+                  />
+                </EditPictureWrapper>
                 {this.state.file !== null ? (
                   <ImgUploadBtnWrapper>
                     <ImgUploadBtn
