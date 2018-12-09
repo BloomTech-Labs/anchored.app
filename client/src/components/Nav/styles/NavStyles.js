@@ -19,7 +19,6 @@ export const TopNavBar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   @media (max-width: 550px) {
     height: 100px;
     padding: 0 15px;
@@ -153,10 +152,14 @@ export const DropdownDivider = styled(DropdownItem)`
 export const LoggedInHeader = styled.div`
   color: white;
 `;
+export const DropdownUserWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
 export const UserHeader = styled.div`
   font-weight: bold;
-
+  padding-left: 20px;
   @media (max-width: 550px) {
     color: white;
 `;
@@ -168,6 +171,7 @@ export const ProfilePicWrapper = styled(DropdownToggle)`
   @media (max-width: 550px) {
     background: white;
     border: none;
+    margin-right: 10px;
 
     &:hover {
       background: none;
@@ -190,6 +194,6 @@ export const ProfilePic = styled.img`
 `;
 
 export const Hamburger = styled.div`
-  font-size: 35px;
+  font-size: 30px;
   color: black;
 `;

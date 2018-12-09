@@ -16,7 +16,7 @@ import {
   StyledDropdownItem,
   DropdownMenuWrapper,
   DropdownDivider,
-  LoggedInHeader,
+  DropdownUserWrapper,
   Hamburger,
   UserHeader,
   Logout,
@@ -99,20 +99,16 @@ class NavBar extends Component {
                 </ProfilePicWrapper>
               </MediaQuery>
 
-              {/* <MediaQuery minWidth={550}>
-                  <ImageCropper>
-                    <ProfilePic src={src} />
-                  </ImageCropper>
-                </MediaQuery>
-                <MediaQuery maxWidth={550}>
-                  <div className="fas fa-bars" />
-                </MediaQuery> */}
-
               <DropdownMenuWrapper right>
                 <DropdownItem disabled>
-                  {/* <LoggedInHeader>Logged in as</LoggedInHeader> */}
-
-                  <UserHeader>{this.props.user.username}</UserHeader>
+                  {/* <LoggedInHeader>Logged in as</LoggedInHeader>
+                   */}
+                  <DropdownUserWrapper>
+                    <ImageCropper>
+                      <ProfilePic src={src} />
+                    </ImageCropper>
+                    <UserHeader>{this.props.user.username}</UserHeader>
+                  </DropdownUserWrapper>
                 </DropdownItem>
                 <DropdownDivider divider />
                 <MediaQuery maxWidth={550}>

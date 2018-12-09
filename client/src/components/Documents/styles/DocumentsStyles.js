@@ -80,7 +80,7 @@ export const AppContainer = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  width: 840px;
+  // width: 840px;
 
   @media (max-width: 800px) {
     flex-direction: column;
