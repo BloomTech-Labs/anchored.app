@@ -16,10 +16,9 @@ export const SettingsWrapper = styled.div`
 export const SubSettingsWrapper = styled.div`
   display: flex;
   align-items: flex-start;
+  justify-content: space-between;
   margin-top: 30px;
   padding-bottom: 50px;
-  max-width: 1010px;
-
   @media (max-width: 550px) {
     flex-direction: column;
   }
@@ -44,8 +43,6 @@ export const InfoWrapper = styled.div`
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  width: 1010px;
-
   @media (max-width: 550px) {
     padding: 20px;
   }
