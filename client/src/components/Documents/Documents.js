@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { getEnvelopes, getProof, updateLoading } from '../../actions/envelopes';
@@ -74,22 +74,20 @@ class Documents extends React.Component {
 
     if (!this.props.envelopes) {
       return (
-        <Fragment>
-          <DocumentsContainer>
-            <DocumentsHeader>Your Connected Apps</DocumentsHeader>
-            <AppContainer>
-              <AppDiv>
-                <Img src={DocusignLogo} alt="DocuSign Logo" />
-                <DocusignLogin />
-              </AppDiv>
-              <AppDiv>
-                <AddIcon>+</AddIcon>
-                <AppCopy>Add New App</AppCopy>
-                <Small>(Coming Soon!)</Small>
-              </AppDiv>
-            </AppContainer>
-          </DocumentsContainer>
-        </Fragment>
+        <DocumentsContainer>
+          <DocumentsHeader>Your Connected Apps</DocumentsHeader>
+          <AppContainer>
+            <AppDiv>
+              <Img src={DocusignLogo} alt="DocuSign Logo" />
+              <DocusignLogin />
+            </AppDiv>
+            <AppDiv>
+              <AddIcon>+</AddIcon>
+              <AppCopy>Add New App</AppCopy>
+              <Small>(Coming Soon!)</Small>
+            </AppDiv>
+          </AppContainer>
+        </DocumentsContainer>
       );
     }
 

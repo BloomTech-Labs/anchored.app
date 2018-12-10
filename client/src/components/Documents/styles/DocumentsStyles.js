@@ -2,20 +2,24 @@ import styled from 'styled-components';
 import { Copy } from '../../CTA/styles/CTAStyles.js';
 
 export const DocumentsContainer = styled.div`
-  margin-top: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: 1010px;
+  margin: 0 auto;
+  margin-top: 10px;
+  height: 100%;
+  padding: 0 5px;
 `;
 
 export const Header = styled(DocumentsContainer)`
-  margin-top: 0;
+  /* margin-top: 0; */
   flex-direction: row;
   justify-content: flex-start;
-  max-width: 840px;
+  max-width: 1010px;
   width: 100%;
-  padding: 0 15px;
+  /* padding: 0 15px; */
 
   @media (max-width: 550px) {
     flex-direction: column;
@@ -26,6 +30,7 @@ export const DocumentOptionsContainer = styled.div`
   display: flex;
   justify-content: center;
   border-bottom: 1px solid #7344c1;
+  width: 1010px;
 
   @media (max-width: 800px) {
     flex-direction: column;
@@ -56,11 +61,12 @@ export const DocumentsOptions = styled.div`
 `;
 
 export const DocumentsHeader = styled.h3`
-  max-width: 840px;
+  max-width: 1010px;
   width: 100%;
   text-align: left;
-  // font-size: 1.8rem;
-  padding: 0 15px;
+  font-size: 1.8rem;
+  padding: 0 20px;
+  margin-top: 20px;
 
   @media (max-width: 800px) {
     text-align: center;
@@ -80,7 +86,7 @@ export const AppContainer = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  // width: 840px;
+  width: 1010px;
 
   @media (max-width: 800px) {
     flex-direction: column;
@@ -138,7 +144,7 @@ export const TabHeader = styled.div`
   align-items: center;
   max-width: 840px;
   width: 100%;
-  padding: 0 15px;
+  padding: 0 55px;
 
   @media (max-width: 550px) {
     flex-direction: column-reverse;

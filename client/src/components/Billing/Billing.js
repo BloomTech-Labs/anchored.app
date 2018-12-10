@@ -74,7 +74,7 @@ class Billing extends Component {
         <InvoiceContainer>
           <InvoiceInfo>Date billed</InvoiceInfo>
           <InvoiceInfo>Transaction</InvoiceInfo>
-          <InvoiceInfo>Amount billed (USD)</InvoiceInfo>
+          <InvoiceInfo>Amount billed</InvoiceInfo>
         </InvoiceContainer>
         {this.state.invoice.map(invoice => {
           return (
