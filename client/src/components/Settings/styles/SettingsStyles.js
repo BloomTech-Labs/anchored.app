@@ -20,6 +20,7 @@ export const SubSettingsWrapper = styled.div`
   justify-content: space-between;
   margin-top: 30px;
   padding-bottom: 50px;
+  overflow-x: hidden;
   @media (max-width: 550px) {
     flex-direction: column;
   }
