@@ -5,8 +5,9 @@ import { EditButton } from '../../Settings/styles/SettingsStyles.js';
 
 class DocusignUnlink extends React.Component {
   render() {
+    const history = this.props.history;
     return (
-      <EditButton size="lg" onClick={this.props.unlinkUser}>
+      <EditButton size="lg" onClick={() => this.props.unlinkUser(history)}>
         Unlink App
       </EditButton>
     );

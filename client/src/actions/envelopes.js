@@ -14,7 +14,8 @@ export const ERROR = 'ERROR';
 
 export const getEnvelopes = () => {
   const promise = axios.get(
-    process.env.REACT_APP_ENVELOPES || 'http://localhost:9000/envelopes/all'
+    process.env.REACT_APP_ENVELOPES || 'http://localhost:9000/envelopes/all',
+    { headers: { 'Cache-Control': 'no-cache' } }
   );
   return dispatch => {
     dispatch({ type: RETRIEVING_ENVELOPES });

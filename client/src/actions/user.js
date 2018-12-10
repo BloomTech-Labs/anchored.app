@@ -16,7 +16,9 @@ export const ERROR = 'ERROR';
 
 export const getUserInfo = () => {
   const promise = axios.get(
-    process.env.REACT_APP_USERS_PROFILE || 'http://localhost:9000/users/profile'
+    process.env.REACT_APP_USERS_PROFILE ||
+      'http://localhost:9000/users/profile',
+    { headers: { 'Cache-Control': 'no-cache' } }
   );
   return dispatch => {
     dispatch({ type: RETRIEVING_USER_INFO });
@@ -26,7 +28,7 @@ export const getUserInfo = () => {
   };
 };
 
-export const unlinkUser = () => {
+export const unlinkUser = history => {
   const route =
     process.env.REACT_APP_DOCUSIGN_LOGOUT ||
     'http://localhost:9000/auth/docusign/logout';
@@ -36,7 +38,7 @@ export const unlinkUser = () => {
     dispatch({ type: UNLINKING_USER });
     promise.then(() => {
       dispatch({ type: UNLINKED_USER });
-      window.location.reload();
+      history.push('/');
     });
   };
 };
