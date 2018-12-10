@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import './App.css';
-import Home from './Home';
+import Home from './Home/Home.js';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { getUserInfo } from '../actions/user';

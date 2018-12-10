@@ -13,10 +13,16 @@ import {
   InfoWrapper,
   InfoTextTitle,
   EditPicture,
+  EditPictureWrapper,
   EditButton,
   DropZoneWrapper,
+  DocuSignImg,
+  UploadWrapper,
+  ImgUploadBtn,
+  ImgUploadBtnWrapper,
 } from './styles/SettingsStyles.js';
 import PhotoIcon from '../../assets/edit-photo-icon.png';
+import DocuSignLogo from '../../assets/docusign_logo_standard.png';
 
 class Settings extends Component {
   constructor() {
@@ -75,7 +81,7 @@ class Settings extends Component {
           <InfoWrapper>
             <InfoTextTitle>Connected</InfoTextTitle>
             {/* TODO: Make this field dynamic when we add more apps */}
-            DocuSign
+            <DocuSignImg src={DocuSignLogo} alt="DocuSign logo" />
           </InfoWrapper>
           <DocusignUnlink />
         </SubSettingsWrapper>
@@ -93,20 +99,39 @@ class Settings extends Component {
             onDrop={this.onDrop.bind(this)}
             onFileDialogCancel={this.onCancel.bind(this)}
             multiple={false}
-            maxSize={500000}
+            maxSize={60000}
             disableClick
-            onDropRejected={() => alert('Please upload .j or .png')}
+            onDropRejected={() =>
+              alert('Accepted file types are .jpg and .png at max size 60KB')
+            }
           >
             {({ open }) => (
-              <Fragment>
-                <EditPicture
-                  src={this.state.file ? this.state.file : PhotoIcon}
-                  onClick={() => open()}
-                />
+              <UploadWrapper>
+                <EditPictureWrapper>
+                  <EditPicture
+                    src={this.state.file ? this.state.file : PhotoIcon}
+                    onClick={() => open()}
+                  />
+                </EditPictureWrapper>
                 {this.state.file !== null ? (
-                  <EditButton onClick={this.onSubmit}>Upload</EditButton>
+                  <ImgUploadBtnWrapper>
+                    <ImgUploadBtn
+                      size="sm"
+                      color="info"
+                      onClick={this.onSubmit}
+                    >
+                      Upload
+                    </ImgUploadBtn>
+                    <ImgUploadBtn
+                      size="sm"
+                      color="danger"
+                      onClick={this.onCancel}
+                    >
+                      Cancel
+                    </ImgUploadBtn>
+                  </ImgUploadBtnWrapper>
                 ) : null}
-              </Fragment>
+              </UploadWrapper>
             )}
           </DropZoneWrapper>
         </SubSettingsWrapper>

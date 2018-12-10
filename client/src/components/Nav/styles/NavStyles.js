@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { DropdownItem } from 'reactstrap';
+import { DropdownItem, DropdownToggle, DropdownMenu } from 'reactstrap';
 
 export const NavGod = styled.div`
   display: flex;
@@ -19,10 +19,9 @@ export const TopNavBar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   @media (max-width: 550px) {
-    height: 150px;
-    flex-direction: column;
+    height: 100px;
+    padding: 0 15px;
   }
 `;
 
@@ -34,8 +33,9 @@ export const Links = styled.div`
   padding: 0 20px;
 
   @media (max-width: 550px) {
-    justify-content: space-between;
+    padding: 0 15px;
     margin-top: 10px;
+    margin-right: -20px;
   }
 `;
 
@@ -72,6 +72,12 @@ export const Img = styled.img`
   width: 80px;
 `;
 
+export const DropdownCreditsWrapper = styled(DropdownItem)`
+  &:hover {
+    background: none;
+  }
+`;
+
 export const Credits = styled.div`
   padding: 0 5px;
   height: 40px;
@@ -79,6 +85,16 @@ export const Credits = styled.div`
   justify-content: center;
   align-items: center;
   font-weight: bold;
+
+  @media (max-width: 550px) {
+    padding: 0;
+    justify-content: flex-start;
+    color: white;
+
+    &:hover {
+      background: none;
+    }
+  }
 `;
 
 export const DropdownLink = styled(NavLink)`
@@ -107,8 +123,77 @@ export const StyledDropdownItem = styled(DropdownItem)`
       color: white;
     }
   }
+  @media (max-width: 550px) {
+    color: white;
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding: 5px 24px;
+
+    &:hover {
+      color: #bdbdbd;
+      background: none;
+
+  }
+`;
+
+export const DropdownMenuWrapper = styled(DropdownMenu)`
+  @media (max-width: 550px) {
+    width: 100vw;
+    background: #24292e;
+  }
+`;
+
+export const DropdownDivider = styled(DropdownItem)`
+  @media (max-width: 550px) {
+    border-top: 1px solid #444d56;
+  }
+`;
+
+export const LoggedInHeader = styled.div`
+  color: white;
+`;
+export const DropdownUserWrapper = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 export const UserHeader = styled.div`
   font-weight: bold;
+  padding-left: 20px;
+  @media (max-width: 550px) {
+    color: white;
+`;
+
+export const ProfilePicWrapper = styled(DropdownToggle)`
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 550px) {
+    background: white;
+    border: none;
+    margin-right: 10px;
+
+    &:hover {
+      background: none;
+    }
+`;
+
+export const ImageCropper = styled.div`
+  width: 50px;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+`;
+
+export const ProfilePic = styled.img`
+  display: inline;
+  margin: 0 auto;
+  height: 100%;
+  width: auto;
+`;
+
+export const Hamburger = styled.div`
+  font-size: 30px;
+  color: black;
 `;
