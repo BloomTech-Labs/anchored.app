@@ -101,8 +101,7 @@ class NavBar extends Component {
 
               <DropdownMenuWrapper right>
                 <DropdownItem disabled>
-                  {/* <LoggedInHeader>Logged in as</LoggedInHeader>
-                   */}
+                  Logged in as
                   <DropdownUserWrapper>
                     <ImageCropper>
                       <ProfilePic src={src} />

@@ -149,9 +149,6 @@ export const DropdownDivider = styled(DropdownItem)`
   }
 `;
 
-export const LoggedInHeader = styled.div`
-  color: white;
-`;
 export const DropdownUserWrapper = styled.div`
   display: flex;
   align-items: center;
