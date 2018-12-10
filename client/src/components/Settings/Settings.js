@@ -83,7 +83,7 @@ class Settings extends Component {
             {/* TODO: Make this field dynamic when we add more apps */}
             <DocuSignImg src={DocuSignLogo} alt="DocuSign logo" />
           </InfoWrapper>
-          <DocusignUnlink />
+          <DocusignUnlink history={this.props.history} />
         </SubSettingsWrapper>
         <SubHeaderWrapper>
           {/* Profile Settings */}

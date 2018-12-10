@@ -30,9 +30,6 @@ server.use(
   })
 );
 
-server.use((req, res, next) => {
-  next();
-});
 // routes
 server.get('/', (req, res) => {
   res.status(200).json({ SUCCESS: `Sanity check` });
