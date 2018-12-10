@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const applyGlobalMiddleware = require('../config/applyGlobalMiddleware.js');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const usersRoutes = require('./users/usersRoutes.js');
 const envsRoutes = require('./envelopes/envelopesRoutes');
@@ -18,7 +19,16 @@ const server = express();
 // middleware
 applyGlobalMiddleware(server);
 server.use(cors({ origin: corsOptions }));
-server.use(express.json());
+
+// For large payloads to the server
+server.use(bodyParser.json({ limit: '50mb', extended: true }));
+server.use(
+  bodyParser.urlencoded({
+    limit: '50mb',
+    extended: true,
+    parameterLimit: 50000,
+  })
+);
 
 server.use((req, res, next) => {
   next();

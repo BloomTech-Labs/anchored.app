@@ -1,6 +1,8 @@
 import {
   RETRIEVING_USER_INFO,
   RETRIEVED_USER_INFO,
+  UPDATED_IMAGE,
+  UPDATING_IMAGE,
   ERROR,
 } from '../actions/user';
 import { RETRIEVING_CREDIT, RETRIEVED_CREDIT } from '../actions/billing';
@@ -12,6 +14,7 @@ const initialState = {
   retrieved: false,
   retrievingCred: false,
   retrievedCred: false,
+  updatedPicture: false,
   error: null,
 };
 
@@ -55,6 +58,18 @@ export default (state = initialState, action) => {
         credits: ++state.user.credits,
       };
       return { ...state, user };
+    }
+
+    case UPDATING_IMAGE: {
+      return { ...state };
+    }
+
+    case UPDATED_IMAGE: {
+      const user = {
+        ...state.user,
+        uploaded_picture: action.payload,
+      };
+      return { ...state, user, updatedPicture: true };
     }
 
     case ERROR: {

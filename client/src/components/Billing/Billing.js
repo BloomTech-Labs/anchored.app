@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import {
@@ -52,52 +52,57 @@ class Billing extends Component {
 
   render() {
     return (
-      <Fragment>
-        <MainWrapper>
-          <MainHeader>Account: {this.props.user.username}</MainHeader>
-          <InfoWrapper>
-            <ContentContainer>
-              <ContentHeader>Available Credits</ContentHeader>
-              {this.props.user.credits}
-            </ContentContainer>
-            <ContentContainer>
-              <ContentHeader>Plan Type</ContentHeader>
-              {this.props.user.subscription ? ' Premium' : ' Basic'}
-            </ContentContainer>
-          </InfoWrapper>
-          <InvoiceContainer>
-            <InvoiceInfo>Date billed</InvoiceInfo>
-            <InvoiceInfo>Transaction</InvoiceInfo>
-            <InvoiceInfo>Amount billed (USD)</InvoiceInfo>
-          </InvoiceContainer>
-          {this.state.invoice.map(invoice => {
-            return (
-              <InfoContainer key={invoice.id}>
-                <InfoWrapperTwo>
-                  <InfoDate>
-                    {moment
-                      .utc(invoice.created_at)
-                      .local()
-                      .format('D MMM YYYY hh:mma')}
-                  </InfoDate>
-                  <InfoTransaction>{invoice.description}</InfoTransaction>
-                  <InfoAmountBilled>
-                    {`$${invoice.amount / 100}.00`}{' '}
-                    {invoice.currency.toUpperCase()}
-                  </InfoAmountBilled>
-                </InfoWrapperTwo>
-              </InfoContainer>
-            );
-          })}
-          {this.state.invoice.length > 0 ? (
-            <ExportContainer>
-              <Export data={this.getData()} onClick={this.getData}>
-                Export
-              </Export>
-            </ExportContainer>
-          ) : null}
-        </MainWrapper>
-      </Fragment>
+      <MainWrapper>
+        <MainHeader>Account</MainHeader>
+        <InfoWrapper>
+          <ContentContainer>
+            <ContentHeader>
+              {this.props.user.first_name
+                ? this.props.user.first_name + ' ' + this.props.user.last_name
+                : this.props.user.username}
+            </ContentHeader>
+          </ContentContainer>
+          <ContentContainer>
+            <ContentHeader>Available Credits</ContentHeader>
+            {this.props.user.credits}
+          </ContentContainer>
+          <ContentContainer>
+            <ContentHeader>Plan Type</ContentHeader>
+            {this.props.user.subscription ? ' Premium' : ' Basic'}
+          </ContentContainer>
+        </InfoWrapper>
+        <InvoiceContainer>
+          <InvoiceInfo>Date billed</InvoiceInfo>
+          <InvoiceInfo>Transaction</InvoiceInfo>
+          <InvoiceInfo>Amount billed (USD)</InvoiceInfo>
+        </InvoiceContainer>
+        {this.state.invoice.map(invoice => {
+          return (
+            <InfoContainer key={invoice.id}>
+              <InfoWrapperTwo>
+                <InfoDate>
+                  {moment
+                    .utc(invoice.created_at)
+                    .local()
+                    .format('D MMM YYYY hh:mma')}
+                </InfoDate>
+                <InfoTransaction>{invoice.description}</InfoTransaction>
+                <InfoAmountBilled>
+                  {`$${invoice.amount / 100}.00`}{' '}
+                  {invoice.currency.toUpperCase()}
+                </InfoAmountBilled>
+              </InfoWrapperTwo>
+            </InfoContainer>
+          );
+        })}
+        {this.state.invoice.length > 0 ? (
+          <ExportContainer>
+            <Export data={this.getData()} onClick={this.getData}>
+              Export
+            </Export>
+          </ExportContainer>
+        ) : null}
+      </MainWrapper>
     );
   }
 }

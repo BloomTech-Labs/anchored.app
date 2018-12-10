@@ -62,6 +62,16 @@ class NavBar extends Component {
   };
 
   render() {
+    const picture = this.props.user.uploaded_picture
+      ? this.props.user.uploaded_picture
+      : this.props.user.picture;
+
+    let src = picture;
+    if (picture.type) {
+      const data = Buffer.from(picture.data).toString();
+      src = data;
+    }
+
     return (
       <NavGod>
         <TopNavBar>
@@ -83,7 +93,7 @@ class NavBar extends Component {
               <DropdownToggle size="sm" caret color="none">
                 <img
                   style={ProfileImage}
-                  src={this.props.user.picture}
+                  src={src}
                   alt="user profile thumbnail"
                 />
               </DropdownToggle>

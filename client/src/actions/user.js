@@ -9,6 +9,9 @@ export const UNLINKED_USER = 'UNLINKED_USER';
 export const DECREMENT_CREDIT = 'DECREMENT_CREDIT';
 export const INCREMENT_CREDIT = 'INCREMENT_CREDIT';
 
+export const UPDATING_IMAGE = 'UPDATING_IMAGE';
+export const UPDATED_IMAGE = 'UPDATED_IMAGE';
+
 export const ERROR = 'ERROR';
 
 export const getUserInfo = () => {
@@ -31,11 +34,24 @@ export const unlinkUser = () => {
 
   return dispatch => {
     dispatch({ type: UNLINKING_USER });
+    promise.then(() => {
+      dispatch({ type: UNLINKED_USER });
+      window.location.reload();
+    });
+  };
+};
+
+export const newProfileImage = uploaded_picture => {
+  const promise = axios.put(
+    process.env.REACT_APP_UPLOAD_IMAGE || 'http://localhost:9000/users/image',
+    {
+      uploaded_picture,
+    }
+  );
+  return dispatch => {
+    dispatch({ type: UPDATING_IMAGE });
     promise
-      .then(() => {
-        dispatch({ type: UNLINKED_USER });
-        window.location.reload();
-      })
+      .then(() => dispatch({ type: UPDATED_IMAGE, payload: uploaded_picture }))
       .catch(err => dispatch({ type: ERROR, payload: err.message }));
   };
 };

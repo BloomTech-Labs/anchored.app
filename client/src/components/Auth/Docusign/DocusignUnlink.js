@@ -1,14 +1,14 @@
 import React from 'react';
-import { Button } from 'reactstrap';
 import { connect } from 'react-redux';
 import { unlinkUser } from '../../../actions/user';
+import { EditButton } from '../../Settings/styles/SettingsStyles.js';
 
 class DocusignUnlink extends React.Component {
   render() {
     return (
-      <Button color="primary" onClick={this.props.unlinkUser}>
-        Unlink DocuSign
-      </Button>
+      <EditButton size="lg" onClick={this.props.unlinkUser}>
+        Unlink App
+      </EditButton>
     );
   }
 }
