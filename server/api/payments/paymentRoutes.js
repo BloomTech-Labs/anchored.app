@@ -25,16 +25,16 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', ensureAuthenticated, (req, res) => {
-  users.findByUserId(req.user.id).then(user => {
-    payments
-      .findByUserId(user.id)
-      .then(invoice => {
-        res.status(200).json(invoice);
-      })
-      .catch(err => {
-        res.status();
-      });
-  });
+  const { id } = req.params;
+
+  payments
+    .findByUserId(id)
+    .then(invoice => {
+      res.status(200).json(invoice);
+    })
+    .catch(err => {
+      res.status();
+    });
 });
 
 router.post('/', ensureAuthenticated, (req, res) => {
