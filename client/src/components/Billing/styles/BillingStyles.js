@@ -9,6 +9,7 @@ export const MainWrapper = styled.div`
   margin-top: 30px;
   max-width: 1010px;
   height: 100%;
+  padding: 0 20px;
 `;
 
 export const InvoiceContainer = styled.div`
