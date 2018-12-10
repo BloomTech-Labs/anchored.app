@@ -29,10 +29,21 @@ class Billing extends Component {
   }
 
   componentDidMount() {
-    axios
-      .get('http://localhost:9000/payment/:id')
-      .then(res => this.setState({ invoice: res.data }))
-      .catch(err => console.log('Error on billing', err.message));
+    const id = this.props.user.id;
+
+    if (process.env.REACT_APP_API_URL) {
+      axios
+        .get(`http://localhost:9000/payment/${id}`)
+        .then(res => this.setState({ invoice: res.data }))
+        .catch(err => console.log('Error on billing', err.message));
+    } else {
+      axios
+        .get(`http:localhost:9000/documents/${id}`)
+        .then(res => {
+          this.setState({ invoice: res.data });
+        })
+        .catch(err => console.log('Error on billing', err.message));
+    }
   }
 
   getData = () => {
