@@ -169,7 +169,7 @@ export const ProfilePicWrapper = styled(DropdownToggle)`
   @media (max-width: 800px) {
     background: white;
     border: none;
-    margin-right: 10px;
+    margin-right: -20px;
 
     &:hover {
       background: none;
@@ -194,7 +194,4 @@ export const ProfilePic = styled.img`
 export const Hamburger = styled.div`
   font-size: 30px;
   color: black;
-  
-  @media (max-width: 800px) {
-    margin-right: -20px;
 `;
