@@ -31,14 +31,9 @@ class Billing extends Component {
   componentDidMount() {
     const id = this.props.user.id;
 
-    if (process.env.REACT_APP_API_URL) {
+    if (process.env.REACT_APP_USERS_INVOICE) {
       axios
-        .get(`http://localhost:9000/payment/${id}`)
-        .then(res => this.setState({ invoice: res.data }))
-        .catch(err => console.log('Error on billing', err.message));
-    } else {
-      axios
-        .get(`http:localhost:9000/documents/${id}`)
+        .get(`${process.env.REACT_APP_USERS_INVOICE}/${id}`)
         .then(res => {
           this.setState({ invoice: res.data });
         })
@@ -119,6 +114,7 @@ class Billing extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     // User Info Data
     user: state.user.user,
