@@ -101,13 +101,18 @@ class NavBar extends Component {
 
               <DropdownMenuWrapper right>
                 <DropdownItem disabled>
-                  Logged in as
-                  <DropdownUserWrapper>
-                    <ImageCropper>
-                      <ProfilePic src={src} />
-                    </ImageCropper>
+                  <MediaQuery minWidth={550}>Logged in as</MediaQuery>
+                  <MediaQuery maxWidth={550}>
+                    <DropdownUserWrapper>
+                      <ImageCropper>
+                        <ProfilePic src={src} />
+                      </ImageCropper>
+                      <UserHeader>{this.props.user.username}</UserHeader>
+                    </DropdownUserWrapper>
+                  </MediaQuery>
+                  <MediaQuery minWidth={550}>
                     <UserHeader>{this.props.user.username}</UserHeader>
-                  </DropdownUserWrapper>
+                  </MediaQuery>
                 </DropdownItem>
                 <DropdownDivider divider />
                 <MediaQuery maxWidth={550}>

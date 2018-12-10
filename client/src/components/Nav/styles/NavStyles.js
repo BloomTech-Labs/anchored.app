@@ -156,8 +156,8 @@ export const DropdownUserWrapper = styled.div`
 
 export const UserHeader = styled.div`
   font-weight: bold;
-  padding-left: 20px;
   @media (max-width: 550px) {
+    padding-left: 20px;
     color: white;
 `;
 
