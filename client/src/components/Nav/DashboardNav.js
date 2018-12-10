@@ -84,7 +84,11 @@ class NavBar extends Component {
                 </BuyCreditsButton>
               </NavLink>
             </MediaQuery>
-            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+            <Dropdown
+              isOpen={this.state.dropdownOpen}
+              toggle={this.toggle}
+              inNavbar={true}
+            >
               <MediaQuery minWidth={801}>
                 <ProfilePicWrapper size="sm" caret color="none">
                   <ImageCropper>

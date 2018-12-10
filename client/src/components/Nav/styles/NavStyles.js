@@ -35,7 +35,6 @@ export const Links = styled.div`
   @media (max-width: 800px) {
     padding: 0 15px;
     margin-top: 10px;
-    margin-right: -20px;
   }
 `;
 
@@ -139,6 +138,8 @@ export const StyledDropdownItem = styled(DropdownItem)`
 export const DropdownMenuWrapper = styled(DropdownMenu)`
   @media (max-width: 800px) {
     width: 100vw;
+    padding: 10px 15px;
+    margin-right: -30px;
     background: #24292e;
   }
 `;
@@ -193,4 +194,7 @@ export const ProfilePic = styled.img`
 export const Hamburger = styled.div`
   font-size: 30px;
   color: black;
+  
+  @media (max-width: 800px) {
+    margin-right: -20px;
 `;
