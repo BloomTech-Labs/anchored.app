@@ -8,6 +8,7 @@ export const SettingsWrapper = styled.div`
   justify-content: center;
   margin: 0 auto;
   margin-top: 30px;
+  width: 100%;
   max-width: 1010px;
   height: 100%;
   padding: 0 20px;

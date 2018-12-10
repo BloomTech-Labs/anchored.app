@@ -12,7 +12,7 @@ export const Container = styled.div`
 `;
 
 export const BgContainer = styled.div`
-  width: 100vw;
+  width: 100%;
   background: rgba(230, 232, 230, 0.4);
 `;
 
@@ -84,7 +84,7 @@ export const Numbered = styled.div`
 `;
 
 export const PricingSection = styled.div`
-  width: 100vw;
+  width: 100%;
   background-color: white;
 `;
 
