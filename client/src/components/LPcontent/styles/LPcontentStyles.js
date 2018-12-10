@@ -16,11 +16,6 @@ export const BgContainer = styled.div`
   background: rgba(230, 232, 230, 0.4);
 `;
 
-export const MiddleWorks = styled.div`
-  /* z-index: 1; */
-  /* opacity: 1; */
-`;
-
 export const ContentMain = styled.div`
   display: flex;
   flex-direction: column;
