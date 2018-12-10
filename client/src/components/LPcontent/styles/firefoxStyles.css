@@ -1,0 +1,14 @@
+@-moz-document url-prefix() {
+  .bgContainer {
+    width: 100%;
+    padding: 0 200px;
+  }
+}
+
+@media (max-width: 800px) {
+  @-moz-document url-prefix() {
+    .bgContainer {
+      padding: 15px;
+    }
+  }
+}

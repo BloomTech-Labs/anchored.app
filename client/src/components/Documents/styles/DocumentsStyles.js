@@ -30,11 +30,13 @@ export const DocumentOptionsContainer = styled.div`
   display: flex;
   justify-content: center;
   border-bottom: 1px solid #7344c1;
-  width: 1010px;
+  max-width: 1010px;
+  width: 100%;
 
   @media (max-width: 800px) {
     flex-direction: column;
     border-bottom: none;
+    align-items: center;
   }
 `;
 
