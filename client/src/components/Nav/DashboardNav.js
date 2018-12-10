@@ -74,7 +74,7 @@ class NavBar extends Component {
             <Img src={Logo} alt="Proofd Logo" />
           </NavLink>
           <Links>
-            <MediaQuery minWidth={550}>
+            <MediaQuery minWidth={801}>
               <Credits>Credits: {this.props.user.credits}</Credits>
               <NavLink exact to={`/buy`} style={{ textDecoration: 'none' }}>
                 <BuyCreditsButton>
@@ -85,7 +85,7 @@ class NavBar extends Component {
               </NavLink>
             </MediaQuery>
             <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-              <MediaQuery minWidth={550}>
+              <MediaQuery minWidth={801}>
                 <ProfilePicWrapper size="sm" caret color="none">
                   <ImageCropper>
                     <ProfilePic src={src} />
@@ -93,7 +93,7 @@ class NavBar extends Component {
                 </ProfilePicWrapper>
               </MediaQuery>
 
-              <MediaQuery maxWidth={550}>
+              <MediaQuery maxWidth={800}>
                 <ProfilePicWrapper size="lg">
                   <Hamburger className="fas fa-bars" />
                 </ProfilePicWrapper>
@@ -101,8 +101,8 @@ class NavBar extends Component {
 
               <DropdownMenuWrapper right>
                 <DropdownItem disabled>
-                  <MediaQuery minWidth={550}>Logged in as</MediaQuery>
-                  <MediaQuery maxWidth={550}>
+                  <MediaQuery minWidth={801}>Logged in as</MediaQuery>
+                  <MediaQuery maxWidth={800}>
                     <DropdownUserWrapper>
                       <ImageCropper>
                         <ProfilePic src={src} />
@@ -110,41 +110,41 @@ class NavBar extends Component {
                       <UserHeader>{this.props.user.username}</UserHeader>
                     </DropdownUserWrapper>
                   </MediaQuery>
-                  <MediaQuery minWidth={550}>
+                  <MediaQuery minWidth={801}>
                     <UserHeader>{this.props.user.username}</UserHeader>
                   </MediaQuery>
                 </DropdownItem>
                 <DropdownDivider divider />
-                <MediaQuery maxWidth={550}>
+                <MediaQuery maxWidth={800}>
                   <DropdownCreditsWrapper>
                     <Credits>Credits: {this.props.user.credits}</Credits>
                   </DropdownCreditsWrapper>
-                  <MediaQuery maxWidth={550}>
+                  <MediaQuery maxWidth={800}>
                     <DropdownDivider divider />
                   </MediaQuery>
                   <DropdownLink to={`/buy`}>
                     <StyledDropdownItem>Buy Credits</StyledDropdownItem>
                   </DropdownLink>
-                  <MediaQuery maxWidth={550}>
+                  <MediaQuery maxWidth={800}>
                     <DropdownDivider divider />
                   </MediaQuery>
                 </MediaQuery>
                 <DropdownLink exact to={`/`}>
                   <StyledDropdownItem>Dashboard</StyledDropdownItem>
                 </DropdownLink>
-                <MediaQuery maxWidth={550}>
+                <MediaQuery maxWidth={800}>
                   <DropdownDivider divider />{' '}
                 </MediaQuery>
                 <DropdownLink to={`/account`}>
                   <StyledDropdownItem>Account</StyledDropdownItem>
                 </DropdownLink>
-                <MediaQuery maxWidth={550}>
+                <MediaQuery maxWidth={800}>
                   <DropdownDivider divider />{' '}
                 </MediaQuery>
                 <DropdownLink to={`/settings`}>
                   <StyledDropdownItem>Settings</StyledDropdownItem>
                 </DropdownLink>
-                <MediaQuery maxWidth={550}>
+                <MediaQuery maxWidth={800}>
                   <DropdownDivider divider />{' '}
                 </MediaQuery>
                 <Logout onClick={this.handleLogout}>
