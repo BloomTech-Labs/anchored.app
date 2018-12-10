@@ -29,10 +29,12 @@ router.get('/', (req, res) => {
 
 router.get('/:id', ensureAuthenticated, (req, res) => {
   const { id } = req.params;
+  console.log(id);
 
   payments
     .findByUserId(id)
     .then(invoice => {
+      console.log(invoice);
       res.status(200).json(invoice);
     })
     .catch(err => {
