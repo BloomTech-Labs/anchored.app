@@ -50,6 +50,7 @@ export default (state = initialState, action) => {
       const envelopes = state.envelopes.slice();
       const index = envelopes.findIndex(env => env.id === action.payload.id);
       envelopes[index].waiting = true;
+      envelopes[index].loading = false;
       envelopes[index].verified_proof = action.payload.verified_proof;
       return {
         ...state,
