@@ -64,3 +64,9 @@ export const LoadingContainer = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
+export const PreviewIcon = styled.div`
+  padding-left: 5px;
+  color: #17a2b8;
+  opacity: 0.5;
+`;

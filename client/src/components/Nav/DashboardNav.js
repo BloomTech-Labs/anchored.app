@@ -11,26 +11,21 @@ import {
   BuyCreditsButton,
   Img,
   Credits,
+  DropdownCreditsWrapper,
   DropdownLink,
   StyledDropdownItem,
+  DropdownMenuWrapper,
+  DropdownDivider,
+  DropdownUserWrapper,
+  Hamburger,
   UserHeader,
   Logout,
+  ImageCropper,
+  ProfilePic,
+  ProfilePicWrapper,
 } from './styles/NavStyles.js';
-import {
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  Button,
-} from 'reactstrap';
+import { Dropdown, DropdownItem, Button } from 'reactstrap';
 import Logo from '../../assets/Proofd_3.png';
-
-// styles for profile image
-const ProfileImage = {
-  height: '50px',
-  borderRadius: '25px',
-  verticalalign: 'middle',
-};
 
 class NavBar extends Component {
   constructor(props) {
@@ -90,40 +85,68 @@ class NavBar extends Component {
               </NavLink>
             </MediaQuery>
             <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-              <DropdownToggle size="sm" caret color="none">
-                <img
-                  style={ProfileImage}
-                  src={src}
-                  alt="user profile thumbnail"
-                />
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem disabled>Logged in as</DropdownItem>
+              <MediaQuery minWidth={550}>
+                <ProfilePicWrapper size="sm" caret color="none">
+                  <ImageCropper>
+                    <ProfilePic src={src} />
+                  </ImageCropper>
+                </ProfilePicWrapper>
+              </MediaQuery>
+
+              <MediaQuery maxWidth={550}>
+                <ProfilePicWrapper size="lg">
+                  <Hamburger className="fas fa-bars" />
+                </ProfilePicWrapper>
+              </MediaQuery>
+
+              <DropdownMenuWrapper right>
                 <DropdownItem disabled>
-                  <UserHeader>{this.props.user.username}</UserHeader>
+                  {/* <LoggedInHeader>Logged in as</LoggedInHeader>
+                   */}
+                  <DropdownUserWrapper>
+                    <ImageCropper>
+                      <ProfilePic src={src} />
+                    </ImageCropper>
+                    <UserHeader>{this.props.user.username}</UserHeader>
+                  </DropdownUserWrapper>
                 </DropdownItem>
-                <DropdownItem divider />
+                <DropdownDivider divider />
                 <MediaQuery maxWidth={550}>
-                  <DropdownItem>
+                  <DropdownCreditsWrapper>
                     <Credits>Credits: {this.props.user.credits}</Credits>
-                  </DropdownItem>
+                  </DropdownCreditsWrapper>
+                  <MediaQuery maxWidth={550}>
+                    <DropdownDivider divider />
+                  </MediaQuery>
                   <DropdownLink to={`/buy`}>
                     <StyledDropdownItem>Buy Credits</StyledDropdownItem>
                   </DropdownLink>
+                  <MediaQuery maxWidth={550}>
+                    <DropdownDivider divider />
+                  </MediaQuery>
                 </MediaQuery>
                 <DropdownLink exact to={`/`}>
                   <StyledDropdownItem>Dashboard</StyledDropdownItem>
                 </DropdownLink>
+                <MediaQuery maxWidth={550}>
+                  <DropdownDivider divider />{' '}
+                </MediaQuery>
                 <DropdownLink to={`/account`}>
                   <StyledDropdownItem>Account</StyledDropdownItem>
                 </DropdownLink>
+                <MediaQuery maxWidth={550}>
+                  <DropdownDivider divider />{' '}
+                </MediaQuery>
                 <DropdownLink to={`/settings`}>
                   <StyledDropdownItem>Settings</StyledDropdownItem>
                 </DropdownLink>
+                <MediaQuery maxWidth={550}>
+                  <DropdownDivider divider />{' '}
+                </MediaQuery>
                 <Logout onClick={this.handleLogout}>
                   <StyledDropdownItem>Log out</StyledDropdownItem>
                 </Logout>
-              </DropdownMenu>
+              </DropdownMenuWrapper>
             </Dropdown>
           </Links>
         </TopNavBar>
