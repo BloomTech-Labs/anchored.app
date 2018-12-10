@@ -33,6 +33,11 @@ export const InfoWrapper = styled.div`
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+
+  @media (max-width: 550px) {
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const InfoDate = styled.div`
@@ -58,6 +63,11 @@ export const InfoWrapperTwo = styled.div`
 export const MainHeader = styled.h3`
   display: flex;
   margin-bottom: 30px;
+
+  @media (max-width: 550px) {
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const ContentContainer = styled.div`
