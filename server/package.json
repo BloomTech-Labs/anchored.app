@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --watch --verbose",
     "start": "node index.js",
     "devserver": "nodemon index.js"
   },
@@ -20,7 +20,9 @@
   },
   "homepage": "https://github.com/Lambda-School-Labs/ChainPointDocusign#readme",
   "devDependencies": {
-    "nodemon": "^1.18.6"
+    "jest": "^23.6.0",
+    "nodemon": "^1.18.6",
+    "supertest": "^3.3.0"
   },
   "dependencies": {
     "axios": "^0.18.0",
