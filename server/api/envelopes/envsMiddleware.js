@@ -157,7 +157,7 @@ function checkToken(req, res, next) {
       return handleExpiration(req, res, next);
     }
   } else {
-    return res.status(401).json({ message: 'You need to be logged in!' });
+    return res.status(200).json(null);
   }
 }
 
