@@ -89,7 +89,6 @@ export const EditPictureWrapper = styled.div`
 `;
 
 export const EditPicture = styled.img`
-  border-radius: 8%;
   display: inline;
   margin: 0 auto;
   height: 100%;
