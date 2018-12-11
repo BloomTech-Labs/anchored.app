@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getAllUserInfo, onToken } from '../../actions/billing';
+import { onToken } from '../../actions/billing';
 import BuyBox from './BuyBox.js';
 
 import { BoxContainer, BasicDiv } from './styles/BuyStyles.js';
@@ -85,5 +85,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getAllUserInfo, onToken }
+  { onToken }
 )(Billing);
