@@ -19,7 +19,7 @@ export const TopNavBar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @media (max-width: 550px) {
+  @media (max-width: 800px) {
     height: 100px;
     padding: 0 15px;
   }
@@ -32,10 +32,9 @@ export const Links = styled.div`
   align-items: center;
   padding: 0 20px;
 
-  @media (max-width: 550px) {
+  @media (max-width: 800px) {
     padding: 0 15px;
     margin-top: 10px;
-    margin-right: -20px;
   }
 `;
 
@@ -86,7 +85,7 @@ export const Credits = styled.div`
   align-items: center;
   font-weight: bold;
 
-  @media (max-width: 550px) {
+  @media (max-width: 800px) {
     padding: 0;
     justify-content: flex-start;
     color: white;
@@ -123,7 +122,7 @@ export const StyledDropdownItem = styled(DropdownItem)`
       color: white;
     }
   }
-  @media (max-width: 550px) {
+  @media (max-width: 800px) {
     color: white;
     font-size: 1.3rem;
     font-weight: bold;
@@ -137,21 +136,20 @@ export const StyledDropdownItem = styled(DropdownItem)`
 `;
 
 export const DropdownMenuWrapper = styled(DropdownMenu)`
-  @media (max-width: 550px) {
+  @media (max-width: 800px) {
     width: 100vw;
+    padding: 10px 15px;
+    margin-right: -30px;
     background: #24292e;
   }
 `;
 
 export const DropdownDivider = styled(DropdownItem)`
-  @media (max-width: 550px) {
+  @media (max-width: 800px) {
     border-top: 1px solid #444d56;
   }
 `;
 
-export const LoggedInHeader = styled.div`
-  color: white;
-`;
 export const DropdownUserWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -159,8 +157,8 @@ export const DropdownUserWrapper = styled.div`
 
 export const UserHeader = styled.div`
   font-weight: bold;
-  padding-left: 20px;
-  @media (max-width: 550px) {
+  @media (max-width: 800px) {
+    padding-left: 20px;
     color: white;
 `;
 
@@ -168,10 +166,10 @@ export const ProfilePicWrapper = styled(DropdownToggle)`
   display: flex;
   align-items: center;
 
-  @media (max-width: 550px) {
+  @media (max-width: 800px) {
     background: white;
     border: none;
-    margin-right: 10px;
+    margin-right: -20px;
 
     &:hover {
       background: none;
