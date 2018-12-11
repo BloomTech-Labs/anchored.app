@@ -7,6 +7,7 @@ export const DocumentsContainer = styled.div`
   justify-content: center;
   align-items: center;
   max-width: 1010px;
+  width: 100%;
   margin: 0 auto;
   margin-top: 10px;
   height: 100%;
@@ -88,7 +89,8 @@ export const AppContainer = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  width: 1010px;
+  max-width: 1010px;
+  width: 100%;
 
   @media (max-width: 800px) {
     flex-direction: column;
