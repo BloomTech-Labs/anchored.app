@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DocusignUnlink from '../Auth/Docusign/DocusignUnlink.js';
 import PasswordReset from './PasswordReset.js';
@@ -14,7 +14,6 @@ import {
   InfoTextTitle,
   EditPicture,
   EditPictureWrapper,
-  EditButton,
   DropZoneWrapper,
   DocuSignImg,
   UploadWrapper,

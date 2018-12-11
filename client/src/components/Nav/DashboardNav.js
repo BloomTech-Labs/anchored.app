@@ -96,13 +96,11 @@ class NavBar extends Component {
                   </ImageCropper>
                 </ProfilePicWrapper>
               </MediaQuery>
-
               <MediaQuery maxWidth={800}>
                 <ProfilePicWrapper size="lg">
                   <Hamburger className="fas fa-bars" />
                 </ProfilePicWrapper>
               </MediaQuery>
-
               <DropdownMenuWrapper right>
                 <DropdownItem disabled>
                   <MediaQuery minWidth={801}>Logged in as</MediaQuery>
