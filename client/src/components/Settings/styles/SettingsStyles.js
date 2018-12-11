@@ -42,6 +42,11 @@ export const SubHeaderWrapper = styled.div`
   display: flex;
   padding-bottom: 15px;
   border-bottom: 1px solid #7344c1;
+
+  @media (max-width: 550px) {
+    justify-content: center;
+    width: 100%;
+  }
 `;
 
 export const SubHeader = styled.h4`
