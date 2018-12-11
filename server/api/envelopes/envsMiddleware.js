@@ -66,29 +66,6 @@ async function getEnvelopes(envelopesApi, account_id, envelopes) {
   return results;
 }
 
-// async function getImages(envelopesApi, account_id, documents) {
-//   let imagesP = promisify(envelopesApi.getDocumentPageImage).bind(envelopesApi);
-//   let results = [];
-//   for (let i = 0; i < documents.length; i++) {
-//     for (let j = 0; j < documents[i].envelopeDocuments.length; j++) {
-//       let envelope_id = documents[i].envelopeId;
-//       let document_id = documents[i].envelopeDocuments[j].documentId;
-//       let status = documents[i].status;
-//       if (!document_id || document_id === 'certificate') break;
-
-//       let image = await imagesP(account_id, envelope_id, document_id, '1', {
-//         maxWidth: '200',
-//         maxHeight: '300',
-//       });
-
-//       if (image) {
-//         results.push({ envelope_id, document_id, status, image });
-//       }
-//     }
-//   }
-//   return results;
-// }
-
 async function postEnvToDB(req, res, new_envelopes) {
   const account_id = req.user.account_id;
   const user_envelopes = await envs.findAllByUser(account_id);
@@ -189,6 +166,5 @@ module.exports = {
   checkToken,
   getEnvelopes,
   getEnvelopesList,
-  // getImages,
   postEnvToDB,
 };

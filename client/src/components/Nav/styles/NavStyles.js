@@ -165,6 +165,11 @@ export const UserHeader = styled.div`
 export const ProfilePicWrapper = styled(DropdownToggle)`
   display: flex;
   align-items: center;
+  background: none; /* Fixes Firefox background color */
+
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba(115, 68, 193, .25);
+  }
 
   @media (max-width: 800px) {
     background: white;
