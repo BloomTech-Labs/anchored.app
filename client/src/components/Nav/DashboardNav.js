@@ -121,6 +121,7 @@ class NavBar extends Component {
                       <UserHeader>{this.props.user.username}</UserHeader>
                     </DropdownUserWrapper>
                   </MediaQuery>
+                  {/* {*** Displays username desktop view ***} */}
                   <MediaQuery minWidth={801}>
                     <UserHeader>{this.props.user.username}</UserHeader>
                   </MediaQuery>
