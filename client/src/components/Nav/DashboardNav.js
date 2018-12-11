@@ -57,10 +57,12 @@ class NavBar extends Component {
   };
 
   render() {
+    // User uploaded image or social media default
     const picture = this.props.user.uploaded_picture
       ? this.props.user.uploaded_picture
       : this.props.user.picture;
 
+    // Conversion for user uploaded image
     let src = picture;
     if (picture.type) {
       const data = Buffer.from(picture.data).toString();
@@ -73,6 +75,7 @@ class NavBar extends Component {
           <NavLink exact to={`/`}>
             <Img src={Logo} alt="Proofd Logo" />
           </NavLink>
+          {/* {*** Links ***} */}
           <Links>
             <MediaQuery minWidth={801}>
               <Credits>Credits: {this.props.user.credits}</Credits>
@@ -84,11 +87,13 @@ class NavBar extends Component {
                 </BuyCreditsButton>
               </NavLink>
             </MediaQuery>
+            {/* {*** Dropdown ***} */}
             <Dropdown
               isOpen={this.state.dropdownOpen}
               toggle={this.toggle}
               inNavbar={true}
             >
+              {/* {*** Thumbnail with Carrot ***} */}
               <MediaQuery minWidth={801}>
                 <ProfilePicWrapper size="sm" caret color="none">
                   <ImageCropper>
@@ -96,14 +101,18 @@ class NavBar extends Component {
                   </ImageCropper>
                 </ProfilePicWrapper>
               </MediaQuery>
+              {/* {*** Hamburger ***} */}
               <MediaQuery maxWidth={800}>
                 <ProfilePicWrapper size="lg">
                   <Hamburger className="fas fa-bars" />
                 </ProfilePicWrapper>
               </MediaQuery>
+              {/* {*** Dropdown Menu ***} */}
               <DropdownMenuWrapper right>
                 <DropdownItem disabled>
+                  {/* { *** Displays 'Logged in as' text ***} */}
                   <MediaQuery minWidth={801}>Logged in as</MediaQuery>
+                  {/* {*** Displays user thumbnail and username ***} */}
                   <MediaQuery maxWidth={800}>
                     <DropdownUserWrapper>
                       <ImageCropper>
