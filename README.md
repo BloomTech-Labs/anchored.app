@@ -6,6 +6,24 @@
 
 Proofd utilizes Chainpoint's innovative technology which allows users to securely link a hash of their data, such as important documents, to the Bitcoin blockchain. After logging in, users can connect with third party applications such as DocuSign and get timestamp proofs for any file. By associating data to a tamper-proof, immutable ledger, it can be mathematically proven that the data existed at an exact time and place.
 
+## The Proofd Team
+
+### Developers
+
+- [Jeremy A. Jones](https://github.com/crypto-jones)
+- [Zack Hitchcock](https://github.com/zackhitch)
+- [Brandon Aguirre](https://github.com/DirupT)
+- [Randy Calderon](https://github.com/RandyCalderon)
+- [Sean Chavez](https://github.com/seanchavez)
+
+### Project Manager
+
+- [Jared Cuffe](https://github.com/jcuffe)
+
+### UI/UX Designer
+
+- [Suniti Thapa](https://www.linkedin.com/in/suniti-thapa-10688355/)
+
 ### Stack
 
 Proofd utilizes [Heroku](https://www.heroku.com/) and [Netlify](https://www.netlify.com/) for deployment, and is built in full stack JavaScript with a [React.js](https://reactjs.org/) frontend, [Node.js](https://nodejs.org/en/)/[Express.js](https://expressjs.com/) backend, and a [PostgreSQL](https://www.postgresql.org) database in production, while a [SQLite3](https://www.sqlite.org/index.html) database was used in development.
@@ -32,12 +50,3 @@ Our backend consists of Node.js, Express.js, and utilizes the Chainpoint API for
 |        |          |         |          |
 |        |          |         |          |
 |        |          |         |          |
-
-## The Proofd Team
-
-- [Brandon Aguirre](https://github.com/DirupT)
-- [Randy Calderon](https://github.com/RandyCalderon)
-- [Sean Chavez](https://github.com/seanchavez)
-- [Zack Hitchcock](https://github.com/zackhitch)
-- [Jeremy Jones](https://github.com/crypto-jones)
-- Shoutout to [Jared Cuffe](https://github.com/jcuffe)
