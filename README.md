@@ -1,5 +1,7 @@
 # Proofd
 
+![Proofd Logo](/client/src/assets/Proofd_3.png)
+
 **_A blockchain enabled verification platform_**
 
 Proofd allows users to securely proof data such as important documents on the blockchain. After logging in, users can connect with third party applications, such as DocuSign, and put data such as signed legal documents, on the Bitcoin blockchain for secure, immutable proof of the transaction.
