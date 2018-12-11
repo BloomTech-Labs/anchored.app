@@ -4,7 +4,7 @@
 
 **_A blockchain enabled verification platform_**
 
-Proofd utilizes Chainpoint's innovative technology which allows users to securely link a hash of their data, such as important documents, to the Bitcoin blockchain. After logging in, users can connect with third party applications such as DocuSign and get timestamp proofs for any file. By associating data to a tamper-proof, immutable ledger, it can be mathematically proven that the data existed at an exact time and place.
+Proofd utilizes [Chainpoint's](https://chainpoint.org/) innovative technology which allows users to securely link a hash of their data, such as important documents, to the [Bitcoin](https://bitcoin.org/en/) blockchain. After logging in, users can connect with third party applications such as [DocuSign](https://www.docusign.com/) and get timestamp proofs for any file. By associating data to a tamper-proof, immutable ledger, it can be mathematically proven that the data existed at an exact time and place.
 
 ## The Proofd Team
 
