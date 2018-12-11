@@ -57,11 +57,34 @@ Proofd utilizes [Heroku](https://www.heroku.com/) and [Netlify](https://www.netl
   - Compose new styles from existing components
   - Passing properties to the component allows for more flexibility
 
-### Backend
+#### Backend
 
 [https://chainpoint-docusign-server.herokuapp.com/](https://chainpoint-docusign-server.herokuapp.com/)
 
-Our backend consists of Node.js, Express.js, and utilizes the Chainpoint API for connecting to the blockchain, as well as Stripe for payment processing.
+- Node.js
+
+  - Utilizes Google's V8 JS engine which is lightening fast, highly performant, and more scalable
+  - Event loop allows non-blocking I/O operations which enhances speed of code execution
+  - Integrates seamlessly with microservices architecture
+  - Fullstack JS allows JS developers to work on both client and server sides potentially increasing productivity and saving money for startups
+
+- Express
+
+  - Includes numerous routing features and separate handlers for HTTP methods
+  - Serves static files such as images and CSS / JS files
+  - Integrates seamlessly with many popular template engine and NPM module plugins
+
+- PostgreSQL
+  - Supports many data types
+  - Strongly typed schemas leaves little room for errors
+  - Superior query optimizer for more complex data models
+
+### API
+
+- Chainpoint
+- DocuSign
+- Stripe
+- Auth0
 
 ### API Endpoints
 
