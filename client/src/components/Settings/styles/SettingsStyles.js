@@ -12,6 +12,11 @@ export const SettingsWrapper = styled.div`
   max-width: 1010px;
   height: 100%;
   padding: 0 20px;
+
+  @media (max-width: 550px) {
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const SubSettingsWrapper = styled.div`
@@ -21,8 +26,10 @@ export const SubSettingsWrapper = styled.div`
   margin-top: 30px;
   padding-bottom: 50px;
   overflow-x: hidden;
+
   @media (max-width: 550px) {
     flex-direction: column;
+    align-items: center;
   }
 `;
 
@@ -45,8 +52,10 @@ export const InfoWrapper = styled.div`
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+
   @media (max-width: 550px) {
     padding: 20px;
+    align-items: center;
   }
 `;
 
