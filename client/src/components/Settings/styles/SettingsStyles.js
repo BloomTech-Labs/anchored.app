@@ -81,9 +81,7 @@ export const EditButton = styled(Button)`
   }
 
   &:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(115, 68, 193, 0.5),
-      0 0 0 1.5px rgba(115, 68, 193, 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(115, 68, 193, 0.5);
   }
 `;
 
