@@ -4,7 +4,7 @@ import logo from '../../../assets/Proofd_3.png';
 const options = {
   theme: {
     logo: logo,
-    primaryColor: '#303A58',
+    primaryColor: '#7344c1',
     foregroundColor: '#303A58',
   },
   languageDictionary: {

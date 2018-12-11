@@ -42,6 +42,11 @@ export const SubHeaderWrapper = styled.div`
   display: flex;
   padding-bottom: 15px;
   border-bottom: 1px solid #7344c1;
+
+  @media (max-width: 550px) {
+    justify-content: center;
+    width: 100%;
+  }
 `;
 
 export const SubHeader = styled.h4`
@@ -76,9 +81,7 @@ export const EditButton = styled(Button)`
   }
 
   &:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(115, 68, 193, 0.5),
-      0 0 0 1.5px rgba(115, 68, 193, 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(115, 68, 193, 0.5);
   }
 `;
 
