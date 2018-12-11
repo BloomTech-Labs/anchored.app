@@ -36,6 +36,8 @@ Our backend consists of Node.js, Express.js, and utilizes the Chainpoint API for
 | GET    | /chainpoint/:id/loading | id\*                  | Object with envelope status                          |
 | GET    | /auth/logout            |                       | 200 on successful logout                             |
 
+\* denotes required field.
+
 ## The Proofd Team
 
 - [Brandon Aguirre](https://github.com/DirupT)
