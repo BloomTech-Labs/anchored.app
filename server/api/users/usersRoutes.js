@@ -4,6 +4,10 @@ const { ensureAuthenticated } = require('../auth/docusign/dsMiddleware');
 
 const router = express.Router();
 
+router.get('/profile', (req, res) => {
+  res.status(200).json({ user: req.user });
+});
+
 router.use(ensureAuthenticated);
 
 // Adds new user uploaded image
@@ -19,10 +23,6 @@ router.put('/image', (req, res) => {
     .catch(err => {
       res.status(500).json({ ErrorMessage: err.message });
     });
-});
-
-router.get('/profile', (req, res) => {
-  res.status(200).json({ user: req.user });
 });
 
 router.get('/subscription', (req, res) => {
