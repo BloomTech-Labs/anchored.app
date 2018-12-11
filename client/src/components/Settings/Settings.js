@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DocusignUnlink from '../Auth/Docusign/DocusignUnlink.js';
 import PasswordReset from './PasswordReset.js';
@@ -14,7 +14,6 @@ import {
   InfoTextTitle,
   EditPicture,
   EditPictureWrapper,
-  EditButton,
   DropZoneWrapper,
   DocuSignImg,
   UploadWrapper,
@@ -30,8 +29,10 @@ class Settings extends Component {
     this.state = { file: null };
   }
 
+  // Upload + drag and drop to picture icon
   onDrop = acceptedfile => {
     acceptedfile.forEach(photo => {
+      // png + jpg to binary conversion
       const reader = new FileReader();
       reader.onload = () => {
         const fileAsBinaryString = reader.result;
@@ -43,12 +44,14 @@ class Settings extends Component {
     });
   };
 
+  // Cancel upload
   onCancel = () => {
     this.setState({
       file: null,
     });
   };
 
+  // Submit photo to db
   onSubmit = () => {
     const uploaded_picture = this.state.file;
     this.props.newProfileImage(uploaded_picture);
@@ -99,7 +102,7 @@ class Settings extends Component {
             onDrop={this.onDrop.bind(this)}
             onFileDialogCancel={this.onCancel.bind(this)}
             multiple={false}
-            maxSize={60000}
+            maxSize={60000} // 60KB upload limit
             disableClick
             onDropRejected={() =>
               alert('Accepted file types are .jpg and .png at max size 60KB')
@@ -110,7 +113,7 @@ class Settings extends Component {
                 <EditPictureWrapper>
                   <EditPicture
                     src={this.state.file ? this.state.file : PhotoIcon}
-                    onClick={() => open()}
+                    onClick={() => open()} // Opens upload files from drive dropdown
                   />
                 </EditPictureWrapper>
                 {this.state.file !== null ? (

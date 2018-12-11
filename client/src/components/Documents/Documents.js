@@ -149,15 +149,9 @@ class Documents extends React.Component {
               ? 'Documents Awaiting Signatures'
               : 'All Documents'}
           </TabDescription>
-          {/* <AddDocumentContainer
-            target="_blank"
-            href="https://appdemo.docusign.com/home"
-          >
-            <AddDocument className="fas fa-plus-circle" />
-            Add Document
-          </AddDocumentContainer> */}
         </TabHeader>
 
+        {/* { Displays documents from latest to earliest } */}
         {this.filterCards()
           .map(doc => {
             return (
