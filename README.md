@@ -79,12 +79,29 @@ Proofd utilizes [Heroku](https://www.heroku.com/) and [Netlify](https://www.netl
   - Strongly typed schemas leaves little room for errors
   - Superior query optimizer for more complex data models
 
-### API
+## API
 
-- Chainpoint
-- DocuSign
-- Stripe
-- Auth0
+### Third Party API
+
+- [DocuSign](https://developers.docusign.com/)
+
+  - We pull in user documents via DocuSign's API to our database, flag them, and then filter them on the client-side based on five categories:
+    - All Documents
+    - Proofed Documents
+    - Documents Pending Proof
+    - Signed Documents Awaiting Proof
+    - Unsigned Documents Awaiting Signatures
+
+- [Chainpoint](https://chainpoint.org/)
+
+  - When a user verifies they would like to proof their document, we send a hash of that data to Chainpoint, which is aggregrated with other hashes using a Merkle tree. The root of the tree is published in a Bitcoin transaction, which cryptographically links the given data to a block on the Bitcoin blockchain.
+
+- [Stripe](https://stripe.com/docs/api)
+
+  - Users can purchase the number of credits they want with a valid credit card, which is verified and charged via Stripe.
+
+- [Auth0](https://auth0.com/docs/api/info)
+  - Users can sign up / log in using a social media or enterprise account or their own email address. Auth0 handles authentication and authorization for more secure sign ups and log ins.
 
 ### API Endpoints
 
