@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { getEnvelopes, getProof, updateLoading } from '../../actions/envelopes';
@@ -7,7 +7,6 @@ import { LoadingContainer } from './styles/DocumentsStyles.js';
 import DocusignLogin from '../Auth/Docusign/DocusignLogin';
 import Document from './Document';
 import DocusignLogo from '../../assets/docusign_logo_standard.png';
-
 import {
   DocumentOptionsContainer,
   DocumentsOptions,
@@ -48,14 +47,16 @@ class Documents extends React.Component {
     if (this.state.selected === 'all') {
       return this.props.envelopes;
     } else if (this.state.selected === 'waiting') {
-      return this.props.envelopes.filter(env => env.waiting === 1);
+      return this.props.envelopes.filter(env => Boolean(env.waiting) === true);
     } else if (this.state.selected === 'unsigned') {
       return this.props.envelopes.filter(env => env.status !== 'completed');
     } else if (this.state.selected === 'signed') {
-      return this.props.envelopes.filter(
-        env =>
-          env.status === 'completed' && env.waiting === 0 && env.verified === 0
-      );
+      return this.props.envelopes.filter(env => {
+        const completed = env.status === 'completed';
+        const waiting = Boolean(env.waiting);
+        const verified = Boolean(env.verified);
+        return completed && !waiting && !verified;
+      });
     } else {
       return this.props.envelopes.filter(env => {
         return Boolean(env.verified) === this.state.selected;
@@ -74,22 +75,20 @@ class Documents extends React.Component {
 
     if (!this.props.envelopes) {
       return (
-        <Fragment>
-          <DocumentsContainer>
-            <DocumentsHeader>Your Connected Apps</DocumentsHeader>
-            <AppContainer>
-              <AppDiv>
-                <Img src={DocusignLogo} alt="DocuSign Logo" />
-                <DocusignLogin />
-              </AppDiv>
-              <AppDiv>
-                <AddIcon>+</AddIcon>
-                <AppCopy>Add New App</AppCopy>
-                <Small>(Coming Soon!)</Small>
-              </AppDiv>
-            </AppContainer>
-          </DocumentsContainer>
-        </Fragment>
+        <DocumentsContainer>
+          <DocumentsHeader>Your Connected Apps</DocumentsHeader>
+          <AppContainer>
+            <AppDiv>
+              <Img src={DocusignLogo} alt="DocuSign Logo" />
+              <DocusignLogin />
+            </AppDiv>
+            <AppDiv>
+              <AddIcon>+</AddIcon>
+              <AppCopy>Add New App</AppCopy>
+              <Small>(Coming Soon!)</Small>
+            </AppDiv>
+          </AppContainer>
+        </DocumentsContainer>
       );
     }
 

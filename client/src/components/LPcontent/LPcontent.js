@@ -12,7 +12,7 @@ import {
   TagLine,
   PlayImg,
   BgContainer,
-  MiddleWorks,
+  OutterMost,
 } from './styles/LPcontentStyles.js';
 
 import { Element } from 'react-scroll';
@@ -25,26 +25,26 @@ import fingerpringImg from '../../assets/orange_icon_proof.png';
 
 const LPcontent = () => {
   return (
-    <Container>
-      <ContentMain>
-        <MiddleWorks>
-          <BgContainer>
+    <OutterMost>
+      <BgContainer className="bgContainer">
+        <Container>
+          <ContentMain>
             <H2>How Proofd Works:</H2>
             <ContentSet>
               <NumberedImage>
                 <Image src={docImg} alt="Image of a Document" />
               </NumberedImage>
               <Copy>
-                Leverage agile frameworks to provide a robust synopsis for high
-                level overviews. Iterative approaches to corporate strategy
-                foster collaborative thinking.
+                Connect to a number of third party services that allow for easy
+                transfer of your data to Proofd and select which files you would
+                like to link to the Bitcoin blockchain.
               </Copy>
             </ContentSet>
             <ContentSet>
               <Copy>
-                Bring to the table win-win survival strategies to ensure
-                proactive domination. At the end of the day, going forward, a
-                new normal that has evolved from generation X.
+                By using Chainpoint's innovative technology, a tamper-proof
+                cryptographic token is generated which is published in a Bitcoin
+                transaction.
               </Copy>
               <NumberedImage>
                 <Image src={blockImg} alt="Blockchain image" />
@@ -55,38 +55,38 @@ const LPcontent = () => {
                 <Image src={fingerpringImg} alt="Fingerprint image" />
               </NumberedImage>
               <Copy>
-                Capitalize on low hanging fruit to identify a ballpark value
-                added activity to beta test. Override the digital divide with
-                additional clickthroughs from DevOps.
+                By associating your data to an immutable ledger, you can
+                mathematically prove that your data existed at an exact time and
+                place.
               </Copy>
             </ContentSet>
             <ContentSet>
               <PlayImg src={playImg} alt="play icon" />
               <TagLine>The science behind our work</TagLine>
             </ContentSet>
-          </BgContainer>
-        </MiddleWorks>
-        <PricingSection>
-          <H1>Killer Prices, Subscribe and Save</H1>
-          <Element name="pricingSheets">
-            <ContentSet>
-              <ContentBox
-                title="Pay As You Go"
-                copyOne="3 Free Credits"
-                copyTwo="Purchase Credits A La Carte"
-                copyThree="Upgrade Anytime"
-              />
-              <ContentBox
-                title="Premium Subscription"
-                copyOne="Unlimited Credits"
-                copyTwo="$25 billed monthly, or"
-                copyThree="$240 billed annually"
-              />
-            </ContentSet>
-          </Element>
-        </PricingSection>
-      </ContentMain>
-    </Container>
+          </ContentMain>
+        </Container>
+      </BgContainer>
+      <PricingSection>
+        <H1>Killer Prices, Subscribe and Save</H1>
+        <Element name="pricingSheets">
+          <ContentSet>
+            <ContentBox
+              title="Pay As You Go"
+              copyOne="3 Free Credits"
+              copyTwo="Purchase Credits A La Carte"
+              copyThree="Upgrade Anytime"
+            />
+            <ContentBox
+              title="Premium Subscription"
+              copyOne="Unlimited Credits"
+              copyTwo="$25 billed monthly, or"
+              copyThree="$240 billed annually"
+            />
+          </ContentSet>
+        </Element>
+      </PricingSection>
+    </OutterMost>
   );
 };
 

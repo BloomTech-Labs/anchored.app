@@ -6,6 +6,11 @@ function ensureAuthenticated(req, res, next) {
   return res.status(401).json({ message: 'You need to be logged in!' });
 }
 
+function ensureAuthenticatedRedirect(req, res, next) {
+  if (req.isAuthenticated()) return next();
+  res.redirect(process.env.ORIGIN || 'http://localhost:3000');
+}
+
 async function updateUser(req, user_info) {
   try {
     const default_account = user_info.accounts.find(acc => acc.is_default);
@@ -63,4 +68,9 @@ function getDSApi(user) {
   return apiClient;
 }
 
-module.exports = { ensureAuthenticated, updateUser, getDSApi };
+module.exports = {
+  ensureAuthenticated,
+  ensureAuthenticatedRedirect,
+  updateUser,
+  getDSApi,
+};

@@ -1,24 +1,25 @@
 import styled from 'styled-components';
 
+export const OutterMost = styled.div`
+  width: 100%;
+`;
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  max-width: 1026px;
+  max-width: 1010px;
   width: 100%;
   margin: 0 auto;
 `;
 
 export const BgContainer = styled.div`
-  width: 100vw;
+  width: 100%;
   background: rgba(230, 232, 230, 0.4);
-`;
-
-export const MiddleWorks = styled.div`
-  z-index: 1;
-  opacity: 1;
+  display: block;
+  overflow-x: hidden;
 `;
 
 export const ContentMain = styled.div`
@@ -27,9 +28,8 @@ export const ContentMain = styled.div`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  max-width: 1026px;
+  max-width: 1010px;
   width: 100%;
-  margin: 0 auto;
   opacity: 1;
 `;
 
@@ -84,7 +84,7 @@ export const Numbered = styled.div`
 `;
 
 export const PricingSection = styled.div`
-  width: 100vw;
+  width: 100%;
   background-color: white;
 `;
 

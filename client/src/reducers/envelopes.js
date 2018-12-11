@@ -7,12 +7,16 @@ import {
   UPDATE_LOADING,
 } from '../actions/envelopes';
 
+import { UNLINKING_USER, UNLINKED_USER } from '../actions/user';
+
 const initialState = {
   envelopes: null,
   retrievingEnv: false,
   retrievedEnv: false,
   retrievingProof: false,
   retrievedProof: false,
+  unlinking: false,
+  unlinked: false,
   error: null,
 };
 
@@ -46,6 +50,7 @@ export default (state = initialState, action) => {
       const envelopes = state.envelopes.slice();
       const index = envelopes.findIndex(env => env.id === action.payload.id);
       envelopes[index].waiting = true;
+      envelopes[index].loading = false;
       envelopes[index].verified_proof = action.payload.verified_proof;
       return {
         ...state,
@@ -61,6 +66,14 @@ export default (state = initialState, action) => {
       envelopes[index].loading = action.payload.changes.loading;
       envelopes[index].waiting = action.payload.changes.waiting;
       return { ...state, envelopes };
+    }
+
+    case UNLINKING_USER: {
+      return { ...state, unlinking: true, unlinked: false };
+    }
+
+    case UNLINKED_USER: {
+      return { ...state, unlinking: false, unlinked: true, envelopes: null };
     }
 
     case ERROR: {
@@ -81,6 +94,8 @@ export default (state = initialState, action) => {
         retrievedEnv: false,
         retrievingProof: false,
         retrievedProof: false,
+        unlinking: false,
+        unlinked: false,
         envelopes,
         error: action.payload,
       };

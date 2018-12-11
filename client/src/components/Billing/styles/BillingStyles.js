@@ -9,6 +9,7 @@ export const MainWrapper = styled.div`
   margin-top: 30px;
   max-width: 1010px;
   height: 100%;
+  padding: 0 20px;
 `;
 
 export const InvoiceContainer = styled.div`
@@ -32,6 +33,11 @@ export const InfoWrapper = styled.div`
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+
+  @media (max-width: 550px) {
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const InfoDate = styled.div`
@@ -57,6 +63,11 @@ export const InfoWrapperTwo = styled.div`
 export const MainHeader = styled.h3`
   display: flex;
   margin-bottom: 30px;
+
+  @media (max-width: 550px) {
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const ContentContainer = styled.div`

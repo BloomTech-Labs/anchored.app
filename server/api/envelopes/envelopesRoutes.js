@@ -33,7 +33,6 @@ router.get('/all', checkToken, checkExpiration, async (req, res, next) => {
     await postDoctoDB(req, res, documents);
     await postEnvToDB(req, res, envelopes);
   } catch (err) {
-    console.log(err);
     return res.status(500).json(err);
   }
 });

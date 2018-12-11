@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import { INCREMENT_CREDIT, DECREMENT_CREDIT } from './user';
+
 export const RETRIEVING_ENVELOPES = 'RETRIEVING_ENVELOPES';
 export const RETRIEVED_ENVELOPES = 'RETRIEVED_ENVELOPES';
 
@@ -8,14 +10,12 @@ export const RETRIEVED_PROOF = 'RETRIEVED_PROOF';
 
 export const UPDATE_LOADING = 'UPDATE_LOADING';
 
-export const DECREMENT_CREDIT = 'DECREMENT_CREDIT';
-export const INCREMENT_CREDIT = 'INCREMENT_CREDIT';
-
 export const ERROR = 'ERROR';
 
 export const getEnvelopes = () => {
   const promise = axios.get(
-    process.env.REACT_APP_ENVELOPES || 'http://localhost:9000/envelopes/all'
+    process.env.REACT_APP_ENVELOPES || 'http://localhost:9000/envelopes/all',
+    { headers: { 'Cache-Control': 'no-cache' } }
   );
   return dispatch => {
     dispatch({ type: RETRIEVING_ENVELOPES });
