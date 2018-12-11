@@ -5,7 +5,7 @@ import BuyBox from './BuyBox.js';
 
 import { BoxContainer, BasicDiv } from './styles/BuyStyles.js';
 
-class Billing extends Component {
+class Buy extends Component {
   render() {
     return (
       <BoxContainer>
@@ -77,8 +77,6 @@ class Billing extends Component {
 
 const mapStateToProps = state => {
   return {
-    subscription: state.billing.subscription,
-    credits: state.billing.credits,
     fetching: state.retrieving,
   };
 };
@@ -86,4 +84,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   { onToken }
-)(Billing);
+)(Buy);

@@ -20,6 +20,7 @@ export const getUserInfo = () => {
       'http://localhost:9000/users/profile',
     { headers: { 'Cache-Control': 'no-cache' } }
   );
+
   return dispatch => {
     dispatch({ type: RETRIEVING_USER_INFO });
     promise
