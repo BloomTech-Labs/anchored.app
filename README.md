@@ -52,8 +52,10 @@ Proofd utilizes [Heroku](https://www.heroku.com/) and [Netlify](https://www.netl
 
 - Styled Components
   - Scopes styles to a component to avoid style leaks
-
-The frontend of Proofd utilizes React, Redux for state management, React-Router, and axios for making our API calls, as well as Auth0 for authentication, with both local, and social login availability.
+  - Linters will show unused components so they can be removed
+  - Source order independence eliminates the need to import files in a certain order
+  - Compose new styles from existing components
+  - Passing properties to the component allows for more flexibility
 
 ### Backend
 
