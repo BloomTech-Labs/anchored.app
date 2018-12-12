@@ -105,11 +105,18 @@ Proofd utilizes [Heroku](https://www.heroku.com/) and [Netlify](https://www.netl
 
 ### API Endpoints
 
-| Method | Endpoint | Request | Response |
-| ------ | -------- | ------- | -------- |
-|        |          |         |          |
-|        |          |         |          |
-|        |          |         |          |
-|        |          |         |          |
-|        |          |         |          |
-|        |          |         |          |
+| Method | Endpoint                | Request               | Response                                             |
+| ------ | ----------------------- | --------------------- | ---------------------------------------------------- |
+| GET    | /users/profile          |                       | Object of logged in user.                            |
+| GET    | /users/subscription     | email\*               | Object with subscription type and remaining credits. |
+| PUT    | /users/image            | uploaded_picture\*    | Count of updated users.                              |
+| GET    | /documents              | id\*                  | Single document object.                              |
+| GET    | /envelopes/all          | user                  | Array of Envelopes                                   |
+| GET    | /payment                |                       | Array of Invoice objects                             |
+| GET    | /payment/:id            | id\*                  | Single Invoice Object                                |
+| POST   | /payment                | userId, stripeCharges | Invoice                                              |
+| GET    | /chainpoint/:id         | id\*                  | Object with document status                          |
+| GET    | /chainpoint/:id/loading | id\*                  | Object with envelope status                          |
+| GET    | /auth/logout            |                       | 200 on successful logout                             |
+
+\* denotes required field.
