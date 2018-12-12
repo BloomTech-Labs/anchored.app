@@ -13,25 +13,9 @@ const postStripeCharge = res => (stripeErr, stripeRes) => {
   }
 };
 
-router.get('/', (req, res) => {
+router.get('/', ensureAuthenticated, (req, res) => {
   payments
-    .find()
-    .then(invoices => {
-      res.status(200).json(invoices);
-    })
-    .catch(err => {
-      res.status(500).json({ ErrorMessage: err.message });
-    })
-    .catch(err => {
-      res.status(500).json({ ErrorMessage: err.message });
-    });
-});
-
-router.get('/:id', ensureAuthenticated, (req, res) => {
-  const { id } = req.params;
-
-  payments
-    .findByUserId(id)
+    .findByUserId(req.user.id)
     .then(invoice => {
       res.status(200).json(invoice);
     })
