@@ -68,7 +68,7 @@ const LPcontent = () => {
         </Container>
       </BgContainer>
       <PricingSection>
-        <H1>Killer Prices, Subscribe and Save</H1>
+        <H1>Killer Prices. Subscribe and Save.</H1>
         <Element name="pricingSheets">
           <ContentSet>
             <ContentBox
