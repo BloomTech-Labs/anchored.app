@@ -29,18 +29,16 @@ class Billing extends Component {
   }
 
   componentDidMount() {
-    const id = this.props.user.id;
-
     if (process.env.REACT_APP_USERS_INVOICE) {
       axios
-        .get(`${process.env.REACT_APP_USERS_INVOICE}/${id}`)
+        .get(`${process.env.REACT_APP_USERS_INVOICE}`)
         .then(res => {
           this.setState({ invoice: res.data });
         })
         .catch(err => console.log('Error on billing', err.message));
     } else {
       axios
-        .get(`http://localhost:9000/payment/${id}`)
+        .get(`http://localhost:9000/payment`)
         .then(res => {
           this.setState({ invoice: res.data });
         })
