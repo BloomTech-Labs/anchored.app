@@ -120,3 +120,21 @@ Proofd utilizes [Heroku](https://www.heroku.com/) and [Netlify](https://www.netl
 | GET    | /auth/logout            |                       | 200 on successful logout                             |
 
 \* denotes required field.
+
+## Security
+
+### Authentication & Authorization
+
+#### Auth0
+
+We chose Auth0 to handle authentication, which allows users to sign up or log in with Google or Twitter, or with their own email and password. When a user initially signs up, their data is stored on our database and saved as a session. If a user is already signed up, when they log in, the session will pull the user's data from the database and serve it to the client.
+
+#### DocuSign
+
+We used middleware in our routes to ensure that when a user hits a protected endpoint, they must be authenticated. Inside of the app, when a user first logs in to their DocuSign account, their DocuSign data is stored to the database and appended to the current session. After this authentication process, we pull the user's documents via the DocuSign API, store them on our database, and serve them to the client.
+
+### Payments
+
+#### Stripe & Credits
+
+We used Stripe to securely verify user credit cards and payments. After a user submits a payment, if it is successful, Stripe will send back a response that lets us know that their payment was valid as well as an invoice that we save to our database. Once this is complete, a user's credits will be dynamically updated. With the help of Stripe, this ensures that a user cannot hack us and manually update their credits without paying first.
