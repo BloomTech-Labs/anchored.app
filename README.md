@@ -113,7 +113,6 @@ Proofd utilizes [Heroku](https://www.heroku.com/) and [Netlify](https://www.netl
 | GET    | /documents              | id\*                  | Single document object.                              |
 | GET    | /envelopes/all          | user                  | Array of Envelopes                                   |
 | GET    | /payment                |                       | Array of Invoice objects                             |
-| GET    | /payment/:id            | id\*                  | Single Invoice Object                                |
 | POST   | /payment                | userId, stripeCharges | Invoice                                              |
 | GET    | /chainpoint/:id         | id\*                  | Object with document status                          |
 | GET    | /chainpoint/:id/loading | id\*                  | Object with envelope status                          |
