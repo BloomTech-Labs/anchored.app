@@ -51,6 +51,7 @@ router.get(
   (req, res) => res.redirect(process.env.ORIGIN || 'http://localhost:3000')
 );
 
+// Unlink a user from docusign
 router.get('/logout', ensureAuthenticated, async (req, res) => {
   try {
     await docusignModel.updateInfo(req.user.account_id, {

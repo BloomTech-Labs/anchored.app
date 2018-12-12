@@ -7,6 +7,7 @@ const envs = require('./envelopesModel');
 const docusignModel = require('../auth/docusign/docusignModel');
 
 function handleExpiration(req, res, next) {
+  // Gets a new access token using the refresh token if a user's token has expired
   const header = {
     headers: { Authorization: 'Basic ' + process.env.DOCUSIGN_BASE64 },
   };
@@ -40,6 +41,7 @@ function handleExpiration(req, res, next) {
 }
 
 async function getEnvelopesList(envelopesApi, account_id) {
+  // Gets a list of envelopes from the user's docusign account
   let options = {
     fromDate: moment()
       .subtract(6, 'months')
@@ -51,6 +53,7 @@ async function getEnvelopesList(envelopesApi, account_id) {
 }
 
 async function getEnvelopes(envelopesApi, account_id, envelopes) {
+  // Gets specific envelope information from docusign;
   let envelopesP = promisify(envelopesApi.getEnvelope).bind(envelopesApi);
   let results = [];
   for (let i = 0; i < envelopes.envelopes.length; i++) {
@@ -67,6 +70,7 @@ async function getEnvelopes(envelopesApi, account_id, envelopes) {
 }
 
 async function postEnvToDB(req, res, new_envelopes) {
+  // Updates / Adds the user's envelopes to the DB
   const account_id = req.user.account_id;
   const user_envelopes = await envs.findAllByUser(account_id);
   for (let i = 0; i < new_envelopes.length; i++) {
@@ -131,6 +135,7 @@ async function postEnvToDB(req, res, new_envelopes) {
 }
 
 function checkExpiration(req, res, next) {
+  // Check if the 15 minute expiration for making api calls to docusign has expired
   const expiration = req.user.document_expiration;
   if (!expiration || moment().isAfter(JSON.parse(expiration))) {
     const document_expiration = JSON.stringify(moment().add(15, 'm'));
@@ -148,6 +153,7 @@ function checkExpiration(req, res, next) {
 }
 
 function checkToken(req, res, next) {
+  // Check if a user's access token has expired / is valid
   if (req.user.access_token && req.user.refresh_token) {
     const expiration = JSON.parse(req.user.token_expiration);
     const now = moment();
