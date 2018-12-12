@@ -17,6 +17,7 @@ export const DocumentContainer = styled.div`
 `;
 
 export const DocumentSubject = styled.a`
+  align-self: flex-start;
   font-weight: bold;
   font-size: 1.2rem;
   cursor: pointer;
