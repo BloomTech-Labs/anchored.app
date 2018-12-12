@@ -24,7 +24,7 @@ const LinkModal = ({ doc, toggle, isOpen }) => {
           href={link}
           target="_blank"
           alt=""
-          color="primary"
+          color="info"
           onClick={toggle}
         >
           Link to BTC block
