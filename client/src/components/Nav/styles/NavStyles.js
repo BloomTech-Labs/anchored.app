@@ -13,11 +13,12 @@ export const NavGod = styled.div`
 `;
 
 export const TopNavBar = styled.div`
-  max-width: 1026px;
+  max-width: 1010px;
   width: 100%;
   height: 80px;
   display: flex;
   justify-content: space-between;
+  padding-left: 20px;
   align-items: center;
   @media (max-width: 800px) {
     height: 100px;
