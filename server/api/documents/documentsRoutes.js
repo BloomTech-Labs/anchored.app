@@ -8,6 +8,7 @@ const router = express.Router();
 
 router.use(ensureAuthenticated);
 
+// Gets all of an envelopes documents
 router.get('/:id', (req, res) => {
   const { id } = req.params;
   docs

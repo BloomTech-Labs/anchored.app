@@ -39,13 +39,11 @@ router.get(
   '/callback',
   passport.authenticate('auth0', {
     successRedirect: process.env.AUTH0_REDIRECT_URL || 'http://localhost:3000',
-    // TODO: Create a failed to load page for failureRedirect
-    // and create associated route
     failureRedirect: process.env.AUTH0_REDIRECT_URL || 'http://localhost:3000',
   })
 );
 
-// Perform session logout and redirect to homepage
+// Perform session logout
 router.get('/logout', (req, res) => {
   req.session.destroy(function(err) {
     req.logout();
