@@ -14,7 +14,7 @@ describe('user actions', () => {
   it('Dispatches action/payload', () => {
     const expectedActions = [
       { type: 'RETRIEVING_USER_INFO' },
-      { type: 'RETRIEVED_USER_INFO' },
+      { type: 'RETRIEVED_USER_INFO', payload: {} },
     ];
 
     return store.dispatch(actions.getUserInfo()).then(() => {
