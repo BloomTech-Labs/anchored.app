@@ -14,13 +14,9 @@ import { Events, scrollSpy, scroller } from 'react-scroll';
 
 class CTA extends Component {
   componentDidMount() {
-    Events.scrollEvent.register('begin', function(to, element) {
-      console.log('begin', arguments);
-    });
+    Events.scrollEvent.register('begin', function(to, element) {});
 
-    Events.scrollEvent.register('end', function(to, element) {
-      console.log('end', arguments);
-    });
+    Events.scrollEvent.register('end', function(to, element) {});
 
     scrollSpy.update();
   }
