@@ -23,7 +23,7 @@ export const getUserInfo = () => {
 
   return dispatch => {
     dispatch({ type: RETRIEVING_USER_INFO });
-    promise
+    return promise
       .then(res => dispatch({ type: RETRIEVED_USER_INFO, payload: res.data }))
       .catch(err => dispatch({ type: ERROR, payload: err.message }));
   };
