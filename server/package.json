@@ -1,7 +1,7 @@
 {
-  "name": "LambdaLabs-ChainPointDocusign",
+  "name": "proofd",
   "version": "1.0.0",
-  "description": "",
+  "description": "proofd.app",
   "main": "index.js",
   "scripts": {
     "test": "jest --watch --verbose",
@@ -28,7 +28,6 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "chainpoint-client": "^0.2.4",
-    "cookie-parser": "^1.4.3",
     "cors": "^2.8.5",
     "crypto-js": "^3.1.9-1",
     "docusign-esign": "^4.1.0",

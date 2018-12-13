@@ -1,7 +1,7 @@
 {
-  "name": "chainpointdocusign",
+  "name": "proofd",
   "version": "1.0.0",
-  "description": "",
+  "description": "proofd.app",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -11,10 +11,7 @@
     "node": "8.12.0"
   },
   "dependencies": {
-    "concurrently": "^3.6.1",
-    "react": "^16.6.3",
-    "react-stripe-checkout": "^2.6.3",
-    "stripe": "^6.15.1"
+    "concurrently": "^3.6.1"
   },
   "scripts": {
     "start": "concurrently \"cd client && PORT=3000 npm start\" \"cd server && PORT=9000 npm run-script devserver\""

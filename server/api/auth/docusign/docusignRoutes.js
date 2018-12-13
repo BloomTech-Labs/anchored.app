@@ -2,7 +2,7 @@ const express = require('express');
 const docusignModel = require('./docusignModel');
 const moment = require('moment');
 const passport = require('passport');
-const docusign = require('docusign-esign');
+const DocusignStrategy = require('passport-docusign');
 
 const {
   ensureAuthenticated,
@@ -12,7 +12,7 @@ const {
 
 const router = express.Router();
 
-const docusignStrategy = new docusign.OAuthClient(
+const docusignStrategy = new DocusignStrategy(
   {
     clientID: process.env.DOCUSIGN_CLIENT_ID,
     clientSecret: process.env.DOCUSIGN_CLIENT_SECRET,
