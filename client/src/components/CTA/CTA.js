@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import playImg from '../../assets/video_icon.png';
+import ModalVideo from 'react-modal-video';
 
 import {
   CtaContainer,
