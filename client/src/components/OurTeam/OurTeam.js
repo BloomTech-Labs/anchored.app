@@ -1,5 +1,4 @@
 import React from 'react';
-//import './OurTeam.css';
 import {
   TeamContainer,
   Members,
@@ -26,94 +25,94 @@ const OurTeam = () => {
           <Initials>BA</Initials>
           <NameHeader>Brandon Aguirre</NameHeader>
           <Role>Full Stack Developer</Role>
-          <Astyle href="https://github.com/DirupT" target="_blank">
-            <i className="fab fa-github fa-2x" />
+          <Astyle href='https://github.com/DirupT' target='_blank'>
+            <i className='fab fa-github fa-2x' />
           </Astyle>
           <Astyle
-            href="https://www.linkedin.com/in/brandon-aguirre-7b88a8161/"
-            target="_blank"
+            href='https://www.linkedin.com/in/brandon-aguirre-7b88a8161/'
+            target='_blank'
           >
-            <i className="fab fa-linkedin fa-2x" />
+            <i className='fab fa-linkedin fa-2x' />
           </Astyle>
         </TeamMember>
         <TeamMember>
-          <img src={JeremyImg} alt="Jeremy" />
+          <img src={JeremyImg} alt='Jeremy' />
           <NameHeader>Jeremy A. Jones</NameHeader>
           <Role>Full Stack Developer</Role>
-          <Astyle href="https://github.com/crypto-jones" target="_blank">
-            <i className="fab fa-github fa-2x" />
+          <Astyle href='https://github.com/crypto-jones' target='_blank'>
+            <i className='fab fa-github fa-2x' />
           </Astyle>
           <Astyle
-            href="https://www.linkedin.com/in/jeremyalexanderjones/"
-            target="_blank"
+            href='https://www.linkedin.com/in/jeremyalexanderjones/'
+            target='_blank'
           >
-            <i className="fab fa-linkedin fa-2x" />
+            <i className='fab fa-linkedin fa-2x' />
           </Astyle>
         </TeamMember>
         <TeamMember>
-          <img src={ZackImg} alt="Zack" />
+          <img src={ZackImg} alt='Zack' />
           <NameHeader>Zack Hitchcock</NameHeader>
           <Role>Full Stack Developer</Role>
-          <Astyle href="https://github.com/zackhitch" target="_blank">
-            <i className="fab fa-github fa-2x" />
+          <Astyle href='https://github.com/zackhitch' target='_blank'>
+            <i className='fab fa-github fa-2x' />
           </Astyle>
           <Astyle
-            href="https://www.linkedin.com/in/zackhitchcock/"
-            target="_blank"
+            href='https://www.linkedin.com/in/zackhitchcock/'
+            target='_blank'
           >
-            <i className="fab fa-linkedin fa-2x" />
+            <i className='fab fa-linkedin fa-2x' />
           </Astyle>
         </TeamMember>
         <TeamMember>
-          <img src={RandyImg} alt="Randy" />
+          <img src={RandyImg} alt='Randy' />
           <NameHeader>Randy Calderon</NameHeader>
           <Role>Full Stack Developer</Role>
-          <Astyle href="https://github.com/RandyCalderon" target="_blank">
-            <i className="fab fa-github fa-2x" />
+          <Astyle href='https://github.com/RandyCalderon' target='_blank'>
+            <i className='fab fa-github fa-2x' />
           </Astyle>
           <Astyle
-            href="https://www.linkedin.com/in/randy-calderon-237474161/"
-            target="_blank"
+            href='https://www.linkedin.com/in/randy-calderon-237474161/'
+            target='_blank'
           >
-            <i className="fab fa-linkedin fa-2x" />
+            <i className='fab fa-linkedin fa-2x' />
           </Astyle>
         </TeamMember>
         <TeamMember>
-          <img src={SeanImg} alt="Sean" />
+          <img src={SeanImg} alt='Sean' />
           <NameHeader>Sean Chavez</NameHeader>
           <Role>Full Stack Developer</Role>
-          <Astyle href="https://github.com/seanchavez" target="_blank">
-            <i className="fab fa-github fa-2x" />
+          <Astyle href='https://github.com/seanchavez' target='_blank'>
+            <i className='fab fa-github fa-2x' />
           </Astyle>
-          <Astyle href="https://github.com/seanchavez" target="_blank">
-            <i className="fab fa-linkedin fa-2x" />
+          <Astyle href='https://github.com/seanchavez' target='_blank'>
+            <i className='fab fa-linkedin fa-2x' />
           </Astyle>
         </TeamMember>
         <TeamMember>
-          <img src={SunitiImg} alt="Suniti" />
+          <img src={SunitiImg} alt='Suniti' />
           <NameHeader>Suniti Thapa</NameHeader>
           <Role>UI/UX Designer</Role>
           <Astyle
-            href="https://www.linkedin.com/in/suniti-thapa-10688355/"
-            target="_blank"
+            href='https://www.linkedin.com/in/suniti-thapa-10688355/'
+            target='_blank'
           >
-            <i className="fab fa-linkedin fa-2x" />
+            <i className='fab fa-linkedin fa-2x' />
           </Astyle>
         </TeamMember>
       </Members>
       <Members>
         <TeamMember>
-          <img src={JaredImg} alt="Jared" />
+          <img src={JaredImg} alt='Jared' />
           <NameHeader>Jared Cuffe</NameHeader>
           <Role>Project Manager</Role>
-          <Astyle href="https://github.com/jcuffe" target="_blank">
-            <i className="fab fa-github fa-2x" />
+          <Astyle href='https://github.com/jcuffe' target='_blank'>
+            <i className='fab fa-github fa-2x' />
           </Astyle>
           <Astyle
-            href="https://www.linkedin.com/in/jared-cuffe"
-            target="_blank"
+            href='https://www.linkedin.com/in/jared-cuffe'
+            target='_blank'
           >
-            <i className="fab fa-linkedin fa-2x" />
+            <i className='fab fa-linkedin fa-2x' />
           </Astyle>
         </TeamMember>
       </Members>
