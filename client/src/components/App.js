@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router';
 import './App.css';
 import Home from './Home/Home.js';
@@ -12,6 +12,8 @@ import TopNavBar from './Nav/NavBar.js';
 import CTA from './CTA/CTA.js';
 import LPcontent from './LPcontent/LPcontent.js';
 import Footer from './Footer/Footer.js';
+import OurTeam from './OurTeam/OurTeam';
+import { HomeContainer } from './Home/HomeStyles.js';
 
 axios.defaults.withCredentials = true;
 
@@ -45,8 +47,21 @@ class App extends Component {
       return <Home user={this.props.user} />;
     }
 
+    if (this.props.location.pathname === '/team') {
+      return (
+        <Fragment>
+          <HomeContainer>
+            <TopNavBar />
+            {/* <DashboardNav /> */}
+            <OurTeam />
+          </HomeContainer>
+          <Footer />
+        </Fragment>
+      );
+    }
+
     return (
-      <div className="App">
+      <div className='App'>
         <TopNavBar />
         <CTA />
         <LPcontent />
@@ -66,6 +81,6 @@ const mapStateToProps = state => {
 export default withRouter(
   connect(
     mapStateToProps,
-    { getUserInfo }
-  )(App)
+    { getUserInfo },
+  )(App),
 );
