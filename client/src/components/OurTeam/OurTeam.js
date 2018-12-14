@@ -49,6 +49,9 @@ const OurTeam = () => {
           >
             <i className="fab fa-linkedin fa-2x" />
           </Astyle>
+          <Astyle href="https://twitter.com/ProfJonesMusic" target="_blank">
+            <i className="fab fa-twitter fa-2x" />
+          </Astyle>
         </TeamMember>
         <TeamMember>
           <img src={ZackImg} alt="Zack" />
@@ -62,6 +65,9 @@ const OurTeam = () => {
             target="_blank"
           >
             <i className="fab fa-linkedin fa-2x" />
+          </Astyle>
+          <Astyle href="https://twitter.com/zackhtweets" target="_blank">
+            <i className="fab fa-twitter fa-2x" />
           </Astyle>
         </TeamMember>
         <TeamMember>
