@@ -84,7 +84,10 @@ const OurTeam = () => {
           <Astyle href='https://github.com/seanchavez' target='_blank'>
             <i className='fab fa-github fa-2x' />
           </Astyle>
-          <Astyle href='https://github.com/seanchavez' target='_blank'>
+          <Astyle
+            href='https://www.linkedin.com/in/sean-chavez-a69935176/'
+            target='_blank'
+          >
             <i className='fab fa-linkedin fa-2x' />
           </Astyle>
         </TeamMember>
