@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import playImg from '../../assets/video_icon.png';
+import ModalVideo from 'react-modal-video';
+import '../../../node_modules/react-modal-video/css/modal-video.min.css';
 
 import {
   CtaContainer,
@@ -13,6 +15,18 @@ import {
 import { Events, scrollSpy, scroller } from 'react-scroll';
 
 class CTA extends Component {
+  constructor() {
+    super();
+    this.state = {
+      isOpen: false,
+    };
+    this.openModal = this.openModal.bind(this);
+  }
+
+  openModal() {
+    this.setState({ isOpen: true });
+  }
+
   componentDidMount() {
     Events.scrollEvent.register('begin', function(to, element) {});
 
@@ -42,10 +56,16 @@ class CTA extends Component {
         <H2>Get proof. Don't just trust.</H2>
         <Copy>A blockchain enabled verification platform</Copy>
         <CtaButton onClick={this.smoothScroll}>CHECK OUR PRICES</CtaButton>
-        <Demo>
+        <Demo onClick={this.openModal}>
           <Img src={playImg} alt="play icon" width="20%" />
           <Copy>Watch the Demo</Copy>
         </Demo>
+        <ModalVideo
+          channel="youtube"
+          isOpen={this.state.isOpen}
+          videoId="kwQziVIzDeg"
+          onClose={() => this.setState({ isOpen: false })}
+        />
       </CtaContainer>
     );
   }
