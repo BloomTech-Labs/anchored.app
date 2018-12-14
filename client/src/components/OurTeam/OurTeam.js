@@ -1,5 +1,4 @@
 import React from 'react';
-//import './OurTeam.css';
 import {
   TeamContainer,
   Members,
@@ -16,6 +15,7 @@ import SunitiImg from '../../assets/suniti.jpeg';
 import JaredImg from '../../assets/profile.jpg';
 import SeanImg from '../../assets/sean.jpg';
 import RandyImg from '../../assets/RandyPicture.jpg';
+import BrandonImg from '../../assets/brandon.png';
 
 const OurTeam = () => {
   return (
@@ -23,7 +23,7 @@ const OurTeam = () => {
       <H1>The Proofd Team</H1>
       <Members>
         <TeamMember>
-          <Initials>BA</Initials>
+          <img src={BrandonImg} alt="Brandon" />
           <NameHeader>Brandon Aguirre</NameHeader>
           <Role>Full Stack Developer</Role>
           <Astyle href="https://github.com/DirupT" target="_blank">
@@ -85,7 +85,10 @@ const OurTeam = () => {
           <Astyle href="https://github.com/seanchavez" target="_blank">
             <i className="fab fa-github fa-2x" />
           </Astyle>
-          <Astyle href="https://github.com/seanchavez" target="_blank">
+          <Astyle
+            href="https://www.linkedin.com/in/sean-chavez-a69935176/"
+            target="_blank"
+          >
             <i className="fab fa-linkedin fa-2x" />
           </Astyle>
         </TeamMember>

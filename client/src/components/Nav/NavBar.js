@@ -12,7 +12,9 @@ class NavBar extends Component {
     return (
       <NavGod>
         <TopNavBar>
-          <Img src={Logo} alt="Proofd Logo" />
+          <NavLink to={'/'}>
+            <Img src={Logo} alt="Proofd Logo" />
+          </NavLink>
           <Links>
             <NavLink
               to={`/`}
