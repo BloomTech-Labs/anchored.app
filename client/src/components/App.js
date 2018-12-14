@@ -35,6 +35,7 @@ class App extends Component {
   }
 
   render() {
+    window.scrollTo(0, 0);
     if (this.props.fetching) {
       return (
         <LoadingContainer>
@@ -61,7 +62,7 @@ class App extends Component {
     }
 
     return (
-      <div className='App'>
+      <div className="App">
         <TopNavBar />
         <CTA />
         <LPcontent />
@@ -81,6 +82,6 @@ const mapStateToProps = state => {
 export default withRouter(
   connect(
     mapStateToProps,
-    { getUserInfo },
-  )(App),
+    { getUserInfo }
+  )(App)
 );
