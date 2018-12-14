@@ -63,7 +63,7 @@ class CTA extends Component {
         <ModalVideo
           channel="youtube"
           isOpen={this.state.isOpen}
-          videoId="kwQziVIzDeg"
+          videoId="DnpB97Ak0xg"
           onClose={() => this.setState({ isOpen: false })}
         />
       </CtaContainer>

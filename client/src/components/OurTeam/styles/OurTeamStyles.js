@@ -37,19 +37,6 @@ export const TeamMember = styled.div`
   }
 `;
 
-export const Initials = styled.div`
-  height: 250px;
-  width: 250px;
-  border-radius: 50%;
-  background-color: #17a2b8;
-  border-radius: 50%;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 5rem;
-`;
-
 export const Astyle = styled.a`
   color: black;
   padding: 5px;

@@ -3,7 +3,6 @@ import {
   TeamContainer,
   Members,
   TeamMember,
-  Initials,
   Astyle,
   NameHeader,
   Role,
