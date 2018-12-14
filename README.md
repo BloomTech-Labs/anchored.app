@@ -138,6 +138,6 @@ We used middleware in our routes to ensure that when a user hits a protected end
 
 We used Stripe to securely verify user credit cards and payments. After a user submits a payment, if it is successful, Stripe will send back a response that lets us know that their payment was valid as well as an invoice that we save to our database. Once this is complete, a user's credits will be dynamically updated. With the help of Stripe, this ensures that a user cannot hack us and manually update their credits without paying first.
 
-### Media
+## Media
 
 DocuSign logo - https://www.docusign.com/company/terms-and-conditions/developers
