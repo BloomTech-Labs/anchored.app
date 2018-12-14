@@ -30,6 +30,7 @@ export const Demo = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const OurPatrons = styled.div`

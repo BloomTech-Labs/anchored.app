@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import playImg from '../../assets/video_icon.png';
-import YouTube from 'react-youtube';
+import ModalVideo from 'react-modal-video';
+import '../../../node_modules/react-modal-video/css/modal-video.min.css';
 
 import {
   CtaContainer,
@@ -12,27 +13,18 @@ import {
 } from './styles/CTAStyles.js';
 
 import { Events, scrollSpy, scroller } from 'react-scroll';
-import { Modal } from 'reactstrap';
 
 class CTA extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      modal: false,
+      isOpen: false,
     };
-
-    this.toggle = this.toggle.bind(this);
+    this.openModal = this.openModal.bind(this);
   }
 
-  toggle() {
-    this.setState({
-      modal: !this.state.modal,
-    });
-  }
-
-  _onReady(event) {
-    // access to player in all event handlers via event.target
-    event.target.pauseVideo();
+  openModal() {
+    this.setState({ isOpen: true });
   }
 
   componentDidMount() {
@@ -59,29 +51,21 @@ class CTA extends Component {
   }
 
   render() {
-    const opts = {
-      height: '390',
-      width: '640',
-      playerVars: {
-        autoplay: 1,
-      },
-    };
     return (
       <CtaContainer>
         <H2>Get proof. Don't just trust.</H2>
         <Copy>A blockchain enabled verification platform</Copy>
         <CtaButton onClick={this.smoothScroll}>CHECK OUR PRICES</CtaButton>
-        <Demo onClick={this.toggle}>
+        <Demo onClick={this.openModal}>
           <Img src={playImg} alt="play icon" width="20%" />
           <Copy>Watch the Demo</Copy>
         </Demo>
-        <Modal
-          isOpen={this.state.modal}
-          toggle={this.toggle}
-          className={this.props.className}
-        >
-          <YouTube videoId="3_fG_zLbBeU" onReady={this._onReady} />
-        </Modal>
+        <ModalVideo
+          channel="youtube"
+          isOpen={this.state.isOpen}
+          videoId="kwQziVIzDeg"
+          onClose={() => this.setState({ isOpen: false })}
+        />
       </CtaContainer>
     );
   }
