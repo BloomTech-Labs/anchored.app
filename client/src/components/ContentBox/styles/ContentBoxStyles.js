@@ -11,6 +11,10 @@ export const BoxContainer = styled.div`
   border-radius: 5px;
   box-shadow: 0 0 18px 0 rgba(0, 0, 0, 0.4);
 
+  &:hover {
+    box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
+  }
+
   @media (max-width: 550px) {
     &:first-child {
       margin-bottom: 2px;

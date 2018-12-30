@@ -53,7 +53,6 @@ class App extends Component {
         <Fragment>
           <HomeContainer>
             <TopNavBar />
-            {/* <DashboardNav /> */}
             <OurTeam />
           </HomeContainer>
           <Footer />

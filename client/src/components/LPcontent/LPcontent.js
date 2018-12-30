@@ -60,10 +60,13 @@ const LPcontent = () => {
                 place.
               </Copy>
             </ContentSet>
-            <ContentSet>
+            {/* Uncomment the below section when we
+                have the 'science behind our work' video
+            */}
+            {/* <ContentSet>
               <PlayImg src={playImg} alt="play icon" />
               <TagLine>The science behind our work</TagLine>
-            </ContentSet>
+            </ContentSet> */}
           </ContentMain>
         </Container>
       </BgContainer>
