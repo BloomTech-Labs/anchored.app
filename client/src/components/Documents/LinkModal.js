@@ -10,6 +10,17 @@ const LinkModal = ({ doc, toggle, isOpen }) => {
   const block_height = verified_proof.anchorId;
   const link = `https://live.blockcypher.com/btc/block/${block_height}`;
 
+  // Removes "Please DocuSign: " from file name
+  const fileName = doc.subject.replace(/Please DocuSign: /, '');
+
+  // Data exported to CSV
+  const downloadData = [
+    [fileName],
+    [`Bitcoin Block: ${verified_proof.anchorId}`],
+    [`Merkle Root: ${verified_proof.expectedValue}`],
+    [link],
+  ];
+
   return (
     <Modal isOpen={isOpen} toggle={toggle}>
       <ModalBody>
@@ -30,9 +41,16 @@ const LinkModal = ({ doc, toggle, isOpen }) => {
         >
           Link to BTC block
         </Button>
-        <Button color="primary" onClick={toggle}>
-          Download{' '}
-        </Button>
+
+        <CSVLink
+          data={downloadData}
+          filename={`proofd${verified_proof.anchorId}`}
+        >
+          {' '}
+          <Button color="primary" onClick={toggle}>
+            Download{' '}
+          </Button>
+        </CSVLink>
 
         <Button color="secondary" onClick={toggle}>
           Close
