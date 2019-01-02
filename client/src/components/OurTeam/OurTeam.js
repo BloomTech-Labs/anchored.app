@@ -8,13 +8,13 @@ import {
   Role,
   H1,
 } from './styles/OurTeamStyles';
-import ZackImg from '../../assets/zack_thumbnail.png';
-import JeremyImg from '../../assets/jeremy.jpg';
+import ZackImg from '../../assets/zack_web.png';
+import JeremyImg from '../../assets/jeremy_web.jpg';
 import SunitiImg from '../../assets/suniti.jpeg';
-import JaredImg from '../../assets/profile.jpg';
-import SeanImg from '../../assets/sean.jpg';
-import RandyImg from '../../assets/RandyPicture.jpg';
-import BrandonImg from '../../assets/brandon.png';
+import JaredImg from '../../assets/Jared_web.jpg';
+import SeanImg from '../../assets/sean_web.jpg';
+import RandyImg from '../../assets/RandyPicture_web.jpg';
+import BrandonImg from '../../assets/brandon_web.png';
 
 const OurTeam = () => {
   return (
