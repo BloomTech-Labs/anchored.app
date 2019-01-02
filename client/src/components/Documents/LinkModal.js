@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
 import { ModalInfo } from './styles/DocumentModalStyles';
+import { CSVLink } from 'react-csv';
 
 const LinkModal = ({ doc, toggle, isOpen }) => {
   if (!doc.verified || !isOpen) return null;
@@ -28,6 +29,9 @@ const LinkModal = ({ doc, toggle, isOpen }) => {
           onClick={toggle}
         >
           Link to BTC block
+        </Button>
+        <Button color="primary" onClick={toggle}>
+          Download{' '}
         </Button>
 
         <Button color="secondary" onClick={toggle}>
