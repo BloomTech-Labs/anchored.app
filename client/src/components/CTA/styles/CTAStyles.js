@@ -22,6 +22,10 @@ export const CtaButton = styled.div`
   font-weight: bold;
   font-size: 1.3rem;
   cursor: pointer;
+
+  &:hover {
+    background-color: #8e44c2;
+  }
 `;
 
 export const Demo = styled.div`
