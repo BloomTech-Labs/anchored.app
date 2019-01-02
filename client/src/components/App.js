@@ -13,6 +13,8 @@ import CTA from './CTA/CTA.js';
 import LPcontent from './LPcontent/LPcontent.js';
 import Footer from './Footer/Footer.js';
 import OurTeam from './OurTeam/OurTeam';
+import Terms from './Terms/Terms.js';
+import Privacy from './Privacy/Privacy.js';
 import { HomeContainer } from './Home/HomeStyles.js';
 
 axios.defaults.withCredentials = true;
@@ -53,8 +55,29 @@ class App extends Component {
         <Fragment>
           <HomeContainer>
             <TopNavBar />
-            {/* <DashboardNav /> */}
             <OurTeam />
+          </HomeContainer>
+          <Footer />
+        </Fragment>
+      );
+    }
+    if (this.props.location.pathname === '/privacy') {
+      return (
+        <Fragment>
+          <HomeContainer>
+            <TopNavBar />
+            <Privacy />
+          </HomeContainer>
+          <Footer />
+        </Fragment>
+      );
+    }
+    if (this.props.location.pathname === '/terms') {
+      return (
+        <Fragment>
+          <HomeContainer>
+            <TopNavBar />
+            <Terms />
           </HomeContainer>
           <Footer />
         </Fragment>
