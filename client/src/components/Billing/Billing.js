@@ -108,7 +108,11 @@ class Billing extends Component {
         })}
         {this.state.invoice.length > 0 ? (
           <ExportContainer>
-            <Export data={this.getData()} onClick={this.getData}>
+            <Export
+              data={this.getData()}
+              onClick={this.getData}
+              filename={'invoices'}
+            >
               Export
             </Export>
           </ExportContainer>
