@@ -15,16 +15,16 @@ const LinkModal = ({ doc, toggle, isOpen }) => {
   // Data exported to CSV
   const downloadData = [
     [fileName],
-    [`Bitcoin Block: ${verified_proof.anchorId}`],
+    [`Bitcoin Block: ${block_height}`],
     [`Merkle Root: ${verified_proof.expectedValue}`],
+    [`Time of Proof: ${verified_proof.verifiedAt}`],
     [link],
   ];
 
   return (
     <Modal isOpen={isOpen} toggle={toggle}>
       <ModalBody>
-        Your document has been anchored to Bitcoin block{' '}
-        <b>{verified_proof.anchorId}</b>
+        Your document has been anchored to Bitcoin block <b>{block_height}</b>
       </ModalBody>
       <ModalFooter>
         <Button
