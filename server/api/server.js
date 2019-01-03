@@ -12,11 +12,13 @@ const authRoutes = require('./auth/auth.js');
 const paymentRoutes = require('./payments/paymentRoutes.js');
 
 const corsOptions = process.env.STRIPE_FRONTEND_URL || 'http://localhost:3000';
+const compression = require('compression');
 
 // server
 const server = express();
 
 // middleware
+server.use(compression());
 applyGlobalMiddleware(server);
 server.use(cors({ origin: corsOptions }));
 
@@ -27,7 +29,7 @@ server.use(
     limit: '50mb',
     extended: true,
     parameterLimit: 50000,
-  })
+  }),
 );
 
 // routes

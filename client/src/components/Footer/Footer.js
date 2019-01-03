@@ -24,25 +24,17 @@ const Footer = () => {
         >
           <Copy>Our Team</Copy>
         </NavLink>
-
-        <NavLink
-          to={'/privacy'}
-          style={{ textDecoration: 'none', color: '#7344c1' }}
-          activeStyle={{ color: '#20D1C8' }}
-        >
-          <Copy>Privacy Policy</Copy>
-        </NavLink>
       </LeftFoot>
       <CenterFoot>
         <Img src={Logo} alt="Proofd Logo" />
       </CenterFoot>
       <RightFoot>
         <NavLink
-          to={'/testimonials'}
+          to={'/privacy'}
           style={{ textDecoration: 'none', color: '#7344c1' }}
           activeStyle={{ color: '#20D1C8' }}
         >
-          <Copy>Testimonials</Copy>
+          <Copy>Privacy Policy</Copy>
         </NavLink>
 
         <NavLink
@@ -51,14 +43,6 @@ const Footer = () => {
           activeStyle={{ color: '#20D1C8' }}
         >
           <Copy>Terms & Conditions</Copy>
-        </NavLink>
-
-        <NavLink
-          to={'/careers'}
-          style={{ textDecoration: 'none', color: '#7344c1' }}
-          activeStyle={{ color: '#20D1C8' }}
-        >
-          <Copy>Careers</Copy>
         </NavLink>
       </RightFoot>
     </FooterContainer>
