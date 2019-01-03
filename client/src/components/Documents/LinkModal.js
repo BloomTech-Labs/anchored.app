@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
-import { ModalInfo } from './styles/DocumentModalStyles';
 import { CSVLink } from 'react-csv';
 
 const LinkModal = ({ doc, toggle, isOpen }) => {
@@ -16,21 +15,17 @@ const LinkModal = ({ doc, toggle, isOpen }) => {
   // Data exported to CSV
   const downloadData = [
     [fileName],
-    [`Bitcoin Block: ${verified_proof.anchorId}`],
+    [`Bitcoin Block: ${block_height}`],
     [`Merkle Root: ${verified_proof.expectedValue}`],
+    [`Time of Proof: ${verified_proof.verifiedAt}`],
     [link],
   ];
 
   return (
     <Modal isOpen={isOpen} toggle={toggle}>
       <ModalBody>
-        Your document has been anchored to Bitcoin block{' '}
-        <b>{verified_proof.anchorId}</b> within Merkle root:
-        <ModalInfo>
-          <b>{verified_proof.expectedValue}</b>
-        </ModalInfo>
+        Your document has been anchored to Bitcoin block <b>{block_height}</b>
       </ModalBody>
-
       <ModalFooter>
         <Button
           href={link}
@@ -41,17 +36,15 @@ const LinkModal = ({ doc, toggle, isOpen }) => {
         >
           Link to BTC block
         </Button>
-
         <CSVLink
           data={downloadData}
           filename={`proofd${verified_proof.anchorId}`}
         >
           {' '}
           <Button color="primary" onClick={toggle}>
-            Download{' '}
+            Download
           </Button>
         </CSVLink>
-
         <Button color="secondary" onClick={toggle}>
           Close
         </Button>
