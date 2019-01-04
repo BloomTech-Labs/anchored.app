@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { Route } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import DashboardNav from '../Nav/DashboardNav.js';
 import Documents from '../Documents/Documents.js';
 import Settings from '../Settings/Settings.js';
@@ -13,6 +14,13 @@ import OurTeam from '../OurTeam/OurTeam.js';
 
 class Home extends React.Component {
   render() {
+    if (
+      this.props.location.pathname ===
+      '/loaderio-86d743f6cf59ddc63db102b19d92e7ba'
+    ) {
+      return 'loaderio-86d743f6cf59ddc63db102b19d92e7ba';
+    }
+
     return (
       <Fragment>
         <HomeContainer>
@@ -24,11 +32,6 @@ class Home extends React.Component {
           <Route exact path='/team' component={OurTeam} />
           <Route exact path='/privacy' component={Privacy} />
           <Route exact path='/terms' component={Terms} />
-          <Route
-            exact
-            path='/loaderio-86d743f6cf59ddc63db102b19d92e7ba'
-            render={() => 'loaderio-86d743f6cf59ddc63db102b19d92e7ba'}
-          />
         </HomeContainer>
         <Footer />
       </Fragment>
@@ -36,4 +39,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default withRouter(Home);
