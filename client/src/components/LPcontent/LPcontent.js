@@ -83,8 +83,8 @@ const LPcontent = () => {
             <ContentBox
               title="Premium Subscription"
               copyOne="Unlimited Credits"
-              copyTwo="$25 billed monthly, or"
-              copyThree="$240 billed annually"
+              copyTwo="$25 billed monthly"
+              copyThree="Automatic Proofing"
             />
           </ContentSet>
         </Element>

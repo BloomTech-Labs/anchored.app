@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { getUserInfo } from '../actions/user';
 import { BeatLoader } from 'react-spinners';
 import styled from 'styled-components';
+import ReactGA from 'react-ga';
 
 import TopNavBar from './Nav/NavBar.js';
 import CTA from './CTA/CTA.js';
@@ -34,6 +35,8 @@ class App extends Component {
 
   componentDidMount() {
     this.props.getUserInfo();
+    ReactGA.initialize('UA-131725736-1');
+    ReactGA.pageview('/');
   }
 
   render() {
