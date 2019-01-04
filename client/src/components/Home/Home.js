@@ -17,13 +17,18 @@ class Home extends React.Component {
       <Fragment>
         <HomeContainer>
           <DashboardNav />
-          <Route exact path="/" component={Documents} />
-          <Route path="/account" component={Billing} />
-          <Route exact path="/settings" component={Settings} />
-          <Route exact path="/buy" component={Buy} />
-          <Route exact path="/team" component={OurTeam} />
-          <Route exact path="/privacy" component={Privacy} />
-          <Route exact path="/terms" component={Terms} />
+          <Route exact path='/' component={Documents} />
+          <Route path='/account' component={Billing} />
+          <Route exact path='/settings' component={Settings} />
+          <Route exact path='/buy' component={Buy} />
+          <Route exact path='/team' component={OurTeam} />
+          <Route exact path='/privacy' component={Privacy} />
+          <Route exact path='/terms' component={Terms} />
+          <Route
+            exact
+            path='/loaderio-86d743f6cf59ddc63db102b19d92e7ba'
+            render={() => 'loaderio-86d743f6cf59ddc63db102b19d92e7ba'}
+          />
         </HomeContainer>
         <Footer />
       </Fragment>
