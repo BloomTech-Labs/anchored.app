@@ -1,10 +1,11 @@
 import React from 'react';
+import { PrivacyContainer } from './styles/PrivacyStyles.js';
 
 const Privacy = () => {
   return (
-    <div>
+    <PrivacyContainer>
       <h1>Under Construction</h1>
-    </div>
+    </PrivacyContainer>
   );
 };
 
