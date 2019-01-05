@@ -11,7 +11,7 @@ const Privacy = () => {
     <TermsContainer>
       <Header>Terms and Conditions</Header>
 
-      <Paragraph>Welcome to Proofd! </Paragraph>
+      <Paragraph>Effective date: January 01, 2019</Paragraph>
 
       <Paragraph>
         These terms and conditions outline the rules and regulations for the use
@@ -315,6 +315,17 @@ const Privacy = () => {
         including liabilities arising in contract, in tort and for breach of
         statutory duty.
       </Paragraph>
+
+      <SubHeading>Contact Us</SubHeading>
+
+      <Paragraph>
+        If you have any questions about this Privacy Policy, please contact us:
+      </Paragraph>
+
+      <Paragraph>
+        <li>By email: support@proofd.app</li>
+      </Paragraph>
+
       <Paragraph />
     </TermsContainer>
   );
