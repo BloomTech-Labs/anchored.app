@@ -16,7 +16,7 @@ const Footer = () => {
   return (
     <FooterContainer>
       <LeftFoot>
-        <Copy>{'\u00A9'} 2018 Proofd </Copy>
+        <Copy>{'\u00A9'} 2019 Proofd </Copy>
         <NavLink
           to={'/team'}
           style={{ textDecoration: 'none', color: '#7344c1' }}
