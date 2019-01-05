@@ -226,6 +226,7 @@ const Privacy = () => {
         By visiting this page on our website:{' '}
         <a href="https://proofd.app/#/privacy">proofd.app/#/privacy</a>
       </Paragraph>
+      <Paragraph />
     </PrivacyContainer>
   );
 };
