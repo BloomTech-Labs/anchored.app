@@ -32,7 +32,7 @@ Proofd utilizes [Heroku](https://www.heroku.com/) and [Netlify](https://www.netl
 
 #### Frontend
 
-[https://chainpoint-docusign.netlify.com/](https://chainpoint-docusign.netlify.com/)
+[https://proofd.app/](https://proofd.app/)
 
 - React
 
