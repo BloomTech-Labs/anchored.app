@@ -240,10 +240,6 @@ const Privacy = () => {
       </Paragraph>
       <Paragraph>
         <li>By email: support@proofd.app</li>
-        <li>
-          By visiting this page on our website:{' '}
-          <a href="https://proofd.app/#/privacy">proofd.app/#/privacy</a>
-        </li>
       </Paragraph>
       <Paragraph />
     </PrivacyContainer>
