@@ -44,8 +44,8 @@ const Privacy = () => {
         include, but is not limited to:
       </Paragraph>
       <Paragraph>
-        Email address <br /> First name and last name <br /> Cookies and Usage
-        Data
+        <li>Email address </li> <li>First name and last name</li>{' '}
+        <li>Cookies and Usage Data</li>
       </Paragraph>
       <Paragraph>Usage Data</Paragraph>
       <Paragraph>
@@ -76,25 +76,37 @@ const Privacy = () => {
       </Paragraph>
       <Paragraph>Examples of Cookies we use:</Paragraph>
       <Paragraph>
-        Session Cookies. We use Session Cookies to operate our Service. <br />
-        Preference Cookies. We use Preference Cookies to remember your
-        preferences and various settings. <br />
-        Security Cookies. We use Security Cookies for security purposes.
+        <li>
+          <b>Session Cookies. </b> We use Session Cookies to operate our
+          Service.
+        </li>
+        <li>
+          <b>Preference Cookies. </b>We use Preference Cookies to remember your
+          preferences and various settings.
+        </li>
+        <li>
+          <b>Security Cookies. </b>We use Security Cookies for security
+          purposes.
+        </li>
       </Paragraph>
       <SubHeading>Use of Data</SubHeading>
       <Paragraph>
         Proofd uses the collected data for various purposes:
       </Paragraph>
       <Paragraph>
-        To provide and maintain the Service <br />
-        To notify you about changes to our Service <br />
-        To allow you to participate in interactive features of our Service when
-        you choose to do so <br />
-        To provide customer care and support <br />
-        To provide analysis or valuable information so that we can improve the
-        Service <br />
-        To monitor the usage of the Service <br />
-        To detect, prevent and address technical issues <br />
+        <li>To provide and maintain the Service</li>
+        <li>To notify you about changes to our Service</li>
+        <li>
+          To allow you to participate in interactive features of our Service
+          when you choose to do so
+        </li>
+        <li>To provide customer care and support</li>
+        <li>
+          To provide analysis or valuable information so that we can improve the
+          Service
+        </li>
+        <li>To monitor the usage of the Service</li>
+        <li>To detect, prevent and address technical issues</li>
       </Paragraph>
       <SubHeading>Transfer Of Data</SubHeading>
       <Paragraph>
@@ -126,13 +138,16 @@ const Privacy = () => {
         such action is necessary to:
       </Paragraph>
       <Paragraph>
-        To comply with a legal obligation <br />
-        To protect and defend the rights or property of Proofd <br />
-        To prevent or investigate possible wrongdoing in connection with the
-        Service <br />
-        To protect the personal safety of users of the Service or the public{' '}
-        <br />
-        To protect against legal liability <br />
+        <li>To comply with a legal obligation</li>
+        <li>To protect and defend the rights or property of Proofd</li>
+        <li>
+          To prevent or investigate possible wrongdoing in connection with the
+          Service
+        </li>
+        <li>
+          To protect the personal safety of users of the Service or the public
+        </li>
+        <li>To protect against legal liability</li>
       </Paragraph>
       <SubHeading>Security Of Data</SubHeading>
       <Paragraph>
@@ -176,8 +191,10 @@ const Privacy = () => {
       </Paragraph>
       <Paragraph>
         For more information on the privacy practices of Google, please visit
-        the Google Privacy & Terms web page:
-        https://policies.google.com/privacy?hl=en
+        the Google Privacy & Terms web page:{' '}
+        <a href="https://policies.google.com/privacy?hl=en">
+          policies.google.com/privacy
+        </a>
       </Paragraph>
       <SubHeading>Links To Other Sites</SubHeading>
       <Paragraph>
@@ -222,9 +239,11 @@ const Privacy = () => {
         If you have any questions about this Privacy Policy, please contact us:
       </Paragraph>
       <Paragraph>
-        By email: support@proofd.app <br />
-        By visiting this page on our website:{' '}
-        <a href="https://proofd.app/#/privacy">proofd.app/#/privacy</a>
+        <li>By email: support@proofd.app</li>
+        <li>
+          By visiting this page on our website:{' '}
+          <a href="https://proofd.app/#/privacy">proofd.app/#/privacy</a>
+        </li>
       </Paragraph>
       <Paragraph />
     </PrivacyContainer>
