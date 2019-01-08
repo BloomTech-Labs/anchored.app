@@ -24,6 +24,8 @@ import {
   Img,
   Header,
 } from './styles/DocumentsStyles';
+import ReactGA from 'react-ga';
+ReactGA.pageview('/dashboard');
 
 class Documents extends React.Component {
   constructor(props) {
