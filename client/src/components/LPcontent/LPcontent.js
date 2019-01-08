@@ -9,8 +9,6 @@ import {
   PricingSection,
   Image,
   Copy,
-  TagLine,
-  PlayImg,
   BgContainer,
   OutterMost,
 } from './styles/LPcontentStyles.js';
@@ -18,7 +16,6 @@ import {
 import { Element } from 'react-scroll';
 
 import ContentBox from '../ContentBox/ContentBox.js';
-import playImg from '../../assets/video_icon.png';
 import docImg from '../../assets/orange_icon_document_v1.png';
 import blockImg from '../../assets/orange_icon_blochain.png';
 import fingerpringImg from '../../assets/orange_icon_proof.png';

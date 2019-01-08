@@ -15,6 +15,8 @@ import JaredImg from '../../assets/Jared_web.jpg';
 import SeanImg from '../../assets/sean_web.jpg';
 import RandyImg from '../../assets/RandyPicture_web.jpg';
 import BrandonImg from '../../assets/brandon_web.png';
+import ReactGA from 'react-ga';
+ReactGA.pageview('/team');
 
 const OurTeam = () => {
   return (

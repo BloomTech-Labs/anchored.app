@@ -5,6 +5,8 @@ import {
   SubHeading,
   Paragraph,
 } from './styles/TermsStyles.js';
+import ReactGA from 'react-ga';
+ReactGA.pageview('/terms');
 
 const Terms = () => {
   return (

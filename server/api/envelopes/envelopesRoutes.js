@@ -20,7 +20,7 @@ const router = express.Router();
 router.use(ensureAuthenticated);
 
 // Gets all of the users envelopes from docusign / adds them to the DB
-router.get('/all', checkToken, async (req, res, next) => {
+router.get('/all', checkToken, checkExpiration, async (req, res, next) => {
   const user = req.user;
   const apiClient = getDSApi(user);
   const envelopesApi = new docusign.EnvelopesApi(apiClient);
