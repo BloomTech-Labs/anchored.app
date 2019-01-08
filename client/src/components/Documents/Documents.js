@@ -25,6 +25,12 @@ import {
   Header,
 } from './styles/DocumentsStyles';
 import ReactGA from 'react-ga';
+
+ReactGA.initialize([
+  { trackingId: 'UA-131725736-1' },
+  { trackingId: 'UA-131909972-1' },
+]);
+
 ReactGA.pageview('/dashboard');
 
 class Documents extends React.Component {

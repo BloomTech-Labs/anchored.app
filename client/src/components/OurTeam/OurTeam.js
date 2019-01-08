@@ -16,6 +16,12 @@ import SeanImg from '../../assets/sean_web.jpg';
 import RandyImg from '../../assets/RandyPicture_web.jpg';
 import BrandonImg from '../../assets/brandon_web.png';
 import ReactGA from 'react-ga';
+
+ReactGA.initialize([
+  { trackingId: 'UA-131725736-1' },
+  { trackingId: 'UA-131909972-1' },
+]);
+
 ReactGA.pageview('/team');
 
 const OurTeam = () => {
