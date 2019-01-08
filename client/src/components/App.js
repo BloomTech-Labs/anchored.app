@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { withRouter } from 'react-router';
 import './App.css';
 import Home from './Home/Home.js';
@@ -6,20 +6,24 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { getUserInfo } from '../actions/user';
 import { BeatLoader } from 'react-spinners';
+import { Route } from 'react-router-dom';
+import { HomeContainer } from './Home/HomeStyles.js';
 import styled from 'styled-components';
-import TopNavBar from './Nav/NavBar.js';
-import CTA from './CTA/CTA.js';
-import LPcontent from './LPcontent/LPcontent.js';
-import Footer from './Footer/Footer.js';
 import OurTeam from './OurTeam/OurTeam';
 import Terms from './Terms/Terms.js';
 import Privacy from './Privacy/Privacy.js';
-import { HomeContainer } from './Home/HomeStyles.js';
 import ReactGA from 'react-ga';
+import DashboardNav from './Nav/DashboardNav.js';
+import Documents from './Documents/Documents.js';
+import Settings from './Settings/Settings.js';
+import Billing from './Billing/Billing.js';
+import Buy from './Stripe/Buy.js';
+import Footer from './Footer/Footer.js';
+import TopNavBar from './Nav/NavBar.js';
 
 ReactGA.initialize([
-  { trackingId: 'UA-131725736-1' },
-  { trackingId: 'UA-131909972-1' },
+  { trackingId: 'UA-131725736-1', debug: true },
+  { trackingId: 'UA-131909972-1', debug: true },
 ]);
 
 axios.defaults.withCredentials = true;
@@ -32,7 +36,7 @@ const LoadingContainer = styled.div`
   justify-content: center;
 `;
 
-class App extends Component {
+class App extends React.Component {
   state = {
     loading: true,
   };
@@ -43,6 +47,8 @@ class App extends Component {
 
   render() {
     window.scrollTo(0, 0);
+    const user = this.props.user;
+
     if (this.props.fetching) {
       return (
         <LoadingContainer>
@@ -51,59 +57,20 @@ class App extends Component {
       );
     }
 
-    if (this.props.user) {
-      return <Home user={this.props.user} />;
-    }
-
-    if (this.props.location.pathname === '/team') {
-      return (
-        <Fragment>
-          <HomeContainer>
-            <TopNavBar />
-            <OurTeam />
-          </HomeContainer>
-          <Footer />
-        </Fragment>
-      );
-    }
-    if (this.props.location.pathname === '/privacy') {
-      return (
-        <Fragment>
-          <HomeContainer>
-            <TopNavBar />
-            <Privacy />
-          </HomeContainer>
-          <Footer />
-        </Fragment>
-      );
-    }
-    if (this.props.location.pathname === '/terms') {
-      return (
-        <Fragment>
-          <HomeContainer>
-            <TopNavBar />
-            <Terms />
-          </HomeContainer>
-          <Footer />
-        </Fragment>
-      );
-    }
-
-    if (
-      this.props.location.pathname ===
-      '/loaderio-86d743f6cf59ddc63db102b19d92e7ba'
-    ) {
-      return 'loaderio-86d743f6cf59ddc63db102b19d92e7ba';
-    }
-
-    ReactGA.pageview('/');
     return (
-      <div className="App">
-        <TopNavBar />
-        <CTA />
-        <LPcontent />
+      <Fragment>
+        <HomeContainer>
+          {user ? <DashboardNav /> : <TopNavBar />}
+          <Route exact path="/" component={user ? Documents : Home} />
+          <Route path="/account" component={Billing} />
+          <Route path="/settings" component={Settings} />
+          <Route path="/buy" component={Buy} />
+          <Route path="/team" component={OurTeam} />
+          <Route path="/privacy" component={Privacy} />
+          <Route path="/terms" component={Terms} />
+        </HomeContainer>
         <Footer />
-      </div>
+      </Fragment>
     );
   }
 }
