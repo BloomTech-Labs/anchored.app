@@ -4,9 +4,12 @@ import { onToken } from '../../actions/billing';
 import BuyBox from './BuyBox.js';
 import { BoxContainer, BasicDiv } from './styles/BuyStyles.js';
 import ReactGA from 'react-ga';
-ReactGA.pageview('/buy');
 
 class Buy extends Component {
+  componentDidMount() {
+    ReactGA.pageview('/buy');
+  }
+
   render() {
     return (
       <BoxContainer>

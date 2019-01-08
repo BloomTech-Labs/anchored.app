@@ -25,7 +25,6 @@ import {
   Header,
 } from './styles/DocumentsStyles';
 import ReactGA from 'react-ga';
-ReactGA.pageview('/dashboard');
 
 class Documents extends React.Component {
   constructor(props) {
@@ -38,6 +37,7 @@ class Documents extends React.Component {
   }
 
   componentDidMount() {
+    ReactGA.pageview('/dashboard');
     this.props.getEnvelopes();
   }
 

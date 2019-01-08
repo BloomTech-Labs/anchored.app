@@ -7,9 +7,9 @@ import {
   Paragraph,
 } from './styles/PrivacyStyles.js';
 import ReactGA from 'react-ga';
-ReactGA.pageview('/privacy');
 
 const Privacy = () => {
+  ReactGA.pageview('/privacy');
   return (
     <PrivacyContainer>
       <Header>Privacy Policy</Header>

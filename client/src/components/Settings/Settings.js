@@ -23,12 +23,15 @@ import {
 import PhotoIcon from '../../assets/edit-photo-icon.png';
 import DocuSignLogo from '../../assets/docusign_logo_standard.png';
 import ReactGA from 'react-ga';
-ReactGA.pageview('/settings');
 
 class Settings extends Component {
   constructor() {
     super();
     this.state = { file: null };
+  }
+
+  componentDidMount() {
+    ReactGA.pageview('/settings');
   }
 
   // Upload + drag and drop to picture icon
