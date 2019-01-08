@@ -20,13 +20,6 @@ import {
 import moment from 'moment';
 import ReactGA from 'react-ga';
 
-ReactGA.initialize([
-  { trackingId: 'UA-131725736-1' },
-  { trackingId: 'UA-131909972-1' },
-]);
-
-ReactGA.pageview('/account');
-
 class Billing extends Component {
   constructor(props) {
     super(props);
@@ -37,6 +30,7 @@ class Billing extends Component {
   }
 
   componentDidMount() {
+    ReactGA.pageview('/account');
     if (process.env.REACT_APP_USERS_INVOICE) {
       axios
         .get(`${process.env.REACT_APP_USERS_INVOICE}`)

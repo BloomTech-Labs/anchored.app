@@ -6,9 +6,9 @@ import {
   Paragraph,
 } from './styles/TermsStyles.js';
 import ReactGA from 'react-ga';
-ReactGA.pageview('/terms');
 
 const Terms = () => {
+  ReactGA.pageview('/terms');
   return (
     <TermsContainer>
       <Header>Terms and Conditions</Header>
