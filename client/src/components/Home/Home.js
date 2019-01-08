@@ -25,13 +25,13 @@ class Home extends React.Component {
       <Fragment>
         <HomeContainer>
           <DashboardNav />
-          <Route exact path='/' component={Documents} />
-          <Route path='/account' component={Billing} />
-          <Route exact path='/settings' component={Settings} />
-          <Route exact path='/buy' component={Buy} />
-          <Route exact path='/team' component={OurTeam} />
-          <Route exact path='/privacy' component={Privacy} />
-          <Route exact path='/terms' component={Terms} />
+          <Route exact path="/" component={Documents} />
+          <Route path="/account" component={Billing} />
+          <Route path="/settings" component={Settings} />
+          <Route path="/buy" component={Buy} />
+          <Route path="/team" component={OurTeam} />
+          <Route path="/privacy" component={Privacy} />
+          <Route path="/terms" component={Terms} />
         </HomeContainer>
         <Footer />
       </Fragment>

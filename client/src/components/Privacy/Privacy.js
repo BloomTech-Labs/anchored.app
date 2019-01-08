@@ -6,6 +6,8 @@ import {
   SmallSubHeading,
   Paragraph,
 } from './styles/PrivacyStyles.js';
+import ReactGA from 'react-ga';
+ReactGA.pageview('/privacy');
 
 const Privacy = () => {
   return (

@@ -22,6 +22,8 @@ import {
 } from './styles/SettingsStyles.js';
 import PhotoIcon from '../../assets/edit-photo-icon.png';
 import DocuSignLogo from '../../assets/docusign_logo_standard.png';
+import ReactGA from 'react-ga';
+ReactGA.pageview('/settings');
 
 class Settings extends Component {
   constructor() {

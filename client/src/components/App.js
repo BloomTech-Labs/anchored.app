@@ -7,8 +7,6 @@ import { connect } from 'react-redux';
 import { getUserInfo } from '../actions/user';
 import { BeatLoader } from 'react-spinners';
 import styled from 'styled-components';
-import ReactGA from 'react-ga';
-
 import TopNavBar from './Nav/NavBar.js';
 import CTA from './CTA/CTA.js';
 import LPcontent from './LPcontent/LPcontent.js';
@@ -17,6 +15,12 @@ import OurTeam from './OurTeam/OurTeam';
 import Terms from './Terms/Terms.js';
 import Privacy from './Privacy/Privacy.js';
 import { HomeContainer } from './Home/HomeStyles.js';
+import ReactGA from 'react-ga';
+
+ReactGA.initialize([
+  { trackingId: 'UA-131725736-1' },
+  { trackingId: 'UA-131909972-1' },
+]);
 
 axios.defaults.withCredentials = true;
 
@@ -35,8 +39,6 @@ class App extends Component {
 
   componentDidMount() {
     this.props.getUserInfo();
-    ReactGA.initialize('UA-131725736-1');
-    ReactGA.pageview('/');
   }
 
   render() {
@@ -87,10 +89,14 @@ class App extends Component {
       );
     }
 
-    if (this.props.location.pathname === '/loaderio-86d743f6cf59ddc63db102b19d92e7ba') {
-      return 'loaderio-86d743f6cf59ddc63db102b19d92e7ba'
+    if (
+      this.props.location.pathname ===
+      '/loaderio-86d743f6cf59ddc63db102b19d92e7ba'
+    ) {
+      return 'loaderio-86d743f6cf59ddc63db102b19d92e7ba';
     }
 
+    ReactGA.pageview('/');
     return (
       <div className="App">
         <TopNavBar />

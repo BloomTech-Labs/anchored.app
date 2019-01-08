@@ -18,6 +18,8 @@ import {
   ExportContainer,
 } from './styles/BillingStyles';
 import moment from 'moment';
+import ReactGA from 'react-ga';
+ReactGA.pageview('/account');
 
 class Billing extends Component {
   constructor(props) {
