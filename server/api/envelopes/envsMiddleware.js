@@ -87,48 +87,13 @@ async function postEnvToDB(req, res, new_envelopes) {
 
       const user_env = { account_id, envelope_id: ids.id };
       await envs.addUserToEnv(user_env);
-    } else {
-      const expiration = JSON.parse(user_envelopes[index].waiting_expiration);
-      const expired = moment().isAfter(expiration);
-      if (user_envelopes[index].status !== 'completed') {
-        // Update envelope if found and not completed
-        await envs.updateEnv(user_envelopes[index].id, new_envelopes[i]);
-        new_envelopes[i].id = user_envelopes[index].id;
-        new_envelopes[i].verified = user_envelopes[index].verified;
-        new_envelopes[i].waiting = user_envelopes[index].waiting;
-        user_envelopes[index] = new_envelopes[i];
-      } else if (user_envelopes[index].waiting && expired) {
-        // Check if document / envelope has been anchored to bitcoin
-        const proofHandle = [JSON.parse(user_envelopes[index].proof_handle)];
-        const proof = await chp.getProofs(proofHandle);
-        const verifiedProofs = await chp.verifyProofs(proof);
-        const verified = verifiedProofs.find(proof => proof.type === 'btc');
-
-        if (!verified) {
-          // Check again in 10 minutes
-          const waiting_expiration = JSON.stringify(moment().add(10, 'm'));
-          await envs.updateEnv(user_envelopes[index].id, {
-            waiting_expiration,
-          });
-          user_envelopes[index].waiting_expiration = waiting_expiration;
-          break;
-        }
-
-        const verified_proof = JSON.stringify(verified);
-        const proof_handle = JSON.stringify(proofHandle[0]);
-
-        await envs.updateEnv(user_envelopes[index].id, {
-          verified_proof,
-          proof_handle,
-          verified: verified.verified,
-          waiting: !verified.verified,
-        });
-
-        user_envelopes[index].verified_proof = verified_proof;
-        user_envelopes[index].proof_handle = proof_handle;
-        user_envelopes[index].verified = verified.verified;
-        user_envelopes[index].waiting = !verified.verified;
-      }
+    } else if (user_envelopes[index].status !== 'completed') {
+      // Update envelope if found and not completed
+      await envs.updateEnv(user_envelopes[index].id, new_envelopes[i]);
+      new_envelopes[i].id = user_envelopes[index].id;
+      new_envelopes[i].verified = user_envelopes[index].verified;
+      new_envelopes[i].waiting = user_envelopes[index].waiting;
+      user_envelopes[index] = new_envelopes[i];
     }
   }
   return res.status(200).json(user_envelopes);
@@ -167,9 +132,54 @@ function checkToken(req, res, next) {
   }
 }
 
+async function checkWaiting(req, res, next) {
+  try {
+    const account_id = req.user.account_id;
+    const user_envelopes = await envs.findAllByUser(account_id);
+
+    for (let i = 0; i < user_envelopes.length; i++) {
+      const envelope = user_envelopes[i];
+
+      if (envelope.waiting) {
+        const expiration = JSON.parse(envelope.waiting_expiration);
+        const expired = moment().isAfter(expiration);
+
+        if (expired) {
+          const proofHandle = [JSON.parse(envelope.proof_handle)];
+          const proof = await chp.getProofs(proofHandle);
+          const verifiedProofs = await chp.verifyProofs(proof);
+          const verified = verifiedProofs.find(proof => proof.type === 'btc');
+
+          if (!verified) {
+            // Check again in 10 minutes
+            const waiting_expiration = JSON.stringify(moment().add(10, 'm'));
+            await envs.updateEnv(envelope.id, { waiting_expiration });
+            envelope.waiting_expiration = waiting_expiration;
+            continue;
+          }
+
+          const verified_proof = JSON.stringify(verified);
+          const proof_handle = JSON.stringify(proofHandle[0]);
+
+          await envs.updateEnv(envelope.id, {
+            verified_proof,
+            proof_handle,
+            verified: verified.verified,
+            waiting: !verified.verified,
+          });
+        }
+      }
+    }
+    return next();
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+}
+
 module.exports = {
   checkExpiration,
   checkToken,
+  checkWaiting,
   getEnvelopes,
   getEnvelopesList,
   postEnvToDB,
