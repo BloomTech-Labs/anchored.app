@@ -6,13 +6,12 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { getUserInfo } from '../actions/user';
 import { BeatLoader } from 'react-spinners';
-import { Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { HomeContainer } from './Home/HomeStyles.js';
 import styled from 'styled-components';
 import OurTeam from './OurTeam/OurTeam';
 import Terms from './Terms/Terms.js';
 import Privacy from './Privacy/Privacy.js';
-import ReactGA from 'react-ga';
 import DashboardNav from './Nav/DashboardNav.js';
 import Documents from './Documents/Documents.js';
 import Settings from './Settings/Settings.js';
@@ -20,11 +19,6 @@ import Billing from './Billing/Billing.js';
 import Buy from './Stripe/Buy.js';
 import Footer from './Footer/Footer.js';
 import TopNavBar from './Nav/NavBar.js';
-
-ReactGA.initialize([
-  { trackingId: 'UA-131725736-1', debug: true },
-  { trackingId: 'UA-131909972-1', debug: true },
-]);
 
 axios.defaults.withCredentials = true;
 
@@ -49,7 +43,7 @@ class App extends React.Component {
     window.scrollTo(0, 0);
     const user = this.props.user;
 
-    if (this.props.fetching) {
+    if (this.props.fetching || (!this.props.fetched && !this.props.error)) {
       return (
         <LoadingContainer>
           <BeatLoader color={'black'} loading={this.state.loading} />
@@ -61,13 +55,16 @@ class App extends React.Component {
       <Fragment>
         <HomeContainer>
           {user ? <DashboardNav /> : <TopNavBar />}
-          <Route exact path="/" component={user ? Documents : Home} />
-          <Route path="/account" component={Billing} />
-          <Route path="/settings" component={Settings} />
-          <Route path="/buy" component={Buy} />
-          <Route path="/team" component={OurTeam} />
-          <Route path="/privacy" component={Privacy} />
-          <Route path="/terms" component={Terms} />
+          <Switch>
+            <Route exact path="/" component={user ? Documents : Home} />
+            <Route path="/team" component={OurTeam} />
+            <Route path="/privacy" component={Privacy} />
+            <Route path="/terms" component={Terms} />
+            {user && <Route path="/account" component={Billing} />}
+            {user && <Route path="/settings" component={Settings} />}
+            {user && <Route path="/buy" component={Buy} />}
+            <Route component={Home} />
+          </Switch>
         </HomeContainer>
         <Footer />
       </Fragment>
@@ -79,6 +76,8 @@ const mapStateToProps = state => {
   return {
     user: state.user.user,
     fetching: state.user.retrieving,
+    fetched: state.user.retrieved,
+    error: state.user.error,
   };
 };
 
