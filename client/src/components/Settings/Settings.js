@@ -13,7 +13,6 @@ import {
   InfoTextTitle,
   EditPicture,
   EditPictureWrapper,
-  DropZoneWrapper,
   DocuSignImg,
   UploadWrapper,
   ImgUploadBtn,
@@ -21,6 +20,7 @@ import {
 } from './styles/SettingsStyles.js';
 import PhotoIcon from '../../assets/edit-photo-icon.png';
 import DocuSignLogo from '../../assets/docusign_logo_standard.png';
+import Dropzone from 'react-dropzone';
 import ReactGA from 'react-ga';
 
 class Settings extends Component {
@@ -101,7 +101,7 @@ class Settings extends Component {
             <InfoTextTitle>Picture</InfoTextTitle>
           </InfoWrapper>
 
-          <DropZoneWrapper
+          <Dropzone
             accept="image/jpeg, image/png"
             onDrop={this.onDrop}
             multiple={false}
@@ -112,7 +112,7 @@ class Settings extends Component {
           >
             {({ getRootProps, getInputProps }) => (
               <UploadWrapper>
-                <EditPictureWrapper {...getRootProps()} tabIndex>
+                <EditPictureWrapper {...getRootProps()} tabIndex={-1}>
                   <input {...getInputProps()} />
                   <EditPicture
                     src={this.state.file ? this.state.file : PhotoIcon}
@@ -138,7 +138,7 @@ class Settings extends Component {
                 ) : null}
               </UploadWrapper>
             )}
-          </DropZoneWrapper>
+          </Dropzone>
         </SubSettingsWrapper>
       </SettingsWrapper>
     );
