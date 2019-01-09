@@ -1,8 +1,6 @@
 import { Auth0Lock } from 'auth0-lock';
 import logo from '../../../assets/Proofd_3.png';
 
-// test
-
 const options = {
   theme: {
     logo: logo,
