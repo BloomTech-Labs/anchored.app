@@ -115,7 +115,9 @@ export const DocuSignImg = styled.img`
   width: 125px;
 `;
 
-export const DropZoneWrapper = styled(DropZone)``;
+export const DropZoneWrapper = styled(DropZone)`
+  outline: none;
+`;
 
 export const UploadWrapper = styled.div`
 display: flex:
