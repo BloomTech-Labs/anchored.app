@@ -36,10 +36,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "resolutions": {
-    "react": "16.7.0",
-    "react-dom": "16.7.0"
-  },
   "eslintConfig": {
     "extends": "react-app"
   },
