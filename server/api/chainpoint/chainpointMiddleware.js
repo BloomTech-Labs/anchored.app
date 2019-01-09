@@ -40,7 +40,6 @@ async function proofDocuments(req, res, documents, id) {
   };
 
   await envs.updateEnv(id, changes);
-
   return res.status(200).json({ id, verified_proof: changes.verified_proof });
 }
 
