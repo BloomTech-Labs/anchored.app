@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import DocusignUnlink from '../Auth/Docusign/DocusignUnlink.js';
 import PasswordReset from './PasswordReset.js';
 import { newProfileImage } from '../../actions/user.js';
-
 import {
   SettingsWrapper,
   SubSettingsWrapper,
@@ -14,7 +13,6 @@ import {
   InfoTextTitle,
   EditPicture,
   EditPictureWrapper,
-  DropZoneWrapper,
   DocuSignImg,
   UploadWrapper,
   ImgUploadBtn,
@@ -22,6 +20,7 @@ import {
 } from './styles/SettingsStyles.js';
 import PhotoIcon from '../../assets/edit-photo-icon.png';
 import DocuSignLogo from '../../assets/docusign_logo_standard.png';
+import Dropzone from 'react-dropzone';
 import ReactGA from 'react-ga';
 
 class Settings extends Component {
@@ -102,23 +101,21 @@ class Settings extends Component {
             <InfoTextTitle>Picture</InfoTextTitle>
           </InfoWrapper>
 
-          <DropZoneWrapper
+          <Dropzone
             accept="image/jpeg, image/png"
-            onDrop={this.onDrop.bind(this)}
-            onFileDialogCancel={this.onCancel.bind(this)}
+            onDrop={this.onDrop}
             multiple={false}
             maxSize={60000} // 60KB upload limit
-            disableClick
             onDropRejected={() =>
               alert('Accepted file types are .jpg and .png at max size 60KB')
             }
           >
-            {({ open }) => (
+            {({ getRootProps, getInputProps }) => (
               <UploadWrapper>
-                <EditPictureWrapper>
+                <EditPictureWrapper {...getRootProps()} tabIndex={-1}>
+                  <input {...getInputProps()} />
                   <EditPicture
                     src={this.state.file ? this.state.file : PhotoIcon}
-                    onClick={() => open()} // Opens upload files from drive dropdown
                   />
                 </EditPictureWrapper>
                 {this.state.file !== null ? (
@@ -141,7 +138,7 @@ class Settings extends Component {
                 ) : null}
               </UploadWrapper>
             )}
-          </DropZoneWrapper>
+          </Dropzone>
         </SubSettingsWrapper>
       </SettingsWrapper>
     );

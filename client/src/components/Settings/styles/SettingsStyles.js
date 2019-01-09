@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Button } from 'reactstrap';
-import DropZone from 'react-dropzone';
 
 export const SettingsWrapper = styled.div`
   display: flex;
@@ -114,8 +113,6 @@ export const EditPicture = styled.img`
 export const DocuSignImg = styled.img`
   width: 125px;
 `;
-
-export const DropZoneWrapper = styled(DropZone)``;
 
 export const UploadWrapper = styled.div`
 display: flex:

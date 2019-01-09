@@ -10,7 +10,7 @@ import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 import ReactGA from 'react-ga';
 
-ReactGA.initialize('UA-131909972-1');
+ReactGA.initialize(process.env.REACT_APP_GA_TRACKING_ID);
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
