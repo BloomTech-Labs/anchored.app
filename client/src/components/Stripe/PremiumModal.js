@@ -22,18 +22,25 @@ class PremiumModal extends Component {
   };
 
   handleSubmit = e => {
+    e.preventDefault();
+
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({ 'form-name': 'contact', ...this.state }),
     })
-      .then(() => alert('Success!'))
-      .catch(error => alert(error));
+      .then(() => alert('Success. Thank you!'))
+      .catch(error => alert('Error. Please contact support.'));
 
-    e.preventDefault();
+    this.setState({
+      name: '',
+      email: '',
+    });
   };
 
-  handleChange = e => this.setState({ [e.target.name]: e.target.value });
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
   render() {
     const { name, email } = this.state;
@@ -46,7 +53,7 @@ class PremiumModal extends Component {
         </ModalHeader>
         <ModalBody>
           <Form>
-            <FormGroup onSubmit={this.handleSubmit}>
+            <FormGroup>
               <Input
                 type="text"
                 name="name"
@@ -72,7 +79,7 @@ class PremiumModal extends Component {
             block
             color="info"
             style={{ marginTop: '20px' }}
-            onSubmit={this.handleSubmit}
+            onClick={this.handleSubmit}
           >
             Sign Up
           </Button>
