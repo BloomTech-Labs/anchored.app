@@ -2,12 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { onToken } from '../../actions/billing';
 import BuyBox from './BuyBox.js';
+import PremiumBox from './PremiumBox.js';
 import { BoxContainer, BasicDiv } from './styles/BuyStyles.js';
 import ReactGA from 'react-ga';
 
 class Buy extends Component {
   componentDidMount() {
     ReactGA.pageview('/buy');
+  }
+
+  handleClick() {
+    console.log('clicked');
   }
 
   render() {
@@ -22,7 +27,6 @@ class Buy extends Component {
             name={'PROOFD'}
             description={'Purchase 1 Credit'}
             amount={5}
-            color="primary"
             onToken={this.props.onToken}
             btnDescription="$5"
           />
@@ -35,7 +39,6 @@ class Buy extends Component {
             name={'PROOFD'}
             description={'Purchase 3 Credits'}
             amount={10}
-            color="success"
             onToken={this.props.onToken}
             btnDescription="$10"
           />
@@ -47,9 +50,18 @@ class Buy extends Component {
             name={'PROOFD'}
             description={'Purchase 5 Credits'}
             amount={15}
-            color="danger"
             onToken={this.props.onToken}
             btnDescription="$15"
+          />
+
+          {/* Premium Subscription Signup  */}
+          <PremiumBox
+            title="Premium"
+            copyOne="Coming Soon!"
+            copyTwo="Unlimited Credits"
+            copyThree="Automatic Proofing"
+            btnDescription="Sign Up"
+            onClick={this.handleClick}
           />
         </BasicDiv>
         {/* Uncomment below when ready to go live with premium */}
