@@ -2,10 +2,27 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { onToken } from '../../actions/billing';
 import BuyBox from './BuyBox.js';
+import PremiumBox from './PremiumBox.js';
 import { BoxContainer, BasicDiv } from './styles/BuyStyles.js';
 import ReactGA from 'react-ga';
+import PremiumModal from './PremiumModal.js';
 
 class Buy extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modal: false,
+    };
+
+    this.toggle = this.toggle.bind(this);
+  }
+
+  toggle() {
+    this.setState({
+      modal: !this.state.modal,
+    });
+  }
+
   componentDidMount() {
     ReactGA.pageview('/buy');
   }
@@ -22,7 +39,6 @@ class Buy extends Component {
             name={'PROOFD'}
             description={'Purchase 1 Credit'}
             amount={5}
-            color="primary"
             onToken={this.props.onToken}
             btnDescription="$5"
           />
@@ -35,7 +51,6 @@ class Buy extends Component {
             name={'PROOFD'}
             description={'Purchase 3 Credits'}
             amount={10}
-            color="success"
             onToken={this.props.onToken}
             btnDescription="$10"
           />
@@ -47,10 +62,20 @@ class Buy extends Component {
             name={'PROOFD'}
             description={'Purchase 5 Credits'}
             amount={15}
-            color="danger"
             onToken={this.props.onToken}
             btnDescription="$15"
           />
+
+          {/* Premium Subscription Signup  */}
+          <PremiumBox
+            title="Premium"
+            copyOne="Coming Soon!"
+            copyTwo="Unlimited Credits"
+            copyThree="Automatic Proofing"
+            btnDescription="Sign Up"
+            onClick={this.toggle}
+          />
+          <PremiumModal toggle={this.toggle} isOpen={this.state.modal} />
         </BasicDiv>
         {/* Uncomment below when ready to go live with premium */}
         {/* <PremiumDiv>
