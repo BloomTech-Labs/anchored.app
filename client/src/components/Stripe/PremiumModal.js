@@ -36,6 +36,8 @@ class PremiumModal extends Component {
       name: '',
       email: '',
     });
+
+    this.props.toggle();
   };
 
   handleChange = e => {
@@ -44,6 +46,11 @@ class PremiumModal extends Component {
 
   render() {
     const { name, email } = this.state;
+    const isEnabled =
+      name.length > 0 &&
+      email.length > 0 &&
+      email.includes('@') &&
+      email.includes('.');
 
     return (
       <Modal centered isOpen={this.props.isOpen} toggle={this.props.toggle}>
@@ -75,6 +82,7 @@ class PremiumModal extends Component {
             </FormGroup>
           </Form>
           <Button
+            disabled={!isEnabled}
             size="lg"
             block
             color="info"
