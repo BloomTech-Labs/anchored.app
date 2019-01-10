@@ -14,12 +14,17 @@ const paymentRoutes = require('./payments/paymentRoutes.js');
 const corsOptions = process.env.STRIPE_FRONTEND_URL || 'http://localhost:3000';
 const compression = require('compression');
 
+const CronJob = require('cron').CronJob;
+const { checkWaiting } = require('./envelopes/envsMiddleware');
+
+new CronJob('0 */15 * * * *', checkWaiting, null, true, 'America/Los_Angeles');
+
 // server
 const server = express();
 
 // middleware
-server.use(compression());
 applyGlobalMiddleware(server);
+server.use(compression());
 server.use(cors({ origin: corsOptions }));
 
 // For large payloads to the server
@@ -29,7 +34,7 @@ server.use(
     limit: '50mb',
     extended: true,
     parameterLimit: 50000,
-  }),
+  })
 );
 
 // routes
