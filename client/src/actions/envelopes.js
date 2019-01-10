@@ -46,8 +46,6 @@ export const getProof = id => {
   };
 };
 
-// TEST COMMENT
-
 export const updateLoading = (id, changes) => {
   return dispatch => {
     dispatch({ type: UPDATE_LOADING, payload: { id, changes } });

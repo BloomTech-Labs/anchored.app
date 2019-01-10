@@ -26,6 +26,10 @@ function findAllByUser(account_id) {
     .where('account_id', account_id);
 }
 
+function findAllByWaiting() {
+  return db('envelopes').where({ waiting: 1 });
+}
+
 function findById(id) {
   return db('envelopes')
     .where({ id })
@@ -46,6 +50,18 @@ function addUserToEnv(userEnv) {
     .into('users_envelopes');
 }
 
+function findAccountIdById(id) {
+  return db('users_envelopes')
+    .where({ id })
+    .then(ids => ids[0].account_id);
+}
+
+function findUserIdByAccountId(id) {
+  return db('docusign')
+    .where({ id })
+    .then(ids => ids[0].user_id);
+}
+
 function updateEnv(id, changes) {
   return db('envelopes')
     .where({ id })
@@ -61,7 +77,10 @@ function removeEnv(id) {
 module.exports = {
   find,
   findAllByUser,
+  findAllByWaiting,
   findById,
+  findAccountIdById,
+  findUserIdByAccountId,
   addEnv,
   addUserToEnv,
   updateEnv,

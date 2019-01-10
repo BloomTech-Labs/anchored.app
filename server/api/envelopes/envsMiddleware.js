@@ -4,6 +4,8 @@ const { promisify } = require('util');
 const chp = require('chainpoint-client');
 
 const envs = require('./envelopesModel');
+const users = require('../users/usersModel');
+
 const docusignModel = require('../auth/docusign/docusignModel');
 
 function handleExpiration(req, res, next) {
@@ -132,47 +134,67 @@ function checkToken(req, res, next) {
   }
 }
 
-async function checkWaiting(req, res, next) {
+async function checkWaiting() {
   try {
-    const account_id = req.user.account_id;
-    const user_envelopes = await envs.findAllByUser(account_id);
+    const envelopes = await envs.findAllByWaiting();
 
-    for (let i = 0; i < user_envelopes.length; i++) {
-      const envelope = user_envelopes[i];
+    for (let i = 0; i < envelopes.length; i++) {
+      const envelope = envelopes[i];
+      const expiration = JSON.parse(envelope.waiting_expiration);
+      const expired = moment().isAfter(expiration);
 
-      if (envelope.waiting) {
-        const expiration = JSON.parse(envelope.waiting_expiration);
-        const expired = moment().isAfter(expiration);
+      if (expired) {
+        const calendarProof = JSON.parse(envelope.verified_proof);
 
-        if (expired) {
-          const proofHandle = [JSON.parse(envelope.proof_handle)];
-          const proof = await chp.getProofs(proofHandle);
-          const verifiedProofs = await chp.verifyProofs(proof);
-          const verified = verifiedProofs.find(proof => proof.type === 'btc');
+        const proofHandle = [JSON.parse(envelope.proof_handle)];
+        const proofs = await chp.getProofs(proofHandle);
 
-          if (!verified) {
-            // Check again in 10 minutes
-            const waiting_expiration = JSON.stringify(moment().add(10, 'm'));
-            await envs.updateEnv(envelope.id, { waiting_expiration });
-            envelope.waiting_expiration = waiting_expiration;
-            continue;
+        const index = proofs.findIndex(proof => proof.proof !== null);
+        const proof = [proofs[index]];
+
+        if (!proof[0]) {
+          // If documents haven't been proofed within 24 hours, refund credits / remove envelope from waiting stage
+          const now = moment();
+          const proofExpired = moment(calendarProof.hashSubmittedNodeAt)
+            .add(24, 'h')
+            .isBefore(now);
+
+          if (proofExpired) {
+            const accountId = await envs.findAccountIdById(envelope.id);
+            const userId = await envs.findUserIdByAccountId(accountId);
+
+            await users.incrementCredit(userId, 1);
+            await envs.updateEnv(envelope.id, {
+              verified_proof: null,
+              proof_handle: null,
+              verified: 0,
+              waiting: 0,
+              loading: 0,
+              waiting_expiration: 0,
+              loading_expiration: 0,
+            });
           }
-
-          const verified_proof = JSON.stringify(verified);
-          const proof_handle = JSON.stringify(proofHandle[0]);
-
-          await envs.updateEnv(envelope.id, {
-            verified_proof,
-            proof_handle,
-            verified: verified.verified,
-            waiting: !verified.verified,
-          });
+          continue;
         }
+
+        const verifiedProofs = await chp.verifyProofs(proof);
+        const verified = verifiedProofs.find(proof => proof.type === 'btc');
+
+        if (!verified) continue;
+
+        const verified_proof = JSON.stringify(verified);
+        const proof_handle = JSON.stringify(proofHandle[0]);
+
+        await envs.updateEnv(envelope.id, {
+          verified_proof,
+          proof_handle,
+          verified: verified.verified,
+          waiting: !verified.verified,
+        });
       }
     }
-    return next();
   } catch (err) {
-    return res.status(500).json(err);
+    console.log(err);
   }
 }
 
