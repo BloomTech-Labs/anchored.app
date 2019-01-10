@@ -5,14 +5,26 @@ import BuyBox from './BuyBox.js';
 import PremiumBox from './PremiumBox.js';
 import { BoxContainer, BasicDiv } from './styles/BuyStyles.js';
 import ReactGA from 'react-ga';
+import PremiumModal from './PremiumModal.js';
 
 class Buy extends Component {
-  componentDidMount() {
-    ReactGA.pageview('/buy');
+  constructor(props) {
+    super(props);
+    this.state = {
+      modal: false,
+    };
+
+    this.toggle = this.toggle.bind(this);
   }
 
-  handleClick() {
-    console.log('clicked');
+  toggle() {
+    this.setState({
+      modal: !this.state.modal,
+    });
+  }
+
+  componentDidMount() {
+    ReactGA.pageview('/buy');
   }
 
   render() {
@@ -61,8 +73,9 @@ class Buy extends Component {
             copyTwo="Unlimited Credits"
             copyThree="Automatic Proofing"
             btnDescription="Sign Up"
-            onClick={this.handleClick}
+            onClick={this.toggle}
           />
+          <PremiumModal toggle={this.toggle} isOpen={this.state.modal} />
         </BasicDiv>
         {/* Uncomment below when ready to go live with premium */}
         {/* <PremiumDiv>
