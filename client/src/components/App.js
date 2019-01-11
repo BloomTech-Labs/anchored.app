@@ -51,13 +51,6 @@ class App extends React.Component {
       );
     }
 
-    if (
-      this.props.location.pathname ===
-      '/loaderio-86d743f6cf59ddc63db102b19d92e7ba/'
-    ) {
-      return 'loaderio-86d743f6cf59ddc63db102b19d92e7ba';
-    }
-
     return (
       <Fragment>
         <HomeContainer>
