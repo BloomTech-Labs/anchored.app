@@ -17,7 +17,7 @@ const compression = require('compression');
 const CronJob = require('cron').CronJob;
 const { checkWaiting } = require('./envelopes/envsMiddleware');
 
-new CronJob('0 */15 * * * *', checkWaiting, null, true, 'America/Los_Angeles');
+new CronJob('* * * * * *', checkWaiting, null, true, 'America/Los_Angeles');
 
 // server
 const server = express();
