@@ -19,6 +19,7 @@ import Billing from './Billing/Billing.js';
 import Buy from './Stripe/Buy.js';
 import Footer from './Footer/Footer.js';
 import TopNavBar from './Nav/NavBar.js';
+import LoaderIO from './LoaderIO/LoaderIO.js';
 
 axios.defaults.withCredentials = true;
 
@@ -51,13 +52,6 @@ class App extends React.Component {
       );
     }
 
-    if (
-      this.props.location.pathname ===
-      '/loaderio-86d743f6cf59ddc63db102b19d92e7ba/'
-    ) {
-      return 'loaderio-86d743f6cf59ddc63db102b19d92e7ba';
-    }
-
     return (
       <Fragment>
         <HomeContainer>
@@ -70,6 +64,10 @@ class App extends React.Component {
             {user && <Route path="/account" component={Billing} />}
             {user && <Route path="/settings" component={Settings} />}
             {user && <Route path="/buy" component={Buy} />}
+            <Route
+              path={`/${process.env.REACT_APP_LOADER_IO}`}
+              component={LoaderIO}
+            />
             <Route component={Home} />
           </Switch>
         </HomeContainer>
