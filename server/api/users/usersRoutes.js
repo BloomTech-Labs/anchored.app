@@ -4,8 +4,12 @@ const { ensureAuthenticated } = require('../auth/docusign/dsMiddleware');
 
 const router = express.Router();
 
-router.get('/profile', (req, res) => {
-  res.status(200).json({ user: req.user });
+router.get('/profile', async (req, res) => {
+  let user;
+  if (req.isAuthenticated()) {
+    user = await users.findByUserId(req.user.id);
+  }
+  res.status(200).json({ user });
 });
 
 router.use(ensureAuthenticated);

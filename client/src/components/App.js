@@ -63,7 +63,7 @@ class App extends React.Component {
             {user && <Route path="/account" component={Billing} />}
             {user && <Route path="/settings" component={Settings} />}
             {user && <Route path="/buy" component={Buy} />}
-            <Route component={Home} />
+            <Route component={user ? Documents : Home} />
           </Switch>
         </HomeContainer>
         <Footer />
