@@ -60,13 +60,14 @@ class App extends React.Component {
     if (this.props.fetching || (!this.props.fetched && !this.props.error)) {
       return (
         <LoadingContainer>
-          <TwitterAlert>
+          {/* Uncomment the TwitterAlert section if needed due to high traffic */}
+          {/* <TwitterAlert>
             <TwitterText>
               Someone with <em>a lot</em> of Twitter followers tweeted about us,
               and we're experiencing abnormally high traffic. Thanks for your
               patience!
             </TwitterText>
-          </TwitterAlert>
+          </TwitterAlert> */}
           <BeatLoader color={'black'} loading={this.state.loading} />
         </LoadingContainer>
       );

@@ -77,13 +77,14 @@ class NavBar extends Component {
           <NavLink exact to={`/`}>
             <Img src={Logo} alt="Proofd Logo" />
           </NavLink>
-          <TwitterAlert>
+          {/* Uncomment the TwitterAlert section if needed due to high traffic */}
+          {/* <TwitterAlert>
             <TwitterText>
               Someone with <em>a lot</em> of Twitter followers tweeted about us,
               and we're experiencing abnormally high traffic. Thanks for your
               patience!
             </TwitterText>
-          </TwitterAlert>
+          </TwitterAlert> */}
           {/* {*** Links ***} */}
           <Links>
             <MediaQuery minWidth={801}>
