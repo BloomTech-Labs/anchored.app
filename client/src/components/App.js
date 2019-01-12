@@ -30,6 +30,20 @@ const LoadingContainer = styled.div`
   justify-content: center;
 `;
 
+export const TwitterAlert = styled.div`
+  width: 40%;
+  height: 20%;
+  background-color: yellow;
+  border: 1px solid black;
+  border-radius: 4px;
+  margin: 20px;
+  padding: 10px;
+`;
+
+export const TwitterText = styled.p`
+  font-size: 1rem;
+`;
+
 class App extends React.Component {
   state = {
     loading: true,
@@ -46,6 +60,14 @@ class App extends React.Component {
     if (this.props.fetching || (!this.props.fetched && !this.props.error)) {
       return (
         <LoadingContainer>
+          {/* Uncomment the TwitterAlert section if needed due to high traffic */}
+          {/* <TwitterAlert>
+            <TwitterText>
+              Someone with <em>a lot</em> of Twitter followers tweeted about us,
+              and we're experiencing abnormally high traffic. Thanks for your
+              patience!
+            </TwitterText>
+          </TwitterAlert> */}
           <BeatLoader color={'black'} loading={this.state.loading} />
         </LoadingContainer>
       );
