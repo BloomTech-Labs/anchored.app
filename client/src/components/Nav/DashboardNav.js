@@ -23,6 +23,8 @@ import {
   ImageCropper,
   ProfilePic,
   ProfilePicWrapper,
+  TwitterAlert,
+  TwitterText,
 } from './styles/NavStyles.js';
 import { Dropdown, DropdownItem, Button } from 'reactstrap';
 import Logo from '../../assets/Proofd_3.png';
@@ -75,6 +77,13 @@ class NavBar extends Component {
           <NavLink exact to={`/`}>
             <Img src={Logo} alt="Proofd Logo" />
           </NavLink>
+          <TwitterAlert>
+            <TwitterText>
+              Someone with <em>a lot</em> of Twitter followers tweeted about us,
+              and we're experiencing abnormally high traffic. Thanks for your
+              patience!
+            </TwitterText>
+          </TwitterAlert>
           {/* {*** Links ***} */}
           <Links>
             <MediaQuery minWidth={801}>

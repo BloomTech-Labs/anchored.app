@@ -20,6 +20,7 @@ export const TopNavBar = styled.div`
   justify-content: space-between;
   padding-left: 20px;
   align-items: center;
+
   @media (max-width: 800px) {
     height: 100px;
     padding: 0 15px;
@@ -37,6 +38,19 @@ export const Links = styled.div`
     padding: 0 15px;
     margin-top: 10px;
   }
+`;
+
+export const TwitterAlert = styled.div`
+  width: 40%;
+  height: 70%;
+  background-color: yellow;
+  border: 1px solid black;
+  border-radius: 4px;
+  margin-left: 250px;
+`;
+
+export const TwitterText = styled.p`
+  font-size: 0.7rem;
 `;
 
 export const Button = styled.div`
@@ -132,7 +146,7 @@ export const StyledDropdownItem = styled(DropdownItem)`
     &:hover {
       color: #bdbdbd;
       background: none;
-
+    }
   }
 `;
 
@@ -161,6 +175,7 @@ export const UserHeader = styled.div`
   @media (max-width: 800px) {
     padding-left: 20px;
     color: white;
+  }
 `;
 
 export const ProfilePicWrapper = styled(DropdownToggle)`
@@ -169,7 +184,7 @@ export const ProfilePicWrapper = styled(DropdownToggle)`
   background: none; /* Fixes Firefox background color */
 
   &:focus {
-    box-shadow: 0 0 0 0.2rem rgba(115, 68, 193, .25);
+    box-shadow: 0 0 0 0.2rem rgba(115, 68, 193, 0.25);
   }
 
   @media (max-width: 800px) {
@@ -180,6 +195,7 @@ export const ProfilePicWrapper = styled(DropdownToggle)`
     &:hover {
       background: none;
     }
+  }
 `;
 
 export const ImageCropper = styled.div`
