@@ -30,7 +30,7 @@ class PremiumModal extends Component {
       body: encode({ 'form-name': 'contact', ...this.state }),
     })
       .then(() => alert('Success. Thank you!'))
-      .catch(error => alert('Error. Please contact support.'));
+      .catch(error => alert('There was an error sending your message. Please email support@proof.app.'));
 
     this.setState({
       name: '',
