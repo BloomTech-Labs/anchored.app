@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import ModalVideo from 'react-modal-video';
+import playImg from '../../assets/video_icon.png';
+
 import {
   Container,
   ContentMain,
@@ -11,6 +14,9 @@ import {
   Copy,
   BgContainer,
   OutterMost,
+  TagLine,
+  PlayImg,
+  ContentDemo,
 } from './styles/LPcontentStyles.js';
 
 import { Element } from 'react-scroll';
@@ -31,9 +37,15 @@ class LPcontent extends Component {
     super(props);
     this.state = {
       modal: false,
+      isOpen: false,
     };
 
+    this.openModal = this.openModal.bind(this);
     this.toggle = this.toggle.bind(this);
+  }
+
+  openModal() {
+    this.setState({ isOpen: true });
   }
 
   toggle() {
@@ -82,11 +94,17 @@ class LPcontent extends Component {
               {/* Uncomment the below section when we
                   have the 'science behind our work' video
               */}
-              {/* <ContentSet>
-                <PlayImg src={playImg} alt="play icon" />
-                <TagLine>The science behind our work</TagLine>
-              </ContentSet> */}
+              <ContentDemo onClick={this.openModal}>
+                <PlayImg src={playImg} alt="play icon" width="20%" />
+                <TagLine>Watch the Demo</TagLine>
+              </ContentDemo>
             </ContentMain>
+            <ModalVideo
+              channel="youtube"
+              isOpen={this.state.isOpen}
+              videoId="2QY0qJcTlac"
+              onClose={() => this.setState({ isOpen: false })}
+            />
           </Container>
         </BgContainer>
         <PricingSection>
