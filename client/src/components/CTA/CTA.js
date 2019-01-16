@@ -58,12 +58,12 @@ class CTA extends Component {
         <CtaButton onClick={this.smoothScroll}>CHECK OUR PRICES</CtaButton>
         <Demo onClick={this.openModal}>
           <Img src={playImg} alt="play icon" width="20%" />
-          <Copy>Watch the Demo</Copy>
+          <Copy>Watch the Promo</Copy>
         </Demo>
         <ModalVideo
           channel="youtube"
           isOpen={this.state.isOpen}
-          videoId="j7jHC1eFPY8"
+          videoId="CQi2sfVNWyI"
           onClose={() => this.setState({ isOpen: false })}
         />
       </CtaContainer>

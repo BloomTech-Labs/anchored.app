@@ -31,6 +31,7 @@ export const ContentMain = styled.div`
   max-width: 1010px;
   width: 100%;
   opacity: 1;
+  padding-bottom: 40px;
 `;
 
 export const H1 = styled.h1`
@@ -104,14 +105,19 @@ export const Copy = styled.p`
   z-index: 100;
 `;
 
+export const ContentDemo = styled.div`
+  width: 200px;
+  height: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+`;
+
 export const TagLine = styled.p`
-  font-size: 1.1rem;
-  max-width: 450px;
-  text-align: left;
-  padding: 10px;
+  font-size: 1.2rem;
+  padding: 5px;
   margin-bottom: 0px;
 `;
 
-export const PlayImg = styled.img`
-  max-width: 10%;
-`;
+export const PlayImg = styled.img``;
