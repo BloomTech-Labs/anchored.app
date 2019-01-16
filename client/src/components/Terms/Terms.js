@@ -170,7 +170,9 @@ const Terms = () => {
       </Paragraph>
 
       <Paragraph>
-        <li>By email: support@proofd.app</li>
+        <li>
+          By email: <a href="mailto:support@proofd.app">support@proofd.app</a>
+        </li>
       </Paragraph>
 
       <Paragraph />
