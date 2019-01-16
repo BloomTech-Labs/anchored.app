@@ -9,7 +9,7 @@ export const ERROR = 'ERROR';
 
 const errorPayment = () => {
   alert(
-    'There was an error processing your payment. Please contact support@proofd.app.'
+    'There was an error processing your payment. Please contact us at support@proofd.app.'
   );
 };
 
