@@ -241,7 +241,12 @@ const Privacy = () => {
         If you have any questions about this Privacy Policy, please contact us:
       </Paragraph>
       <Paragraph>
-        <li>By email: support@proofd.app</li>
+        <li>
+          By email:{' '}
+          <a href="mailto:support@proofd.app">
+            support@proofd.app
+          </a>
+        </li>
       </Paragraph>
       <Paragraph />
     </PrivacyContainer>
