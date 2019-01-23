@@ -19,8 +19,13 @@ function handleExpiration(req, res, next) {
     refresh_token: req.user.refresh_token,
   };
 
+  const URL =
+    process.env.DB === 'production'
+      ? 'https://account.docusign.com'
+      : 'https://account-d.docusign.com';
+
   axios
-    .post('https://account-d.docusign.com/oauth/token', data, header)
+    .post(`${URL}/oauth/token`, data, header)
     .then(response => {
       const expiration = moment().add(response.data.expires_in, 's');
 

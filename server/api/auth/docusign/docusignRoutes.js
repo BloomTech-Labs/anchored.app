@@ -19,8 +19,8 @@ const docusignStrategy = new DocusignStrategy(
     callbackURL:
       process.env.DOCUSIGN_CALLBACK_URL ||
       'http://localhost:9000/auth/docusign/callback',
+    production: process.env.DB === 'production' ? true : false,
     passReqToCallback: true,
-    sandbox: true,
     state: true,
   },
   async (req, accessToken, refreshToken, params, user, done) => {
@@ -28,8 +28,12 @@ const docusignStrategy = new DocusignStrategy(
     user.refreshToken = refreshToken;
     user.expiresIn = params.expires_in;
     user.expires = moment().add(user.expiresIn, 's');
-    await updateUser(req, user);
-    return done(null, user);
+    try {
+      await updateUser(req, user);
+      return done(null, user);
+    } catch (err) {
+      return done(err, null);
+    }
   }
 );
 

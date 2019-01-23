@@ -24,10 +24,10 @@ passport.use(
       let profile;
       try {
         profile = await userPostCheck(user._json);
+        return done(null, profile);
       } catch (err) {
-        console.log(err);
+        return done(err, null);
       }
-      return done(null, profile);
     }
   )
 );
