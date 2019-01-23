@@ -100,7 +100,7 @@ class Documents extends React.Component {
           <DocumentsHeader>Your Documents</DocumentsHeader>
           <AddDocumentContainer
             target="_blank"
-            href="https://appdemo.docusign.com/home"
+            href="https://app.docusign.com/home"
           >
             <AddDocument className="fas fa-plus-circle" />
             Add Document
