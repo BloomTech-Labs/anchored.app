@@ -41,7 +41,7 @@
     "moment": "^2.22.2",
     "passport": "^0.4.0",
     "passport-auth0": "^0.5.2",
-    "passport-docusign": "^1.0.0",
+    "passport-docusign": "^1.1.0",
     "pg": "^7.6.0",
     "session": "^0.1.0",
     "sqlite3": "^4.0.4",

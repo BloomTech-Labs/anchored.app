@@ -7,7 +7,11 @@ const router = express.Router();
 router.get('/profile', async (req, res) => {
   let user;
   if (req.isAuthenticated()) {
-    user = await users.findByUserId(req.user.id);
+    try {
+      user = await users.findByUserId(req.user.id);
+    } catch (err) {
+      return res.status(500).json(err);
+    }
   }
   res.status(200).json({ user });
 });
