@@ -27,7 +27,7 @@ import {
   TwitterText,
 } from './styles/NavStyles.js';
 import { Dropdown, DropdownItem, Button } from 'reactstrap';
-import Logo from '../../assets/Proofd_3.png';
+import Logo from '../../assets/anchored.png';
 
 class NavBar extends Component {
   constructor(props) {
@@ -75,7 +75,7 @@ class NavBar extends Component {
       <NavGod>
         <TopNavBar>
           <NavLink exact to={`/`}>
-            <Img src={Logo} alt="Proofd Logo" />
+            <Img src={Logo} alt="Anchored Logo" />
           </NavLink>
           {/* Uncomment the TwitterAlert section if needed due to high traffic */}
           {/* <TwitterAlert>

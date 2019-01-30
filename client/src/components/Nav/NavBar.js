@@ -10,7 +10,7 @@ import {
   TwitterAlert,
   TwitterText,
 } from './styles/NavStyles.js';
-import Logo from '../../assets/Proofd_3.png';
+import Logo from '../../assets/anchored.png';
 
 const auth = new Auth0();
 
@@ -20,7 +20,7 @@ class NavBar extends Component {
       <NavGod>
         <TopNavBar>
           <NavLink to={'/'}>
-            <Img src={Logo} alt="Proofd Logo" />
+            <Img src={Logo} alt="Anchored Logo" />
           </NavLink>
           {/* Uncomment the TwitterAlert section if needed due to high traffic */}
           {/* <TwitterAlert>
