@@ -16,7 +16,7 @@ const Footer = () => {
   return (
     <FooterContainer>
       <LeftFoot>
-        <Copy>{'\u00A9'} 2019 Proofd </Copy>
+        <Copy>{'\u00A9'} 2019 Anchored </Copy>
         <NavLink
           to={'/team'}
           style={{ textDecoration: 'none', color: '#7344c1' }}
@@ -26,7 +26,7 @@ const Footer = () => {
         </NavLink>
       </LeftFoot>
       <CenterFoot>
-        <Img src={Logo} alt="Proofd Logo" />
+        <Img src={Logo} alt="Anchored Logo" />
       </CenterFoot>
       <RightFoot>
         <NavLink

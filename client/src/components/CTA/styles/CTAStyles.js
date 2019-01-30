@@ -66,7 +66,7 @@ export const H2 = styled.h2`
   font-size: 2rem;
 
   @media (max-width: 550px) {
-    font-size: 1.9rem;
+    font-size: 1.7rem;
   }
 `;
 
@@ -78,6 +78,10 @@ export const H3 = styled.h3`
 export const Copy = styled.p`
   font-size: 1.2rem;
   margin-bottom: 0px;
+
+  @media (max-width: 550px) {
+    font-size: 1.1rem;
+  }
 `;
 
 export const Img = styled.img`
