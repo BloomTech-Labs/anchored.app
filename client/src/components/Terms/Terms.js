@@ -17,13 +17,13 @@ const Terms = () => {
 
       <Paragraph>
         These terms and conditions outline the rules and regulations for the use
-        of Proofd's Website, located at{' '}
-        <a href="https://proofd.app">proofd.app.</a>
+        of Anchored's Website, located at{' '}
+        <a href="https://anchored.app">anchored.app.</a>
       </Paragraph>
 
       <Paragraph>
         By accessing this website we assume you accept these terms and
-        conditions. Do not continue to use Proofd if you do not agree to take
+        conditions. Do not continue to use Anchored if you do not agree to take
         all of the terms and conditions stated on this page.
       </Paragraph>
 
@@ -47,9 +47,9 @@ const Terms = () => {
       <SubHeading>Cookies</SubHeading>
 
       <Paragraph>
-        We employ the use of cookies. By accessing Proofd, you agreed to use
-        cookies in agreement with Proofd's{' '}
-        <a href="https://proofd.app/#/privacy">Privacy Policy</a>.
+        We employ the use of cookies. By accessing Anchored, you agreed to use
+        cookies in agreement with Anchored's{' '}
+        <a href="https://anchored.app/#/privacy">Privacy Policy</a>.
       </Paragraph>
 
       <Paragraph>
@@ -63,19 +63,19 @@ const Terms = () => {
       <SubHeading>License</SubHeading>
 
       <Paragraph>
-        Unless otherwise stated, Proofd and/or its licensors own the
-        intellectual property rights for all material on Proofd. All
+        Unless otherwise stated, Anchored and/or its licensors own the
+        intellectual property rights for all material on Anchored. All
         intellectual property rights are reserved. You may access this from
-        Proofd for your own personal use subjected to restrictions set in these
-        terms and conditions.
+        Anchored for your own personal use subjected to restrictions set in
+        these terms and conditions.
       </Paragraph>
 
       <Paragraph>You must not: </Paragraph>
       <Paragraph>
-        <li>Republish material from Proofd</li>
-        <li>Sell, rent or sub-license material from Proofd</li>
-        <li>Reproduce, duplicate or copy material from Proofd</li>
-        <li>Redistribute content from Proofd</li>
+        <li>Republish material from Anchored</li>
+        <li>Sell, rent or sub-license material from Anchored</li>
+        <li>Reproduce, duplicate or copy material from Anchored</li>
+        <li>Redistribute content from Anchored</li>
       </Paragraph>
 
       <Paragraph>This Agreement shall begin on the date hereof. </Paragraph>
@@ -84,14 +84,14 @@ const Terms = () => {
 
       <Paragraph>
         Please read our{' '}
-        <a href="https://proofd.app/#/privacy">Privacy Policy</a>.
+        <a href="https://anchored.app/#/privacy">Privacy Policy</a>.
       </Paragraph>
 
       <SubHeading>Your Data</SubHeading>
 
       <Paragraph>
-        By using Proofd's service, you agree to give Proofd the right to copy
-        your data for the use of product.
+        By using Anchored's service, you agree to give Anchored the right to
+        copy your data for the use of product.
       </Paragraph>
 
       <SubHeading>Termination of Service</SubHeading>
@@ -171,7 +171,8 @@ const Terms = () => {
 
       <Paragraph>
         <li>
-          By email: <a href="mailto:support@proofd.app">support@proofd.app</a>
+          By email:{' '}
+          <a href="mailto:support@anchored.app">support@anchored.app</a>
         </li>
       </Paragraph>
 
