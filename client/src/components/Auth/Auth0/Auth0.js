@@ -1,5 +1,5 @@
 import { Auth0Lock } from 'auth0-lock';
-import logo from '../../../assets/Proofd_3.png';
+import logo from '../../../assets/anchored_text.png';
 
 const options = {
   theme: {
