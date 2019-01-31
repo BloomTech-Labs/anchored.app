@@ -10,7 +10,7 @@ import {
   TwitterAlert,
   TwitterText,
 } from './styles/NavStyles.js';
-import Logo from '../../assets/anchored.png';
+import Logo from '../../assets/anchored_text.png';
 
 const auth = new Auth0();
 

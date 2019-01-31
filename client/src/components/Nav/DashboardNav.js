@@ -27,7 +27,7 @@ import {
   TwitterText,
 } from './styles/NavStyles.js';
 import { Dropdown, DropdownItem, Button } from 'reactstrap';
-import Logo from '../../assets/anchored.png';
+import Logo from '../../assets/anchored_text.png';
 
 class NavBar extends Component {
   constructor(props) {

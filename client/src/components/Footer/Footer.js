@@ -10,7 +10,7 @@ import {
   Img,
 } from './styles/FooterStyles.js';
 
-import Logo from '../../assets/Proofd_3_logoOnly.png';
+import Logo from '../../assets/anchored_logo_only.png';
 
 const Footer = () => {
   return (
