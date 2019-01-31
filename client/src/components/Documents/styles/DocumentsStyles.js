@@ -15,14 +15,12 @@ export const DocumentsContainer = styled.div`
 `;
 
 export const Header = styled(DocumentsContainer)`
-  /* margin-top: 0; */
   flex-direction: row;
   justify-content: flex-start;
   max-width: 1010px;
   width: 100%;
-  /* padding: 0 15px; */
 
-  @media (max-width: 550px) {
+  @media (max-width: 800px) {
     flex-direction: column;
   }
 `;

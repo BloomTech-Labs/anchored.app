@@ -152,7 +152,7 @@ class Document extends React.Component {
             ) : this.props.doc.error ? (
               'Error'
             ) : (
-              'Click to Proof'
+              'Click to Anchor'
             )}
           </DocumentProof>
         ) : (
@@ -160,7 +160,7 @@ class Document extends React.Component {
             onClick={this.props.doc.verified ? this.toggleLinkModal : null}
           >
             {this.props.doc.verified
-              ? 'See Proof'
+              ? 'See Anchor'
               : this.props.doc.waiting
               ? 'Waiting...'
               : 'Not signed'}
@@ -173,7 +173,7 @@ class Document extends React.Component {
           {/* Returns proofed timestamp if exists */}
           {timestamp !== undefined ? (
             <TimestampContainer>
-              Proofed
+              Anchored
               <Timestamp>
                 {moment
                   .utc(timestamp)

@@ -15,13 +15,13 @@ const Privacy = () => {
       <Header>Privacy Policy</Header>
       <Paragraph>Effective date: January 01, 2019</Paragraph>
       <Paragraph>
-        Proofd operates the <a href="https://proofd.app">proofd.app</a> website
-        (hereinafter referred to as the "Service").
+        Anchored operates the <a href="https://anchored.app">anchored.app</a>{' '}
+        website (hereinafter referred to as the "Service").
       </Paragraph>
       <Paragraph>
         This page informs you of our policies regarding the collection, use, and
         disclosure of personal data when you use our Service and the choices you
-        have associated with that data. Our Privacy Policy for Proofd is based
+        have associated with that data. Our Privacy Policy for Anchored is based
         on the Privacy Policy Template from Privacy Policies.
       </Paragraph>
       <Paragraph>
@@ -30,7 +30,7 @@ const Privacy = () => {
         accordance with this policy. Unless otherwise defined in this Privacy
         Policy, the terms used in this Privacy Policy have the same meanings as
         in our Terms and Conditions, accessible from{' '}
-        <a href="https://proofd.app">proofd.app</a>
+        <a href="https://anchored.app">anchored.app</a>
       </Paragraph>
       <SubHeading>Information Collection And Use</SubHeading>
       <Paragraph>
@@ -93,7 +93,7 @@ const Privacy = () => {
       </Paragraph>
       <SubHeading>Use of Data</SubHeading>
       <Paragraph>
-        Proofd uses the collected data for various purposes:
+        Anchored uses the collected data for various purposes:
       </Paragraph>
       <Paragraph>
         <li>To provide and maintain the Service</li>
@@ -127,21 +127,21 @@ const Privacy = () => {
         information represents your agreement to that transfer.
       </Paragraph>
       <Paragraph>
-        Proofd will take all steps reasonably necessary to ensure that your data
-        is treated securely and in accordance with this Privacy Policy and no
-        transfer of your Personal Data will take place to an organization or a
-        country unless there are adequate controls in place including the
+        Anchored will take all steps reasonably necessary to ensure that your
+        data is treated securely and in accordance with this Privacy Policy and
+        no transfer of your Personal Data will take place to an organization or
+        a country unless there are adequate controls in place including the
         security of your data and other personal information.
       </Paragraph>
       <SubHeading>Disclosure Of Data</SubHeading>
       <SmallSubHeading>Legal Requirements</SmallSubHeading>
       <Paragraph>
-        Proofd may disclose your Personal Data in the good faith belief that
+        Anchored may disclose your Personal Data in the good faith belief that
         such action is necessary to:
       </Paragraph>
       <Paragraph>
         <li>To comply with a legal obligation</li>
-        <li>To protect and defend the rights or property of Proofd</li>
+        <li>To protect and defend the rights or property of Anchored</li>
         <li>
           To prevent or investigate possible wrongdoing in connection with the
           Service
@@ -243,9 +243,7 @@ const Privacy = () => {
       <Paragraph>
         <li>
           By email:{' '}
-          <a href="mailto:support@proofd.app">
-            support@proofd.app
-          </a>
+          <a href="mailto:support@anchored.app">support@anchored.app</a>
         </li>
       </Paragraph>
       <Paragraph />

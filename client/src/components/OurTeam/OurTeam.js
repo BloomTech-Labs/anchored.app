@@ -21,7 +21,7 @@ const OurTeam = () => {
   ReactGA.pageview('/team');
   return (
     <TeamContainer>
-      <H1>The Proofd Team</H1>
+      <H1>The Anchored Team</H1>
       <Members>
         <TeamMember>
           <img src={BrandonImg} alt="Brandon" />
