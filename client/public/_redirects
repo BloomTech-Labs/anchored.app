@@ -1,4 +1,6 @@
 # Redirect domain aliases to primary domain
 https://proofd.app/* https://anchored.app/:splat 301!
+https://www.proofd.app/* https://anchored.app/:splat 301!
 
 # Optional: Redirect default Netlify subdomain to primary domain
+https://anchored.netlify.com/* https://anchored.app/:splat 301!
