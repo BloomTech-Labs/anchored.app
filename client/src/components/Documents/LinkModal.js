@@ -17,7 +17,7 @@ const LinkModal = ({ doc, toggle, isOpen }) => {
     [fileName],
     [`Bitcoin Block: ${block_height}`],
     [`Merkle Root: ${verified_proof.expectedValue}`],
-    [`Time of Proof: ${verified_proof.verifiedAt}`],
+    [`Time of Anchor: ${verified_proof.verifiedAt}`],
     [link],
   ];
 
@@ -38,7 +38,7 @@ const LinkModal = ({ doc, toggle, isOpen }) => {
         </Button>
         <CSVLink
           data={downloadData}
-          filename={`proofd${verified_proof.anchorId}`}
+          filename={`anchored${verified_proof.anchorId}`}
         >
           {' '}
           <Button color="primary" onClick={toggle}>

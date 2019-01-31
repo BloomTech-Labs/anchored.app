@@ -1,7 +1,7 @@
 {
-  "name": "proofd",
+  "name": "anchored",
   "version": "1.0.0",
-  "description": "proofd.app",
+  "description": "anchored.app",
   "main": "index.js",
   "scripts": {
     "test": "jest --watch --verbose",

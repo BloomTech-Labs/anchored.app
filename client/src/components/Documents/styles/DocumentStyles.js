@@ -34,7 +34,7 @@ export const DocumentProof = styled.div`
   color: #17a2b8;
   border-radius: 5px;
   min-width: 130px;
-  padding: 8px 15px;
+  padding: 8px 10px;
   cursor: pointer;
 
   &:hover {

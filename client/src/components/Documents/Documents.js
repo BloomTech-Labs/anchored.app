@@ -117,7 +117,7 @@ class Documents extends React.Component {
             selected={this.state.selected === true}
             onClick={() => this.changeSelected(true)}
           >
-            Proofed
+            Anchored
           </DocumentsOptions>
           <DocumentsOptions
             selected={this.state.selected === 'waiting'}
@@ -142,11 +142,11 @@ class Documents extends React.Component {
           <TabDescription>
             {/* ternary based on what documents tab is selected */}
             {this.state.selected === true
-              ? 'Proofed Documents'
+              ? 'Anchored Documents'
               : this.state.selected === 'waiting'
-              ? 'Documents Pending Proof'
+              ? 'Documents Pending Anchor'
               : this.state.selected === 'signed'
-              ? 'Documents Awaiting Proof'
+              ? 'Documents Awaiting Anchor'
               : this.state.selected === 'unsigned'
               ? 'Documents Awaiting Signatures'
               : 'All Documents'}

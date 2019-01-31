@@ -60,14 +60,14 @@ class LPcontent extends Component {
         <BgContainer className="bgContainer">
           <Container>
             <ContentMain>
-              <H2>How Proofd Works:</H2>
+              <H2>How Anchored Works:</H2>
               <ContentSet>
                 <NumberedImage>
                   <Image src={docImg} alt="Image of a Document" />
                 </NumberedImage>
                 <Copy>
                   Connect to a number of third party services that allow for
-                  easy transfer of your data to Proofd and select which files
+                  easy transfer of your data to Anchored and select which files
                   you would like to link to the Bitcoin blockchain.
                 </Copy>
               </ContentSet>
@@ -123,7 +123,7 @@ class LPcontent extends Component {
                 title="Premium Subscription"
                 copyOne="Unlimited Credits"
                 copyTwo="$25 billed monthly"
-                copyThree="Automatic Proofing"
+                copyThree="Automatic Anchoring"
                 description="Coming Soon"
                 onClick={this.toggle}
               />

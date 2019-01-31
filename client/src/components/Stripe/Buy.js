@@ -33,10 +33,10 @@ class Buy extends Component {
         <BasicDiv>
           <BuyBox
             title="1 Credit"
-            copyOne="Proof 1 Document"
+            copyOne="Anchor 1 Document"
             copyTwo="Convenient Pricing"
             copyThree="One Time Purchase"
-            name={'PROOFD'}
+            name={'ANCHORED'}
             description={'Purchase 1 Credit'}
             amount={5}
             onToken={this.props.onToken}
@@ -45,10 +45,10 @@ class Buy extends Component {
 
           <BuyBox
             title="3 Credits"
-            copyOne="Proof 3 Documents"
+            copyOne="Anchor 3 Documents"
             copyTwo="One Time Purchase"
             copyThree="Discounted Pricing"
-            name={'PROOFD'}
+            name={'ANCHORED'}
             description={'Purchase 3 Credits'}
             amount={10}
             onToken={this.props.onToken}
@@ -56,10 +56,10 @@ class Buy extends Component {
           />
           <BuyBox
             title="5 Credits"
-            copyOne="Proof 5 Documents"
+            copyOne="Anchor 5 Documents"
             copyTwo="Value Pricing"
             copyThree="One Time Purchase"
-            name={'PROOFD'}
+            name={'ANCHORED'}
             description={'Purchase 5 Credits'}
             amount={15}
             onToken={this.props.onToken}
@@ -71,7 +71,7 @@ class Buy extends Component {
             title="Premium"
             copyOne="Coming Soon!"
             copyTwo="Unlimited Credits"
-            copyThree="Automatic Proofing"
+            copyThree="Automatic Anchoring"
             btnDescription="Sign Up"
             onClick={this.toggle}
           />
@@ -81,7 +81,7 @@ class Buy extends Component {
         {/* <PremiumDiv>
           <BuyBox
             title="Monthly Subscription"
-            name={'PROOFD'}
+            name={'ANCHORED'}
             description={'Purchase Monthly Subscription'}
             amount={30}
             color="primary"
@@ -91,7 +91,7 @@ class Buy extends Component {
 
           <BuyBox
             title="Annual Subscription"
-            name={'PROOFD'}
+            name={'ANCHORED'}
             description={'Purchase Annual Subscription'}
             amount={300}
             color="success"
