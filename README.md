@@ -1,10 +1,10 @@
-# Proofd
+# Anchored
 
-![Proofd Logo](/client/src/assets/Proofd_3.png)
+![Anchored Logo](/client/src/assets/Anchored_3.png)
 
 **_A blockchain enabled verification platform_**
 
-Proofd utilizes [Chainpoint's](https://chainpoint.org/) innovative technology which allows users to securely link a hash of their data, such as important documents, to the [Bitcoin](https://bitcoin.org/en/) blockchain. After logging in, users can connect with third party applications such as [DocuSign](https://www.docusign.com/) and get timestamp proofs for any file. By associating data to a tamper-proof, immutable ledger, it can be mathematically proven that the data existed at an exact time and place.
+Anchored utilizes [Chainpoint's](https://chainpoint.org/) innovative technology which allows users to securely link a hash of their data, such as important documents, to the [Bitcoin](https://bitcoin.org/en/) blockchain. After logging in, users can connect with third party applications such as [DocuSign](https://www.docusign.com/) and get timestamp proofs for any file. By associating data to a tamper-proof, immutable ledger, it can be mathematically proven that the data existed at an exact time and place.
 
 ## Team
 
@@ -26,13 +26,13 @@ Proofd utilizes [Chainpoint's](https://chainpoint.org/) innovative technology wh
 
 ## Tech Stack
 
-Proofd utilizes [Heroku](https://www.heroku.com/) and [Netlify](https://www.netlify.com/) for deployment, and is built in full stack JavaScript with a [React.js](https://reactjs.org/) frontend, a [Node.js](https://nodejs.org/en/) and [Express.js](https://expressjs.com/) backend, a [PostgreSQL](https://www.postgresql.org) database in production, and a [SQLite3](https://www.sqlite.org/index.html) database in development.
+Anchored utilizes [Heroku](https://www.heroku.com/) and [Netlify](https://www.netlify.com/) for deployment, and is built in full stack JavaScript with a [React.js](https://reactjs.org/) frontend, a [Node.js](https://nodejs.org/en/) and [Express.js](https://expressjs.com/) backend, a [PostgreSQL](https://www.postgresql.org) database in production, and a [SQLite3](https://www.sqlite.org/index.html) database in development.
 
 ### Rationale
 
 #### Frontend
 
-[https://proofd.app/](https://proofd.app/)
+[https://anchored.app/](https://anchored.app/)
 
 - React
 
@@ -87,14 +87,14 @@ Proofd utilizes [Heroku](https://www.heroku.com/) and [Netlify](https://www.netl
 
   - We pull in user documents via DocuSign's API to our database, flag them, and then filter them on the client-side based on five categories:
     - All Documents
-    - Proofed Documents
-    - Documents Pending Proof
-    - Signed Documents Awaiting Proof
+    - Anchored Documents
+    - Documents Pending Anchor
+    - Signed Documents Awaiting Anchor
     - Unsigned Documents Awaiting Signatures
 
 - [Chainpoint](https://chainpoint.org/)
 
-  - When a user verifies they would like to proof their document, we send a hash of that data to Chainpoint, which is aggregrated with other hashes using a Merkle tree. The root of the tree is published in a Bitcoin transaction, which cryptographically links the given data to a block on the Bitcoin blockchain.
+  - When a user verifies they would like to anchor their document, we send a hash of that data to Chainpoint, which is aggregrated with other hashes using a Merkle tree. The root of the tree is published in a Bitcoin transaction, which cryptographically links the given data to a block on the Bitcoin blockchain.
 
 - [Stripe](https://stripe.com/docs/api)
 
