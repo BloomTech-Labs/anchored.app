@@ -1,6 +1,6 @@
 # Anchored
 
-![Anchored Logo](/client/src/assets/Anchored_3.png)
+![Anchored Logo](/client/src/assets/anchored_text.png)
 
 **_A blockchain enabled verification platform_**
 

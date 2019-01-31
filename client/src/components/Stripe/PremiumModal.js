@@ -32,7 +32,7 @@ class PremiumModal extends Component {
       .then(() => alert('Success. Thank you!'))
       .catch(error =>
         alert(
-          'There was an error sending your message. Please contact us at support@proofd.app.'
+          'There was an error sending your message. Please contact us at support@anchored.app.'
         )
       );
 
