@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import playImg from '../../assets/video_icon.png';
 import ModalVideo from 'react-modal-video';
 import '../../../node_modules/react-modal-video/css/modal-video.min.css';
@@ -14,61 +14,47 @@ import {
 
 import { Events, scrollSpy, scroller } from 'react-scroll';
 
-class CTA extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isOpen: false,
-    };
-    this.openModal = this.openModal.bind(this);
-  }
+const CTA = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
-  openModal() {
-    this.setState({ isOpen: true });
-  }
-
-  componentDidMount() {
+  useEffect(() => {
     Events.scrollEvent.register('begin', function(to, element) {});
-
     Events.scrollEvent.register('end', function(to, element) {});
-
     scrollSpy.update();
-  }
+
+    return () => {
+      Events.scrollEvent.remove('begin');
+      Events.scrollEvent.remove('end');
+    };
+  }, []);
 
   // scrolls to <Element name="pricingSheets"> in LPContent.js
-  smoothScroll() {
+  const smoothScroll = () => {
     scroller.scrollTo('pricingSheets', {
       duration: 1500,
       delay: 1,
       smooth: true,
       offset: -180,
     });
-  }
+  };
 
-  componentWillUnmount() {
-    Events.scrollEvent.remove('begin');
-    Events.scrollEvent.remove('end');
-  }
-
-  render() {
-    return (
-      <CtaContainer>
-        <H2>Don't Just Trust. Get Proof.</H2>
-        <Copy>A blockchain enabled verification platform</Copy>
-        <CtaButton onClick={this.smoothScroll}>CHECK OUR PRICES</CtaButton>
-        <Demo onClick={this.openModal}>
-          <Img src={playImg} alt="play icon" width="20%" />
-          <Copy>Watch the Promo</Copy>
-        </Demo>
-        <ModalVideo
-          channel="youtube"
-          isOpen={this.state.isOpen}
-          videoId="CQi2sfVNWyI"
-          onClose={() => this.setState({ isOpen: false })}
-        />
-      </CtaContainer>
-    );
-  }
-}
+  return (
+    <CtaContainer>
+      <H2>Don't Just Trust. Get Proof.</H2>
+      <Copy>A blockchain enabled verification platform</Copy>
+      <CtaButton onClick={smoothScroll}>CHECK OUR PRICES</CtaButton>
+      <Demo onClick={() => setIsOpen(true)}>
+        <Img src={playImg} alt="play icon" width="20%" />
+        <Copy>Watch the Promo</Copy>
+      </Demo>
+      <ModalVideo
+        channel="youtube"
+        isOpen={isOpen}
+        videoId="CQi2sfVNWyI"
+        onClose={() => setIsOpen(false)}
+      />
+    </CtaContainer>
+  );
+};
 
 export default CTA;
