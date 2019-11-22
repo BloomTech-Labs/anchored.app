@@ -10,6 +10,7 @@ import ReactGA from 'react-ga';
 
 const Privacy = () => {
   ReactGA.pageview('/privacy');
+
   return (
     <PrivacyContainer>
       <Header>Privacy Policy</Header>
