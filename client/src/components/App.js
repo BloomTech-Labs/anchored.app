@@ -104,16 +104,19 @@ function App() {
               <Billing />
             </Route>
           )}
+
           {user && (
             <Route path="/settings">
               <Settings />
             </Route>
           )}
+
           {user && (
             <Route path="/buy">
               <Buy />
             </Route>
           )}
+
           <Route>{user ? <Documents /> : <Home />}</Route>
         </Switch>
       </HomeContainer>
