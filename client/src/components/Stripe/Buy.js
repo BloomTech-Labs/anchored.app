@@ -15,7 +15,7 @@ const Buy = () => {
   const toggle = () => setModal(!modal);
 
   const onTokenA = (amount, description) => {
-    dispatch(onToken(amount, description));
+    return dispatch(onToken(amount, description));
   };
 
   useEffect(() => {
