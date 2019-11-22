@@ -46,14 +46,10 @@ export const TwitterText = styled.p`
 function App() {
   window.scrollTo(0, 0);
 
-  const { user, fetching, fetched, error } = useSelector(state => {
-    return {
-      user: state.user.user,
-      fetching: state.user.retrieving,
-      fetched: state.user.retrieved,
-      error: state.user.error,
-    };
-  }, shallowEqual);
+  const user = useSelector(state => state.user.user);
+  const fetching = useSelector(state => state.user.retrieving);
+  const fetched = useSelector(state => state.user.retrieved);
+  const error = useSelector(state => state.user.error);
 
   const dispatch = useDispatch();
 
