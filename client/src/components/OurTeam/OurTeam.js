@@ -19,6 +19,7 @@ import ReactGA from 'react-ga';
 
 const OurTeam = () => {
   ReactGA.pageview('/team');
+
   return (
     <TeamContainer>
       <H1>The Proofd Team</H1>

@@ -35,6 +35,7 @@ export const getProof = id => {
   return dispatch => {
     dispatch({ type: RETRIEVING_PROOF, payload: id });
     dispatch({ type: DECREMENT_CREDIT });
+
     promise
       .then(res => {
         dispatch({ type: RETRIEVED_PROOF, payload: res.data });

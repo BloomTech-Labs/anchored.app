@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getEnvelopes, getProof, updateLoading } from '../../actions/envelopes';
 import { BeatLoader } from 'react-spinners';
@@ -182,8 +182,5 @@ const mapStateToProps = state => {
 };
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    { getEnvelopes, getProof, updateLoading }
-  )(Documents)
+  connect(mapStateToProps, { getEnvelopes, getProof, updateLoading })(Documents)
 );

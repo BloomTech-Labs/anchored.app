@@ -1,9 +1,8 @@
-import React, { Fragment } from 'react';
-import { withRouter } from 'react-router';
+import React, { Fragment, useEffect } from 'react';
 import './App.css';
 import Home from './Home/Home.js';
 import axios from 'axios';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { getUserInfo } from '../actions/user';
 import { BeatLoader } from 'react-spinners';
 import { Switch, Route } from 'react-router-dom';
@@ -44,68 +43,83 @@ export const TwitterText = styled.p`
   font-size: 1rem;
 `;
 
-class App extends React.Component {
-  state = {
-    loading: true,
-  };
+function App() {
+  window.scrollTo(0, 0);
 
-  componentDidMount() {
-    this.props.getUserInfo();
-  }
+  const { user, fetching, fetched, error } = useSelector(state => {
+    return {
+      user: state.user.user,
+      fetching: state.user.retrieving,
+      fetched: state.user.retrieved,
+      error: state.user.error,
+    };
+  }, shallowEqual);
 
-  render() {
-    window.scrollTo(0, 0);
-    const user = this.props.user;
+  const dispatch = useDispatch();
 
-    if (this.props.fetching || (!this.props.fetched && !this.props.error)) {
-      return (
-        <LoadingContainer>
-          {/* Uncomment the TwitterAlert section if needed due to high traffic */}
-          {/* <TwitterAlert>
+  useEffect(() => {
+    dispatch(getUserInfo());
+  }, []);
+
+  if (fetching || (!fetched && !error)) {
+    return (
+      <LoadingContainer>
+        {/* Uncomment the TwitterAlert section if needed due to high traffic */}
+        {/* <TwitterAlert>
             <TwitterText>
               Someone with <em>a lot</em> of Twitter followers tweeted about us,
               and we're experiencing abnormally high traffic. Thanks for your
               patience!
             </TwitterText>
           </TwitterAlert> */}
-          <BeatLoader color={'black'} loading={this.state.loading} />
-        </LoadingContainer>
-      );
-    }
-
-    return (
-      <Fragment>
-        <HomeContainer>
-          {user ? <DashboardNav /> : <TopNavBar />}
-          <Switch>
-            <Route exact path="/" component={user ? Documents : Home} />
-            <Route path="/team" component={OurTeam} />
-            <Route path="/privacy" component={Privacy} />
-            <Route path="/terms" component={Terms} />
-            {user && <Route path="/account" component={Billing} />}
-            {user && <Route path="/settings" component={Settings} />}
-            {user && <Route path="/buy" component={Buy} />}
-            <Route component={user ? Documents : Home} />
-          </Switch>
-        </HomeContainer>
-        <Footer />
-      </Fragment>
+        <BeatLoader color={'black'} />
+      </LoadingContainer>
     );
   }
+
+  return (
+    <Fragment>
+      <HomeContainer>
+        {user ? <DashboardNav /> : <TopNavBar />}
+
+        <Switch>
+          <Route exact path="/">
+            {user ? <Documents /> : <Home />}
+          </Route>
+
+          <Route path="/team">
+            <OurTeam />
+          </Route>
+
+          <Route path="/privacy">
+            <Privacy />
+          </Route>
+
+          <Route path="/terms">
+            <Terms />
+          </Route>
+
+          {user && (
+            <Route path="/account">
+              <Billing />
+            </Route>
+          )}
+          {user && (
+            <Route path="/settings">
+              <Settings />
+            </Route>
+          )}
+          {user && (
+            <Route path="/buy">
+              <Buy />
+            </Route>
+          )}
+          <Route>{user ? <Documents /> : <Home />}</Route>
+        </Switch>
+      </HomeContainer>
+      <Footer />
+    </Fragment>
+  );
 }
 
-const mapStateToProps = state => {
-  return {
-    user: state.user.user,
-    fetching: state.user.retrieving,
-    fetched: state.user.retrieved,
-    error: state.user.error,
-  };
-};
-
-export default withRouter(
-  connect(
-    mapStateToProps,
-    { getUserInfo }
-  )(App)
-);
+export default App;
