@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { onToken } from '../../actions/billing';
 import BuyBox from './BuyBox.js';
 import PremiumBox from './PremiumBox.js';
@@ -7,78 +7,72 @@ import { BoxContainer, BasicDiv } from './styles/BuyStyles.js';
 import ReactGA from 'react-ga';
 import PremiumModal from './PremiumModal.js';
 
-class Buy extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      modal: false,
-    };
+const Buy = () => {
+  const [modal, setModal] = useState(false);
 
-    this.toggle = this.toggle.bind(this);
-  }
+  const dispatch = useDispatch();
 
-  toggle() {
-    this.setState({
-      modal: !this.state.modal,
-    });
-  }
+  const toggle = () => setModal(!modal);
 
-  componentDidMount() {
+  const onTokenA = (amount, description) => {
+    dispatch(onToken(amount, description));
+  };
+
+  useEffect(() => {
     ReactGA.pageview('/buy');
-  }
+  }, []);
 
-  render() {
-    return (
-      <BoxContainer>
-        <BasicDiv>
-          <BuyBox
-            title="1 Credit"
-            copyOne="Proof 1 Document"
-            copyTwo="Convenient Pricing"
-            copyThree="One Time Purchase"
-            name={'PROOFD'}
-            description={'Purchase 1 Credit'}
-            amount={5}
-            onToken={this.props.onToken}
-            btnDescription="$5"
-          />
+  return (
+    <BoxContainer>
+      <BasicDiv>
+        <BuyBox
+          title="1 Credit"
+          copyOne="Proof 1 Document"
+          copyTwo="Convenient Pricing"
+          copyThree="One Time Purchase"
+          name={'PROOFD'}
+          description={'Purchase 1 Credit'}
+          amount={5}
+          onToken={onTokenA}
+          btnDescription="$5"
+        />
 
-          <BuyBox
-            title="3 Credits"
-            copyOne="Proof 3 Documents"
-            copyTwo="One Time Purchase"
-            copyThree="Discounted Pricing"
-            name={'PROOFD'}
-            description={'Purchase 3 Credits'}
-            amount={10}
-            onToken={this.props.onToken}
-            btnDescription="$10"
-          />
-          <BuyBox
-            title="5 Credits"
-            copyOne="Proof 5 Documents"
-            copyTwo="Value Pricing"
-            copyThree="One Time Purchase"
-            name={'PROOFD'}
-            description={'Purchase 5 Credits'}
-            amount={15}
-            onToken={this.props.onToken}
-            btnDescription="$15"
-          />
+        <BuyBox
+          title="3 Credits"
+          copyOne="Proof 3 Documents"
+          copyTwo="One Time Purchase"
+          copyThree="Discounted Pricing"
+          name={'PROOFD'}
+          description={'Purchase 3 Credits'}
+          amount={10}
+          onToken={onTokenA}
+          btnDescription="$10"
+        />
+        <BuyBox
+          title="5 Credits"
+          copyOne="Proof 5 Documents"
+          copyTwo="Value Pricing"
+          copyThree="One Time Purchase"
+          name={'PROOFD'}
+          description={'Purchase 5 Credits'}
+          amount={15}
+          onToken={onTokenA}
+          btnDescription="$15"
+        />
 
-          {/* Premium Subscription Signup  */}
-          <PremiumBox
-            title="Premium"
-            copyOne="Coming Soon!"
-            copyTwo="Unlimited Credits"
-            copyThree="Automatic Proofing"
-            btnDescription="Sign Up"
-            onClick={this.toggle}
-          />
-          <PremiumModal toggle={this.toggle} isOpen={this.state.modal} />
-        </BasicDiv>
-        {/* Uncomment below when ready to go live with premium */}
-        {/* <PremiumDiv>
+        {/* Premium Subscription Signup  */}
+        <PremiumBox
+          title="Premium"
+          copyOne="Coming Soon!"
+          copyTwo="Unlimited Credits"
+          copyThree="Automatic Proofing"
+          btnDescription="Sign Up"
+          onClick={toggle}
+        />
+        <PremiumModal toggle={toggle} isOpen={modal} />
+      </BasicDiv>
+      {/* Uncomment below when ready to go live with premium */}
+      {/* <PremiumDiv>
           <BuyBox
             title="Monthly Subscription"
             name={'PROOFD'}
@@ -99,18 +93,8 @@ class Buy extends Component {
             btnDescription="Subscribe"
           />
         </PremiumDiv> */}
-      </BoxContainer>
-    );
-  }
-}
-
-const mapStateToProps = state => {
-  return {
-    fetching: state.retrieving,
-  };
+    </BoxContainer>
+  );
 };
 
-export default connect(
-  mapStateToProps,
-  { onToken }
-)(Buy);
+export default Buy;
