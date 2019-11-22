@@ -2,10 +2,10 @@ import React, { Fragment, useEffect } from 'react';
 import './App.css';
 import Home from './Home/Home.js';
 import axios from 'axios';
-import { useSelector, useDispatch, shallowEqual } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getUserInfo } from '../actions/user';
 import { BeatLoader } from 'react-spinners';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useLocation } from 'react-router-dom';
 import { HomeContainer } from './Home/HomeStyles.js';
 import styled from 'styled-components';
 import OurTeam from './OurTeam/OurTeam';
@@ -44,18 +44,21 @@ export const TwitterText = styled.p`
 `;
 
 function App() {
-  window.scrollTo(0, 0);
-
   const user = useSelector(state => state.user.user);
   const fetching = useSelector(state => state.user.retrieving);
   const fetched = useSelector(state => state.user.retrieved);
   const error = useSelector(state => state.user.error);
 
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     dispatch(getUserInfo());
   }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   if (fetching || (!fetched && !error)) {
     return (
