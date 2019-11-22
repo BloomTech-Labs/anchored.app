@@ -1,26 +1,18 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { unlinkUser } from '../../../actions/user';
 import { EditButton } from '../../Settings/styles/SettingsStyles.js';
+import { useHistory } from 'react-router-dom';
 
-class DocusignUnlink extends React.Component {
-  render() {
-    const history = this.props.history;
-    return (
-      <EditButton size="lg" onClick={() => this.props.unlinkUser(history)}>
-        Unlink App
-      </EditButton>
-    );
-  }
-}
+const DocusignUnlink = () => {
+  const history = useHistory();
+  const dispatch = useDispatch();
 
-const mapStateToProps = state => {
-  return {
-    user: state.user.user,
-  };
+  return (
+    <EditButton size="lg" onClick={() => dispatch(unlinkUser(history))}>
+      Unlink App
+    </EditButton>
+  );
 };
 
-export default connect(
-  mapStateToProps,
-  { unlinkUser }
-)(DocusignUnlink);
+export default DocusignUnlink;
